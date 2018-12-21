@@ -1,12 +1,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
+import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import Home from "./WebPages/Home/Home";
+import Connection from "./WebPages/Connection/Connection";
+import Help from "./WebPages/Help/Help";
+import Recuperation from "./WebPages/Recuperation/Recuperation";
+import Profile from "./WebPages/Profile/Profile";
+import Search from "./WebPages/Search/Search";
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
-serviceWorker.unregister();
+ReactDOM.render(
+    <Router>
+        <React.Fragment>
+            <Route exact path='/' component={Home}/>
+            <Route exact path='/connection' component={Connection}/>
+            <Route exact path='/recup' component={Recuperation}/>
+            <Route exact path='/help' component={Help}/>
+            <Route exact path='/profile' component={Profile}/>
+            <Route exact path='/search' component={Search}/>
+        </React.Fragment>
+    </Router>
+    , document.getElementById('root')
+);
+
+registerServiceWorker();

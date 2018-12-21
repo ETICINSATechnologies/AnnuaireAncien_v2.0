@@ -1,0 +1,47 @@
+.Home {
+    display: grid;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
+.Home .home {
+    display: grid;
+    grid-template-columns: 12vw 1fr 12vw;
+    grid-template-rows: 1fr;
+    grid-gap: 1%;
+
+    background-size: 100% auto;
+
+    text-align: center;
+    width: 100%;
+    height: 100%;
+}
+
+.Home .home_title {
+    vertical-align: middle;
+
+    margin: auto;
+
+    font-size: 5.5vw;
+    width: 80%;
+    height: 100%;
+}
+
+.Home .welcome {
+    margin: 6vmin auto 13vmin auto;
+}
+
+.Home .welcome_etic {
+    font-weight: bold;
+
+    margin: auto;
+}
+
+.Home .left {
+    background: rgba(0, 83, 96, 0.8);
+}
+
+.Home .right {
+    background: rgba(155, 202, 139, 1);
+}

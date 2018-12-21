@@ -1,0 +1,62 @@
+.Help {
+    display: grid;
+    overflow: hidden;
+
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
+.Help .help_section {
+    display: grid;
+    grid-template-rows: 4vw 6.7vw 30vmin 1fr;
+
+    margin: 3vmin auto;
+
+    width: 95%;
+}
+
+.Help .help_section * {
+    text-align: center;
+    justify-self: center;
+
+    margin: 0 auto;
+    font-size: 3vw;
+}
+
+.Help .div2 {
+    cursor: pointer;
+    color: #009e11;
+    text-decoration: underline;
+}
+
+.Help p {
+    margin: auto;
+    height: 100%;
+}
+
+.Help .div4 {
+    cursor: pointer;
+    color: #009e11;
+    background: white;
+    border: 0;
+    text-decoration: underline;
+    height: 6.7vw;
+}
+
+.Help .div5 {
+    animation-duration: 2s;
+    animation: display;
+
+    color: white;
+
+    font-size: 2vw;
+    margin: 1vw auto ;
+    width: 15vw;
+}
+
+@keyframes display {
+    0% {color: white;}
+    40% {color: black;}
+    100% {color: white;}
+}
