@@ -10,3 +10,9 @@
     margin: auto;
     grid-template-columns: 2fr 1fr;
 }
+
+@media (orientation: portrait) {
+    .Profile {
+        grid-template-columns: 1fr;
+    }
+}

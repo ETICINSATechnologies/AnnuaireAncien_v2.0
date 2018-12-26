@@ -10,6 +10,7 @@ import Help from "./WebPages/Help/Help";
 import Recuperation from "./WebPages/Recuperation/Recuperation";
 import Profile from "./WebPages/Profile/Profile";
 import Search from "./WebPages/Search/Search";
+import Administration from "./WebPages/Administration/Administration";
 
 ReactDOM.render(
     <Router>
@@ -20,6 +21,7 @@ ReactDOM.render(
             <Route exact path='/help' component={Help}/>
             <Route exact path='/profile' component={Profile}/>
             <Route exact path='/search' component={Search}/>
+            <Route exact path='/administration' component={Administration}/>
         </React.Fragment>
     </Router>
     , document.getElementById('root')

@@ -1,37 +1,30 @@
 import React, {Component} from 'react';
-import './Profile.css';
+import './Administration.css';
 import Header from "../../Components/Header/Header";
 import Nav from "../../Components/Nav/Nav";
 import Redirect from "react-router-dom/es/Redirect";
 import Auth from "../../Components/Auth/Auth";
-import ProfileForm from "../../Components/ProfileForm/ProfileForm";
+import MemberArray from "../../Components/MemberArray/MemberArray";
 
-class Profile extends Component {
+class Administration extends Component {
     constructor(props) {
         super(props);
         this.state = {
             status: 'pending', // 'connected' 'not_authenticate'
-            info: {}
-        }
+            info: {},
+            memberInfo: {}
+        };
+        this.selectMember = this.selectMember.bind(this)
     }
 
     componentDidMount() {
         if (!Auth.isConnected())
             this.setState({status: 'not_authenticate'});
-        else
-        {
-            this.setState({status: "connected"});
-            fetch('api/v1/core/member/me', {
-                headers: {
-                    Authorization: Auth.getToken()
-                }
-            })
-                .then(res => res.json())
-                .then((result) => {
-                    this.setState({info: result});
-                    console.log(this.state.info);
-                })
-        }
+    }
+
+    selectMember (member) {
+        console.log(member);
+        this.setState({memberInfo: member})
     }
 
     render() {
@@ -46,12 +39,17 @@ class Profile extends Component {
             <React.Fragment>
                 <Header/>
                 <Nav buttons={activeButton}> </Nav>
-                <section className="Profile">
-                    <ProfileForm info={this.state.info} function='update'/>
+                <section className="Administration">
+                    <MemberArray className="CA" onClick={this.selectMember}/>
+                    <MemberArray className="members" onClick={this.selectMember}/>
+                    <section className='memberInfo' title='Info du membre'>
+                        <div className='infoTitle'> Info du membre </div>
+                        <div className='infoArea'> {this.state.memberInfo.username} </div>
+                    </section>
                 </section>
             </React.Fragment>
         );
     }
 }
 
-export default Profile;
+export default Administration;

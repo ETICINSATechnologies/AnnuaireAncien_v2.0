@@ -25,17 +25,15 @@ class ProfileForm extends Component {
         this.setState({info: parameters});
     }
 
-
     render() {
         return (
             <form className="ProfileForm">
-                <div className="info_area">
-                    <p>Appuyer sur Sauvegarder pour enregistrer les modifications</p>
+                <div className="info_area">Appuyer sur Sauvegarder pour enregistrer les modifications
                 </div>
                 <div className="image"> </div>
                 <p> Téléphone </p>
                 <p className="right needed"> Nom </p>
-                <input type="text" className="telephone" value={this.props.info.telephone} onChange={this.onChange}/>
+                <input type="text" className="telephone" value={this.state.info.telephone} onChange={this.onChange}/>
                 <input type="text" className="lastName" value={this.state.info.lastName} onChange={this.onChange}/>
                 <p> Département </p>
                 <p className="right p_info needed"> Prénom </p>
