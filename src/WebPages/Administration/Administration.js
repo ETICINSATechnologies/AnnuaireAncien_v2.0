@@ -1,17 +1,17 @@
 import React, {Component} from 'react';
 import './Administration.css';
-import Header from "../../Components/Header/Header";
-import Nav from "../../Components/Nav/Nav";
 import Redirect from "react-router-dom/es/Redirect";
 import Auth from "../../Components/Auth/Auth";
+import Header from "../../Components/Header/Header";
+import Nav from "../../Components/Nav/Nav";
 import MemberArray from "../../Components/MemberArray/MemberArray";
+import MemberInfo from "../../Components/MemberInfo/MemberInfo";
 
 class Administration extends Component {
     constructor(props) {
         super(props);
         this.state = {
             status: 'pending', // 'connected' 'not_authenticate'
-            info: {},
             memberInfo: {}
         };
         this.selectMember = this.selectMember.bind(this)
@@ -23,8 +23,7 @@ class Administration extends Component {
     }
 
     selectMember (member) {
-        console.log(member);
-        this.setState({memberInfo: member})
+        this.setState({memberInfo: member});
     }
 
     render() {
@@ -33,6 +32,7 @@ class Administration extends Component {
 
         let activeButton = ["home"];
         activeButton.push('search');
+        activeButton.push('profile');
         activeButton = Auth.addCorrectButton(activeButton);
 
         return (
@@ -42,10 +42,7 @@ class Administration extends Component {
                 <section className="Administration">
                     <MemberArray className="CA" onClick={this.selectMember}/>
                     <MemberArray className="members" onClick={this.selectMember}/>
-                    <section className='memberInfo' title='Info du membre'>
-                        <div className='infoTitle'> Info du membre </div>
-                        <div className='infoArea'> {this.state.memberInfo.username} </div>
-                    </section>
+                    <MemberInfo info={this.state.memberInfo}/>
                 </section>
             </React.Fragment>
         );

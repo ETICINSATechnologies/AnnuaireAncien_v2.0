@@ -8,6 +8,7 @@ class MemberArray extends Component {
         super(props);
         this.state = {
             status: 'pending',
+            mapping: {},
             info: {}
         };
     }
@@ -20,13 +21,37 @@ class MemberArray extends Component {
         })
             .then(res => res.json())
             .then((result) => {
-                if (result)
+                if (result) {
+                    // let mapping = this.mapMembers();
                     this.setState({
                         status: 'processing',
                         info: result
                     });
+                }
+                let mapping = this.mapMembers();
+                this.setState({
+                    mapping: mapping
+                })
             })
+    }
 
+    mapMembers() {
+        let i = 0;
+        let mapping = {};
+        this.state.info.content.forEach((member) => {
+            if (!(member.id in mapping))
+                mapping[member.id] = i++;
+        });
+
+        return mapping
+    }
+
+    getMemberById(id) {
+        if (id in this.state.mapping) {
+            let position = this.state.mapping[id];
+            return this.state.info.content[position];
+        }
+        return null
     }
 
     render() {
@@ -39,11 +64,11 @@ class MemberArray extends Component {
         }
         else if (this.state.info.hasOwnProperty('content')) {
             members = [];
-            for (let j = 0; j < 3; j++) {
+            for (let j = 0; j < 10; j++) {
                 for (let i = 0; i < this.state.info.content.length; i++) {
                     members.push(
                         <MemberDisplay key={`${j}${i}`} info={this.state.info.content[i]}
-                                       onClick={(id) => this.props.onClick(id)}/>
+                                       onClick={(id) => this.props.onClick(this.getMemberById(id))}/>
                     )
                 }
             }

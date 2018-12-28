@@ -4,7 +4,7 @@ import './MemberDisplay.css';
 class MemberDisplay extends Component {
     constructor(props) {
         super(props);
-        let propertiesName = {
+        const propertiesName = {
             id: null,
             lastName: 'nom',
             firstName: 'prénom',
