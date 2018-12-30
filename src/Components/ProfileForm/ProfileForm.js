@@ -26,10 +26,7 @@ class ProfileForm extends Component {
         if (this.state.modifyEnabled && this.newInfo.hasOwnProperty(event.target.className)) {
             this.newInfo[event.target.className]= event.target.value;
         }
-        /*il faut appeler un setState pour forcer un re-render*/
-        this.setState({
-            modifyEnabled: this.state.modifyEnabled,
-        })
+        this.rerender();
     }
 
 
@@ -55,7 +52,15 @@ class ProfileForm extends Component {
                 .then(res => res.json())
                 .then((result) => {
                     this.newInfo=result;
+                    this.rerender();
                 });
+    }
+
+    rerender() {
+        /*appeler un setState pour forcer un re-render*/
+        this.setState({
+            modifyEnabled: this.state.modifyEnabled,
+        })
     }
 
     modifyProfile() {
