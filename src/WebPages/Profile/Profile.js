@@ -11,7 +11,7 @@ class Profile extends Component {
         super(props);
         this.state = {
             status: 'pending', // 'connected' 'not_authenticate'
-            info: {}
+            info: {},
         }
     }
 
@@ -34,6 +34,20 @@ class Profile extends Component {
         }
     }
 
+    updateInfo(){
+        if ((Auth.isConnected()))
+            fetch('api/v1/core/member/me', {
+                headers: {
+                    Authorization: Auth.getToken()
+                }
+            })
+                .then(res => res.json())
+                .then((result) => {
+                    this.setState({info: result});
+                })
+
+    }
+
     render() {
         let activeButton = ["home"];
         if (this.state.status === 'not_authenticate')
@@ -47,7 +61,7 @@ class Profile extends Component {
                 <Header/>
                 <Nav buttons={activeButton}> </Nav>
                 <section className="Profile">
-                    <ProfileForm info={this.state.info} function='update'/>
+                    <ProfileForm info={this.state.info} function={this.updateInfo}/>
                 </section>
             </React.Fragment>
         );
