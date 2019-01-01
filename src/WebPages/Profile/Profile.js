@@ -35,10 +35,10 @@ class Profile extends Component {
     }
 
     render() {
-        let activeButton = ["home"];
         if (this.state.status === 'not_authenticate')
             return <Redirect to='/'/>;
 
+        let activeButton = ["home"];
         activeButton.push('search');
         activeButton = Auth.addCorrectButton(activeButton);
 

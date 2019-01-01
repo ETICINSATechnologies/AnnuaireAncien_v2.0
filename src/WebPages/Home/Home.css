@@ -23,13 +23,13 @@
 
     margin: auto;
 
-    font-size: 5.5vw;
+    font-size: 5vw;
     width: 80%;
     height: 100%;
 }
 
 .Home .welcome {
-    margin: 6vmin auto 13vmin auto;
+    margin: 6vmin auto 10vmin auto;
 }
 
 .Home .welcome_etic {

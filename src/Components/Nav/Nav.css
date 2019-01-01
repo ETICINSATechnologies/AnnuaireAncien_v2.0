@@ -1,6 +1,6 @@
 .Nav {
     display: grid;
-    grid-template-columns: 1fr 4.5vw;
+    grid-template-columns: 1fr 3vw;
 
     border-bottom: 0.3vmin solid black;
     width: 100%;
