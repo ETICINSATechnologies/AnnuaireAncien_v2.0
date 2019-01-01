@@ -7,19 +7,14 @@ import Nav from "../../Components/Nav/Nav";
 import MemberArray from "../../Components/MemberArray/MemberArray";
 import MemberInfo from "../../Components/MemberInfo/MemberInfo";
 
+
 class Administration extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            status: 'pending', // 'connected' 'not_authenticate'
             memberInfo: {}
         };
         this.selectMember = this.selectMember.bind(this)
-    }
-
-    componentDidMount() {
-        if (!Auth.isConnected())
-            this.setState({status: 'not_authenticate'});
     }
 
     selectMember (member) {
@@ -27,7 +22,7 @@ class Administration extends Component {
     }
 
     render() {
-        if (this.state.status === 'not_authenticate')
+        if (!Auth.isConnected())
             return <Redirect to='/'/>;
 
         let activeButton = ["home"];
@@ -40,9 +35,9 @@ class Administration extends Component {
                 <Header/>
                 <Nav buttons={activeButton}> </Nav>
                 <section className="Administration">
-                    <MemberArray className="CA" onClick={this.selectMember}/>
                     <MemberArray className="members" onClick={this.selectMember}/>
-                    <MemberInfo info={this.state.memberInfo}/>
+                    <MemberArray className="CA" board onClick={this.selectMember}/>
+                    <MemberInfo editable info={this.state.memberInfo}/>
                 </section>
             </React.Fragment>
         );

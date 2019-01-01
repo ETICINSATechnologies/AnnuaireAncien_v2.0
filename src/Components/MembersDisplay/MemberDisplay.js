@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './MemberDisplay.css';
 
+
 class MemberDisplay extends Component {
     constructor(props) {
         super(props);

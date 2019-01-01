@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
 import './MemberInfo.css';
 
-import defaultImage from '../../images/no_photo.png'
-import edit from '../../images/edit.png'
+import defaultMan from '../../Images/default_man.svg'
+import defaultWoman from '../../Images/default_woman.svg'
+import edit from '../../Images/edit.png'
+
 
 class MemberInfo extends Component {
     constructor(props) {
@@ -18,8 +20,8 @@ class MemberInfo extends Component {
             department: 'département'
         };
         this.state = {
-            edit: false,
-            isCAMember: false,
+            edition: false,
+            isBoard: false,
             properties: null,
         };
     }
@@ -60,38 +62,48 @@ class MemberInfo extends Component {
                     </div>);
                 propertyDisplay.push(
                     <input key={`input ${property}`} type="text" className={property} value={newProperties[property]}
-                           disabled={!this.state.edit}/>
+                           disabled={!this.state.edition}/>
                 )
             }
         });
+
+        let gender = 'M';
+        if (this.props.info['gender'])
+            gender = this.props.info['gender'].label;
 
         return (
             <section className='MemberInfo'>
                 <div className='infoTitle'> Info du membre</div>
                 {
-                    Object.keys(newProperties).length !== 0
-                        ? <div className='infoArea'>
-                            <img className='editPhoto' src={edit} alt="modifier"/>
-                            <img className='memberPhoto' src={defaultImage} alt='défaut'/>
+                    Object.keys(newProperties).length !== 0 ?
+                        <div className='infoArea'>
+                            <img className='memberPhoto' alt='défaut' title="http://www.onlinewebfonts.com/icon"
+                                 src={gender === 'F' ? defaultWoman : defaultMan}/>
                             {propertyDisplay}
                             {
-                                this.state.edit
-                                    ?
+                                this.props.editable ?
                                     <React.Fragment>
-                                        <input type="button" className='updateButton red cancel' value="annuler"
-                                               onClick={() => this.setState({edit: false})}/>
-                                        <input type="button" className='updateButton green save' value="enregistrer"
-                                               onClick={() => this.setState({edit: false})}/>
-                                    </React.Fragment>
-                                    :
-                                    this.state.isCAMember
-                                        ? <input type="button" className='boardButton red deleteBoard'
-                                                 value="supprimer du CA"/>
-                                        :
-                                        <input type="button" className='boardButton green addBoard' value="ajouter au CA"/>
+                                        <img className='editPhoto' src={edit} alt="modifier"
+                                             style={this.state.edition ? {display: 'none'}: {}}
+                                             onClick={() => {this.setState({edition: true})}}/>
+                                        {
+                                            this.state.edition ?
+                                                <React.Fragment>
+                                                    <input type="button" onClick={() => this.setState({edition: false})}
+                                                           value="annuler" className='updateButton cancel'/>
+                                                    <input type="button" onClick={() => this.setState({edition: false})}
+                                                           value="enregistrer" className='updateButton save'/>
+                                                </React.Fragment> :
+                                                this.state.isBoard ?
+                                                    <input type="button" className='boardButton deleteBoard'
+                                                           value="Supprimer du CA"/> :
+                                                    <input type="button" className='boardButton addBoard'
+                                                           value="Ajouter au CA"/>
+                                        }
+                                    </React.Fragment> : ''
                             }
-                        </div>
-                        : ''
+                        </div> :
+                        ''
                 }
             </section>
         );
