@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Home render tests Home snapshot test 1`] = `
+exports[`Home unit tests Home connected snapshot test 1`] = `
 Array [
   <header
     className="Header"
@@ -17,7 +17,96 @@ Array [
       <h1
         className="title"
       >
-         Annuaire des Anciens
+         Annuaire des Anciennes 
+      </h1>
+    </a>
+  </header>,
+  <nav
+    className="Nav"
+  >
+    <div
+      className="Menu"
+    >
+      <a
+        className="button"
+        href="/search"
+      >
+        rechercher
+      </a>
+      <a
+        className="button"
+        href="/profile"
+      >
+        mon profil
+      </a>
+      <a
+        className="button"
+        href="/"
+        onClick={[Function]}
+      >
+        se déconnecter
+      </a>
+    </div>
+    <a
+      className="help_link"
+      href="/help"
+    >
+      <img
+        alt=""
+        className="help_icon"
+        src="help_icon.png"
+      />
+    </a>
+  </nav>,
+  <div
+    className="Home"
+  >
+    <section
+      className="home"
+    >
+      <div
+        className="CA left"
+      />
+      <div
+        className="home_title"
+      >
+        <p
+          className="welcome"
+        >
+           Bienvenue sur l'annuaire des anciens 
+        </p>
+        <p
+          className="welcome_etic"
+        >
+           ETIC INSA TECHNOLOGIES 
+        </p>
+      </div>
+      <div
+        className="CA right"
+      />
+    </section>
+  </div>,
+]
+`;
+
+exports[`Home unit tests Home not connected snapshot test 1`] = `
+Array [
+  <header
+    className="Header"
+  >
+    <a
+      className="header_a"
+      href="/"
+    >
+      <img
+        alt=""
+        className="home_logo"
+        src="home_logo.png"
+      />
+      <h1
+        className="title"
+      >
+         Annuaire des Anciennes 
       </h1>
     </a>
   </header>,

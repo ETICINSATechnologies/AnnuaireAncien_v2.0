@@ -4,10 +4,11 @@ import Home from './Home';
 import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import renderer from 'react-test-renderer';
+import Auth from '../../Components/Auth/Auth';
 
 Enzyme.configure({adapter: new Adapter()});
 
-describe('Home render tests', () => {
+describe('Home unit tests', () => {
     it('renders without crashing', () => {
         const div = document.createElement('div');
         ReactDOM.render(<Home/>, div);
@@ -22,12 +23,22 @@ describe('Home render tests', () => {
         ).toBe(1)
     });
 
-    it('Home snapshot test', () => {
-        const component = renderer.create(
-            <Home/>
-        );
+    it('Home not connected snapshot test', () => {
+        Auth.isConnected = jest.fn(() => false);
+
+        const component = renderer.create(<Home/>);
         let tree = component.toJSON();
         expect(tree).toMatchSnapshot();
+
+    });
+
+    it('Home connected snapshot test', () => {
+        Auth.isConnected = jest.fn(() => true);
+
+        const component = renderer.create(<Home/>);
+        let tree = component.toJSON();
+        expect(tree).toMatchSnapshot();
+
     })
 });
 
