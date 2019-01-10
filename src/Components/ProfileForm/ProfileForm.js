@@ -5,56 +5,35 @@ import Auth from "../Auth/Auth";
 class ProfileForm extends Component {
     constructor(props) {
         super(props);
-        const propertiesName = {
-            firstName: '',
-            lastName: '',
-            email: '',
-            telephone: '',
-            department: '',
-            company: ''
-        };
         this.state = {
             function: props.function,
-            propertiesName: propertiesName,
             modifyEnabled: false,
-            modified: false
+            info: {
+                firstName: '',
+                lastName: '',
+                email: '',
+                telephone: '',
+                department: '',
+                company: ''
+            }
         };
         this.onChange = this.onChange.bind(this);
     }
 
     onChange(event) {
-        if (this.state.modifyEnabled && this.newInfo.hasOwnProperty(event.target.className)) {
-            this.newInfo[event.target.className]= event.target.value;
+        event.persist();
+        if (this.state.modifyEnabled && this.state.info.hasOwnProperty(event.target.className)) {
+            this.setState(prevState => ({
+                info: {
+                    ...prevState.info,
+                    [event.target.className]: event.target.value
+                }
+            }))
         }
         this.rerender();
     }
 
 
-    getMemberInfo(propertiesName) {
-        let newInfo = {};
-        Object.keys(propertiesName).forEach((propertyName) => {
-            if (this.props.info.hasOwnProperty(propertyName)) {
-                newInfo[propertyName] = this.props.info[propertyName];
-            } else {
-                newInfo[propertyName] = '';
-            }
-        });
-
-        return newInfo;
-    }
-
-    update(){
-            fetch('api/v1/core/member/'+this.props.info.id, {
-                headers: {
-                    Authorization: Auth.getToken()
-                }
-            })
-                .then(res => res.json())
-                .then((result) => {
-                    this.newInfo=result;
-                    this.rerender();
-                });
-    }
 
     rerender() {
         /*appeler un setState pour forcer un re-render*/
@@ -67,12 +46,12 @@ class ProfileForm extends Component {
         let data;
         data = {
             username: this.props.info.username,
-            firstName: this.newInfo.firstName,
-            lastName: this.newInfo.lastName,
+            firstName: this.state.info.firstName,
+            lastName: this.state.info.lastName,
             genderId: this.props.info.gender.id,
-            email: this.newInfo.email,
+            email: this.state.info.email,
             birthday: this.props.info.birthday,
-            telephone: this.newInfo.telephone,
+            telephone: this.state.info.telephone,
             schoolYear: this.props.schoolYear,
             departmentId: 1, //need to change this to be editable
             address: {
@@ -83,8 +62,14 @@ class ProfileForm extends Component {
                 countryId:this.props.info.address.country.id,
             }
         };
-        data.positionIds=[1,3];
 
+        //get positions
+        let i;
+        let positionIds=[];
+        for (i=0; i<this.props.info.positions.length; i++) {
+            positionIds[i]=this.props.info.positions[i].id;
+        }
+        data.positionIds=positionIds;
 
         fetch('api/v1/core/member/'+this.props.info.id, {
             method: 'PUT',
@@ -97,18 +82,18 @@ class ProfileForm extends Component {
         })
             .then(res => {
                     if (res.status !== 200) {
-                        this.update(); //remettre newInfo aux valeurs anciens
+
                     }
                     else {
                         res.json()
                             .then(result => {
-                                this.newInfo=result;
+                                this.setState({
+                                    info: result
+                                });
                             })
                     }
+                this.props.function(); //recharger props
                 });
-        this.setState({
-            modified: true
-        });
         //disable modifications
         if (this.state.modifyEnabled) this.modifyEnable();
     }
@@ -119,33 +104,34 @@ class ProfileForm extends Component {
         });
     }
 
-    renderSource(){
-        if (this.state.modifyEnabled) {
-        } else {
-            if (!this.state.modified) this.newInfo=this.getMemberInfo(this.state.propertiesName);
+
+    componentDidUpdate(prevProps) {
+        if (this.props.info !== prevProps.info) {
+            this.setState({
+                info: this.props.info,
+            });
         }
     }
 
     render() {
-        this.renderSource();
         return (
             <form className="ProfileForm">
                 <div className="info_area">
-                    <p>Appuyer sur Sauvegarder pour enregistrer les modifications</p>
+                    <p>Appuyer sur Modifier pour modifier le profil</p>
                 </div>
                 <div className="image"> </div>
                 <p> Téléphone </p>
-                <p className="right needed"> Nom </p>
-                <input type="text" className="telephone" value={this.newInfo.telephone} onChange={this.onChange}/>
-                <input type="text" className="lastName" value={this.newInfo.lastName} onChange={this.onChange}/>
+                <input type="text" className="telephone" value={this.state.info.telephone} onChange={this.onChange}/>
+                <p className="needed"> Nom </p>
+                <input type="text" className="lastName" value={this.state.info.lastName} onChange={this.onChange}/>
                 <p> Département </p>
-                <p className="right p_info needed"> Prénom </p>
-                <input type="text" className="department" value={this.newInfo.department.label} onChange={this.onChange}/>
-                <input type="text" className="firstName" value={this.newInfo.firstName} onChange={this.onChange}/>
+                <input type="text" className="department.label" value={this.state.info.department.label} onChange={this.onChange}/>
+                <p className="p_info needed"> Prénom </p>
+                <input type="text" className="firstName" value={this.state.info.firstName} onChange={this.onChange}/>
                 <p className="needed"> Adresse mail </p>
+                <input type="text" className="email" value={this.state.info.email} onChange={this.onChange}/>
                 <p> Travaille chez </p>
-                <input type="text" className="email" value={this.newInfo.email} onChange={this.onChange}/>
-                <input type="text" className="company" value={this.newInfo.company} onChange={this.onChange}/>
+                <input type="text" className="company" value={this.state.info.company} onChange={this.onChange}/>
                 <div className="div_button">
                     <input className="input_button password" type="button" value="Changer mot de passe"/>
                 </div>

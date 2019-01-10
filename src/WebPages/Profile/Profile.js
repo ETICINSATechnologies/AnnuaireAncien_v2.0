@@ -15,6 +15,7 @@ class Profile extends Component {
         }
     }
 
+
     componentDidMount() {
         if (!Auth.isConnected())
             this.setState({status: 'not_authenticate'});
@@ -35,7 +36,7 @@ class Profile extends Component {
     }
 
     updateInfo(){
-        if ((Auth.isConnected()))
+        if (Auth.isConnected()) {
             fetch('api/v1/core/member/me', {
                 headers: {
                     Authorization: Auth.getToken()
@@ -43,9 +44,13 @@ class Profile extends Component {
             })
                 .then(res => res.json())
                 .then((result) => {
-                    this.setState({info: result});
+                    this.setState({
+                        info: result
+                    });
                 })
-
+        } else {
+            console.log("not connected?");
+        }
     }
 
     render() {

@@ -1,6 +1,6 @@
 .ProfileForm {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     grid-template-rows: repeat(7, 1fr) 10vmin;
 
     background-color: white;
@@ -29,6 +29,8 @@
     font-size: 3vmin;
     padding-left: 1vmin;
     height: 5vmin;
+    grid-column-start: 2;
+    grid-column-end: 7;
 }
 
 .ProfileForm p, input[type="text"] {
@@ -41,7 +43,7 @@
 
 .ProfileForm .info_area p {
     text-align: center;
-    justify-self: center;
+    justify-self: stretch;
     vertical-align: middle;
 
     z-index:1;
@@ -49,13 +51,15 @@
 
     margin: auto;
     font-size: 4vmin;
+   grid-row: 1/7;
 }
 
 .ProfileForm p {
     font-size: 3.7vmin;
     margin: auto auto 0 auto;
-
     height: 4.7vmin;
+    grid-column-start: 1;
+    grid-column-end: 2;
 }
 
 .ProfileForm .image {
@@ -76,7 +80,9 @@
     justify-self: center;
     margin: auto auto 0.5vmin auto;
     height: 80%;
+    grid-row: 8;
 }
+
 
 .ProfileForm .input_button {
     cursor: pointer;
@@ -99,9 +105,20 @@
 .ProfileForm .password {
     color: black;
     background: #dddddd;
+    grid-column-start: 1;
+    grid-column-end: 3;
 }
 
 .ProfileForm .update {
     color: white;
     background-color: #009e0f;
+    grid-column-start: 3;
+    grid-column-end: 5;
+}
+
+.ProfileForm .enable_edit {
+    color: white;
+    background-color: #009e0f;
+    grid-column-start: 5;
+    grid-column-end: 7;
 }
