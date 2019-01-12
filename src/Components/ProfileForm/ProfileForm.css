@@ -11,12 +11,11 @@
     margin: 5vmin auto;
     padding: 1vw;
 
-    width: 90%;
+    width: 95%;
     height: 68vmin;
 }
 
 .ProfileForm * {
-    width: 85%;
 }
 
 .ProfileForm .needed:after {
@@ -29,7 +28,16 @@
     font-size: 3vmin;
     padding-left: 1vmin;
     height: 5vmin;
-    grid-column-start: 2;
+    grid-column-start: 4;
+    grid-column-end: 7;
+}
+
+.ProfileForm select {
+    border: 2px solid black;
+    font-size: 3vmin;
+    padding-left: 1vmin;
+    height: 5vmin;
+    grid-column-start: 4;
     grid-column-end: 7;
 }
 
@@ -58,8 +66,9 @@
     font-size: 3.7vmin;
     margin: auto auto 0 auto;
     height: 4.7vmin;
+    align-self: center;
     grid-column-start: 1;
-    grid-column-end: 2;
+    grid-column-end: 4;
 }
 
 .ProfileForm .image {
@@ -80,7 +89,6 @@
     justify-self: center;
     margin: auto auto 0.5vmin auto;
     height: 80%;
-    grid-row: 8;
 }
 
 

@@ -159,7 +159,7 @@ class ProfileForm extends Component {
                     { this.state.modifyEnabled ? <Button className="input_button update" value="Sauvegarder" onClick={() => this.modifyProfile()} /> : null }
                 </div>
                 <div className="div_button">
-                    { this.state.modifyEnabled ? <Button className="input_button annuler" value="Annuler" onClick={() => this.resetFields()} /> : <Button className="input_button enable_edit" value="Modifier" onClick={() => this.modifyEnable()} /> }
+                    { this.state.modifyEnabled ? <Button className="input_button enable_edit" value="Annuler" onClick={() => this.resetFields()} /> : <Button className="input_button enable_edit" value="Modifier" onClick={() => this.modifyEnable()} /> }
                 </div>
             </form>
         );
