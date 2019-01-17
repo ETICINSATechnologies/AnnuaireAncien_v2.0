@@ -1,0 +1,442 @@
+{
+  "content": [
+    {
+      "id": 1,
+      "username": "username",
+      "firstName": "Conor",
+      "lastName": "Breeze",
+      "gender": {
+        "id": 1,
+        "label": "H"
+      },
+      "email": "fake.mail@fake.com",
+      "birthday": "1975-12-25",
+      "department": {
+        "id": 1,
+        "label": "BB",
+        "name": "Biochimie et Biotechnologies"
+      },
+      "schoolYear": 3,
+      "telephone": "+332541254",
+      "address": {
+        "id": 2,
+        "line1": "11 Baker street",
+        "line2": "appt 501",
+        "postalCode": 6930,
+        "city": "dublin",
+        "country": {
+          "id": 2,
+          "label": "Afrique du Sud"
+        }
+      },
+      "positions": [
+        {
+          "id": 3,
+          "label": "Chargé d'affaires",
+          "pole": {
+            "id": 10,
+            "label": "UA",
+            "name": "Unité d'affaires"
+          }
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "username": "mcool",
+      "firstName": "Marah",
+      "lastName": "Cool",
+      "gender": {
+        "id": 1,
+        "label": "H"
+      },
+      "email": "fake.mail2@fake.com",
+      "birthday": "1976-10-27",
+      "department": {
+        "id": 1,
+        "label": "BB",
+        "name": "Biochimie et Biotechnologies"
+      },
+      "schoolYear": 3,
+      "telephone": "+332541541",
+      "address": {
+        "id": 1,
+        "line1": "13 Rue du renard",
+        "line2": null,
+        "postalCode": 69100,
+        "city": "lyon",
+        "country": {
+          "id": 1,
+          "label": "Afghanistan"
+        }
+      },
+      "positions": [
+        {
+          "id": 3,
+          "label": "Chargé d'affaires",
+          "pole": {
+            "id": 10,
+            "label": "UA",
+            "name": "Unité d'affaires"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "username": "alang",
+      "firstName": "Alexandre",
+      "lastName": "Lang",
+      "gender": {
+        "id": 1,
+        "label": "H"
+      },
+      "email": "fake.mail3@fake.com",
+      "birthday": "1987-12-02",
+      "department": {
+        "id": 10,
+        "label": "IF",
+        "name": "Informatique"
+      },
+      "schoolYear": 4,
+      "telephone": "+33742525495",
+      "address": {
+        "id": 3,
+        "line1": "11 ETIC street",
+        "line2": "bat. b",
+        "postalCode": 91002,
+        "city": "paris",
+        "country": {
+          "id": 1,
+          "label": "Afghanistan"
+        }
+      },
+      "positions": [
+        {
+          "id": 15,
+          "label": "Responsable DSI",
+          "pole": 3
+        },
+        {
+          "id": 12,
+          "label": "Président",
+          "pole": 5
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "username": "lswollo",
+      "firstName": "Laurence",
+      "lastName": "Teinturière",
+      "gender": {
+        "id": 1,
+        "label": "F"
+      },
+      "email": "fake.mail3@fake.com",
+      "birthday": "1987-12-02",
+      "department": {
+        "id": 2,
+        "label": "BIM",
+        "name": "BioInformatique et Modélisation"
+      },
+      "schoolYear": 5,
+      "telephone": "+337425254",
+      "address": {
+        "id": 3,
+        "line1": "11 ETIC street",
+        "line2": "bat. b",
+        "postalCode": 91002,
+        "city": "paris",
+        "country": {
+          "id": 1,
+          "label": "Afghanistan"
+        }
+      },
+      "positions": [
+        {
+          "id": 1,
+          "label": "Ancien membre",
+          "pole": null
+        },
+        {
+          "id": 2,
+          "label": "Auditeur CNJE",
+          "pole": null
+        },
+        {
+          "id": 3,
+          "label": "Chargé d'affaires",
+          "pole": {
+            "id": 10,
+            "label": "UA",
+            "name": "Unité d'affaires"
+          }
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "username": "username",
+      "firstName": "Conor",
+      "lastName": "Breeze",
+      "gender": {
+        "id": 1,
+        "label": "H"
+      },
+      "email": "fake.mail@fake.com",
+      "birthday": "1975-12-25",
+      "department": {
+        "id": 1,
+        "label": "BB",
+        "name": "Biochimie et Biotechnologies"
+      },
+      "schoolYear": 3,
+      "telephone": "+332541254",
+      "address": {
+        "id": 2,
+        "line1": "11 Baker street",
+        "line2": "appt 501",
+        "postalCode": 6930,
+        "city": "dublin",
+        "country": {
+          "id": 2,
+          "label": "Afrique du Sud"
+        }
+      },
+      "positions": [
+        {
+          "id": 3,
+          "label": "Chargé d'affaires",
+          "pole": {
+            "id": 10,
+            "label": "UA",
+            "name": "Unité d'affaires"
+          }
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "username": "mcool",
+      "firstName": "Marah",
+      "lastName": "Cool",
+      "gender": {
+        "id": 1,
+        "label": "H"
+      },
+      "email": "fake.mail2@fake.com",
+      "birthday": "1976-10-27",
+      "department": {
+        "id": 1,
+        "label": "BB",
+        "name": "Biochimie et Biotechnologies"
+      },
+      "schoolYear": 3,
+      "telephone": "+332541541",
+      "address": {
+        "id": 1,
+        "line1": "13 Rue du renard",
+        "line2": null,
+        "postalCode": 69100,
+        "city": "lyon",
+        "country": {
+          "id": 1,
+          "label": "Afghanistan"
+        }
+      },
+      "positions": [
+        {
+          "id": 3,
+          "label": "Chargé d'affaires",
+          "pole": {
+            "id": 10,
+            "label": "UA",
+            "name": "Unité d'affaires"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "username": "alang",
+      "firstName": "Alexandre",
+      "lastName": "Lang",
+      "gender": {
+        "id": 1,
+        "label": "H"
+      },
+      "email": "fake.mail3@fake.com",
+      "birthday": "1987-12-02",
+      "department": {
+        "id": 10,
+        "label": "IF",
+        "name": "Informatique"
+      },
+      "schoolYear": 4,
+      "telephone": "+33742525495",
+      "address": {
+        "id": 3,
+        "line1": "11 ETIC street",
+        "line2": "bat. b",
+        "postalCode": 91002,
+        "city": "paris",
+        "country": {
+          "id": 1,
+          "label": "Afghanistan"
+        }
+      },
+      "positions": [
+        {
+          "id": 15,
+          "label": "Responsable DSI",
+          "pole": 3
+        },
+        {
+          "id": 12,
+          "label": "Président",
+          "pole": 5
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "username": "lswollo",
+      "firstName": "Laurence",
+      "lastName": "Teinturière",
+      "gender": {
+        "id": 1,
+        "label": "F"
+      },
+      "email": "fake.mail3@fake.com",
+      "birthday": "1987-12-02",
+      "department": {
+        "id": 2,
+        "label": "BIM",
+        "name": "BioInformatique et Modélisation"
+      },
+      "schoolYear": 5,
+      "telephone": "+337425254",
+      "address": {
+        "id": 3,
+        "line1": "11 ETIC street",
+        "line2": "bat. b",
+        "postalCode": 91002,
+        "city": "paris",
+        "country": {
+          "id": 1,
+          "label": "Afghanistan"
+        }
+      },
+      "positions": [
+        {
+          "id": 1,
+          "label": "Ancien membre",
+          "pole": null
+        },
+        {
+          "id": 2,
+          "label": "Auditeur CNJE",
+          "pole": null
+        },
+        {
+          "id": 3,
+          "label": "Chargé d'affaires",
+          "pole": {
+            "id": 10,
+            "label": "UA",
+            "name": "Unité d'affaires"
+          }
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "username": "username",
+      "firstName": "Conor",
+      "lastName": "Breeze",
+      "gender": {
+        "id": 1,
+        "label": "H"
+      },
+      "email": "fake.mail@fake.com",
+      "birthday": "1975-12-25",
+      "department": {
+        "id": 1,
+        "label": "BB",
+        "name": "Biochimie et Biotechnologies"
+      },
+      "schoolYear": 3,
+      "telephone": "+332541254",
+      "address": {
+        "id": 2,
+        "line1": "11 Baker street",
+        "line2": "appt 501",
+        "postalCode": 6930,
+        "city": "dublin",
+        "country": {
+          "id": 2,
+          "label": "Afrique du Sud"
+        }
+      },
+      "positions": [
+        {
+          "id": 3,
+          "label": "Chargé d'affaires",
+          "pole": {
+            "id": 10,
+            "label": "UA",
+            "name": "Unité d'affaires"
+          }
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "username": "mcool",
+      "firstName": "Marah",
+      "lastName": "Cool",
+      "gender": {
+        "id": 1,
+        "label": "H"
+      },
+      "email": "fake.mail2@fake.com",
+      "birthday": "1976-10-27",
+      "department": {
+        "id": 1,
+        "label": "BB",
+        "name": "Biochimie et Biotechnologies"
+      },
+      "schoolYear": 3,
+      "telephone": "+332541541",
+      "address": {
+        "id": 1,
+        "line1": "13 Rue du renard",
+        "line2": null,
+        "postalCode": 69100,
+        "city": "lyon",
+        "country": {
+          "id": 1,
+          "label": "Afghanistan"
+        }
+      },
+      "positions": [
+        {
+          "id": 3,
+          "label": "Chargé d'affaires",
+          "pole": {
+            "id": 10,
+            "label": "UA",
+            "name": "Unité d'affaires"
+          }
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "page": 0,
+    "totalPages": 1,
+    "totalItems": 3,
+    "itemsPerPage": 25
+  }
+}

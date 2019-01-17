@@ -5,6 +5,8 @@ import Nav from "../../Components/Nav/Nav";
 import Redirect from "react-router-dom/es/Redirect";
 import Auth from "../../Components/Auth/Auth";
 import ProfileForm from "../../Components/ProfileForm/ProfileForm";
+import fetch from "../../__mocks__/fetch";
+
 
 class Profile extends Component {
     constructor(props) {
