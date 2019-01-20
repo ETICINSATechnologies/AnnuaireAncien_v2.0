@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './ProfileForm.css';
 import Auth from "../Auth/Auth";
+import MenuDrop from "../MenuDrop/MenuDrop"
 
 class ProfileForm extends Component {
     constructor(props) {
@@ -9,12 +10,18 @@ class ProfileForm extends Component {
             function: props.function,
             modifyEnabled: false,
             departments:{},
+            departmentnames:[],
+            departmentids:[],
             info: {
                 firstName: '',
                 lastName: '',
                 email: '',
                 telephone: '',
-                department: '',
+                department: {
+                    id:'',
+                    label:'',
+                    name:'',
+                },
                 company: ''
             }
         };
@@ -33,12 +40,11 @@ class ProfileForm extends Component {
         }
     }
 
-
-    updateDepartment(thisDept) {
+    updateDepartment(newDeptId) {
         this.setState(({
             info: {
                 ...this.state.info,
-                department: thisDept
+                department: this.state.departments[newDeptId-1]
             }
         }));
     }
@@ -129,8 +135,28 @@ class ProfileForm extends Component {
         })
             .then(res => res.json())
             .then((result) => {
-                this.setState({departments: result});
+                this.fillDepartments(result);
             })
+    }
+
+    fillDepartments(deps) {
+
+        this.setState({departments: deps});
+
+        let i;
+        let deptNames=[];
+        let deptIds=[];
+
+        for (i=0; i<this.state.departments.length; i++) {
+            deptNames[i]=this.state.departments[i].name;
+            deptIds[i]=this.state.departments[i].id;
+        }
+        console.log('i was called');
+        this.setState({
+            departmentnames: deptNames,
+            departmentids:deptIds,
+
+        });
     }
 
     render() {
@@ -145,7 +171,7 @@ class ProfileForm extends Component {
                 <p className="needed"> Nom </p>
                 <input type="text" className="lastName" value={this.state.info.lastName} onChange={this.onChange}/>
                 <p> Département </p>
-                <MenuDrop modifyEnabled={this.state.modifyEnabled} departments={this.state.departments} currentdepart={this.state.info.department} function={this.updateDepartment.bind(this)}/>
+                <MenuDrop modifyEnabled={this.state.modifyEnabled} optionnames={this.state.departmentnames} optionids={this.state.departmentids} length={this.state.departments.length} currentoption={this.state.info.department.name} function={this.updateDepartment.bind(this)}/>
                 <p className="p_info needed"> Prénom </p>
                 <input type="text" className="firstName" value={this.state.info.firstName} onChange={this.onChange}/>
                 <p className="needed"> Adresse mail </p>
@@ -166,87 +192,10 @@ class ProfileForm extends Component {
     }
 }
 
-
 function Button(props) {
     return (
         <input className={props.className} type="button" value={props.value} onClick= {props.onClick}/>
     );
 }
-
-function Option(props) {
-    return (
-        <option value={props.value}>{props.name}</option>
-    );
-}
-
-
-class MenuDrop extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            function: props.function,
-            modifyEnabled: props.modifyEnabled,
-            currentdepart: props.currentdepart,
-        };
-        this.onChange = this.onChange.bind(this);
-    }
-
-    componentDidUpdate(prevProps) {
-        if (this.props !== prevProps) {
-            this.setState({
-                modifyEnabled: this.props.modifyEnabled,
-                currentdepart: this.props.currentdepart
-            });
-        }
-    }
-
-    onChange(event) {
-        event.persist();
-        if (this.state.modifyEnabled) {
-            this.setState(({
-                currentdepart: {
-                    ...this.state.currentdepart,
-                    name: event.target.value
-                }
-            }))
-        }
-
-        let j;
-        for (j=0; j<this.props.departments.length; j++) {
-            if (this.props.departments[j].name===event.target.value) {
-                this.state.function(this.props.departments[j]);
-            }
-        }
-    }
-
-    populateMenu(){
-        let i;
-        let departmentNames=[];
-        let currentdeptName=this.state.currentdepart.name;
-        for (i=0; i<this.props.departments.length; i++) {
-            departmentNames[i]=this.props.departments[i].name;
-        }
-        let depNamesList = departmentNames.map(function(departmentName){
-                return (
-                    <Option key={departmentName} value={departmentName} name={departmentName} />
-                )
-        });
-        return (
-                this.state.modifyEnabled ? <select value={currentdeptName} onChange={this.onChange}>{depNamesList}</select> : <select value={currentdeptName} onChange={this.onChange} disabled>{depNamesList}</select>
-        )
-    }
-
-
-    render() {
-        return (
-            <div>
-                <div className="department_menu">
-                        {this.populateMenu()}
-                </div>
-            </div>
-        );
-    }
-}
-
 
 export default ProfileForm;
