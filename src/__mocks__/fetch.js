@@ -9,7 +9,7 @@ export default (url) => {
         expectedResponse = {token: 'this is a test token'};
     else if (/core\/member\/(\d*|me)$/.test(url))
         expectedResponse = member;
-    else if (/core\/member\/board$/.test(url))
+    else if (/core\/member\/board\/latest$/.test(url))
         expectedResponse = board;
     else if (/core\/member$/.test(url))
         expectedResponse = members;

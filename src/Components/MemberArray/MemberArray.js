@@ -18,7 +18,7 @@ class MemberArray extends Component {
 
     getMembers() {
         let url = 'api/v1/core/member';
-        if (this.props.board) url += '/board';
+        if (this.props.board) url += '/board/latest';
         fetch(url, {
             headers: {
                 Authorization: Auth.getToken()
@@ -44,6 +44,9 @@ class MemberArray extends Component {
             this.getMembers();
     }
 
+    /**
+     Associate the id of a member with its position in the array 'state.info.content'
+     */
     mapMembers() {
         let i = 0;
         let mapping = {};
