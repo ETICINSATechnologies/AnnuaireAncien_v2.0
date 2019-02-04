@@ -1,0 +1,30 @@
+
+.Positions {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+
+    background-color: white;
+
+    justify-self: center;
+    vertical-align: middle;
+    border: 3px solid black;
+    margin: 5vmin auto;
+    padding: 1vw;
+
+    width: 95%;
+    height: 68vmin;
+}
+.Positions .info_area p {
+    text-align: center;
+    justify-self: stretch;
+    vertical-align: middle;
+
+    color: #009e11;
+
+    margin: auto;
+    font-size: 4vmin;
+    grid-row: 1;
+    grid-column-start: 1;
+    grid-column-end: 5;
+}

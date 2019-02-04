@@ -109,6 +109,7 @@ class ProfileForm extends Component {
         this.setState({
             modifyEnabled: !this.state.modifyEnabled,
         });
+        this.props.setModify(this.state.modifyEnabled);
     }
 
     resetFields() {
@@ -151,7 +152,6 @@ class ProfileForm extends Component {
             deptNames[i]=this.state.departments[i].name;
             deptIds[i]=this.state.departments[i].id;
         }
-        console.log('i was called');
         this.setState({
             departmentnames: deptNames,
             departmentids:deptIds,

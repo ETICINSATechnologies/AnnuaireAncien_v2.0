@@ -5,13 +5,27 @@ import Nav from "../../Components/Nav/Nav";
 import Redirect from "react-router-dom/es/Redirect";
 import Auth from "../../Components/Auth/Auth";
 import ProfileForm from "../../Components/ProfileForm/ProfileForm";
+import PositionForm from "../../Components/PositionForm/PositionForm";
 
 class Profile extends Component {
     constructor(props) {
         super(props);
         this.state = {
             status: 'pending', // 'connected' 'not_authenticate'
-            info: {},
+            modifyEnabled: false,
+            positions:{},
+            info: {
+                firstName: '',
+                lastName: '',
+                email: '',
+                telephone: '',
+                department: {
+                    id:'',
+                    label:'',
+                    name:'',
+                },
+                company: ''
+            },
         }
     }
 
@@ -33,6 +47,12 @@ class Profile extends Component {
                     console.log(this.state.info);
                 })
         }
+    }
+
+    setModify(state){
+        this.setState({
+            modifyEnabled: state,
+    })
     }
 
     updateInfo(){
@@ -66,7 +86,10 @@ class Profile extends Component {
                 <Header/>
                 <Nav buttons={activeButton}> </Nav>
                 <section className="Profile">
-                    <ProfileForm info={this.state.info} function={this.updateInfo.bind(this)}/>
+                    <ProfileForm info={this.state.info} function={this.updateInfo.bind(this)} setModify={this.setModify.bind(this)}/>
+                </section>
+                <section className="Positions">
+                    <PositionForm positions={this.state.positions} currentpositions={this.state.info.positions} modifyEnabled={this.state.modifyEnabled} setModify={this.setModify.bind(this)}/>
                 </section>
             </React.Fragment>
         );
