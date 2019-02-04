@@ -16,7 +16,6 @@ class PositionForm extends Component {
     }
 
     onChange(event) {
-
     }
 
     updatePositions(){
@@ -56,16 +55,26 @@ class PositionForm extends Component {
             })
     }
 
+    updatePositionid (position) {
+        let positionids=this.state.positionids;
+        positionids[position.index] = position.id;
+        this.setState({
+            positionsids : positionids
+        });
+        this.props.updatePositionids(this.state.positionids);
+    }
+
 
 
     renderPositions () {
         if (this.state.positions.length !== 0) {
-            let posns=this.state.positions;
-            let PositionsList = this.state.positionids.map(function(positionid){
-                console.log('map:', posns);
+            let updatePositionid=this.updatePositionid.bind(this);
+            let positions=this.state.positions;
+            let modifyEnabled=this.state.modifyEnabled;
+            let PositionsList = this.state.positionids.map(function(positionid,index){
                 return (
                     <Position
-                        key={positionid} positions={posns} positionid={positionid}
+                        key={index} positions={positions} positionid={positionid} updatePositionid={updatePositionid} index={index} modifyEnabled={modifyEnabled}
                     />
                 )
             });
@@ -75,9 +84,7 @@ class PositionForm extends Component {
         }
     }
 
-
     render() {
-        console.log("#", this.state.positions);
         return (
             <div className="Positions">
                 <div className="info_area">
@@ -96,34 +103,57 @@ class Position extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            positionid: this.props.positionid,
+            modifyEnabled: false
         };
         this.onChange = this.onChange.bind(this);
     }
 
     onChange(event) {
-        let newposition
         event.persist();
-        if (this.state.modifyEnabled) {
+        this.setState({
+            positionid: event.target.value,
+        });
+        let position={
+            index : this.props.index,
+            id : parseInt(event.target.value,10),
+        };
+        this.props.updatePositionid(position);
+    }
+
+    componentDidUpdate(prevProps) {
+        if (this.props.modifyEnabled !== prevProps.modifyEnabled) {
             this.setState({
-                currentposition: event.target.value,
+                modifyEnabled: this.props.modifyEnabled,
             });
         }
+
     }
 
 
     render() {
-        console.log(this.props);
-        let positionDropDown = this.props.positions.map((position) => {
-            return <option value={position.id}>{position.label}</option>
+        let positionDropDown = this.props.positions.map((position,index) => {
+            return <option key={index} value={position.id}>{position.label}</option>
         });
         return (
-            <div className="thisPos">
-                <p>Poste</p>
-                <select value={this.props.positionid} onChange={this.onChange}>
-                    <option value={0}>Choisir un poste</option>
-                    {positionDropDown}
-                </select>
-            </div>
+            this.state.modifyEnabled ?
+                <div className="positions">
+                    <p>Poste</p>
+                    <select value={this.state.positionid} onChange={this.onChange}>
+                        <option value={0}>Choisir un poste</option>
+                        {positionDropDown}
+                    </select>
+                </div>
+                :
+                <div className="positions">
+                    <p>Poste</p>
+                    <select disabled value={this.state.positionid} onChange={this.onChange}>
+                        <option value={0}>Choisir un poste</option>
+                        {positionDropDown}
+                    </select>
+                </div>
+
+
 
         );
     }

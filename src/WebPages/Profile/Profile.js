@@ -14,6 +14,7 @@ class Profile extends Component {
             status: 'pending', // 'connected' 'not_authenticate'
             modifyEnabled: false,
             positions:{},
+            positionids:[],
             info: {
                 firstName: '',
                 lastName: '',
@@ -44,7 +45,6 @@ class Profile extends Component {
                 .then(res => res.json())
                 .then((result) => {
                     this.setState({info: result});
-                    console.log(this.state.info);
                 })
         }
     }
@@ -55,7 +55,36 @@ class Profile extends Component {
     })
     }
 
-    updateInfo(){
+    updateInfo(data){
+        data.positionIds=this.state.positionids;
+        fetch('api/v1/core/member/'+this.state.info.id, {
+            method: 'PUT',
+            headers: {
+                'Authorization': Auth.getToken(),
+                'Content-Type': 'application/json'
+            },
+
+            body: JSON.stringify(data)
+        })
+            .then(res => {
+                if (res.status !== 200) {
+                    console.log('error at put');
+
+                }
+                this.reloadInfo(); //recharger props
+            });
+        //disable modifications
+        if (this.state.modifyEnabled) this.setModify(false);
+    }
+
+    updatePositionids(positionids){
+        this.setState({
+            positionids : positionids,
+        });
+        console.log(positionids);
+    }
+
+    reloadInfo(){
         if (Auth.isConnected()) {
             fetch('api/v1/core/member/me', {
                 headers: {
@@ -73,6 +102,7 @@ class Profile extends Component {
         }
     }
 
+
     render() {
         let activeButton = ["home"];
         if (this.state.status === 'not_authenticate')
@@ -86,10 +116,10 @@ class Profile extends Component {
                 <Header/>
                 <Nav buttons={activeButton}> </Nav>
                 <section className="Profile">
-                    <ProfileForm info={this.state.info} function={this.updateInfo.bind(this)} setModify={this.setModify.bind(this)}/>
+                    <ProfileForm info={this.state.info} update={this.updateInfo.bind(this)} modifyEnabled={this.state.modifyEnabled} setModify={this.setModify.bind(this)}/>
                 </section>
                 <section className="Positions">
-                    <PositionForm positions={this.state.positions} currentpositions={this.state.info.positions} modifyEnabled={this.state.modifyEnabled} setModify={this.setModify.bind(this)}/>
+                    <PositionForm positions={this.state.positions} currentpositions={this.state.info.positions} modifyEnabled={this.state.modifyEnabled}  updatePositionids={this.updatePositionids.bind(this)}/>
                 </section>
             </React.Fragment>
         );
