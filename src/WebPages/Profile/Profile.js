@@ -45,6 +45,7 @@ class Profile extends Component {
                 .then(res => res.json())
                 .then((result) => {
                     this.setState({info: result});
+                    this.retrievePositionids(result.positions)
                 })
         }
     }
@@ -81,7 +82,19 @@ class Profile extends Component {
         this.setState({
             positionids : positionids,
         });
-        console.log(positionids);
+    }
+
+    retrievePositionids(positions){
+        if (typeof (positions) !== 'undefined'){
+            let i;
+            let posnIds=[];
+            for (i=0; i<positions.length; i++) {
+                posnIds[i]=positions[i].id;
+            }
+            this.setState({
+                positionids: posnIds,
+            });
+        }
     }
 
     reloadInfo(){
@@ -119,7 +132,7 @@ class Profile extends Component {
                     <ProfileForm info={this.state.info} update={this.updateInfo.bind(this)} modifyEnabled={this.state.modifyEnabled} setModify={this.setModify.bind(this)}/>
                 </section>
                 <section className="Positions">
-                    <PositionForm positions={this.state.positions} currentpositions={this.state.info.positions} modifyEnabled={this.state.modifyEnabled}  updatePositionids={this.updatePositionids.bind(this)}/>
+                    <PositionForm positions={this.state.positions} currentpositions={this.state.info.positions} modifyEnabled={this.state.modifyEnabled} positionids={this.state.positionids}  updatePositionids={this.updatePositionids.bind(this)}/>
                 </section>
             </React.Fragment>
         );
