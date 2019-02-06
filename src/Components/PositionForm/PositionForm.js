@@ -8,7 +8,6 @@ class PositionForm extends Component {
         super(props);
         this.state = {
             modifyEnabled: this.props.modifyEnabled,
-            currentpositions: {},
             positions: [],
             positionids: [],
         };
@@ -24,7 +23,6 @@ class PositionForm extends Component {
         if (this.props !== prevProps) {
             this.setState({
                 modifyEnabled: this.props.modifyEnabled,
-                currentpositions:this.props.currentpositions,
                 positionids: this.props.positionids,
             });
         }
@@ -122,7 +120,6 @@ class Position extends Component {
 
     onChange(event) {
         if (event.target.className==="position dropdown") {
-            console.log('now changing');
             event.persist();
             this.setState({
                 positionid: event.target.value,
@@ -152,30 +149,16 @@ class Position extends Component {
             return <option key={index} value={position.id}>{position.label}</option>
         });
         return (
-            this.state.modifyEnabled ?
                 <div className="positions">
                     <p>Poste</p>
-                    <select className="position dropdown" value={this.state.positionid} onChange={this.onChange}>
+                    <select disabled={!this.state.modifyEnabled} className="position dropdown" value={this.state.positionid} onChange={this.onChange}>
                         <option value={0}>Choisir un poste</option>
                         {positionDropDown}
                     </select>
                     <p>Année</p>
-                    <input type="text" className="year" value={this.props.year} onChange={this.onChange}/>
-                    <Button className="delete position" value="Supprimer" onClick={() => this.props.deletePosition(this.props.index)} />
+                    <input disabled={!this.state.modifyEnabled} type="text" className="year" value={this.props.year} onChange={this.onChange}/>
+                    {this.state.modifyEnabled ? <Button className="delete position" value="Supprimer" onClick={() => this.props.deletePosition(this.props.index)} /> : null }
                 </div>
-                :
-                <div className="positions">
-                    <p>Poste</p>
-                    <select disabled className="position dropdown" value={this.state.positionid} onChange={this.onChange}>
-                        <option value={0}>Choisir un poste</option>
-                        {positionDropDown}
-                    </select>
-                    <p>Année</p>
-                    <input disabled type="text" className="year" value={this.props.year} onChange={this.onChange}/>
-                </div>
-
-
-
         );
     }
 }

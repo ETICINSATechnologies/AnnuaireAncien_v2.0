@@ -50,10 +50,15 @@ class Profile extends Component {
         }
     }
 
-    setModify(state){
-        this.setState({
-            modifyEnabled: state,
-    })
+    retrievePositionids(positions){
+            let i;
+            let posnIds=[];
+            for (i=0; i<positions.length; i++) {
+                posnIds[i]=positions[i].id;
+            }
+            this.setState({
+                positionids: posnIds,
+            });
     }
 
     updateInfo(data){
@@ -68,14 +73,25 @@ class Profile extends Component {
             body: JSON.stringify(data)
         })
             .then(res => {
-                if (res.status !== 200) {
-                    console.log('error at put');
-
+                if (res.status === 200) {
+                        res.json()
+                        .then((result) => {
+                            this.setState({info: result});
+                            this.retrievePositionids(result.positions);
+                        })
+                } else {
+                    this.resetFields();
+                    console.log('update fail');
                 }
-                this.reloadInfo(); //recharger props
             });
         //disable modifications
         if (this.state.modifyEnabled) this.setModify(false);
+    }
+
+    setModify(state){
+        this.setState({
+            modifyEnabled: state,
+        });
     }
 
     updatePositionids(positionids){
@@ -84,37 +100,14 @@ class Profile extends Component {
         });
     }
 
-    retrievePositionids(positions){
-        if (typeof (positions) !== 'undefined'){
-            let i;
-            let posnIds=[];
-            for (i=0; i<positions.length; i++) {
-                posnIds[i]=positions[i].id;
-            }
-            this.setState({
-                positionids: posnIds,
-            });
-        }
-    }
+    resetFields(){
+        this.setState({
+            info : this.state.info,
+            modifyEnabled : false,
+        });
+        this.retrievePositionids(this.state.info.positions);
 
-    reloadInfo(){
-        if (Auth.isConnected()) {
-            fetch('api/v1/core/member/me', {
-                headers: {
-                    Authorization: Auth.getToken()
-                }
-            })
-                .then(res => res.json())
-                .then((result) => {
-                    this.setState({
-                        info: result
-                    });
-                })
-        } else {
-            console.log("not connected?");
-        }
     }
-
 
     render() {
         let activeButton = ["home"];
@@ -129,10 +122,10 @@ class Profile extends Component {
                 <Header/>
                 <Nav buttons={activeButton}> </Nav>
                 <section className="Profile">
-                    <ProfileForm info={this.state.info} update={this.updateInfo.bind(this)} modifyEnabled={this.state.modifyEnabled} setModify={this.setModify.bind(this)}/>
+                    <ProfileForm info={this.state.info} update={this.updateInfo.bind(this)} modifyEnabled={this.state.modifyEnabled} setModify={this.setModify.bind(this)} resetFields={this.resetFields.bind(this)}/>
                 </section>
                 <section className="Positions">
-                    <PositionForm positions={this.state.positions} currentpositions={this.state.info.positions} modifyEnabled={this.state.modifyEnabled} positionids={this.state.positionids}  updatePositionids={this.updatePositionids.bind(this)}/>
+                    <PositionForm positions={this.state.positions}  modifyEnabled={this.state.modifyEnabled} positionids={this.state.positionids}  updatePositionids={this.updatePositionids.bind(this)}/>
                 </section>
             </React.Fragment>
         );
