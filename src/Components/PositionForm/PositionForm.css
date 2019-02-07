@@ -1,21 +1,22 @@
-
-.Positions {
+.position_form{
+    width: 80%;
+    height: 69.5vmin;
+    margin: 5vmin auto;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(4, 1fr);
-
-    background-color: white;
-
+    grid-template-rows: 15vmin 1fr 10vmin;
     justify-self: center;
     vertical-align: middle;
-    border: 3px solid black;
-    margin: 5vmin auto;
-    padding: 1vw;
-
-    width: 95%;
-    height: 68vmin;
+    border: 0.6vmin solid black;
+    padding: 0.5vw;
 }
-.Positions .info_area p {
+
+.position_form h1 {
+    margin: auto;
+    font-size: 2.5vw;
+    text-align: center;
+}
+
+.position_form .info_area p {
     text-align: center;
     justify-self: stretch;
     vertical-align: middle;
@@ -27,4 +28,77 @@
     grid-row: 1;
     grid-column-start: 1;
     grid-column-end: 5;
+}
+
+.position_container {
+    height: 9vmin;
+    display: grid;
+    grid-template-columns: 4fr 1fr 1fr;
+    grid-template-rows: 4vmin 1fr;
+    border: 0.3vmin solid black;
+    padding: 0.5vmin;
+    margin: 1vmin auto;
+}
+
+.position_container * {
+    margin: auto 0.4vmin;
+}
+
+.position_container p {
+    font-size: 3.5vmin;
+}
+
+.position_container input[type='text'] {
+    width: 85%;
+    height: 80%;
+    justify-self: left;
+    font-size: 3vmin;
+}
+
+.position_form select {
+    border: 0.3vmin solid black;
+    font-size: 3vmin;
+    padding-left: 1vmin;
+    height: 5vmin;
+    background-color: white;
+    justify-self: center;
+    width: 85%;
+}
+
+
+.position_container img {
+    width: 70%;
+    margin: auto;
+    grid-row: 1 / 3;
+    grid-column: 3;
+    vertical-align: middle;
+}
+
+.position_form .input_button {
+    cursor: pointer;
+    text-align: center;
+    vertical-align: middle;
+
+    margin: auto;
+
+    font-size: 1.7vw;
+    border: 0.3vmin solid black;
+
+    height: 7vmin;
+}
+
+.add_position {
+    width: 90%;
+    height: 60%;
+    font-size: 1.7vw;
+    margin: auto;
+}
+
+.delete_position {
+    grid-row: 1 / 3;
+    grid-column: 3;
+}
+
+.hidden {
+    visibility: hidden;
 }

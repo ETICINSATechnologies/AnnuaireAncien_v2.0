@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './PositionForm.css';
 import Auth from "../../Components/Auth/Auth";
+import deleteIcon from "../../images/delete_icon.png";
 
 
 class PositionForm extends Component {
@@ -78,30 +79,28 @@ class PositionForm extends Component {
             let PositionsList = this.state.positionids.map(function(positionid,index){
                 return (
                     <Position
-                        key={index} year={2000} positions={this.state.positions} positionid={positionid} updatePositionid={updatePositionid} index={index} modifyEnabled={this.state.modifyEnabled} deletePosition={deletePosition} setYear={setYear}
+                        key={index} year={null} positions={this.state.positions} positionid={positionid} updatePositionid={updatePositionid} index={index} modifyEnabled={this.state.modifyEnabled} deletePosition={deletePosition} setYear={setYear}
                     />
                 )
             },this);
             return (
-                <div className="positions" onChange={this.onChange}>{PositionsList}</div>
+                <React.Fragment>
+                    {PositionsList}
+                </React.Fragment>
             )
         }
     }
 
     render() {
         return (
-            <div className="Positions">
-                <div className="info_area">
-                    <p>Postes occupés à ETIC</p>
-                </div>
-
+            <div className="position_form">
+                <h1>Postes occupés à ETIC</h1>
                 <div className="positions">
-                    {this.renderPositions()}
+                    {
+                        this.renderPositions()
+                    }
                 </div>
-
-                <div className="addposition">
-                    {this.state.modifyEnabled? <Button className="add position" value="Ajouter" onClick={() => this.addPosition()} />:null}
-                </div>
+                <Button className={`input_button add_position ${this.state.modifyEnabled ? 'visible' : 'hidden'}`} value="Ajouter" onClick={() => this.addPosition()}/>
             </div>
         );
     }
@@ -149,15 +148,15 @@ class Position extends Component {
             return <option key={index} value={position.id}>{position.label}</option>
         });
         return (
-                <div className="positions">
+                <div className="position_container">
                     <p>Poste</p>
+                    <p>Année</p>
+                    <img className={`delete_position ${this.state.modifyEnabled ? "visible" : "hidden"}`} src={deleteIcon} onClick={() => this.props.deletePosition(this.props.index)} />
                     <select disabled={!this.state.modifyEnabled} className="position dropdown" value={this.state.positionid} onChange={this.onChange}>
                         <option value={0}>Choisir un poste</option>
                         {positionDropDown}
                     </select>
-                    <p>Année</p>
                     <input disabled={!this.state.modifyEnabled} type="text" className="year" value={this.props.year} onChange={this.onChange}/>
-                    {this.state.modifyEnabled ? <Button className="delete position" value="Supprimer" onClick={() => this.props.deletePosition(this.props.index)} /> : null }
                 </div>
         );
     }

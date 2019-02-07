@@ -123,8 +123,6 @@ class Profile extends Component {
                 <Nav buttons={activeButton}> </Nav>
                 <section className="Profile">
                     <ProfileForm info={this.state.info} update={this.updateInfo.bind(this)} modifyEnabled={this.state.modifyEnabled} setModify={this.setModify.bind(this)} resetFields={this.resetFields.bind(this)}/>
-                </section>
-                <section className="Positions">
                     <PositionForm positions={this.state.positions}  modifyEnabled={this.state.modifyEnabled} positionids={this.state.positionids}  updatePositionids={this.updatePositionids.bind(this)}/>
                 </section>
             </React.Fragment>

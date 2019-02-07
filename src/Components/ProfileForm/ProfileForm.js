@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import './ProfileForm.css';
 import Auth from "../Auth/Auth";
+import modifyIcon from "../../images/pencil_icon.png";
+import cancelIcon from "../../images/cancel_icon.png";
+import noPhotoIcon from "../../images/no_photo.png";
 
 class ProfileForm extends Component {
     constructor(props) {
@@ -103,31 +106,34 @@ class ProfileForm extends Component {
     render() {
         return (
             <form className="ProfileForm">
-                <div className="info_area">
-                    <p>Appuyer sur Modifier pour modifier le profil</p>
+                <div className="header_container">
+                    <h1>Appuyer sur Modifier pour modifier le profil</h1>
+                    <img className="image" src={noPhotoIcon} />
+                    <img className="modifier" src={this.state.modifyEnabled ? cancelIcon:modifyIcon} onClick={() => {this.state.modifyEnabled ? this.props.resetFields(): this.modifyEnable()}} />
                 </div>
-                <div className="image"> </div>
-                <p> Téléphone </p>
-                <p className="right needed"> Nom </p>
-                <input disabled={!this.state.modifyEnabled} type="text" className="telephone" value={this.state.info.telephone} onChange={this.onChange}/>
-                <input disabled={!this.state.modifyEnabled} type="text" className="lastName" value={this.state.info.lastName} onChange={this.onChange}/>
-                <p> Département </p>
-                <p className="right p_info needed"> Prénom </p>
-                {this.renderDepartments()}
-                <input disabled={!this.state.modifyEnabled} type="text" className="firstName" value={this.state.info.firstName} onChange={this.onChange}/>
-                <p className="needed"> Adresse mail </p>
-                <p> Travaille chez </p>
-                <input disabled={!this.state.modifyEnabled} type="text" className="email" value={this.state.info.email} onChange={this.onChange}/>
-                <input disabled={!this.state.modifyEnabled} type="text" className="company" value='-' onChange={this.onChange}/>
-                <div className="div_button">
-                    { this.state.modifyEnabled ? <Button className="input_button password" value="Changer mot de passe"  /> : null }
+                <div className="field_container">
+                    <p> Téléphone </p>
+                    <p className="right needed"> Nom </p>
+                    <input disabled={!this.state.modifyEnabled} type="text" className="telephone" value={this.state.info.telephone} onChange={this.onChange}/>
+                    <input disabled={!this.state.modifyEnabled} type="text" className="lastName" value={this.state.info.lastName} onChange={this.onChange}/>
+                    <p> Département </p>
+                    <p className="right p_info needed"> Prénom </p>
+                    {this.renderDepartments()}
+                    <input disabled={!this.state.modifyEnabled} type="text" className="firstName" value={this.state.info.firstName} onChange={this.onChange}/>
+                    <p className="needed"> Adresse mail </p>
+                    <p> Travaille chez </p>
+                    <input disabled={!this.state.modifyEnabled} type="text" className="email" value={this.state.info.email} onChange={this.onChange}/>
+                    <input disabled={!this.state.modifyEnabled} type="text" className="company" value='-' onChange={this.onChange}/>
                 </div>
-                <div className="div_button">
-                    { this.state.modifyEnabled ? <Button className="input_button update" value="Sauvegarder" onClick={() => this.modifyProfile()} /> : null }
+                <div className="button_container">
+                    <div className="div_button">
+                        { this.state.modifyEnabled ? <Button className="input_button password" value="Changer mot de passe"  /> : null }
+                    </div>
+                    <div className="div_button">
+                        { this.state.modifyEnabled ? <Button className="input_button update" value="Sauvegarder" onClick={() => this.modifyProfile()} /> : null }
+                    </div>
                 </div>
-                <div className="div_button">
-                    { this.state.modifyEnabled ? <Button className="input_button enable_edit" value="Annuler" onClick={() => this.props.resetFields()} /> : <Button className="input_button enable_edit" value="Modifier" onClick={() => this.modifyEnable()} /> }
-                </div>
+
             </form>
         );
     }
