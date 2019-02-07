@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './ProfileForm.css';
 import Auth from "../Auth/Auth";
-import modifyIcon from "../../images/pencil_icon.png";
+import modifyIcon from "../../images/edit.png";
 import cancelIcon from "../../images/cancel_icon.png";
 import noPhotoIcon from "../../images/no_photo.png";
 
@@ -108,8 +108,8 @@ class ProfileForm extends Component {
             <form className="ProfileForm">
                 <div className="header_container">
                     <h1>Appuyer sur Modifier pour modifier le profil</h1>
-                    <img className="image" src={noPhotoIcon} />
-                    <img className="modifier" src={this.state.modifyEnabled ? cancelIcon:modifyIcon} onClick={() => {this.state.modifyEnabled ? this.props.resetFields(): this.modifyEnable()}} />
+                    <img className="image" src={noPhotoIcon} alt="Profile"/>
+                    <img className="modifier" src={this.state.modifyEnabled ? cancelIcon:modifyIcon} onClick={() => {this.state.modifyEnabled ? this.props.resetFields(): this.modifyEnable()}} alt="Modifier/Annuler"/>
                 </div>
                 <div className="field_container">
                     <p> Téléphone </p>

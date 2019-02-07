@@ -151,7 +151,7 @@ class Position extends Component {
                 <div className="position_container">
                     <p>Poste</p>
                     <p>Année</p>
-                    <img className={`delete_position ${this.state.modifyEnabled ? "visible" : "hidden"}`} src={deleteIcon} onClick={() => this.props.deletePosition(this.props.index)} />
+                    <img className={`delete_position ${this.state.modifyEnabled ? "visible" : "hidden"}`} src={deleteIcon} onClick={() => this.props.deletePosition(this.props.index)} alt="Supprimer"/>
                     <select disabled={!this.state.modifyEnabled} className="position dropdown" value={this.state.positionid} onChange={this.onChange}>
                         <option value={0}>Choisir un poste</option>
                         {positionDropDown}
