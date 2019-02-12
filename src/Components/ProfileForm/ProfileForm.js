@@ -96,7 +96,11 @@ class ProfileForm extends Component {
             return <option key={index} value={department.id}>{department.label}</option>
         });
         return(
-            <select className="department" value={this.state.info.department === null ? 0:this.state.info.department.id} onChange={this.onChange} disabled={!this.state.modifyEnabled} >
+            <select className="department"
+                    value={this.state.info.department === null || typeof(this.state.info.department)==='undefined' ? 0:this.state.info.department.id}
+                    onChange={this.onChange}
+                    disabled={!this.state.modifyEnabled}
+            >
                 <option value={0}>Choisir un departement</option>
                 {departmentDropDown}
             </select>
@@ -109,7 +113,10 @@ class ProfileForm extends Component {
                 <div className="header_container">
                     <h1>Appuyer sur Modifier pour modifier le profil</h1>
                     <img className="image" src={noPhotoIcon} alt="Profile"/>
-                    <img className="modifier" src={this.state.modifyEnabled ? cancelIcon:modifyIcon} onClick={() => {this.state.modifyEnabled ? this.props.resetFields(): this.modifyEnable()}} alt="Modifier/Annuler"/>
+                    <img className="modifier"
+                         src={this.state.modifyEnabled ? cancelIcon:modifyIcon}
+                         onClick={() => {this.state.modifyEnabled ? this.props.resetFields(): this.modifyEnable()}} alt="Modifier/Annuler"
+                    />
                 </div>
                 <div className="field_container">
                     <p> Téléphone </p>
@@ -123,7 +130,7 @@ class ProfileForm extends Component {
                     <p className="needed"> Adresse mail </p>
                     <p> Travaille chez </p>
                     <input disabled={!this.state.modifyEnabled} type="text" className="email" value={this.state.info.email} onChange={this.onChange}/>
-                    <input disabled={!this.state.modifyEnabled} type="text" className="company" value='-' onChange={this.onChange}/>
+                    <input disabled={!this.state.modifyEnabled} type="text" className="company" value={this.state.info.company} onChange={this.onChange}/>
                 </div>
                 <div className="button_container">
                     <div className="div_button">

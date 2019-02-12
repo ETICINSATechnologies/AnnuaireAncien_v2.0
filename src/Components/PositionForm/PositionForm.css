@@ -30,7 +30,7 @@
     grid-column-end: 5;
 }
 
-.position_container {
+.position_form .position_container {
     height: 9vmin;
     display: grid;
     grid-template-columns: 4fr 1fr 1fr;

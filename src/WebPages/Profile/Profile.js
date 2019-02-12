@@ -14,7 +14,8 @@ class Profile extends Component {
             status: 'pending', // 'connected' 'not_authenticate'
             modifyEnabled: false,
             positions:{},
-            positionids:[],
+            currentPositions:[],
+            currentPositionsBackup:[],
             info: {
                 firstName: '',
                 lastName: '',
@@ -30,7 +31,6 @@ class Profile extends Component {
         }
     }
 
-
     componentDidMount() {
         if (!Auth.isConnected())
             this.setState({status: 'not_authenticate'});
@@ -44,25 +44,22 @@ class Profile extends Component {
             })
                 .then(res => res.json())
                 .then((result) => {
-                    this.setState({info: result});
-                    this.retrievePositionids(result.positions)
+                    this.setState({
+                        info: result,
+                        currentPositions : result.positions,
+                        currentPositionsBackup : JSON.parse(JSON.stringify(result.positions))
+                    });
                 })
         }
     }
 
-    retrievePositionids(positions){
-            let i;
-            let posnIds=[];
-            for (i=0; i<positions.length; i++) {
-                posnIds[i]=positions[i].id;
-            }
-            this.setState({
-                positionids: posnIds,
-            });
-    }
 
     updateInfo(data){
-        data.positionIds=this.state.positionids;
+        data.positions=this.state.currentPositions;
+        let i;
+        for (i=0;i<data.positions.length;++i){
+            data.positions[i].year=parseInt(data.positions[i].year,10)
+        }
         fetch('api/v1/core/member/'+this.state.info.id, {
             method: 'PUT',
             headers: {
@@ -76,8 +73,11 @@ class Profile extends Component {
                 if (res.status === 200) {
                         res.json()
                         .then((result) => {
-                            this.setState({info: result});
-                            this.retrievePositionids(result.positions);
+                            this.setState({
+                                info: result,
+                                currentPositions : result.positions,
+                                currentPositionsBackup : JSON.parse(JSON.stringify(result.positions))
+                            });
                         })
                 } else {
                     this.resetFields();
@@ -94,9 +94,9 @@ class Profile extends Component {
         });
     }
 
-    updatePositionids(positionids){
+    updatePositions(positions){
         this.setState({
-            positionids : positionids,
+            currentPositions : positions,
         });
     }
 
@@ -104,9 +104,8 @@ class Profile extends Component {
         this.setState({
             info : this.state.info,
             modifyEnabled : false,
+            currentPositions : JSON.parse(JSON.stringify(this.state.currentPositionsBackup))
         });
-        this.retrievePositionids(this.state.info.positions);
-
     }
 
     render() {
@@ -122,8 +121,14 @@ class Profile extends Component {
                 <Header/>
                 <Nav buttons={activeButton}> </Nav>
                 <section className="Profile">
-                    <ProfileForm info={this.state.info} update={this.updateInfo.bind(this)} modifyEnabled={this.state.modifyEnabled} setModify={this.setModify.bind(this)} resetFields={this.resetFields.bind(this)}/>
-                    <PositionForm positions={this.state.positions}  modifyEnabled={this.state.modifyEnabled} positionids={this.state.positionids}  updatePositionids={this.updatePositionids.bind(this)}/>
+                    <ProfileForm info={this.state.info} update={this.updateInfo.bind(this)}
+                                 modifyEnabled={this.state.modifyEnabled}
+                                 setModify={this.setModify.bind(this)} resetFields={this.resetFields.bind(this)}
+                    />
+                    <PositionForm positions={this.state.positions} modifyEnabled={this.state.modifyEnabled}
+                                  currentPositions={this.state.currentPositions}
+                                  updatePositions={this.updatePositions.bind(this)}
+                    />
                 </section>
             </React.Fragment>
         );
