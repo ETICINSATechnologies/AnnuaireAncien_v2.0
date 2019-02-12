@@ -24,9 +24,6 @@ class CA extends Component {
     render() {
         const rowsNb = this.props.members.length;
         const rowSize = this.state.divHeight / rowsNb;
-        const BOARD_STYLE = {
-            gridTemplateRows: `repeat(${rowsNb}, ${rowSize}px)`
-        };
 
         let columnHeight;
         let boardStyle;
