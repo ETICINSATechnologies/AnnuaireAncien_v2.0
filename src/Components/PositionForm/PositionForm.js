@@ -52,8 +52,11 @@ class PositionForm extends Component {
     }
 
     addPosition(){
-        let lastPosition  = Object.assign({}, this.state.currentPositions[this.state.currentPositions.length-1]);
-        lastPosition.id=0;
+        let lastPosition = {
+            id : 0,
+            isBoard : false,
+            year : '2019'
+        };
         this.setState({
             currentPositions: [...this.state.currentPositions, lastPosition]
         });

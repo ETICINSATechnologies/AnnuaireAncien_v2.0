@@ -111,7 +111,7 @@ class ProfileForm extends Component {
         return (
             <form className="ProfileForm">
                 <div className="header_container">
-                    <h1>Appuyer sur Modifier pour modifier le profil</h1>
+                    {this.state.modifyEnabled ?<h1>Appuyer sur le croix pour annuler</h1>  : <h1>Appuyer sur le crayon pour modifier</h1>}
                     <img className="image" src={noPhotoIcon} alt="Profile"/>
                     <img className="modifier"
                          src={this.state.modifyEnabled ? cancelIcon:modifyIcon}
