@@ -13,12 +13,12 @@ class Search extends Component {
         this.searchFields = {
             firstName: 'Prénom',
             lastName: 'Nom',
-            position: 'Poste',
+            positionId: 'Poste',
             company: 'Entreprise',
             year: 'Année'
         };
         this.state = {
-            status: 'pending', // 'connected' 'not_authenticate'
+            status: 'noParameters', // 'PARAMETETERS' 'NO_PARAMETERS' 'pending'
             memberInfo: {}
         };
         this.selectMember = this.selectMember.bind(this);
@@ -31,7 +31,19 @@ class Search extends Component {
 
     makeSearch(event) {
         event.preventDefault();
-        this.refs.members.getMembers();
+
+        this.setState({status: 'noParameters'});
+
+        let searchArray = {};
+        Object.keys(this.searchFields).forEach((fieldName) => {
+            let val;
+            if (val = document.getElementById(`${fieldName}Input`).value) {
+                searchArray[fieldName] = val;
+                this.setState({status: 'Parameters'});
+            }
+        });
+
+        this.refs.members.getMembers(searchArray);
     }
 
     render() {
@@ -41,16 +53,18 @@ class Search extends Component {
 
         activeButton.push('profile');
         activeButton = Auth.addCorrectButton(activeButton);
-
         let renderSearchFields = [];
         Object.keys(this.searchFields).forEach((fieldName) => {
             renderSearchFields.push(
                 <div className={`${fieldName}Div`} key={`${fieldName}Div`}> {this.searchFields[fieldName]} </div>
             );
+
             renderSearchFields.push(
-                <input type="text" className={`${fieldName}Input`} key={`${fieldName}Input`}/>
-            )
+                <input type="text" id={`${fieldName}Input`} className={`${fieldName}Input`} key={`${fieldName}Input`}/>
+            );
+
         });
+
 
         return (
             <React.Fragment>

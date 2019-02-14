@@ -15,9 +15,51 @@ class MemberArray extends Component {
         this.getMembers = this.getMembers.bind(this);
     }
 
-    getMembers() {
+    // getMembers() {
+    //     let url = 'api/v1/core/member';
+    //     if (this.props.board) url += '/board/latest';
+    //     fetch(url, {
+    //         headers: {
+    //             Authorization: Auth.getToken()
+    //         }
+    //     })
+    //         .then(res => res.json())
+    //         .then((result) => {
+    //             if (result) {
+    //                 this.setState({
+    //                     status: 'processing',
+    //                     info: result
+    //                 });
+    //             }
+    //             let mapping = this.mapMembers();
+    //             this.setState({
+    //                 mapping: mapping
+    //             })
+    //         })
+    // }
+
+
+    componentDidMount() {
+        if (!this.props.search)
+            this.getMembers();
+    }
+
+    getMembers(searchArray) {
+
+        // let params = [];
+        // let url = new URL('api/v1/core/member');
+        // console.log(url);
         let url = 'api/v1/core/member';
+        if (searchArray) {
+            Object.keys(searchArray).forEach((key, i) => {
+                if (i === 0) url += '?';
+                else url += '&';
+                url += key + '=' + searchArray[key];
+            });
+        }
+        console.log(url);
         if (this.props.board) url += '/board/latest';
+
         fetch(url, {
             headers: {
                 Authorization: Auth.getToken()
@@ -38,10 +80,6 @@ class MemberArray extends Component {
             })
     }
 
-    componentDidMount() {
-        if (!this.props.search)
-            this.getMembers();
-    }
 
     /**
      Associate the id of a member with its position in the array 'state.info.content'
@@ -80,10 +118,15 @@ class MemberArray extends Component {
         }
         else if (this.state.info.hasOwnProperty('content')) {
             for (let i = 0; i < this.state.info.content.length; i++) {
-                members.push(
-                    <MemberDisplay key={i} info={this.state.info.content[i]}
-                                   onClick={(id) => this.props.onClick(this.getMemberById(id))}/>
-                )
+                if (!this.state.info.content[i]) {
+                    //infos membre supprimés
+                } else {
+                    members.push(
+                        <MemberDisplay key={i} info={this.state.info.content[i]}
+                                       onClick={(id) => this.props.onClick(this.getMemberById(id))}/>
+                    )
+                }
+
             }
         }
 
