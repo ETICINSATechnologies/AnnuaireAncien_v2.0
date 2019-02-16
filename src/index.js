@@ -12,6 +12,13 @@ import Profile from "./WebPages/Profile/Profile";
 import Search from "./WebPages/Search/Search";
 import Administration from "./WebPages/Administration/Administration";
 
+import fetch from "./__mocks__/fetch";
+
+// mock or not the api call by redefining the fetch function
+if (process.env.REACT_APP_FETCH_MOCK === "true") {
+    global.fetch = fetch;
+}
+
 ReactDOM.render(
     <Router>
         <React.Fragment>

@@ -1,0 +1,67 @@
+[
+  {
+    "id": 1,
+    "label": "BB",
+    "name": "Biochimie et Biotechnologies"
+  },
+  {
+    "id": 2,
+    "label": "BIM",
+    "name": "BioInformatique et Modélisation"
+  },
+  {
+    "id": 3,
+    "label": "GCU",
+    "name": "Génie civil et urbanisme"
+  },
+  {
+    "id": 4,
+    "label": "GE",
+    "name": "Génie électrique"
+  },
+  {
+    "id": 5,
+    "label": "GEN",
+    "name": "Génie énergétique et environnement"
+  },
+  {
+    "id": 6,
+    "label": "GI",
+    "name": "Génie Industriel"
+  },
+  {
+    "id": 7,
+    "label": "GMC",
+    "name": "Génie mécanique conception"
+  },
+  {
+    "id": 8,
+    "label": "GMD",
+    "name": "Génie mécanique développement"
+  },
+  {
+    "id": 9,
+    "label": "GMPP",
+    "name": "Génie mécanique procédés plasturgie"
+  },
+  {
+    "id": 10,
+    "label": "IF",
+    "name": "Informatique"
+  },
+  {
+    "id": 11,
+    "label": "PC",
+    "name": "Premier Cycle"
+  },
+  {
+    "id": 12,
+    "label": "SGM",
+    "name": "Science et Génie des Matériaux"
+  },
+  {
+    "id": 13,
+    "label": "TC",
+    "name": "Télécommunications, Services et Usages"
+  }
+]

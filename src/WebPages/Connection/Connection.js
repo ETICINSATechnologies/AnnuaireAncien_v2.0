@@ -4,7 +4,6 @@ import './Connection.css';
 import Header from "../../Components/Header/Header";
 import Nav from "../../Components/Nav/Nav";
 import Auth from "../../Components/Auth/Auth";
-import fetch from "../../__mocks__/fetch";
 
 class Connection extends Component {
     constructor(props) {
