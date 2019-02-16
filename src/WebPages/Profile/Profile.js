@@ -94,6 +94,7 @@ class Profile extends Component {
         });
     }
 
+
     updatePositions(positions){
         this.setState({
             currentPositions : positions,

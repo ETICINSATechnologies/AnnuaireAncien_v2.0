@@ -27,6 +27,7 @@ class ProfileForm extends Component {
         this.onChange = this.onChange.bind(this);
     }
 
+
     onChange(event) {
         event.persist();
         if (this.state.info.hasOwnProperty(event.target.className)) {
@@ -46,8 +47,9 @@ class ProfileForm extends Component {
                         ...this.state.info,
                         [event.target.className]: event.target.value
                     }
-                }))
+                }));
             }
+
         }
     }
 
@@ -71,7 +73,7 @@ class ProfileForm extends Component {
     }
 
     componentDidUpdate(prevProps) {
-        if (this.props !== prevProps) {
+        if (this.props.info !== prevProps.info || this.props.modifyEnabled!==prevProps.modifyEnabled) {
             this.setState({
                 info: this.props.info,
                 modifyEnabled: this.props.modifyEnabled,
