@@ -58,13 +58,19 @@ class ProfileForm extends Component {
         data = {
             ...this.state.info,
             genderId: this.props.info.gender.id,
-            departmentId: this.state.info.department.id,
             address: {
                 ...this.state.info.address,
                 countryId:this.props.info.address.country.id
             }
 
         };
+
+        if(this.state.info.department===null){
+            data.departmentId=null;
+        } else {
+            data.departmentId=this.state.info.department.id;
+        }
+
         this.props.update(data);
     }
 
