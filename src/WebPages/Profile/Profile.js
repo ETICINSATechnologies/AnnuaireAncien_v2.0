@@ -21,6 +21,13 @@ class Profile extends Component {
                 lastName: '',
                 email: '',
                 telephone: '',
+                gender:{
+                    id:1,
+                },
+                address:{ country:{
+                                 id:1
+                        }
+                },
                 department: {
                     id:'',
                     label:'',
