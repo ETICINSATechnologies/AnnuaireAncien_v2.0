@@ -5,7 +5,6 @@ import Nav from "../../Components/Nav/Nav";
 import Redirect from "react-router-dom/es/Redirect";
 import Auth from "../../Components/Auth/Auth";
 import ProfileForm from "../../Components/ProfileForm/ProfileForm";
-import PositionForm from "../../Components/PositionForm/PositionForm";
 
 class Profile extends Component {
     constructor(props) {
@@ -125,10 +124,6 @@ class Profile extends Component {
                     <ProfileForm info={this.state.info} update={this.updateInfo.bind(this)}
                                  modifyEnabled={this.state.modifyEnabled}
                                  setModify={this.setModify.bind(this)} resetFields={this.resetFields.bind(this)}
-                    />
-                    <PositionForm positions={this.state.positions} modifyEnabled={this.state.modifyEnabled}
-                                  currentPositions={this.state.currentPositions}
-                                  updatePositions={this.updatePositions.bind(this)}
                     />
                 </section>
             </React.Fragment>

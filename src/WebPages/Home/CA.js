@@ -22,8 +22,9 @@ class CA extends Component {
     }
 
     render() {
-        const rowsNb = this.props.members.length;
-        const rowSize = this.state.divHeight / rowsNb;
+        const rowsNb = Math.max(this.props.members.length, 5);
+        const rowSize = Math.min(this.state.divHeight / rowsNb, 250);
+        console.log(rowsNb);
 
         let columnHeight;
         let boardStyle;

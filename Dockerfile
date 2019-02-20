@@ -1,23 +1,13 @@
-FROM node
-
-ENV NPM_CONFIG_LOGLEVEL warn
-ARG app_env
-ENV APP_ENV $app_env
+FROM node:alpine
 
 RUN mkdir -p /app
 WORKDIR /app
-COPY . ./
+ADD . ./
 
-RUN npm install
+RUN yarn install --production
+RUN yarn global add http-server-spa
+RUN yarn run build
 
-CMD if [ ${APP_ENV} = production ]; \
-	then \
-	npm install -g http-server && \
-	npm run build && \
-	cd build && \
-	hs -p 3000; \
-	else \
-	npm run start; \
-    fi
+CMD cd build && http-server-spa . index.html 5000
 
-EXPOSE 3000
+EXPOSE 5000
