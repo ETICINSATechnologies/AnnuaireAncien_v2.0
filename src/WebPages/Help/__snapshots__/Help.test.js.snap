@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Help component renders without crashing 1`] = `
+Array [
+  <header
+    className="Header"
+  >
+    <a
+      className="header_a"
+      href="/"
+    >
+      <img
+        alt=""
+        className="home_logo"
+        src="home_logo.png"
+      />
+      <h1
+        className="title"
+      >
+         Annuaire des Anciens
+      </h1>
+    </a>
+  </header>,
+  <nav
+    className="Nav"
+  >
+    <div
+      className="Menu"
+    >
+      <a
+        className="button"
+        href="/"
+      >
+        accueil
+      </a>
+      <a
+        className="button"
+        href="/connection"
+      >
+        se connecter
+      </a>
+    </div>
+    <a
+      className="help_link"
+      href="/help"
+    >
+      <img
+        alt=""
+        className="help_icon"
+        src="help_icon.png"
+      />
+    </a>
+  </nav>,
+  <div
+    className="Help"
+  >
+    <section
+      className="help_section"
+    >
+      <div
+        className="div1"
+      >
+        Cette application a été développée par
+      </div>
+      <a
+        className="div2"
+        href="http://etic-insa.com/"
+      >
+         ETIC INSA Technologies 
+      </a>
+      <div
+        className="div3"
+      >
+        Elle permet de rechercher les anciens membres de la Junior en fonction de divers critères comme leur nom, prénom, entreprise pour laquelle ils travaillent ou encore leur année de mandat Si vous avez des remarques ou suggestions, merci d'en faire par à
+        <button
+          className="div4"
+        >
+           contact@etic-insa.com 
+        </button>
+        <div
+          className="div5"
+        >
+           adresse copié !
+        </div>
+      </div>
+    </section>
+  </div>,
+]
+`;

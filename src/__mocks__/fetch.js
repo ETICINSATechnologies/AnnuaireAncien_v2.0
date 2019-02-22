@@ -11,7 +11,7 @@ export default (url) => {
         expectedResponse = member;
     else if (/core\/member\/board\/latest$/.test(url))
         expectedResponse = board;
-    else if (/core\/member$/.test(url))
+    else if (/core\/member.*/.test(url))
         expectedResponse = members;
     else
         return null;

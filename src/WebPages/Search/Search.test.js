@@ -1,6 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import Home from './Home';
+import Search from './Search';
 import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import renderer from 'react-test-renderer';
@@ -8,38 +7,34 @@ import Auth from '../../Components/Auth/Auth';
 
 Enzyme.configure({adapter: new Adapter()});
 
-describe('Home unit tests', () => {
+describe( 'Search component', () => {
     it('renders without crashing', () => {
-        const div = document.createElement('div');
-        ReactDOM.render(<Home/>, div);
-        ReactDOM.unmountComponentAtNode(div);
-    });
+        const tree = renderer.create(<Search />).toJSON();
+        expect(tree).toMatchSnapshot();
+        }
+    );
 
-    it('Home unit test', () => {
-        expect(
-            Enzyme.shallow(<Home/>)
-            .find('div.Home')
+    it('Search unit test', () => {
+        expect(Enzyme.shallow(<Search/>)
+            .find('div.Search')
             .length
         ).toBe(1)
     });
 
-    it('Home not connected snapshot test', () => {
+    it('Search not connected snapshot test', () => {
         Auth.isConnected = jest.fn(() => false);
-
-        const component = renderer.create(<Home/>);
+        const component = renderer.create(<Search/>);
         let tree = component.toJSON();
         expect(tree).toMatchSnapshot();
 
     });
 
-    it('Home connected snapshot test', () => {
+    it('Search connected snapshot test', () => {
         Auth.isConnected = jest.fn(() => true);
-
-        const component = renderer.create(<Home/>);
+        const component = renderer.create(<Search/>);
         let tree = component.toJSON();
         expect(tree).toMatchSnapshot();
 
     })
+
 });
-
-

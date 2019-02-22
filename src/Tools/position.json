@@ -1,0 +1,180 @@
+[
+  {
+    "id": 1,
+    "label": "Ancien membre",
+    "pole": null
+  },
+  {
+    "id": 2,
+    "label": "Auditeur CNJE",
+    "pole": null
+  },
+  {
+    "id": 3,
+    "label": "Chargé d'affaires",
+    "pole": {
+      "id": 10,
+      "label": "UA",
+      "name": "Unité d'affaires"
+    }
+  },
+  {
+    "id": 4,
+    "label": "Client",
+    "pole": null
+  },
+  {
+    "id": 5,
+    "label": "Comptable",
+    "pole": {
+      "id": 9,
+      "label": "Treso",
+      "name": "Trésorerie"
+    }
+  },
+  {
+    "id": 6,
+    "label": "Consultant",
+    "pole": null
+  },
+  {
+    "id": 7,
+    "label": "Junior Com",
+    "pole": {
+      "id": 1,
+      "label": "Com",
+      "name": "Communication"
+    }
+  },
+  {
+    "id": 8,
+    "label": "Junior DSI",
+    "pole": {
+      "id": 3,
+      "label": "DSI",
+      "name": "Direction des Systèmes d'Information,"
+    }
+  },
+  {
+    "id": 9,
+    "label": "Junior GRC",
+    "pole": {
+      "id": 4,
+      "label": "GRC",
+      "name": "Gestion des Relations Clients"
+    }
+  },
+  {
+    "id": 10,
+    "label": "Junior Qualité",
+    "pole": {
+      "id": 6,
+      "label": "Qua",
+      "name": "Qualité"
+    }
+  },
+  {
+    "id": 11,
+    "label": "Membre CNJE",
+    "pole": null
+  },
+  {
+    "id": 12,
+    "label": "Président",
+    "pole": {
+      "id": 5,
+      "label": "Pres",
+      "name": "Présidence"
+    }
+  },
+  {
+    "id": 13,
+    "label": "Responsable BU",
+    "pole": {
+      "id": 10,
+      "label": "UA",
+      "name": "Unité d'affaires"
+    }
+  },
+  {
+    "id": 14,
+    "label": "Responsable Com",
+    "pole": {
+      "id": 1,
+      "label": "Com",
+      "name": "Communication"
+    }
+  },
+  {
+    "id": 15,
+    "label": "Responsable DSI",
+    "pole": {
+      "id": 3,
+      "label": "DSI",
+      "name": "Direction des Systèmes d'Information,"
+    }
+  },
+  {
+    "id": 16,
+    "label": "Responsable GRC",
+    "pole": {
+      "id": 4,
+      "label": "GRC",
+      "name": "Gestion des Relations Clients"
+    }
+  },
+  {
+    "id": 17,
+    "label": "Responsable Qualité",
+    "pole": {
+      "id": 6,
+      "label": "Qua",
+      "name": "Qualité"
+    }
+  },
+  {
+    "id": 18,
+    "label": "Responsable UA",
+    "pole": {
+      "id": 10,
+      "label": "UA",
+      "name": "Unité d'affaires"
+    }
+  },
+  {
+    "id": 19,
+    "label": "Secrétaire Général",
+    "pole": {
+      "id": 8,
+      "label": "SG",
+      "name": "Secretariat"
+    }
+  },
+  {
+    "id": 20,
+    "label": "Trésorier",
+    "pole": {
+      "id": 9,
+      "label": "Treso",
+      "name": "Trésorerie"
+    }
+  },
+  {
+    "id": 21,
+    "label": "Vice-Président",
+    "pole": {
+      "id": 5,
+      "label": "Pres",
+      "name": "Présidence"
+    }
+  },
+  {
+    "id": 22,
+    "label": "Vice-Trésorier",
+    "pole": {
+      "id": 9,
+      "label": "Treso",
+      "name": "Trésorerie"
+    }
+  }
+]

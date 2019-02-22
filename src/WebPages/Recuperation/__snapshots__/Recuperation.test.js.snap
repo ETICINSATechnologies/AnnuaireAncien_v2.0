@@ -1,0 +1,78 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Recuperation component renders without crashing 1`] = `
+Array [
+  <header
+    className="Header"
+  >
+    <a
+      className="header_a"
+      href="/"
+    >
+      <img
+        alt=""
+        className="home_logo"
+        src="home_logo.png"
+      />
+      <h1
+        className="title"
+      >
+         Annuaire des Anciens
+      </h1>
+    </a>
+  </header>,
+  <nav
+    className="Nav"
+  >
+    <div
+      className="Menu"
+    >
+      <a
+        className="button"
+        href="/"
+      >
+        accueil
+      </a>
+      <a
+        className="button"
+        href="/connection"
+      >
+        se connecter
+      </a>
+    </div>
+    <a
+      className="help_link"
+      href="/help"
+    >
+      <img
+        alt=""
+        className="help_icon"
+        src="help_icon.png"
+      />
+    </a>
+  </nav>,
+  <div
+    className="Recuperation"
+  >
+    <section
+      className="Recuperation_section"
+    >
+      <div
+        className="div1"
+      >
+        Afin de récupérer vos identifiants, veuillez contacter par mail l'administrateur de ce site en utilisant l'adresse mail suivante :
+      </div>
+      <button
+        className="div2"
+      >
+         contact@etic-insa.com
+      </button>
+      <div
+        className="div3"
+      >
+         adresse copié !
+      </div>
+    </section>
+  </div>,
+]
+`;
