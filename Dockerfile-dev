@@ -1,0 +1,15 @@
+# base image
+FROM node:alpine
+
+# set working directory
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
+
+# install and cache app dependencies
+COPY . ./
+RUN yarn install
+
+# start app
+CMD ["npm", "start"]
+
+EXPOSE 3000

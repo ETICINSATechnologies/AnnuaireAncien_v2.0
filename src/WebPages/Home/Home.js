@@ -50,7 +50,7 @@ class Home extends Component {
                     <section className="home">
                         <CA className="left_CA" members={this.state.leftBoard} position="left"/>
                         <div className="home_title">
-                            <p className="welcome"> Bienvenue sur l'annuaire des anciennes </p>
+                            <p className="welcome"> Bienvenue sur l'annuaire des anciens </p>
                             <p className="welcome_etic"> ETIC INSA TECHNOLOGIES </p>
                         </div>
                         <CA className="right_CA" members={this.state.rightBoard} position="right"/>

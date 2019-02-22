@@ -10,7 +10,7 @@ class Header extends Component {
             <header className='Header'>
                 <Link className="header_a" to="/">
                     <img className="home_logo" src={home_logo} alt=""/>
-                    <h1 className="title"> Annuaire des Anciens</h1>
+                    <h1 className="title"> Annuaire des Anciens </h1>
                 </Link>
             </header>
 
