@@ -18,7 +18,7 @@ describe( 'Administration component', () => {
     it('Administration unit test', () => {
         expect(
             Enzyme.shallow(<Administration/>)
-                .find('div.Administration')
+                .find('section.Administration')
                 .length
         ).toBe(1)
     });

@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import './Profile.css';
 import Header from "../../Components/Header/Header";
 import Nav from "../../Components/Nav/Nav";
-import Redirect from "react-router-dom/es/Redirect";
+import {Redirect} from 'react-router-dom'
 import Auth from "../../Components/Auth/Auth";
 import ProfileForm from "../../Components/ProfileForm/ProfileForm";
 import fetch from "../../__mocks__/fetch";

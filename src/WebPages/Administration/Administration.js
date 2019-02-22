@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 import './Administration.css';
-import Redirect from "react-router-dom/es/Redirect";
+
 import Auth from "../../Components/Auth/Auth";
 import Header from "../../Components/Header/Header";
 import Nav from "../../Components/Nav/Nav";
 import MemberArray from "../../Components/MemberArray/MemberArray";
 import MemberInfo from "../../Components/MemberInfo/MemberInfo";
 
-
+import {Route, Redirect} from 'react-router'
 class Administration extends Component {
     constructor(props) {
         super(props);
@@ -24,6 +24,18 @@ class Administration extends Component {
     render() {
         if (!Auth.isConnected())
             return <Redirect to='/'/>;
+
+        {/*<Route exact path="/" render={() => (*/}
+            {/*if (!Auth.isConnected())*/}
+                {/*return <Redirect to='/'/>;*/}
+        {/*)}/>*/}
+
+        {/*<Route exact path="/" render={() => (*/}
+            {/*loggedIn ? (*/}
+            {/*) : (*/}
+                {/*<Redirect to="/"/>*/}
+            {/*)*/}
+        {/*)}/>*/}
 
         let activeButton = ["home"];
         activeButton.push('search');

@@ -3,7 +3,7 @@ import './Search.css';
 import Header from "../../Components/Header/Header";
 import Nav from "../../Components/Nav/Nav";
 import Auth from "../../Components/Auth/Auth";
-import Redirect from "react-router-dom/es/Redirect";
+import {Redirect} from 'react-router-dom'
 import MemberArray from "../../Components/MemberArray/MemberArray";
 import MemberInfo from "../../Components/MemberInfo/MemberInfo";
 

@@ -1,0 +1,279 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Administration component renders without crashing 1`] = `
+Array [
+  <header
+    className="Header"
+  >
+    <a
+      className="header_a"
+      href="/"
+    >
+      <img
+        alt=""
+        className="home_logo"
+        src="home_logo.png"
+      />
+      <h1
+        className="title"
+      >
+         Annuaire des Anciens
+      </h1>
+    </a>
+  </header>,
+  <nav
+    className="Nav"
+  >
+    <div
+      className="Menu"
+    >
+      <a
+        className="button"
+        href="/"
+      >
+        accueil
+      </a>
+      <a
+        className="button"
+        href="/search"
+      >
+        rechercher
+      </a>
+      <a
+        className="button"
+        href="/profile"
+      >
+        mon profil
+      </a>
+      <a
+        className="button"
+        href="/connection"
+      >
+        se connecter
+      </a>
+    </div>
+    <a
+      className="help_link"
+      href="/help"
+    >
+      <img
+        alt=""
+        className="help_icon"
+        src="help_icon.png"
+      />
+    </a>
+  </nav>,
+  <section
+    className="Administration"
+  >
+    <section
+      className="MemberArray members"
+    >
+      <table>
+        <caption>
+          Liste des membres 
+          
+        </caption>
+        <thead>
+          <tr
+            className="MemberDisplay undefined"
+            onClick={[Function]}
+          >
+            <th
+              className="firstName"
+            >
+              prénom
+            </th>
+            <th
+              className="lastName"
+            >
+              nom
+            </th>
+            <th
+              className="positionLabel"
+            >
+              poste
+            </th>
+            <th
+              className="positionYear"
+            >
+              année
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td />
+            <td />
+            <td />
+            <td />
+          </tr>
+          <tr>
+            <td />
+            <td />
+            <td />
+            <td />
+          </tr>
+          <tr>
+            <td />
+            <td />
+            <td />
+            <td />
+          </tr>
+          <tr>
+            <td />
+            <td />
+            <td />
+            <td />
+          </tr>
+          <tr>
+            <td />
+            <td />
+            <td />
+            <td />
+          </tr>
+          <tr>
+            <td />
+            <td />
+            <td />
+            <td />
+          </tr>
+          <tr>
+            <td />
+            <td />
+            <td />
+            <td />
+          </tr>
+          <tr>
+            <td />
+            <td />
+            <td />
+            <td />
+          </tr>
+          <tr>
+            <td />
+            <td />
+            <td />
+            <td />
+          </tr>
+          <tr>
+            <td />
+            <td />
+            <td />
+            <td />
+          </tr>
+        </tbody>
+      </table>
+    </section>
+    <section
+      className="MemberArray CA"
+    >
+      <table>
+        <caption>
+          Liste des membres 
+          du CA
+        </caption>
+        <thead>
+          <tr
+            className="MemberDisplay undefined"
+            onClick={[Function]}
+          >
+            <th
+              className="firstName"
+            >
+              prénom
+            </th>
+            <th
+              className="lastName"
+            >
+              nom
+            </th>
+            <th
+              className="positionLabel"
+            >
+              poste
+            </th>
+            <th
+              className="positionYear"
+            >
+              année
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td />
+            <td />
+            <td />
+            <td />
+          </tr>
+          <tr>
+            <td />
+            <td />
+            <td />
+            <td />
+          </tr>
+          <tr>
+            <td />
+            <td />
+            <td />
+            <td />
+          </tr>
+          <tr>
+            <td />
+            <td />
+            <td />
+            <td />
+          </tr>
+          <tr>
+            <td />
+            <td />
+            <td />
+            <td />
+          </tr>
+          <tr>
+            <td />
+            <td />
+            <td />
+            <td />
+          </tr>
+          <tr>
+            <td />
+            <td />
+            <td />
+            <td />
+          </tr>
+          <tr>
+            <td />
+            <td />
+            <td />
+            <td />
+          </tr>
+          <tr>
+            <td />
+            <td />
+            <td />
+            <td />
+          </tr>
+          <tr>
+            <td />
+            <td />
+            <td />
+            <td />
+          </tr>
+        </tbody>
+      </table>
+    </section>
+    <section
+      className="MemberInfo"
+    >
+      <div
+        className="infoTitle"
+      >
+         Info du membre
+      </div>
+      
+    </section>
+  </section>,
+]
+`;
