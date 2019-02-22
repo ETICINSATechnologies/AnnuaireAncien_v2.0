@@ -35,7 +35,6 @@ class Home extends Component {
     }
 
     render() {
-        console.log(this.state);
         let activeButton = [];
         if (Auth.isConnected()) {
             activeButton.push('search');

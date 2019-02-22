@@ -3,6 +3,7 @@ import './Nav.css';
 
 import help_icon from '../../Images/help_icon.png'
 import Auth from "../Auth/Auth";
+import {Link} from "react-router-dom";
 
 class Nav extends Component {
     constructor(props) {
@@ -38,15 +39,15 @@ class Nav extends Component {
             let currentButton = this.state[this.props.buttons[i]];
             if (this.props.buttons[i] === 'disconnection')
                 navButtons.push(
-                    <a className="button" key={i} href={currentButton.href} onClick={Auth.disconnect}>
+                    <Link className="button" key={i} to={currentButton.href} onClick={Auth.disconnect}>
                         {currentButton.value}
-                    </a>
+                    </Link>
                 );
             else
                 navButtons.push(
-                    <a className="button" key={i} href={currentButton.href}>
+                    <Link className="button" key={i} to={currentButton.href}>
                         {currentButton.value}
-                    </a>
+                    </Link>
                 );
         }
 
@@ -55,9 +56,9 @@ class Nav extends Component {
                 <div className='Menu'>
                     {navButtons}
                 </div>
-                <a className="help_link" href="/help">
+                <Link className="help_link" to="/help">
                     <img className="help_icon" src={help_icon} alt=""/>
-                </a>
+                </Link>
             </nav>
 
         );

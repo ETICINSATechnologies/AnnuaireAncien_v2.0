@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import './MemberArray.css';
 import Auth from "../../Components/Auth/Auth";
 import MemberDisplay from "../../Components/MembersDisplay/MemberDisplay";
-import fetch from "../../__mocks__/fetch";
 
 
 class MemberArray extends Component {

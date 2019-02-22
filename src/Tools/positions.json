@@ -1,0 +1,211 @@
+[
+  {
+    "id": 1,
+    "label": "Auditeur orga",
+    "pole": null
+  },
+  {
+    "id": 2,
+    "label": "Auditeur treso",
+    "pole": null
+  },
+  {
+    "id": 3,
+    "label": "Chargé d'affaires",
+    "pole": {
+      "id": 3,
+      "label": "DevCo",
+      "name": "Developpement Commercial"
+    }
+  },
+  {
+    "id": 4,
+    "label": "Chef de projets",
+    "pole": {
+      "id": 9,
+      "label": "UA",
+      "name": "Unité d'affaires"
+    }
+  },
+  {
+    "id": 5,
+    "label": "Comptable",
+    "pole": {
+      "id": 8,
+      "label": "Treso",
+      "name": "Trésorerie"
+    }
+  },
+  {
+    "id": 6,
+    "label": "Consultant",
+    "pole": {
+      "id": 2,
+      "label": "Cons",
+      "name": "Consultant"
+    }
+  },
+  {
+    "id": 7,
+    "label": "Junior com",
+    "pole": {
+      "id": 1,
+      "label": "Com",
+      "name": "Communication"
+    }
+  },
+  {
+    "id": 8,
+    "label": "Junior devCo",
+    "pole": {
+      "id": 3,
+      "label": "DevCo",
+      "name": "Developpement Commercial"
+    }
+  },
+  {
+    "id": 9,
+    "label": "Junior qualité",
+    "pole": {
+      "id": 4,
+      "label": "Perf",
+      "name": "Performance"
+    }
+  },
+  {
+    "id": 10,
+    "label": "Junior SI",
+    "pole": {
+      "id": 7,
+      "label": "SI",
+      "name": "Systèmes d'Information,"
+    }
+  },
+  {
+    "id": 11,
+    "label": "Junior UA",
+    "pole": {
+      "id": 9,
+      "label": "UA",
+      "name": "Unité d'affaires"
+    }
+  },
+  {
+    "id": 12,
+    "label": "Membre CNJE",
+    "pole": null
+  },
+  {
+    "id": 13,
+    "label": "Membre d'Honneur",
+    "pole": null
+  },
+  {
+    "id": 14,
+    "label": "Président",
+    "pole": {
+      "id": 5,
+      "label": "Prez",
+      "name": "Présidence"
+    }
+  },
+  {
+    "id": 15,
+    "label": "Responsable BU",
+    "pole": {
+      "id": 9,
+      "label": "UA",
+      "name": "Unité d'affaires"
+    }
+  },
+  {
+    "id": 16,
+    "label": "Responsable com",
+    "pole": {
+      "id": 1,
+      "label": "Com",
+      "name": "Communication"
+    }
+  },
+  {
+    "id": 17,
+    "label": "Responsable devCo",
+    "pole": {
+      "id": 3,
+      "label": "DevCo",
+      "name": "Developpement Commercial"
+    }
+  },
+  {
+    "id": 18,
+    "label": "Responsable qualité",
+    "pole": {
+      "id": 4,
+      "label": "Perf",
+      "name": "Performance"
+    }
+  },
+  {
+    "id": 19,
+    "label": "Responsable RH",
+    "pole": {
+      "id": 6,
+      "label": "RH",
+      "name": "Ressources Humaines"
+    }
+  },
+  {
+    "id": 20,
+    "label": "Responsable SI",
+    "pole": {
+      "id": 7,
+      "label": "SI",
+      "name": "Systèmes d'Information,"
+    }
+  },
+  {
+    "id": 21,
+    "label": "Responsable d'UA",
+    "pole": {
+      "id": 9,
+      "label": "UA",
+      "name": "Unité d'affaires"
+    }
+  },
+  {
+    "id": 22,
+    "label": "Secrétaire général",
+    "pole": {
+      "id": 6,
+      "label": "RH",
+      "name": "Ressources Humaines"
+    }
+  },
+  {
+    "id": 23,
+    "label": "Trésorier",
+    "pole": {
+      "id": 8,
+      "label": "Treso",
+      "name": "Trésorerie"
+    }
+  },
+  {
+    "id": 24,
+    "label": "Vice-Président",
+    "pole": {
+      "id": 5,
+      "label": "Prez",
+      "name": "Présidence"
+    }
+  },
+  {
+    "id": 25,
+    "label": "Vice-Trésorier",
+    "pole": {
+      "id": 8,
+      "label": "Treso",
+      "name": "Trésorerie"
+    }
+  }
+]

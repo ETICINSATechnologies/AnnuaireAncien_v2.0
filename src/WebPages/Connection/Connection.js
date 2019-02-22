@@ -1,10 +1,9 @@
 import React, {Component} from 'react';
-import {Redirect} from 'react-router-dom'
+import {Link, Redirect} from 'react-router-dom'
 import './Connection.css';
 import Header from "../../Components/Header/Header";
 import Nav from "../../Components/Nav/Nav";
 import Auth from "../../Components/Auth/Auth";
-import fetch from "../../__mocks__/fetch";
 
 class Connection extends Component {
     constructor(props) {
@@ -79,7 +78,7 @@ class Connection extends Component {
                             <p> Mot de passe </p>
                             <input type="text" className="password" value={this.state.parameters.password}
                                    onChange={this.onChange}/>
-                            <a href="/recup"> Mot de passe oublié ?</a>
+                            <Link to="/recup"> Mot de passe oublié ?</Link>
                             <input type="submit" className="connect_input" value="Se connecter"
                                    onClick={this.tryToConnect}/>
                         </form>

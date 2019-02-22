@@ -5,15 +5,28 @@ import Nav from "../../Components/Nav/Nav";
 import Redirect from "react-router-dom/es/Redirect";
 import Auth from "../../Components/Auth/Auth";
 import ProfileForm from "../../Components/ProfileForm/ProfileForm";
-import fetch from "../../__mocks__/fetch";
-
 
 class Profile extends Component {
     constructor(props) {
         super(props);
         this.state = {
             status: 'pending', // 'connected' 'not_authenticate'
-            info: {}
+            modifyEnabled: false,
+            positions:{},
+            currentPositions:[],
+            currentPositionsBackup:[],
+            info: {
+                firstName: '',
+                lastName: '',
+                email: '',
+                telephone: '',
+                department: {
+                    id:'',
+                    label:'',
+                    name:'',
+                },
+                company: ''
+            },
         }
     }
 
@@ -30,17 +43,76 @@ class Profile extends Component {
             })
                 .then(res => res.json())
                 .then((result) => {
-                    this.setState({info: result});
-                    console.log(this.state.info);
+                    console.log(result);
+                    this.setState({
+                        info: result,
+                        currentPositions : result.positions,
+                        currentPositionsBackup : JSON.parse(JSON.stringify(result.positions))
+                    });
                 })
         }
     }
 
+
+    updateInfo(data){
+        data.positions=this.state.currentPositions;
+        let i;
+        for (i=0;i<data.positions.length;++i){
+            data.positions[i].year=parseInt(data.positions[i].year,10)
+        }
+        fetch('api/v1/core/member/'+this.state.info.id, {
+            method: 'PUT',
+            headers: {
+                'Authorization': Auth.getToken(),
+                'Content-Type': 'application/json'
+            },
+
+            body: JSON.stringify(data)
+        })
+            .then(res => {
+                if (res.status === 200) {
+                        res.json()
+                        .then((result) => {
+                            this.setState({
+                                info: result,
+                                currentPositions : result.positions,
+                                currentPositionsBackup : JSON.parse(JSON.stringify(result.positions))
+                            });
+                        })
+                } else {
+                    this.resetFields();
+                    console.log('update fail');
+                }
+            });
+        //disable modifications
+        if (this.state.modifyEnabled) this.setModify(false);
+    }
+
+    setModify(state){
+        this.setState({
+            modifyEnabled: state,
+        });
+    }
+
+    updatePositions(positions){
+        this.setState({
+            currentPositions : positions,
+        });
+    }
+
+    resetFields(){
+        this.setState({
+            info : this.state.info,
+            modifyEnabled : false,
+            currentPositions : JSON.parse(JSON.stringify(this.state.currentPositionsBackup))
+        });
+    }
+
     render() {
+        let activeButton = ["home"];
         if (this.state.status === 'not_authenticate')
             return <Redirect to='/'/>;
 
-        let activeButton = ["home"];
         activeButton.push('search');
         activeButton = Auth.addCorrectButton(activeButton);
 
@@ -49,7 +121,10 @@ class Profile extends Component {
                 <Header/>
                 <Nav buttons={activeButton}> </Nav>
                 <section className="Profile">
-                    <ProfileForm info={this.state.info} function='update'/>
+                    <ProfileForm info={this.state.info} update={this.updateInfo.bind(this)}
+                                 modifyEnabled={this.state.modifyEnabled}
+                                 setModify={this.setModify.bind(this)} resetFields={this.resetFields.bind(this)}
+                    />
                 </section>
             </React.Fragment>
         );
