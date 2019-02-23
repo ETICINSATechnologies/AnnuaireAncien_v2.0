@@ -13,6 +13,8 @@ import Search from "./WebPages/Search/Search";
 import Administration from "./WebPages/Administration/Administration";
 
 import fetch from "./__mocks__/fetch";
+import Redirect from "react-router-dom/es/Redirect";
+import Switch from "react-router-dom/es/Switch";
 
 // mock or not the api call by redefining the fetch function
 if (process.env.REACT_APP_FETCH_MOCK === "true") {
@@ -21,7 +23,7 @@ if (process.env.REACT_APP_FETCH_MOCK === "true") {
 
 ReactDOM.render(
     <Router>
-        <React.Fragment>
+        <Switch>
             <Route exact path='/' component={Home}/>
             <Route exact path='/connection' component={Connection}/>
             <Route exact path='/recup' component={Recuperation}/>
@@ -29,7 +31,8 @@ ReactDOM.render(
             <Route exact path='/profile' component={Profile}/>
             <Route exact path='/search' component={Search}/>
             <Route exact path='/administration' component={Administration}/>
-        </React.Fragment>
+            <Redirect to='/'/>
+        </Switch>
     </Router>
     , document.getElementById('root')
 );
