@@ -89,7 +89,7 @@
     .Search .MemberInfo {
         --default-font-size: 1.5vw;
         --name-font-size: 2.2vw;
-        --telephone-font-size: 1.8vw;
+        --telephone-font-size: 1.6vw;
         --input-label-font-size: 1.1vw;
 
         max-height: calc(90vh - 6.5vw - 2.5vmax);
@@ -191,7 +191,7 @@
 
     /*CSS for member info*/
     .Search .MemberInfo .infoArea {
-        grid-template-rows: 2vw 4.5vw 4.5vw 4vw repeat(4, 2.5vw 5.5vw) 1vw;
+        grid-template-rows: 2vw 4.5vw 4.5vw 4vw repeat(5, 2.5vw 5.1vw);
         width: 80%;
         border: 0.3vmin solid black;
         margin: auto 13% auto auto;

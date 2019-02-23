@@ -13,11 +13,11 @@ class MemberInfo extends Component {
             firstName: null,
             lastName: null,
             telephone: null,
-            email: 'email',
-            company: 'travaille chez',
-            year: 'dernière année à ETIC',
-            position: 'dernier poste à ETIC',
-            department: 'département'
+            email: 'Email',
+            company: 'Travaille chez',
+            year: 'Dernière année à ETIC',
+            position: 'Dernier poste à ETIC',
+            department: 'Département'
         };
         this.state = {
             edition: false,
@@ -30,13 +30,17 @@ class MemberInfo extends Component {
         let newProperties = {};
         Object.keys(this.propertiesName).forEach((property) => {
             if (this.props.info.hasOwnProperty(property)) {
-                if (property === 'department')
-                    newProperties[property] = this.props.info[property].name;
-                else
-                    newProperties[property] = this.props.info[property];
+                if (this.props.info[property]) {
+                    if (property === 'department')
+                        newProperties[property] = this.props.info[property].name;
+                    else if (property === 'telephone')
+                        newProperties[property] = this.props.info[property].replace(/(\+33)|\d(?=(\d{2})+$)/g, "$& ");
+                    else
+                        newProperties[property] = this.props.info[property];
+                }
             }
         });
-        if (this.props.info['positions']) {
+        if (this.props.info['positions'] && this.props.info['positions'].length > 0) {
             newProperties['position'] = this.props.info['positions'][0].label;
             newProperties['year'] = '2018';
         }
@@ -84,8 +88,10 @@ class MemberInfo extends Component {
                                 this.props.editable ?
                                     <React.Fragment>
                                         <img className='editPhoto' src={edit} alt="modifier"
-                                             style={this.state.edition ? {display: 'none'}: {}}
-                                             onClick={() => {this.setState({edition: true})}}/>
+                                             style={this.state.edition ? {display: 'none'} : {}}
+                                             onClick={() => {
+                                                 this.setState({edition: true})
+                                             }}/>
                                         {
                                             this.state.edition ?
                                                 <React.Fragment>
@@ -102,8 +108,7 @@ class MemberInfo extends Component {
                                         }
                                     </React.Fragment> : ''
                             }
-                        </div> :
-                        ''
+                        </div> : ''
                 }
             </section>
         );

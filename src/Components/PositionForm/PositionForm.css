@@ -102,3 +102,10 @@
 .position_form .hidden {
     visibility: hidden;
 }
+
+@media (orientation: portrait) {
+    .position_form {
+        margin: auto auto 5vh;
+        height: auto;
+    }
+}

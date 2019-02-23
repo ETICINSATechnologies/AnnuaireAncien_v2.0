@@ -12,8 +12,10 @@ class CA extends Component {
     }
 
     setDivHeight() {
-        let divHeight = window.innerHeight - this.DOMBoard.getBoundingClientRect().y;
-        this.setState({divHeight: divHeight});
+        if (this.DOMBoard) {
+            let divHeight = window.innerHeight - this.DOMBoard.getBoundingClientRect().y;
+            this.setState({divHeight: divHeight});
+        }
     }
 
     componentDidMount() {

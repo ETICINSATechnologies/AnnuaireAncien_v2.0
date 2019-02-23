@@ -9,6 +9,7 @@
     vertical-align: middle;
     margin: auto;
     grid-template-columns: 5fr 3fr;
+    overflow-y: auto;
 }
 
 
