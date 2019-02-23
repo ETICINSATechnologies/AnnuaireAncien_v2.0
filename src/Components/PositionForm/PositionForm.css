@@ -1,13 +1,13 @@
 .position_form{
     width: 80%;
-    height: 69.5vmin;
+    height: calc(85vh - 6.5vw - 2.5vmax);
     margin: 5vmin auto;
     display: grid;
-    grid-template-rows: 15vmin 1fr 10vmin;
+    grid-template-rows: 10vmin 1fr 10vmin;
     justify-self: center;
     vertical-align: middle;
     border: 0.6vmin solid black;
-    padding: 0.5vw;
+    padding: 1vw;
 }
 
 .position_form h1 {
@@ -31,42 +31,41 @@
 }
 
 .position_form .position_container {
-    height: 9vmin;
+    height: 10vmin;
     display: grid;
     grid-template-columns: 4fr 1fr 1fr;
     grid-template-rows: 4vmin 1fr;
     border: 0.3vmin solid black;
-    padding: 0.5vmin;
+    padding: 0.5vmin 0.5vmin 0.5vmin 1.5vmin;
     margin: 1vmin auto;
 }
 
-.position_container * {
+.position_form .position_container * {
     margin: auto 0.4vmin;
 }
 
-.position_container p {
+.position_form .position_container p {
     font-size: 3.5vmin;
 }
 
-.position_container input[type='text'] {
+.position_form .position_container input[type='text'] {
     width: 85%;
     height: 80%;
     justify-self: left;
     font-size: 3vmin;
 }
 
-.position_form select {
+.position_form .position_container select {
     border: 0.3vmin solid black;
     font-size: 3vmin;
-    padding-left: 1vmin;
+    width: 90%;
     height: 5vmin;
+    margin: auto auto auto 0;
     background-color: white;
     justify-self: center;
-    width: 85%;
 }
 
-
-.position_container img {
+.position_form .position_container img {
     width: 6vmin;
     margin: auto;
     grid-row: 1 / 3;
@@ -87,18 +86,18 @@
     height: 7vmin;
 }
 
-.add_position {
+.position_form .add_position {
     width: 90%;
     height: 60%;
     font-size: 1.7vw;
     margin: auto;
 }
 
-.delete_position {
+.position_form .delete_position {
     grid-row: 1 / 3;
     grid-column: 3;
 }
 
-.hidden {
+.position_form .hidden {
     visibility: hidden;
 }

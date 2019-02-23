@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './PositionForm.css';
 import Auth from "../../Components/Auth/Auth";
-import deleteIcon from "../../images/delete_icon.png";
+import deleteIcon from "../../Images/delete_icon.png";
 
 
 class PositionForm extends Component {
@@ -22,7 +22,6 @@ class PositionForm extends Component {
                 currentPositions: this.props.currentPositions,
             });
         }
-
     }
 
     componentDidMount() {
@@ -37,25 +36,25 @@ class PositionForm extends Component {
             })
     }
 
-    updatePosition (position,index) {
-        let positions=this.state.currentPositions;
+    updatePosition(position, index) {
+        let positions = this.state.currentPositions;
         positions[index] = position;
         this.setState({
-            currentPositions : positions
+            currentPositions: positions
         });
         this.props.updatePositions(this.state.currentPositions);
     }
 
-    deletePosition(index){
-        this.state.currentPositions.splice(index,1);
+    deletePosition(index) {
+        this.state.currentPositions.splice(index, 1);
         this.props.updatePositions(this.state.currentPositions);
     }
 
-    addPosition(){
+    addPosition() {
         let lastPosition = {
-            id : 0,
-            isBoard : false,
-            year : '2019'
+            id: 0,
+            isBoard: false,
+            year: '2019'
         };
         this.setState({
             currentPositions: [...this.state.currentPositions, lastPosition]
@@ -64,11 +63,11 @@ class PositionForm extends Component {
     }
 
 
-    renderPositions () {
+    renderPositions() {
         if (this.state.positions.length !== 0) {
-            let updatePosition=this.updatePosition.bind(this);
-            let deletePosition=this.deletePosition.bind(this);
-            let PositionsList = this.state.currentPositions.map(function(position, index){
+            let updatePosition = this.updatePosition.bind(this);
+            let deletePosition = this.deletePosition.bind(this);
+            let PositionsList = this.state.currentPositions.map(function (position, index) {
                 return (
                     <Position
                         key={index}
@@ -81,7 +80,7 @@ class PositionForm extends Component {
                         deletePosition={deletePosition}
                     />
                 )
-            },this);
+            }, this);
             return (
                 <React.Fragment>
                     {PositionsList}
@@ -94,11 +93,7 @@ class PositionForm extends Component {
         return (
             <div className="position_form">
                 <h1>Postes occupés à ETIC</h1>
-                <div className="positions">
-                    {
-                        this.renderPositions()
-                    }
-                </div>
+                <div className="positions"> {this.renderPositions()} </div>
                 <Button
                     className={`input_button add_position ${this.state.modifyEnabled ? 'visible' : 'hidden'}`}
                     value="Ajouter" onClick={() => this.addPosition()}
@@ -120,72 +115,71 @@ class Position extends Component {
 
     onChange(event) {
         event.persist();
-        if (event.target.className==="position dropdown") {
+        if (event.target.className === "position dropdown") {
             this.setState({
                 position: {
                     ...this.state.position,
-                    id : parseInt(event.target.value,10)
-            }
-            }, () => {
-                this.props.updatePosition(this.state.position,this.props.index);
-            });
-        } else {
-            this.setState({
-                position: {
-                    ...this.state.position,
-                    year : parseInt(event.target.value,10)
+                    id: parseInt(event.target.value, 10)
                 }
             }, () => {
-                this.props.updatePosition(this.state.position,this.props.index);
+                this.props.updatePosition(this.state.position, this.props.index);
             });
         }
-
+        else {
+            this.setState({
+                position: {
+                    ...this.state.position,
+                    year: parseInt(event.target.value, 10)
+                }
+            }, () => {
+                this.props.updatePosition(this.state.position, this.props.index);
+            });
+        }
     }
-
 
     componentDidUpdate(prevProps) {
         if (this.props !== prevProps) {
             this.setState({
                 modifyEnabled: this.props.modifyEnabled,
-                position:this.props.position,
+                position: this.props.position,
             });
         }
-
     }
 
     render() {
-        let positionDropDown = this.props.positions.map((position,index) => {
+        let positionDropDown = this.props.positions.map((position, index) => {
             return <option key={index} value={position.id}>{position.label}</option>
         });
+
         return (
-                <div className="position_container">
-                    <p>Poste</p>
-                    <p>Année</p>
-                    <img className={`delete_position ${this.state.modifyEnabled ? "visible" : "hidden"}`}
-                         src={deleteIcon} onClick={() => this.props.deletePosition(this.props.index)}
-                         alt="Supprimer"/>
-                    <select disabled={!this.state.modifyEnabled}
-                            className="position dropdown"
-                            value={this.state.position.id}
-                            onChange={this.onChange}
-                    >
-                        <option value={0}>Choisir un poste</option>
-                        {positionDropDown}
-                    </select>
-                    <input disabled={!this.state.modifyEnabled}
-                           type="text"
-                           className="year"
-                           value={this.state.position.year}
-                           onChange={this.onChange}
-                    />
-                </div>
+            <div className="position_container">
+                <p>Poste</p>
+                <p>Année</p>
+                <img className={`delete_position ${this.state.modifyEnabled ? "visible" : "hidden"}`}
+                     src={deleteIcon} onClick={() => this.props.deletePosition(this.props.index)}
+                     alt="Supprimer"/>
+                <select disabled={!this.state.modifyEnabled}
+                        className="position dropdown"
+                        value={this.state.position.id}
+                        onChange={this.onChange}>
+                    <option value={0}> Choisir un poste </option>
+                    {positionDropDown}
+                </select>
+                <input disabled={!this.state.modifyEnabled}
+                       type="text"
+                       className="year"
+                       value={this.state.position.year}
+                       onChange={this.onChange}
+                />
+            </div>
         );
     }
 }
 
 function Button(props) {
     return (
-        <input className={props.className} type="button" value={props.value} onClick= {props.onClick}/>
+        <input className={props.className} type="button" value={props.value} onClick={props.onClick}/>
     );
 }
+
 export default PositionForm;

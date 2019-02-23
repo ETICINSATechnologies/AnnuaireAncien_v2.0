@@ -1,7 +1,6 @@
 .ProfileForm {
     display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    grid-template-rows: repeat(3, 1fr);
+    grid-template-rows: 2fr 2fr 1fr;
     background-color: white;
 
     justify-self: center;
@@ -11,32 +10,42 @@
     padding: 1vw;
 
     width: 90%;
-    height: calc(85vh - 6.5vw - 2.5vmax )
+    height: calc(85vh - 6.5vw - 2.5vmax );
 }
 
-.header_container {
+.ProfileForm .header_container {
     display: grid;
-    grid-template-columns: 4fr 3fr 1fr;
+    grid-template-columns: 5fr 4fr 1fr;
     grid-template-rows: 1fr;
     margin: auto;
 }
 
-.field_container {
+.ProfileForm .field_container {
     display: grid;
+    width: 100%;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(3, 1fr);
     margin: auto;
 }
 
-.button_container {
+.ProfileForm .field_container input, p {
+    width: 90%;
+}
+
+.ProfileForm .field_container select {
+    width: 90%;
+}
+
+.ProfileForm .button_container {
     display: grid;
+    width: 90%;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: 1fr;
     margin: 0.5vmin auto;
 }
 
-.ProfileForm * {
-    width: 90%;
+.ProfileForm .button_container input {
+    width: 80%;
 }
 
 .ProfileForm .needed:after {
@@ -136,8 +145,8 @@
 }
 
 .ProfileForm .modifier {
-    width: 50%;
-    margin: 0 0 0 0;
+    width: 65%;
+    margin: 1vmin auto auto;
     grid-column: 3;
     vertical-align: top;
     horiz-align: right;

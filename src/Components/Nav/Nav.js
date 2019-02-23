@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './Nav.css';
 
-import help_icon from '../../images/help_icon.png'
+import help_icon from '../../Images/help_icon.png'
 import Auth from "../Auth/Auth";
 
 class Nav extends Component {

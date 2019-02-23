@@ -1,25 +1,25 @@
 import React, {Component} from 'react';
 import './ProfileForm.css';
 import Auth from "../Auth/Auth";
-import modifyIcon from "../../images/edit.png";
-import cancelIcon from "../../images/cancel_icon.png";
-import noPhotoIcon from "../../images/no_photo.png";
+import modifyIcon from "../../Images/edit.png";
+import cancelIcon from "../../Images/cancel_icon.png";
+import noPhotoIcon from "../../Images/no_photo.png";
 
 class ProfileForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
             modifyEnabled: false,
-            departments:[],
+            departments: [],
             info: {
                 firstName: '',
                 lastName: '',
                 email: '',
                 telephone: '',
                 department: {
-                    id:0,
-                    label:'',
-                    name:'',
+                    id: 0,
+                    label: '',
+                    name: '',
                 },
                 company: '',
             }
@@ -31,17 +31,18 @@ class ProfileForm extends Component {
     onChange(event) {
         event.persist();
         if (this.state.info.hasOwnProperty(event.target.className)) {
-            if (event.target.className==='department'){
+            if (event.target.className === 'department') {
                 this.setState(({
                     info: {
                         ...this.state.info,
-                        department:{
+                        department: {
                             ...this.state.info.department,
-                            id: parseInt(event.target.value,10)
+                            id: parseInt(event.target.value, 10)
                         }
                     }
                 }));
-            } else {
+            }
+            else {
                 this.setState(({
                     info: {
                         ...this.state.info,
@@ -49,7 +50,6 @@ class ProfileForm extends Component {
                     }
                 }));
             }
-
         }
     }
 
@@ -61,7 +61,7 @@ class ProfileForm extends Component {
             departmentId: this.state.info.department.id,
             address: {
                 ...this.state.info.address,
-                countryId:this.props.info.address.country.id
+                countryId: this.props.info.address.country.id
             }
 
         };
@@ -73,7 +73,7 @@ class ProfileForm extends Component {
     }
 
     componentDidUpdate(prevProps) {
-        if (this.props.info !== prevProps.info || this.props.modifyEnabled!==prevProps.modifyEnabled) {
+        if (this.props.info !== prevProps.info || this.props.modifyEnabled !== prevProps.modifyEnabled) {
             this.setState({
                 info: this.props.info,
                 modifyEnabled: this.props.modifyEnabled,
@@ -93,17 +93,19 @@ class ProfileForm extends Component {
             })
     }
 
-    renderDepartments(){
-        let departmentDropDown = this.state.departments.map((department,index) => {
+    renderDepartments() {
+        let departmentDropDown = this.state.departments.map((department, index) => {
             return <option key={index} value={department.id}>{department.label}</option>
         });
-        return(
+        return (
             <select className="department"
-                    value={this.state.info.department === null || typeof(this.state.info.department)==='undefined' ? 0:this.state.info.department.id}
+                    value={this.state.info.department === null || typeof(this.state.info.department) === 'undefined' ?
+                        0 :
+                        this.state.info.department.id}
                     onChange={this.onChange}
                     disabled={!this.state.modifyEnabled}
             >
-                <option value={0}>Choisir un departement</option>
+                <option value={0}> Choisir un departement</option>
                 {departmentDropDown}
             </select>
         )
@@ -113,34 +115,50 @@ class ProfileForm extends Component {
         return (
             <form className="ProfileForm">
                 <div className="header_container">
-                    {this.state.modifyEnabled ?<h1>Appuyer sur le croix pour annuler</h1>  : <h1>Appuyer sur le crayon pour modifier</h1>}
+                    <h1>
+                        {
+                            this.state.modifyEnabled ?
+                            "Appuyer sur la croix pour annuler" :
+                            "Appuyer sur le crayon pour modifier"
+                        }
+                    </h1>
                     <img className="image" src={noPhotoIcon} alt="Profile"/>
                     <img className="modifier"
-                         src={this.state.modifyEnabled ? cancelIcon:modifyIcon}
-                         onClick={() => {this.state.modifyEnabled ? this.props.resetFields(): this.modifyEnable()}} alt="Modifier/Annuler"
+                         src={this.state.modifyEnabled ? cancelIcon : modifyIcon}
+                         onClick={() => {
+                             this.state.modifyEnabled ? this.props.resetFields() : this.modifyEnable()
+                         }} alt="Modifier/Annuler"
                     />
                 </div>
                 <div className="field_container">
                     <p> Téléphone </p>
                     <p className="right needed"> Nom </p>
-                    <input disabled={!this.state.modifyEnabled} type="text" className="telephone" value={this.state.info.telephone} onChange={this.onChange}/>
-                    <input disabled={!this.state.modifyEnabled} type="text" className="lastName" value={this.state.info.lastName} onChange={this.onChange}/>
+                    <input disabled={!this.state.modifyEnabled} type="text" className="telephone"
+                           value={this.state.info.telephone} onChange={this.onChange}/>
+                    <input disabled={!this.state.modifyEnabled} type="text" className="lastName"
+                           value={this.state.info.lastName} onChange={this.onChange}/>
                     <p> Département </p>
                     <p className="right p_info needed"> Prénom </p>
                     {this.renderDepartments()}
-                    <input disabled={!this.state.modifyEnabled} type="text" className="firstName" value={this.state.info.firstName} onChange={this.onChange}/>
+                    <input disabled={!this.state.modifyEnabled} type="text" className="firstName"
+                           value={this.state.info.firstName} onChange={this.onChange}/>
                     <p className="needed"> Adresse mail </p>
                     <p> Travaille chez </p>
-                    <input disabled={!this.state.modifyEnabled} type="text" className="email" value={this.state.info.email} onChange={this.onChange}/>
-                    <input disabled={!this.state.modifyEnabled} type="text" className="company" value={this.state.info.company} onChange={this.onChange}/>
+                    <input disabled={!this.state.modifyEnabled} type="text" className="email"
+                           value={this.state.info.email} onChange={this.onChange}/>
+                    <input disabled={!this.state.modifyEnabled} type="text" className="company"
+                           value={this.state.info.company} onChange={this.onChange}/>
                 </div>
                 <div className="button_container">
-                    <div className="div_button">
-                        { this.state.modifyEnabled ? <Button className="input_button password" value="Changer mot de passe"  /> : null }
-                    </div>
-                    <div className="div_button">
-                        { this.state.modifyEnabled ? <Button className="input_button update" value="Sauvegarder" onClick={() => this.modifyProfile()} /> : null }
-                    </div>
+                    {
+                        this.state.modifyEnabled ?
+                            <React.Fragment>
+                                <Button className="input_button password" value="Changer mot de passe"/>
+                                <Button className="input_button update" value="Sauvegarder"
+                                        onClick={() => this.modifyProfile()}/>
+                            </React.Fragment> :
+                            null
+                    }
                 </div>
 
             </form>
@@ -150,7 +168,7 @@ class ProfileForm extends Component {
 
 function Button(props) {
     return (
-        <input className={props.className} type="button" value={props.value} onClick= {props.onClick}/>
+        <input className={props.className} type="button" value={props.value} onClick={props.onClick}/>
     );
 }
 
