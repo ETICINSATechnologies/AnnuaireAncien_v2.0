@@ -1,22 +1,51 @@
 .ProfileForm {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(7, 1fr) 10vmin;
-
+    grid-template-rows: 2fr 2fr 1fr;
     background-color: white;
 
     justify-self: center;
     vertical-align: middle;
-    border: 0.3vmin solid black;
+    border: 0.6vmin solid black;
     margin: 5vmin auto;
     padding: 1vw;
 
     width: 90%;
-    height: calc(85vh - 6.5vw - 2.5vmax )
+    height: calc(85vh - 6.5vw - 2.5vmax );
 }
 
-.ProfileForm * {
-    width: 85%;
+.ProfileForm .header_container {
+    display: grid;
+    grid-template-columns: 5fr 4fr 1fr;
+    grid-template-rows: 1fr;
+    margin: auto;
+}
+
+.ProfileForm .field_container {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    margin: auto;
+}
+
+.ProfileForm .field_container input, p {
+    width: 90%;
+}
+
+.ProfileForm .field_container select {
+    width: 90%;
+}
+
+.ProfileForm .button_container {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    margin: 0.5vmin auto;
+}
+
+.ProfileForm .button_container input {
+    width: 80%;
 }
 
 .ProfileForm .needed:after {
@@ -24,14 +53,15 @@
     color: red;
 }
 
-.ProfileForm input[type="text"] {
+.ProfileForm input[type="text"], .ProfileForm select {
     border: 0.3vmin solid black;
     font-size: 3vmin;
     padding-left: 1vmin;
     height: 5vmin;
 }
 
-.ProfileForm p, input[type="text"] {
+.ProfileForm p, input[type="text"], .ProfileForm select{
+    background-color: white;
     justify-self: center;
 }
 
@@ -39,20 +69,16 @@
     grid-column: 2;
 }
 
-.ProfileForm .info_area {
+.ProfileForm h1 {
     text-align: center;
     justify-self: center;
     vertical-align: middle;
+    width: 77%;
+    font-size: 2.5vw;
 
-    z-index:1;
     color: #009e11;
 
     margin: auto;
-}
-
-.ProfileForm .info_area {
-    width: 80%;
-    font-size: 4vh;
 }
 
 @media (orientation: portrait) {
@@ -80,9 +106,8 @@
     z-index: 2;
 
     animation-duration: 2s;
-
-    width: 100%;
-    height: 22vmin;
+    width: auto;
+    max-height:22vmin;
 }
 
 .ProfileForm .div_button {
@@ -102,7 +127,7 @@
     font-size: 1.7vw;
     border: 0.3vmin solid black;
 
-    height: 70%;
+    height: 7vmin;
 }
 
 .ProfileForm .input_button:hover {
@@ -111,11 +136,19 @@
 }
 
 .ProfileForm .password {
-    color: black;
+    visibility: hidden;
     background: #dddddd;
 }
 
 .ProfileForm .update {
     color: white;
     background-color: #009e0f;
+}
+
+.ProfileForm .modifier {
+    width: 65%;
+    margin: 1vmin auto auto;
+    grid-column: 3;
+    vertical-align: top;
+    horiz-align: right;
 }
