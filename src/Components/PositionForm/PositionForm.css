@@ -53,6 +53,7 @@
     height: 80%;
     justify-self: left;
     font-size: 3vmin;
+    padding-left: 1vmin;
 }
 
 .position_form .position_container select {

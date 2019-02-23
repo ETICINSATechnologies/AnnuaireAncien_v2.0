@@ -51,15 +51,17 @@ class PositionForm extends Component {
     }
 
     addPosition() {
-        let lastPosition = {
-            id: 0,
-            isBoard: false,
-            year: '2019'
-        };
-        this.setState({
-            currentPositions: [...this.state.currentPositions, lastPosition]
-        });
-        this.props.updatePositions([...this.state.currentPositions, lastPosition]);
+        if (this.state.currentPositions.length < 4) {
+            let lastPosition = {
+                id: 0,
+                isBoard: false,
+                year: '2019'
+            };
+            this.setState({
+                currentPositions: [...this.state.currentPositions, lastPosition]
+            });
+            this.props.updatePositions([...this.state.currentPositions, lastPosition]);
+        }
     }
 
 
@@ -67,7 +69,7 @@ class PositionForm extends Component {
         if (this.state.positions.length !== 0) {
             let updatePosition = this.updatePosition.bind(this);
             let deletePosition = this.deletePosition.bind(this);
-            let PositionsList = this.state.currentPositions.map(function (position, index) {
+            let PositionsList = this.state.currentPositions.map((position, index) => {
                 return (
                     <Position
                         key={index}
@@ -126,14 +128,17 @@ class Position extends Component {
             });
         }
         else {
-            this.setState({
-                position: {
-                    ...this.state.position,
-                    year: parseInt(event.target.value, 10)
-                }
-            }, () => {
-                this.props.updatePosition(this.state.position, this.props.index);
-            });
+            let newYear = parseInt(event.target.value, 10);
+            if (newYear < 10000) {
+                this.setState({
+                    position: {
+                        ...this.state.position,
+                        year: parseInt(event.target.value, 10)
+                    }
+                }, () => {
+                    this.props.updatePosition(this.state.position, this.props.index);
+                });
+            }
         }
     }
 
@@ -162,7 +167,7 @@ class Position extends Component {
                         className="position dropdown"
                         value={this.state.position.id}
                         onChange={this.onChange}>
-                    <option value={0}> Choisir un poste </option>
+                    <option value={0}> Choisir un poste</option>
                     {positionDropDown}
                 </select>
                 <input disabled={!this.state.modifyEnabled}
