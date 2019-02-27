@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MemberDisplay component renders without crashing 1`] = `
+<tr
+  className="MemberDisplay undefined"
+  onClick={[Function]}
+>
+  <td
+    className="firstName"
+  />
+  <td
+    className="lastName"
+  />
+  <td
+    className="positionLabel"
+  />
+  <td
+    className="positionYear"
+  >
+    2018
+  </td>
+</tr>
+`;

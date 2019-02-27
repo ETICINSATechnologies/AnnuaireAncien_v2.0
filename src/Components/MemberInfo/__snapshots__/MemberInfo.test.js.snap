@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MemberInfo component renders without crashing 1`] = `
+<section
+  className="MemberInfo"
+>
+  <div
+    className="infoTitle"
+  >
+     Info du membre
+  </div>
+  
+</section>
+`;

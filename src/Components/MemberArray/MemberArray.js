@@ -132,15 +132,17 @@ class MemberArray extends Component {
         }
 
         return (
-            <section className={`MemberArray ${this.props.className}`}>
-                <table>
-                    <caption>
-                        Liste des membres {this.props.board ? 'du CA' : ''}
-                    </caption>
-                    <thead><MemberDisplay header info/></thead>
-                    <tbody>{members}</tbody>
-                </table>
-            </section>
+
+                <section className={`MemberArray ${this.props.className}`}>
+                    <table>
+                        <caption>
+                            Liste des membres {this.props.board ? 'du CA' : ''}
+                        </caption>
+                        <thead><MemberDisplay header info/></thead>
+                        <tbody>{members}</tbody>
+                    </table>
+                </section>
+
         );
     }
 }

@@ -29,17 +29,22 @@ class MemberInfo extends Component {
     getNewProperty() {
         let newProperties = {};
         Object.keys(this.propertiesName).forEach((property) => {
-            if (this.props.info.hasOwnProperty(property)) {
-                if (property === 'department')
-                    newProperties[property] = this.props.info[property].name;
-                else
-                    newProperties[property] = this.props.info[property];
+            if (this.props.infos) {
+                if (this.props.info.hasOwnProperty(property)) {
+                    if (property === 'department')
+                        newProperties[property] = this.props.info[property].name;
+                    else
+                        newProperties[property] = this.props.info[property];
+                }
             }
         });
-        if (this.props.info['positions']) {
-            newProperties['position'] = this.props.info['positions'][0].label;
-            newProperties['year'] = '2018';
+        if(this.props.info){
+            if (this.props.info['positions']) {
+                newProperties['position'] = this.props.info['positions'][0].label;
+                newProperties['year'] = '2018';
+            }
         }
+
 
         return newProperties;
     }
@@ -68,8 +73,11 @@ class MemberInfo extends Component {
         });
 
         let gender = 'M';
-        if (this.props.info['gender'])
-            gender = this.props.info['gender'].label;
+        if (this.props.info){
+            if (this.props.info['gender'])
+                gender = this.props.info['gender'].label;
+        }
+
 
         return (
             <section className='MemberInfo'>

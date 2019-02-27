@@ -43,8 +43,10 @@ class MemberDisplay extends Component {
     getMemberProperties(propertiesName) {
         let newProperties = {};
         Object.keys(propertiesName).forEach((propertyName) => {
-            if (this.props.info.hasOwnProperty(propertyName)) {
-                newProperties[propertyName] = this.props.info[propertyName];
+            if (this.props.info) {
+                if (this.props.info.hasOwnProperty(propertyName)) {
+                    newProperties[propertyName] = this.props.info[propertyName];
+                }
             }
         });
         newProperties.positionLabel = this.getPositionLabel();
@@ -55,24 +57,24 @@ class MemberDisplay extends Component {
 
     render() {
         return (
-            <tr className={`MemberDisplay ${this.state.properties.id}`} onClick={() => this.props.onClick(this.state.properties.id)}>
-                {this.state.header
-                    ?
-                    <React.Fragment>
-                        <th className='firstName'>{this.state.propertiesName.firstName}</th>
-                        <th className='lastName'>{this.state.propertiesName.lastName}</th>
-                        <th className='positionLabel'>{this.state.propertiesName.positionLabel}</th>
-                        <th className='positionYear'>{this.state.propertiesName.positionYear}</th>
-                    </React.Fragment>
-                    :
-                    <React.Fragment>
-                        <td className='firstName'>{this.state.properties.firstName}</td>
-                        <td className='lastName'>{this.state.properties.lastName}</td>
-                        <td className='positionLabel'>{this.state.properties.positionLabel}</td>
-                        <td className='positionYear'>{this.state.properties.positionYear}</td>
-                    </React.Fragment>
-                }
-            </tr>
+                <tr className={`MemberDisplay ${this.state.properties.id}`} onClick={() => this.props.onClick(this.state.properties.id)}>
+                    {this.state.header
+                        ?
+                        <React.Fragment>
+                            <th className='firstName'>{this.state.propertiesName.firstName}</th>
+                            <th className='lastName'>{this.state.propertiesName.lastName}</th>
+                            <th className='positionLabel'>{this.state.propertiesName.positionLabel}</th>
+                            <th className='positionYear'>{this.state.propertiesName.positionYear}</th>
+                        </React.Fragment>
+                        :
+                        <React.Fragment>
+                            <td className='firstName'>{this.state.properties.firstName}</td>
+                            <td className='lastName'>{this.state.properties.lastName}</td>
+                            <td className='positionLabel'>{this.state.properties.positionLabel}</td>
+                            <td className='positionYear'>{this.state.properties.positionYear}</td>
+                        </React.Fragment>
+                    }
+                </tr>
         );
     }
 }

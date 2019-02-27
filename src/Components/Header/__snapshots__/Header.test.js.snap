@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header component renders without crashing 1`] = `
+<header
+  className="Header"
+>
+  <a
+    className="header_a"
+    href="/"
+  >
+    <img
+      alt=""
+      className="home_logo"
+      src="home_logo.png"
+    />
+    <h1
+      className="title"
+    >
+       Annuaire des Anciens
+    </h1>
+  </a>
+</header>
+`;

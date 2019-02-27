@@ -1,0 +1,103 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MemberArray component renders without crashing 1`] = `
+<section
+  className="MemberArray undefined"
+>
+  <table>
+    <caption>
+      Liste des membres 
+      
+    </caption>
+    <thead>
+      <tr
+        className="MemberDisplay undefined"
+        onClick={[Function]}
+      >
+        <th
+          className="firstName"
+        >
+          prénom
+        </th>
+        <th
+          className="lastName"
+        >
+          nom
+        </th>
+        <th
+          className="positionLabel"
+        >
+          poste
+        </th>
+        <th
+          className="positionYear"
+        >
+          année
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td />
+        <td />
+        <td />
+        <td />
+      </tr>
+      <tr>
+        <td />
+        <td />
+        <td />
+        <td />
+      </tr>
+      <tr>
+        <td />
+        <td />
+        <td />
+        <td />
+      </tr>
+      <tr>
+        <td />
+        <td />
+        <td />
+        <td />
+      </tr>
+      <tr>
+        <td />
+        <td />
+        <td />
+        <td />
+      </tr>
+      <tr>
+        <td />
+        <td />
+        <td />
+        <td />
+      </tr>
+      <tr>
+        <td />
+        <td />
+        <td />
+        <td />
+      </tr>
+      <tr>
+        <td />
+        <td />
+        <td />
+        <td />
+      </tr>
+      <tr>
+        <td />
+        <td />
+        <td />
+        <td />
+      </tr>
+      <tr>
+        <td />
+        <td />
+        <td />
+        <td />
+      </tr>
+    </tbody>
+  </table>
+</section>
+`;
