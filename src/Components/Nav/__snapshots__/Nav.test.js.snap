@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Nav component renders without crashing 1`] = `
+<nav
+  className="Nav"
+>
+  <div
+    className="Menu"
+  />
+  <a
+    className="help_link"
+    href="/help"
+  >
+    <img
+      alt=""
+      className="help_icon"
+      src="help_icon.png"
+    />
+  </a>
+</nav>
+`;

@@ -33,21 +33,22 @@ class Nav extends Component {
 
     render() {
         let navButtons = [];
-
-        for (let i = 0; i < this.props.buttons.length; i++) {
-            let currentButton = this.state[this.props.buttons[i]];
-            if (this.props.buttons[i] === 'disconnection')
-                navButtons.push(
-                    <a className="button" key={i} href={currentButton.href} onClick={Auth.disconnect}>
-                        {currentButton.value}
-                    </a>
-                );
-            else
-                navButtons.push(
-                    <a className="button" key={i} href={currentButton.href}>
-                        {currentButton.value}
-                    </a>
-                );
+        if (this.props.buttons){
+            for (let i = 0; i < this.props.buttons.length; i++) {
+                let currentButton = this.state[this.props.buttons[i]];
+                if (this.props.buttons[i] === 'disconnection')
+                    navButtons.push(
+                        <a className="button" key={i} href={currentButton.href} onClick={Auth.disconnect}>
+                            {currentButton.value}
+                        </a>
+                    );
+                else
+                    navButtons.push(
+                        <a className="button" key={i} href={currentButton.href}>
+                            {currentButton.value}
+                        </a>
+                    );
+            }
         }
 
         return (

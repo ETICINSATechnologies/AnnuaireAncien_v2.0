@@ -1,0 +1,96 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProfileForm component renders without crashing 1`] = `
+<form
+  className="ProfileForm"
+>
+  <div
+    className="info_area"
+  >
+    Appuyer sur Sauvegarder pour enregistrer les modifications
+  </div>
+  <div
+    className="image"
+  >
+     
+  </div>
+  <p>
+     Téléphone 
+  </p>
+  <p
+    className="right needed"
+  >
+     Nom 
+  </p>
+  <input
+    className="telephone"
+    onChange={[Function]}
+    type="text"
+    value=""
+  />
+  <input
+    className="lastName"
+    onChange={[Function]}
+    type="text"
+    value=""
+  />
+  <p>
+     Département 
+  </p>
+  <p
+    className="right p_info needed"
+  >
+     Prénom 
+  </p>
+  <input
+    className="department"
+    onChange={[Function]}
+    type="text"
+    value=""
+  />
+  <input
+    className="firstName"
+    onChange={[Function]}
+    type="text"
+    value=""
+  />
+  <p
+    className="needed"
+  >
+     Adresse mail 
+  </p>
+  <p>
+     Travaille chez 
+  </p>
+  <input
+    className="email"
+    onChange={[Function]}
+    type="text"
+    value=""
+  />
+  <input
+    className="company"
+    onChange={[Function]}
+    type="text"
+    value=""
+  />
+  <div
+    className="div_button"
+  >
+    <input
+      className="input_button password"
+      type="button"
+      value="Changer mot de passe"
+    />
+  </div>
+  <div
+    className="div_button"
+  >
+    <input
+      className="input_button update"
+      type="button"
+      value="Sauvegarder"
+    />
+  </div>
+</form>
+`;
