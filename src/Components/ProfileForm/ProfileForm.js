@@ -27,7 +27,6 @@ class ProfileForm extends Component {
         this.onChange = this.onChange.bind(this);
     }
 
-
     onChange(event) {
         event.persist();
         if (this.state.info.hasOwnProperty(event.target.className)) {
@@ -65,10 +64,11 @@ class ProfileForm extends Component {
 
         };
 
-        if(this.state.info.department===null){
-            data.departmentId=null;
-        } else {
-            data.departmentId=this.state.info.department.id;
+        if (this.state.info.department === null) {
+            data.departmentId = null;
+        }
+        else {
+            data.departmentId = this.state.info.department.id;
         }
 
         this.props.update(data);
@@ -109,8 +109,7 @@ class ProfileForm extends Component {
                         0 :
                         this.state.info.department.id}
                     onChange={this.onChange}
-                    disabled={!this.state.modifyEnabled}
-            >
+                    disabled={!this.state.modifyEnabled}>
                 <option value={0}> Choisir un departement</option>
                 {departmentDropDown}
             </select>
@@ -124,8 +123,8 @@ class ProfileForm extends Component {
                     <h1>
                         {
                             this.state.modifyEnabled ?
-                            "Appuyer sur la croix pour annuler" :
-                            "Appuyer sur le crayon pour modifier"
+                                "Appuyer sur la croix pour annuler" :
+                                "Appuyer sur le crayon pour modifier"
                         }
                     </h1>
                     <img className="image" src={noPhotoIcon} alt="Profile"/>
@@ -153,7 +152,7 @@ class ProfileForm extends Component {
                     <input disabled={!this.state.modifyEnabled} type="text" className="email"
                            value={this.state.info.email} onChange={this.onChange}/>
                     <input disabled={!this.state.modifyEnabled} type="text" className="company"
-                           value={this.state.info.company} onChange={this.onChange}/>
+                           value={this.state.info.company || ''} onChange={this.onChange}/>
                 </div>
                 <div className="button_container">
                     {
@@ -166,7 +165,6 @@ class ProfileForm extends Component {
                             null
                     }
                 </div>
-
             </form>
         );
     }

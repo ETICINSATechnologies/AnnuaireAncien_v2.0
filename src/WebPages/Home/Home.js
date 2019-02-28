@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import './Home.css';
 import Header from "../../Components/Header/Header";
 import Nav from "../../Components/Nav/Nav";
-import CA from "./CA";
+import Board from "./Board";
 import Auth from "../../Components/Auth/Auth";
 import fetch from "../../__mocks__/fetch";
 
@@ -24,7 +24,7 @@ class Home extends Component {
             .then(res => res.json())
             .then((result) => {
                 if (result.content) {
-                    let rightBoard = result.content;
+                    let rightBoard = Array.from(result.content);
                     let leftBoard = rightBoard.splice(0, rightBoard.length / 2);
                     this.setState({
                         leftBoard: leftBoard,
@@ -48,12 +48,12 @@ class Home extends Component {
                 <Nav buttons={activeButton}> </Nav>
                 <div className="Home">
                     <section className="home">
-                        <CA className="left_CA" members={this.state.leftBoard} position="left"/>
+                        <Board className="left_CA" members={this.state.leftBoard} position="left"/>
                         <div className="home_title">
                             <p className="welcome"> Bienvenue sur l'annuaire des anciens </p>
                             <p className="welcome_etic"> ETIC INSA TECHNOLOGIES </p>
                         </div>
-                        <CA className="right_CA" members={this.state.rightBoard} position="right"/>
+                        <Board className="right_CA" members={this.state.rightBoard} position="right"/>
                     </section>
                 </div>
             </React.Fragment>
