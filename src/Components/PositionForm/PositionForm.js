@@ -12,8 +12,9 @@ class PositionForm extends Component {
             positions: [],
             currentPositions: [],
         };
+        this.updatePosition = this.updatePosition.bind(this);
+        this.deletePosition = this.deletePosition.bind(this);
     }
-
 
     componentDidUpdate(prevProps) {
         if (this.props !== prevProps) {
@@ -55,7 +56,7 @@ class PositionForm extends Component {
             let lastPosition = {
                 id: 0,
                 isBoard: false,
-                year: '2019'
+                year: new Date().getFullYear()
             };
             this.setState({
                 currentPositions: [...this.state.currentPositions, lastPosition]
@@ -64,11 +65,8 @@ class PositionForm extends Component {
         }
     }
 
-
     renderPositions() {
         if (this.state.positions.length !== 0) {
-            let updatePosition = this.updatePosition.bind(this);
-            let deletePosition = this.deletePosition.bind(this);
             let PositionsList = this.state.currentPositions.map((position, index) => {
                 return (
                     <Position
@@ -76,10 +74,10 @@ class PositionForm extends Component {
                         year={''}
                         positions={this.state.positions}
                         position={position}
-                        updatePosition={updatePosition}
+                        updatePosition={this.updatePosition}
                         index={index}
                         modifyEnabled={this.state.modifyEnabled}
-                        deletePosition={deletePosition}
+                        deletePosition={this.deletePosition}
                     />
                 )
             }, this);
@@ -128,12 +126,11 @@ class Position extends Component {
             });
         }
         else {
-            let newYear = parseInt(event.target.value, 10);
-            if (newYear < 10000) {
+            if (event.target.value.match(/^(\d?){4}$/)) {
                 this.setState({
                     position: {
                         ...this.state.position,
-                        year: parseInt(event.target.value, 10)
+                        year: event.target.value
                     }
                 }, () => {
                     this.props.updatePosition(this.state.position, this.props.index);
@@ -173,7 +170,7 @@ class Position extends Component {
                 <input disabled={!this.state.modifyEnabled}
                        type="text"
                        className="year"
-                       value={this.state.position.year}
+                       value={this.state.position.year || ''}
                        onChange={this.onChange}
                 />
             </div>

@@ -91,6 +91,7 @@ class Profile extends Component {
                     console.log('update fail');
                 }
             });
+
         //disable modifications
         if (this.state.modifyEnabled) this.setModify(false);
     }
@@ -100,7 +101,6 @@ class Profile extends Component {
             modifyEnabled: state,
         });
     }
-
 
     updatePositions(positions){
         this.setState({

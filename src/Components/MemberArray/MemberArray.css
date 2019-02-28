@@ -1,4 +1,8 @@
-table {
+.MemberArray {
+    display: grid;
+}
+
+.MemberArray table {
     font-family: Arial, Helvetica, sans-serif;
     border: 0.3vmin solid black;
     border-collapse: collapse;
@@ -8,28 +12,36 @@ table {
     height: 100%;
 }
 
-caption {
+.MemberArray .info {
+    font-size: 2.5vw;
+    margin: auto;
+    padding-top: 10vw;
+    text-align: center;
+    height: 40%;
+}
+
+.MemberArray caption {
     margin: 0 0 1vmin 0;
 }
 
-thead, tbody {
+.MemberArray thead, tbody {
     display: block;
     table-layout: fixed;
     width: 100%;
 }
 
-thead {
+.MemberArray thead {
     background-color: rgb(155, 202, 139);
     margin-bottom: 0.3vw;
     box-shadow: 0 0.2vw 0.3vw #888888;
 }
 
-tbody {
+.MemberArray tbody {
     overflow-y: auto;
     overflow-x: hidden;
 }
 
-td, th {
+.MemberArray td, th {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -38,31 +50,31 @@ td, th {
     border-left: 0.2vmin solid black;
 }
 
-td:first-child, th:first-child{
+.MemberArray td:first-child, th:first-child{
     border-left: 0;
 }
 
-tr:last-child td {
+.MemberArray tr:last-child td {
     border-bottom: 0;
 }
 
-td {
+.MemberArray td {
     cursor: pointer;
 }
 
-tr {
+.MemberArray tr {
     background-color: white;
 }
 
-tr:nth-child(even) {
+.MemberArray tr:nth-child(even) {
     background-color: #f2f2f2;
 }
 
-tr:hover {
+.MemberArray tr:hover {
     background-color: #ddd;
 }
 
-th {
+.MemberArray th {
     color: white;
     background-color: rgb(155, 202, 139);
 

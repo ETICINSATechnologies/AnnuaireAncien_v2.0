@@ -8,36 +8,12 @@ class MemberArray extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            status: 'pending',
+            status: 'pending', // 'noResult', 'result'
             mapping: {},
             info: {}
         };
         this.getMembers = this.getMembers.bind(this);
     }
-
-    // getMembers() {
-    //     let url = 'api/v1/core/member';
-    //     if (this.props.board) url += '/board/latest';
-    //     fetch(url, {
-    //         headers: {
-    //             Authorization: Auth.getToken()
-    //         }
-    //     })
-    //         .then(res => res.json())
-    //         .then((result) => {
-    //             if (result) {
-    //                 this.setState({
-    //                     status: 'processing',
-    //                     info: result
-    //                 });
-    //             }
-    //             let mapping = this.mapMembers();
-    //             this.setState({
-    //                 mapping: mapping
-    //             })
-    //         })
-    // }
-
 
     componentDidMount() {
         if (!this.props.search)
@@ -45,10 +21,6 @@ class MemberArray extends Component {
     }
 
     getMembers(searchArray) {
-
-        // let params = [];
-        // let url = new URL('api/v1/core/member');
-        // console.log(url);
         let url = 'api/v1/core/member';
         if (searchArray) {
             Object.keys(searchArray).forEach((key, i) => {
@@ -57,8 +29,10 @@ class MemberArray extends Component {
                 url += key + '=' + searchArray[key];
             });
         }
-        console.log(url);
         if (this.props.board) url += '/board/latest';
+        this.setState({
+            status: 'pending'
+        });
 
         fetch(url, {
             headers: {
@@ -67,19 +41,25 @@ class MemberArray extends Component {
         })
             .then(res => res.json())
             .then((result) => {
-                if (result) {
+                if (result && result.content.length > 0) {
+                    console.log(result);
                     this.setState({
-                        status: 'processing',
+                        status: 'result',
                         info: result
+                    }).then(() => {
+                        let mapping = this.mapMembers();
+                        this.setState({
+                            mapping: mapping
+                        })
                     });
                 }
-                let mapping = this.mapMembers();
-                this.setState({
-                    mapping: mapping
-                })
+                else {
+                    this.setState({
+                        status: 'noResult'
+                    })
+                }
             })
     }
-
 
     /**
      Associate the id of a member with its position in the array 'state.info.content'
@@ -104,8 +84,16 @@ class MemberArray extends Component {
     }
 
     render() {
+        console.log(this.state.status);
         let members = [];
-        if (this.state.status === 'pending') {
+        if (this.state.status === 'noResult') {
+            return (
+                <section className={`MemberArray ${this.props.className}`}>
+                    <div className='info'>La recherche n'a donné aucun résultat</div>
+                </section>
+            );
+        }
+        else if (this.state.status === 'pending') {
             for (let j = 0; j < 10; j++)
                 members.push(
                     <tr key={j}>
@@ -118,15 +106,11 @@ class MemberArray extends Component {
         }
         else if (this.state.info.hasOwnProperty('content')) {
             for (let i = 0; i < this.state.info.content.length; i++) {
-                if (!this.state.info.content[i]) {
-                    //infos membre supprimés
-                } else {
+                if (this.state.info.content[i])
                     members.push(
                         <MemberDisplay key={i} info={this.state.info.content[i]}
                                        onClick={(id) => this.props.onClick(this.getMemberById(id))}/>
                     )
-                }
-
             }
         }
 

@@ -17,6 +17,7 @@ class Connection extends Component {
             statusMessage: {
                 connect: '',
                 loading: '',
+                error: 'Une erreur est survenue',
                 invalid: 'Identifiant ou mot de passe invalide',
                 missingValue: 'Veuillez compléter tous les champs du formulaire !'
             }
@@ -46,13 +47,14 @@ class Connection extends Component {
                 body: JSON.stringify(this.state.parameters)
             })
                 .then(res => {
-                    if (res.status !== 200)
+                    if (res.status === 500)
+                        this.setState({status: 'error'});
+                    else if (res.status === 401)
                         this.setState({status: 'invalid'});
                     else {
                         this.setState({status: 'pending'});
                         res.json()
                             .then(result => {
-                                console.log("token: " + result.token);
                                 Auth.connect(result.token);
                                 this.setState({status: 'connect'})
                             })

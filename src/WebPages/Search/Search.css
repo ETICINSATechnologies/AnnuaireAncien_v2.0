@@ -33,6 +33,13 @@
     margin-left: 0;
 }
 
+.Search .searchForm select {
+    width: 92%;
+    font-size: 1.2vw;
+    padding: 0.5vw;
+    margin-left: 0;
+}
+
 .Search .searchForm .searchInput {
     grid-column: 2;
     font-size: 2vw;
