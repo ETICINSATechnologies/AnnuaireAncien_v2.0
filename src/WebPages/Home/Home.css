@@ -43,7 +43,7 @@
     margin: auto;
 }
 
-.Home .CA {
+.Home .Board {
     display: grid;
     font-size: 2vmin;
 }
@@ -58,29 +58,29 @@
     background: rgba(155, 202, 139, 1);
 }
 
-.Home .CA div {
+.Home .Board div {
     display: grid;
 }
 
-.Home .CA div:hover img {
+.Home .Board div:hover img {
     cursor: pointer;
     opacity: 0.4;
     z-index: 0;
 }
 
-.Home .CA div:hover p {
+.Home .Board div:hover p {
     cursor: pointer;
     display: grid;
     z-index: 1;
 }
 
-.Home .CA div * {
+.Home .Board div * {
     grid-column: 1;
     grid-row: 1;
     margin: auto;
 }
 
-.Home .CA div img {
+.Home .Board div img {
     border-radius: 50%;
 }
 
@@ -94,7 +94,7 @@
     max-width: calc(0.8 * var(--board-right-width));
 }
 
-.Home .CA div p {
+.Home .Board div p {
     width: 90%;
     color: white;
     display: none;

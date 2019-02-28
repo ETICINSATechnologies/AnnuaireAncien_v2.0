@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import defaultMan from '../../Images/default_man.svg'
 import defaultWoman from '../../Images/default_woman.svg'
 
-class CA extends Component {
+class Board extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -46,7 +46,7 @@ class CA extends Component {
         document.documentElement.style.setProperty(`--board-${this.props.position}-width`, columnHeight);
 
         return (
-            <div ref={(DOMBoard) => this.DOMBoard = DOMBoard} className={"CA " + this.props.position}
+            <div ref={(DOMBoard) => this.DOMBoard = DOMBoard} className={"Board " + this.props.position}
                  style={boardStyle}>
                 {
                     this.props.members.map((member, index) => {
@@ -71,4 +71,4 @@ class CA extends Component {
     }
 }
 
-export default CA;
+export default Board;

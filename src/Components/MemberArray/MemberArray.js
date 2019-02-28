@@ -8,7 +8,7 @@ class MemberArray extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            status: 'pending', // 'noResult', 'result'
+            status: 'init', // 'noResult', 'result', 'pending
             mapping: {},
             info: {}
         };
@@ -42,16 +42,12 @@ class MemberArray extends Component {
             .then(res => res.json())
             .then((result) => {
                 if (result && result.content.length > 0) {
-                    console.log(result);
+                    let mapping = this.mapMembers(result);
                     this.setState({
                         status: 'result',
-                        info: result
-                    }).then(() => {
-                        let mapping = this.mapMembers();
-                        this.setState({
-                            mapping: mapping
-                        })
-                    });
+                        info: result,
+                        mapping: mapping
+                    })
                 }
                 else {
                     this.setState({
@@ -64,10 +60,10 @@ class MemberArray extends Component {
     /**
      Associate the id of a member with its position in the array 'state.info.content'
      */
-    mapMembers() {
+    mapMembers(result) {
         let i = 0;
         let mapping = {};
-        this.state.info.content.forEach((member) => {
+        result.content.forEach((member) => {
             if (!(member.id in mapping))
                 mapping[member.id] = i++;
         });
@@ -84,27 +80,9 @@ class MemberArray extends Component {
     }
 
     render() {
-        console.log(this.state.status);
         let members = [];
-        if (this.state.status === 'noResult') {
-            return (
-                <section className={`MemberArray ${this.props.className}`}>
-                    <div className='info'>La recherche n'a donné aucun résultat</div>
-                </section>
-            );
-        }
-        else if (this.state.status === 'pending') {
-            for (let j = 0; j < 10; j++)
-                members.push(
-                    <tr key={j}>
-                        <td/>
-                        <td/>
-                        <td/>
-                        <td/>
-                    </tr>
-                )
-        }
-        else if (this.state.info.hasOwnProperty('content')) {
+
+        if (this.state.status === 'result' && this.state.info.hasOwnProperty('content')) {
             for (let i = 0; i < this.state.info.content.length; i++) {
                 if (this.state.info.content[i])
                     members.push(
@@ -112,6 +90,18 @@ class MemberArray extends Component {
                                        onClick={(id) => this.props.onClick(this.getMemberById(id))}/>
                     )
             }
+        }
+        else {
+            let message;
+            if (this.state.status === 'init') message = "Vous pouvez effectuer une recherche sur les critères ci-contre";
+            else if (this.state.status === 'noResult') message = "La recherche n'a donné aucun résultat";
+            else if (this.state.status === 'pending') message = "Chargement...";
+
+            return (
+                <section className={`MemberArray ${this.props.className}`}>
+                    <div className='info'>{message}</div>
+                </section>
+            );
         }
 
         return (

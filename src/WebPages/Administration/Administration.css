@@ -37,7 +37,7 @@
         margin: 1vw auto auto;
     }
 
-    /*CSS for CA array*/
+    /*CSS for Board array*/
     .Administration .CA {
         margin: 1vw auto auto;
     }
@@ -102,7 +102,7 @@
         width: auto;
     }
 
-    /*CSS for CA array*/
+    /*CSS for Board array*/
     .Administration .CA {
         grid-row: 1;
         grid-column: 1;
