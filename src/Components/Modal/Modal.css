@@ -1,0 +1,35 @@
+.Modal{
+    position: fixed;
+    top: 0;
+    bottom:0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0,0,0,0.3);
+    padding: 2vmin;
+}
+
+.Modal .content {
+    background-color: #7ee385;
+    border-radius: 2vmin;
+    width: 50vmin;
+    height: 50vmin;
+    margin: 0 auto;
+    padding: 8vmin;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: fixed;
+}
+
+.Modal .header {
+    position: absolute;
+    right: 2vmin;
+    top:2vmin;
+}
+
+.Modal .annuler {
+    width: 6vmin;
+    margin: 1vmin auto auto;
+    vertical-align: top;
+    horiz-align: right;
+}
