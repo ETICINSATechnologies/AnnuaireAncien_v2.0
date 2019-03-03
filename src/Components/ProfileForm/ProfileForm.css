@@ -103,7 +103,6 @@
 
     margin: auto auto 0 auto;
     background-color: white;
-    z-index: 2;
 
     animation-duration: 2s;
     width: auto;
@@ -136,7 +135,6 @@
 }
 
 .ProfileForm .password {
-    visibility: hidden;
     background: #dddddd;
 }
 
@@ -151,4 +149,39 @@
     grid-column: 3;
     vertical-align: top;
     horiz-align: right;
+}
+
+.ProfileForm .modal p {
+    display: grid;
+    background-color: #7ee385;
+}
+
+.ProfileForm .modal .content {
+    display: grid;
+    grid-template-rows: 2fr 2fr 2fr 2fr 2fr 2fr 2fr 3fr;
+    vertical-align: top;
+}
+.ProfileForm .modal .message{
+    display: grid;
+    text-align: center;
+}
+.ProfileForm .modal .input_button{
+    position: absolute;
+    background-color: #009e0f;
+    color:#fff;
+    bottom : 1vmin;
+    left : 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+.ProfileForm .modal input[type="password"] {
+    display: grid;
+    margin : 0 auto;
+    background-color: white;
+    justify-self: center;
+    border: 0.3vmin solid black;
+    font-size: 3vmin;
+    padding-left: 1vmin;
+    height: 5vmin;
 }

@@ -49,6 +49,9 @@ class Connection extends Component {
                 .then(res => {
                     if (res.status === 500)
                         this.setState({status: 'error'});
+                    else if (res.status === 400) {
+                        this.setState({status: 'invalid'});
+                    }
                     else if (res.status === 401)
                         this.setState({status: 'invalid'});
                     else {
