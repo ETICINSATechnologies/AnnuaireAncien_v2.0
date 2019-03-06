@@ -46,7 +46,13 @@
 }
 
 @keyframes display {
-    0% {color: white;}
-    40% {color: black;}
-    100% {color: white;}
+    0% {
+        color: white;
+    }
+    40% {
+        color: black;
+    }
+    100% {
+        color: white;
+    }
 }

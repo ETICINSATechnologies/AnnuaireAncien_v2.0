@@ -1,8 +1,25 @@
 import React, {Component} from 'react';
-import './MemberDisplay.css';
+import {MemberRead} from "../../Model/Member";
+
+interface MemberArrayElementProps {
+    key: number
+    memberInfo: MemberRead
+
+    selectMemberById(id: number): void
+}
 
 
-class MemberDisplay extends Component {
+const MemberArrayElement = (props: MemberArrayElementProps) =>
+    <tr onClick={() => props.selectMemberById((props.memberInfo as any).id)}>
+        <td className="firstName">{props.memberInfo.firstName}</td>
+        <td className="lastName">{props.memberInfo.lastName}</td>
+        <td className="positionLabel">{props.memberInfo.latestPosition}</td>
+        <td className="positionYear">{props.memberInfo.latestPosition}</td>
+    </tr>
+;
+
+
+/*class MemberArrayElements extends Component {
     constructor(props) {
         super(props);
         const propertiesName = {
@@ -55,7 +72,8 @@ class MemberDisplay extends Component {
 
     render() {
         return (
-            <tr className={`MemberDisplay ${this.state.properties.id}`} onClick={() => this.props.onClick(this.state.properties.id)}>
+            <tr className={`MemberArrayElement ${this.state.properties.id}`}
+                onClick={() => this.props.onClick(this.state.properties.id)}>
                 {this.state.header
                     ?
                     <React.Fragment>
@@ -75,6 +93,6 @@ class MemberDisplay extends Component {
             </tr>
         );
     }
-}
+}*/
 
-export default MemberDisplay;
+export default MemberArrayElement;

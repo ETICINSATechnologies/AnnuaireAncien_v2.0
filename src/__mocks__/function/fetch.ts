@@ -1,11 +1,11 @@
-import member from "../Tools/member";
-import members from "../Tools/members";
-import board from "../Tools/board";
-import departments from "../Tools/departments";
-import positions from "../Tools/positions";
+import member from "../data/member.json";
+import members from "../data/members.json";
+import board from "../data/board.json";
+import departments from "../data/departments.json";
+import positions from "../data/positions.json";
 
-export default (url) => {
-    let expectedResponse = null;
+export function fetch(url: string, param?: any): Promise<any> {
+    let expectedResponse: object;
 
     if (/auth\/login$/.test(url))
         expectedResponse = {token: 'this is a test token'};
@@ -19,8 +19,6 @@ export default (url) => {
         expectedResponse = departments;
     else if (/core\/position/.test(url))
         expectedResponse = positions;
-    else
-        return null;
 
     return Promise.resolve({
         status: 200,
@@ -30,4 +28,4 @@ export default (url) => {
             )
         }
     })
-};
+}

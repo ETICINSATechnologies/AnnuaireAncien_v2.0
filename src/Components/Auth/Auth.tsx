@@ -1,25 +1,21 @@
 class Auth {
-    static connect(jwt){
+    static connect(jwt: string) {
         sessionStorage.setItem('token', jwt);
     }
 
-    static disconnect(){
+    static disconnect(): void {
         sessionStorage.removeItem('token')
     }
 
-    static isConnected(){
+    static isConnected(): boolean {
         return !!sessionStorage.getItem('token');
     }
 
-    static getToken() {
-        return sessionStorage.getItem('token')
+    static getToken(): string {
+        return sessionStorage.getItem('token') as string;
     }
 
-    static getPayload(){
-        return sessionStorage.getItem('token');
-    }
-
-    static addCorrectButton(buttons){
+    static addCorrectButton(buttons: Array<string>) {
         if (this.isConnected())
             buttons.push("disconnection");
         else

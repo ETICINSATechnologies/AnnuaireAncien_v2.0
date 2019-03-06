@@ -1,24 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import {Redirect, Switch} from "react-router";
 import {BrowserRouter as Router, Route} from 'react-router-dom';
-import registerServiceWorker from './registerServiceWorker';
+import * as serviceWorker from './serviceWorker';
+
+import './index.css';
 
 import Home from "./WebPages/Home/Home";
 import Connection from "./WebPages/Connection/Connection";
+import Recovery from "./WebPages/Recovery/Recovery";
 import Help from "./WebPages/Help/Help";
-import Recuperation from "./WebPages/Recuperation/Recuperation";
 import Profile from "./WebPages/Profile/Profile";
 import Search from "./WebPages/Search/Search";
-import Administration from "./WebPages/Administration/Administration";
 
-import fetch from "./__mocks__/fetch";
-import Redirect from "react-router-dom/es/Redirect";
-import Switch from "react-router-dom/es/Switch";
 
 // mock or not the api call by redefining the fetch function
 if (process.env.REACT_APP_FETCH_MOCK === "true") {
-    global.fetch = fetch;
+    (global as any).fetch = fetch;
 }
 
 ReactDOM.render(
@@ -26,15 +24,13 @@ ReactDOM.render(
         <Switch>
             <Route exact path='/' component={Home}/>
             <Route exact path='/connection' component={Connection}/>
-            <Route exact path='/recup' component={Recuperation}/>
+            <Route exact path='/recovery' component={Recovery}/>
             <Route exact path='/help' component={Help}/>
-            <Route exact path='/profile' component={Profile}/>
             <Route exact path='/search' component={Search}/>
-            <Route exact path='/administration' component={Administration}/>
+            <Route exact path='/profile' component={Profile}/>
             <Redirect to='/'/>
         </Switch>
     </Router>
-    , document.getElementById('root')
-);
+    , document.getElementById('root'));
 
-registerServiceWorker();
+serviceWorker.register();

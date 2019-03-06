@@ -99,6 +99,10 @@
     grid-column: 3;
 }
 
+.position_form .delete_position:hover {
+    cursor: pointer;
+}
+
 .position_form .hidden {
     visibility: hidden;
 }
