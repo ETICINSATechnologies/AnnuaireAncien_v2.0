@@ -7,6 +7,9 @@ import {Redirect} from 'react-router-dom'
 import MemberArray from "../../Components/MemberArray/MemberArray";
 import MemberInfo from "../../Components/MemberInfo/MemberInfo";
 
+
+import Redirecting from "../Redirecting.js";
+
 class Search extends Component {
     constructor(props) {
         super(props);
@@ -19,7 +22,8 @@ class Search extends Component {
         };
         this.state = {
             status: 'noParameters', // 'PARAMETETERS' 'NO_PARAMETERS' 'pending'
-            memberInfo: {}
+            memberInfo: {},
+            redirecting : false
         };
         this.selectMember = this.selectMember.bind(this);
         this.makeSearch = this.makeSearch.bind(this)
@@ -27,6 +31,8 @@ class Search extends Component {
 
     selectMember(member) {
         this.setState({memberInfo: member});
+        if (!Auth.isConnected())
+            this.setState({redirecting:true});
     }
 
     makeSearch(event) {
@@ -47,8 +53,10 @@ class Search extends Component {
     }
 
     render() {
+
         let activeButton = ["home"];
         if (!Auth.isConnected())
+            // return Redirecting();
             return <Redirect to='/'/>;
 
         activeButton.push('profile');
@@ -69,6 +77,7 @@ class Search extends Component {
         return (
             <React.Fragment>
                 <Header/>
+
                 <Nav buttons={activeButton}> </Nav>
                 <section className="Search">
                     <div className="searchArea">
@@ -81,6 +90,7 @@ class Search extends Component {
                     <MemberArray className="members" onClick={this.selectMember} search ref="members"/>
                     <MemberInfo info={this.state.memberInfo}/>
                 </section>
+
             </React.Fragment>
         )
             ;

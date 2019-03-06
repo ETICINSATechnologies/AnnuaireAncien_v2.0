@@ -7,7 +7,7 @@ import Nav from "../../Components/Nav/Nav";
 import MemberArray from "../../Components/MemberArray/MemberArray";
 import MemberInfo from "../../Components/MemberInfo/MemberInfo";
 
-import {Route, Redirect} from 'react-router'
+import {Route, Switch, Redirect} from 'react-router'
 class Administration extends Component {
     constructor(props) {
         super(props);
@@ -20,6 +20,7 @@ class Administration extends Component {
     selectMember (member) {
         this.setState({memberInfo: member});
     }
+
 
     render() {
         if (!Auth.isConnected())

@@ -4,6 +4,7 @@ import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import renderer from 'react-test-renderer';
 import Auth from '../../Components/Auth/Auth';
+import {Router} from "react-router-dom";
 
 Enzyme.configure({adapter: new Adapter()});
 
@@ -23,8 +24,14 @@ describe( 'Search component', () => {
 
     it('Search not connected snapshot test', () => {
         Auth.isConnected = jest.fn(() => false);
-        const component = renderer.create(<Search/>);
+        // const component = renderer.create(<Search/>);
+        const component = document.createElement('div');
+        ReactDOM.render(shallow(
+            <Router>
+                <Search/>
+            </Router>), component);
         let tree = component.toJSON();
+        // let tree = component.toJSON();
         expect(tree).toMatchSnapshot();
 
     });
