@@ -48,7 +48,7 @@ class Profile extends Component {
             <React.Fragment>
                 <Header/>
                 <Nav buttons={activeButton}> </Nav>
-                <section className="Profile">
+                <section className='Profile'>
                     <ProfileForm info={this.state.info} function='update'/>
                 </section>
             </React.Fragment>

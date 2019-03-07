@@ -25,19 +25,6 @@ class Administration extends Component {
     render() {
         if (!Auth.isConnected())
             return <Redirect to='/'/>;
-
-        {/*<Route exact path="/" render={() => (*/}
-            {/*if (!Auth.isConnected())*/}
-                {/*return <Redirect to='/'/>;*/}
-        {/*)}/>*/}
-
-        {/*<Route exact path="/" render={() => (*/}
-            {/*loggedIn ? (*/}
-            {/*) : (*/}
-                {/*<Redirect to="/"/>*/}
-            {/*)*/}
-        {/*)}/>*/}
-
         let activeButton = ["home"];
         activeButton.push('search');
         activeButton.push('profile');

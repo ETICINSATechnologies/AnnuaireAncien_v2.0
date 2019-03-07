@@ -56,7 +56,6 @@ class Search extends Component {
 
         let activeButton = ["home"];
         if (!Auth.isConnected())
-            // return Redirecting();
             return <Redirect to='/'/>;
 
         activeButton.push('profile');

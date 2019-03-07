@@ -1,10 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Administration component Administration user connected snapshot test 1`] = `null`;
-
-exports[`Administration component Administration user not connected snapshot test 1`] = `null`;
-
-exports[`Administration component renders without crashing 1`] = `
+exports[`Search component Search connected snapshot test 1`] = `
 Array [
   <header
     className="Header"
@@ -39,21 +35,16 @@ Array [
       </a>
       <a
         className="button"
-        href="/search"
-      >
-        rechercher
-      </a>
-      <a
-        className="button"
         href="/profile"
       >
         mon profil
       </a>
       <a
         className="button"
-        href="/connection"
+        href="/"
+        onClick={[Function]}
       >
-        se connecter
+        se déconnecter
       </a>
     </div>
     <a
@@ -68,8 +59,87 @@ Array [
     </a>
   </nav>,
   <section
-    className="Administration"
+    className="Search"
   >
+    <div
+      className="searchArea"
+    >
+      <div
+        className="infoTitle"
+      >
+         Rechercher
+      </div>
+      <form
+        className="searchForm"
+      >
+        <div
+          className="firstNameDiv"
+        >
+           
+          Prénom
+           
+        </div>
+        <input
+          className="firstNameInput"
+          id="firstNameInput"
+          type="text"
+        />
+        <div
+          className="lastNameDiv"
+        >
+           
+          Nom
+           
+        </div>
+        <input
+          className="lastNameInput"
+          id="lastNameInput"
+          type="text"
+        />
+        <div
+          className="positionIdDiv"
+        >
+           
+          Poste
+           
+        </div>
+        <input
+          className="positionIdInput"
+          id="positionIdInput"
+          type="text"
+        />
+        <div
+          className="companyDiv"
+        >
+           
+          Entreprise
+           
+        </div>
+        <input
+          className="companyInput"
+          id="companyInput"
+          type="text"
+        />
+        <div
+          className="yearDiv"
+        >
+           
+          Année
+           
+        </div>
+        <input
+          className="yearInput"
+          id="yearInput"
+          type="text"
+        />
+        <input
+          className="searchInput"
+          onClick={[Function]}
+          type="submit"
+          value="Rechercher"
+        />
+      </form>
+    </div>
     <section
       className="MemberArray members"
     >
@@ -77,105 +147,6 @@ Array [
         <caption>
           Liste des membres 
           
-        </caption>
-        <thead>
-          <tr
-            className="MemberDisplay undefined"
-            onClick={[Function]}
-          >
-            <th
-              className="firstName"
-            >
-              prénom
-            </th>
-            <th
-              className="lastName"
-            >
-              nom
-            </th>
-            <th
-              className="positionLabel"
-            >
-              poste
-            </th>
-            <th
-              className="positionYear"
-            >
-              année
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td />
-            <td />
-            <td />
-            <td />
-          </tr>
-          <tr>
-            <td />
-            <td />
-            <td />
-            <td />
-          </tr>
-          <tr>
-            <td />
-            <td />
-            <td />
-            <td />
-          </tr>
-          <tr>
-            <td />
-            <td />
-            <td />
-            <td />
-          </tr>
-          <tr>
-            <td />
-            <td />
-            <td />
-            <td />
-          </tr>
-          <tr>
-            <td />
-            <td />
-            <td />
-            <td />
-          </tr>
-          <tr>
-            <td />
-            <td />
-            <td />
-            <td />
-          </tr>
-          <tr>
-            <td />
-            <td />
-            <td />
-            <td />
-          </tr>
-          <tr>
-            <td />
-            <td />
-            <td />
-            <td />
-          </tr>
-          <tr>
-            <td />
-            <td />
-            <td />
-            <td />
-          </tr>
-        </tbody>
-      </table>
-    </section>
-    <section
-      className="MemberArray CA"
-    >
-      <table>
-        <caption>
-          Liste des membres 
-          du CA
         </caption>
         <thead>
           <tr
@@ -281,3 +252,5 @@ Array [
   </section>,
 ]
 `;
+
+exports[`Search component Search not connected snapshot test 1`] = `null`;

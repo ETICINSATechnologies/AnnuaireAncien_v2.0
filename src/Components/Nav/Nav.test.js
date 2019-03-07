@@ -22,5 +22,16 @@ describe( 'Nav component', () => {
             .length
         ).toBe(1)
     });
-    
+
+    it('Button call disconnect service unit test', () => {
+        Auth.disconnect = jest.fn( () => true );
+        const tree = Enzyme.shallow(
+            <a className='button test' onClick={Auth.disconnect}>
+                value
+            </a>
+        );
+        tree.find('a').simulate('click');
+        expect(Auth.disconnect).toHaveBeenCalled();
+    });
+
 });
