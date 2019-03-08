@@ -20,6 +20,7 @@ export interface MemberRead extends MemberGeneric {
     department?: string
     latestPosition: string
     latestYear: string
+    company: string
 
     [property: string]: any
 }
@@ -58,6 +59,7 @@ export class Member implements MemberInterface {
     department?: Department;
     positions: MemberPosition[];
     photo?: string;
+    company: string;
     [property: string]: any;
 
     constructor(memberInterface: MemberInterface) {
@@ -73,7 +75,7 @@ export class Member implements MemberInterface {
         this.address = memberInterface.address;
         this.department = memberInterface.department;
         this.positions = memberInterface.positions;
-        if (memberInterface.company) this.photo = memberInterface.company;
+        this.company = memberInterface.company ? memberInterface.company : '';
         if (memberInterface.photo) this.photo = memberInterface.photo;
     }
 
@@ -94,8 +96,9 @@ export class Member implements MemberInterface {
             gender: this.gender.label,
             // insert spaces after '+33' and every two digits from the end of the string
             telephone: this.telephone.replace(/(\+33)|\d(?=(\d{2})+$)/g, "$& "),
-            department: this.department!.name,
+            department: this.department ? this.department.name : '',
             positions: this.positions,
+            company: this.company,
             latestPosition: latestPosition.label,
             latestYear: latestPosition.year
         } as MemberRead;
@@ -107,7 +110,11 @@ export class Member implements MemberInterface {
      */
     update(): MemberUpdate {
         // remove the property 'country' of address and replace it by the property 'countryId' 
-        let {country, ...address} = {...this.address, countryId: this.address.country.id};
+        let {country, ...address} = {
+            ...this.address,
+            countryId: this.address.country.id
+        };
+
         return Object.assign({}, {
                 id: this.id,
                 username: this.username,
@@ -120,6 +127,7 @@ export class Member implements MemberInterface {
                 // remove whitespace, if there are, in the telephone string
                 telephone: this.telephone.replace(/(\s)/g, ""),
                 address: address,
+            company: this.company,
                 positions: this.positions.map((position) => {
                     // not necessary when year will be a integer in keros-back
                     return {...position, year: parseInt(position.year)}

@@ -127,7 +127,7 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
                     <input disabled={!this.props.modifyEnabled} type="text" className="email"
                            value={this.props.member.email} onChange={this.onChange}/>
                     <input disabled={!this.props.modifyEnabled} type="text" className="company"
-                           value={this.props.member.company || ''} onChange={this.onChange}/>
+                           value={this.props.member.company} onChange={this.onChange}/>
                 </div>
                 <div className="button_container">
                     {

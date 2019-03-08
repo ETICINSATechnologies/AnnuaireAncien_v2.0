@@ -1,4 +1,4 @@
-.Recuperation {
+.Recovery {
     display: grid;
 
     width: 100%;
@@ -6,9 +6,9 @@
     text-align: center;
 }
 
-.Recuperation .Recuperation_section {
+.Recovery .Recuperation_section {
     display: grid;
-    grid-template-rows: 15vw 6.7vw 5vw;
+    grid-template-rows: 15vw 5vw 5vw;
 
     vertical-align: middle;
     justify-self: center;
@@ -19,7 +19,7 @@
     height: 80%;
 }
 
-.Recuperation .Recuperation_section * {
+.Recovery .Recuperation_section * {
     text-align: center;
     justify-self: center;
 
@@ -27,32 +27,39 @@
     font-size: 3.7vw;
 }
 
-.Recuperation .div2 {
+.Recovery .contact.toCopy {
     cursor: pointer;
     color: #009e11;
-    background-color: white;
+    margin-top: 2vmin;
+    background: white;
     border: 0;
     text-decoration: underline;
 }
 
-.Recuperation .div3 {
+.Recovery .contact.copied {
+    display: inline-block;
     animation-duration: 2s;
+    animation-name: display;
 
     color: white;
 
     font-size: 2vw;
-    margin: 1vw;
-    width: 15vw;
+    padding: 0.3vmin;
+    margin: 1vw auto;
+    width: auto;
 }
 
 @keyframes display {
     0% {
         color: white;
+        background-color: white;
     }
-    40% {
+    30% {
         color: black;
+        background-color: orange;
     }
     100% {
         color: white;
+        background-color: white;
     }
 }

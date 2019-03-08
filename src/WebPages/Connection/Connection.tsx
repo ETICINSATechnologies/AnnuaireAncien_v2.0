@@ -84,7 +84,7 @@ class Connection extends Component<{}, ConnectionState> {
                             <input type="text" className="username" value={this.state.parameters.username}
                                    onChange={this.onChange}/>
                             <p> Mot de passe </p>
-                            <input type="text" className="password" value={this.state.parameters.password}
+                            <input type="password" className="password" value={this.state.parameters.password}
                                    onChange={this.onChange}/>
                             <Link to="/recovery"> Mot de passe oublié ?</Link>
                             <input type="submit" className="connect_input" value="Se connecter"

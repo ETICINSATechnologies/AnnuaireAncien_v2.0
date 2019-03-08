@@ -56,10 +56,11 @@
 }
 
 .Connection .connect_form input[type="text"], input[type="password"] {
-    margin: auto;
-    font-size: 3vmin;
-    height: 4vmin;
     width: 95%;
+    height: 4vmin;
+    margin: auto;
+    padding-left: 0.7vmin;
+    font-size: 3vmin;
 }
 
 .Connection .connect_input {

@@ -35,28 +35,39 @@
     height: 100%;
 }
 
-.Help .div4 {
+.Help .contact.toCopy {
     cursor: pointer;
     color: #009e11;
+    margin-top: 2vmin;
     background: white;
     border: 0;
     text-decoration: underline;
-    height: 6.7vw;
 }
 
-.Help .div5 {
+.Help .contact.copied {
+    display: inline-block;
     animation-duration: 2s;
-    animation: display;
+    animation-name: display;
 
     color: white;
 
     font-size: 2vw;
+    padding: 0.3vmin;
     margin: 1vw auto ;
-    width: 15vw;
+    width: auto;
 }
 
 @keyframes display {
-    0% {color: white;}
-    40% {color: black;}
-    100% {color: white;}
+    0% {
+        color: white;
+        background-color: white;
+    }
+    30% {
+        color: black;
+        background-color: orange;
+    }
+    100% {
+        color: white;
+        background-color: white;
+    }
 }

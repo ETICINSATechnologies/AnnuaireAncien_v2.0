@@ -3,8 +3,10 @@ import './Help.css';
 import Header from "../../Components/Header/Header";
 import Nav from "../../Components/Nav/Nav";
 import Auth from "../../Components/Auth/Auth";
+import CopyContent from "../../Components/CopyContent/CopyContent";
 
-const Help = () => {
+
+const Help: React.SFC<{}> = () => {
     let activeButton = ['home'];
     if (Auth.isConnected()) {
         activeButton.push('search');
@@ -24,17 +26,16 @@ const Help = () => {
                     <a className="div2" href="http://etic-insa.com/"> ETIC INSA Technologies </a>
                     <div className="div3">
                         Elle permet de rechercher les anciens membres de la Junior en fonction de divers critères
-                        comme leur
-                        nom,
-                        prénom, entreprise pour laquelle ils travaillent ou encore leur année de mandat
+                        comme leur nom, prénom, entreprise pour laquelle ils travaillent ou encore leur année de
+                        mandat.
                         Si vous avez des remarques ou suggestions, merci d'en faire par à
-                        <button className="div4"> contact@etic-insa.com </button>
-                        <div className="div5"> adresse copié !</div>
+                        <CopyContent className="contact" textToCopy="contact@etic-insa.com"/>
                     </div>
                 </section>
             </div>
         </React.Fragment>
     );
 };
+
 
 export default Help;
