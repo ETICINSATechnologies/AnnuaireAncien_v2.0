@@ -81,7 +81,7 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
 
             return (
                 <select className="department" value=
-                    {this.props.member.department === null || typeof(this.props.member.department) === 'undefined' ? 0 :
+                    {!this.props.member.department ? 0 :
                         this.props.member.department.id}
                         onChange={this.onChange}
                         disabled={!this.props.modifyEnabled}>
@@ -131,13 +131,12 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
                 </div>
                 <div className="button_container">
                     {
-                        this.props.modifyEnabled ?
+                        !this.props.modifyEnabled ? null :
                             <React.Fragment>
                                 <input type="button" className="input_button password" value="Changer mot de passe"/>
                                 <input type="button" className="input_button update" value="Sauvegarder"
                                        onClick={() => this.props.updateMember()}/>
-                            </React.Fragment> :
-                            null
+                            </React.Fragment>
                     }
                 </div>
             </form>

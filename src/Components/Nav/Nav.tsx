@@ -50,9 +50,7 @@ const Nav: React.SFC<NavProps> = ({buttons}: NavProps) => {
 
     return (
         <nav className='Nav'>
-            <div className='Menu'>
-                {navButtons}
-            </div>
+            <div className='Menu'>{navButtons}</div>
             <Link className="help_link" to="/help">
                 <img className="help_icon" src={helpIcon} alt=""/>
             </Link>

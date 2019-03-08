@@ -25,10 +25,9 @@ const MemberInfo: React.SFC<MemberInfoProps> = (props: MemberInfoProps) => {
     if (props.member) {
         let member = props.member.read();
 
-        let mainProperties =
-            MAIN_PROPERTIES.map((property) =>
-                <div key={property} className={property}>{member![property]}</div>
-            );
+        let mainProperties = MAIN_PROPERTIES.map((property) =>
+            <div key={property} className={property}>{member![property]}</div>
+        );
 
         let otherProperties = Object.keys(OTHER_PROPERTIES).map((property) => {
             if (member[property])

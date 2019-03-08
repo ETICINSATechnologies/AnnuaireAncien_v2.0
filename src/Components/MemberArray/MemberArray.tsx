@@ -8,7 +8,6 @@ import {SearchInterface} from "../../Model/Searchinterface";
 import MemberArrayElement from "./MemberArrayElement";
 import MemberArrayHeader from "./MemberArrayHeader";
 
-// import MemberDisplay from "./MemberArrayElement";
 
 interface MemberArrayProps {
     parameters: SearchInterface
@@ -112,42 +111,8 @@ class MemberArray extends Component<MemberArrayProps, MemberArrayState> {
         return (
             <section className={`MemberArray members`}>
                 {data}
-            </section>)
-
-
-        /*if (this.state.status === 'result' && this.state.info.hasOwnProperty('content')) {
-            for (let i = 0; i < this.state.info.content.length; i++) {
-                if (this.state.info.content[i])
-                    members.push(
-                        <MemberDisplay key={i} info={this.state.info.content[i]}
-                                       onClick={(id) => this.props.onClick(this.selectMemberById(id))}/>
-                    )
-            }
-        }
-        else {
-            let message;
-            if (this.state.status === 'init') message = "Vous pouvez effectuer une recherche sur les critères ci-contre";
-            else if (this.state.status === 'noResult') message = "La recherche n'a donné aucun résultat";
-            else if (this.state.status === 'pending') message = "Chargement...";
-
-            return (
-                <section className={`MemberArray ${this.props.className}`}>
-                    <div className='info'>{message}</div>
-                </section>
-            );
-        }
-
-        return (
-            <section className={`MemberArray ${this.props.className}`}>
-                <table>
-                    <caption>
-                        Liste des membres {this.props.board ? 'du CA' : ''}
-                    </caption>
-                    <thead><MemberDisplay header info/></thead>
-                    <tbody>{members}</tbody>
-                </table>
             </section>
-        );*/
+        )
     }
 }
 

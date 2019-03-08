@@ -126,8 +126,7 @@ class Profile extends Component<{}, ProfileState> {
                 <section className="Profile">
                     <ProfileForm member={this.state.member} modifyEnabled={this.state.modifyEnabled}
                                  update={this.state.update} updateSucceed={this.state.updateSucceed}
-                                 modifyMember={this.modifyMember}
-                                 updateMember={this.updateMember}
+                                 modifyMember={this.modifyMember} updateMember={this.updateMember}
                                  enableModification={this.enableModification}/>
                     <PositionForm memberPositions={this.state.member.positions} modifyEnabled={this.state.modifyEnabled}
                                   updateMemberPositions={this.updateMemberPositions}/>

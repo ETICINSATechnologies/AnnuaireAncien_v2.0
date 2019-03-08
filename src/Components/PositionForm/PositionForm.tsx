@@ -92,10 +92,10 @@ class PositionForm extends Component<PositionFormProps, PositionFormState> {
             return (
                 this.props.memberPositions.map((mPosition, index) => {
                     return (
-                        <MemberPositionRender key={index} index={index} mPosition={mPosition}
-                                              positionList={this.state.positions}
-                                              modifyEnabled={this.props.modifyEnabled}
-                                              deletePosition={this.deletePosition} onChange={this.onChange}/>
+                        <MemberPositionRender
+                            key={index} index={index} mPosition={mPosition}
+                            positionList={this.state.positions} modifyEnabled={this.props.modifyEnabled}
+                            deletePosition={this.deletePosition} onChange={this.onChange}/>
                     )
                 }, this)
             )
@@ -136,15 +136,13 @@ const MemberPositionRender = (props: PositionProps) => {
             <p>Poste</p>
             <p>Année</p>
             <img className={`delete_position ${props.modifyEnabled ? "visible" : "hidden"}`}
-                 src={deleteIcon} onClick={() => props.deletePosition(props.index)}
-                 alt="Supprimer"/>
+                 src={deleteIcon} alt="Supprimer" onClick={() => props.deletePosition(props.index)}/>
             <select className="position" disabled={!props.modifyEnabled} value={props.mPosition.id}
                     onChange={(evt) => props.onChange(evt, props.index)}>
                 {positionDropDown}
             </select>
             <input className="year" type="text" disabled={!props.modifyEnabled} value={props.mPosition.year}
-                   onChange={(evt) => props.onChange(evt, props.index)}
-            />
+                   onChange={(evt) => props.onChange(evt, props.index)}/>
         </div>
     );
 };

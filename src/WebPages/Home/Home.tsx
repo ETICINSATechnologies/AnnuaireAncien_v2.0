@@ -44,45 +44,6 @@ class Home extends Component<{}, HomeState> {
                     rightBoard: rightBoard
                 });
             });
-
-        /*fetch('api/v1/core/member')
-            .then((res: any) => res.json())
-            .then((response: Page<Member>) => {
-                console.log(response);
-                let member = new Member(response.content[0]);
-                console.log(member);
-                console.log(member.read());
-                member.department = {
-                    id: 1,
-                    label: 'kdlsdk',
-                    name: ''
-                };
-                member.telephone = '01234567890';
-                let m = member.update();
-                //console.log(b.toString());
-                fetch('api/v1/core/department', {
-                    headers: {
-                        Authorization: token
-                    }
-                })
-                    .then(res => res.json())
-                    .then((response) => {
-                        let a = response as Department[];
-                        console.log(a);
-                        member.department = a[1];
-                        console.log(JSON.stringify(m.positions[0].year));
-                        fetch('api/v1/core/member/1', {
-                            method: 'PUT',
-                            headers: {
-                                'Content-Type': 'application/json',
-                                Authorization: token
-                            },
-                            body: JSON.stringify(m)
-                        })
-                            .then(res => res.json())
-                            .then()
-                    })
-            })*/
     }
 
     render() {
