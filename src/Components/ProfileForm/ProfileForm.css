@@ -153,18 +153,43 @@
 
 .ProfileForm .modal p {
     display: grid;
-    background-color: #7ee385;
+}
+
+.ProfileForm .modal a {
+    display: grid;
+    font-size: 3vmin;
+    margin: auto auto 0 auto;
+    height: 4.7vmin;
+    text-align: center;
 }
 
 .ProfileForm .modal .content {
     display: grid;
-    grid-template-rows: 2fr 2fr 2fr 2fr 2fr 2fr 2fr 3fr;
+    grid-template-rows: 0fr 3fr repeat(7, 2fr) ;
     vertical-align: top;
 }
+
 .ProfileForm .modal .message{
     display: grid;
     text-align: center;
+    font-size: 3vmin;
+    margin: auto auto 0 auto;
+    height: 4.7vmin;
 }
+
+.ProfileForm .modal .error{
+    color: red;
+}
+
+.ProfileForm .modal .success{
+    color: green;
+}
+
+.ProfileForm .modal .neutral{
+    color: black;
+}
+
+
 .ProfileForm .modal .input_button{
     position: absolute;
     background-color: #009e0f;

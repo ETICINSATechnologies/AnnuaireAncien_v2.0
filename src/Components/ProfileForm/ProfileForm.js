@@ -5,6 +5,7 @@ import Modal from '../Modal/Modal';
 import modifyIcon from "../../Images/edit.png";
 import cancelIcon from "../../Images/cancel_icon.png";
 import noPhotoIcon from "../../Images/no_photo.png";
+import {Link} from "react-router-dom";
 
 class ProfileForm extends Component {
     constructor(props) {
@@ -18,6 +19,7 @@ class ProfileForm extends Component {
                 mdpnouveau: '',
                 mdpnouveau2: '',
                 mdpstate: 'Compléter les champs et appuyer sur valider',
+                mdpstatetype: 'neutral',
             },
             info: {
                 firstName: '',
@@ -76,6 +78,7 @@ class ProfileForm extends Component {
             show: !this.state.show,
             mdp: {
                 mdpstate:'Compléter les champs et appuyer sur valider',
+                mdpstatetype: 'neutral'
             }
         })
     };
@@ -133,7 +136,8 @@ class ProfileForm extends Component {
             this.setState({
                 mdp: {
                     ...this.state.mdp,
-                    mdpstate: 'Ce mot de passe est trop court'
+                    mdpstate: 'Ce mot de passe est trop court',
+                    mdpstatetype: 'error'
                 }
             });
             return 0;
@@ -145,7 +149,8 @@ class ProfileForm extends Component {
             this.setState({
                 mdp: {
                     ...this.state.mdp,
-                    mdpstate: 'Les mots de passe ne corrrespondent pas'
+                    mdpstate: 'Les mots de passe ne corrrespondent pas',
+                    mdpstatetype: 'error'
                 }
             });
             return 0;
@@ -189,7 +194,8 @@ class ProfileForm extends Component {
                     this.setState({
                         mdp: {
                             ...this.state.mdp,
-                            mdpstate: 'Le mot de passe a bien été modifié'
+                            mdpstate: 'Le mot de passe a bien été modifié',
+                            mdpstatetype: 'success'
                         }
                     });
                 }
@@ -197,7 +203,8 @@ class ProfileForm extends Component {
                     this.setState({
                         mdp: {
                             ...this.state.mdp,
-                            mdpstate: 'L\'ancien mot de passe n\'est pas valide'
+                            mdpstate: "L'ancien mot de passe n'est pas valide",
+                            mdpstatetype: 'error'
                         }
                     });
                     return 0;
@@ -282,13 +289,14 @@ class ProfileForm extends Component {
                 <div className="modal" >
                     <Modal show={this.state.show} onClose={this.showModal}>
                         <div className="content" >
+                            <p className={"message " + this.state.mdp.mdpstatetype}> {this.state.mdp.mdpstate} </p>
                             <p> Ancien mot de passe </p>
                             <input type="password" name="password" className="mdpancien" onChange={this.onChangeMdp.bind(this)}/>
                             <p> Nouveau mot de passe </p>
                             <input type="password" name="password"  className="mdpnouveau" onChange={this.onChangeMdp.bind(this)}/>
                             <p> Nouveau mot de passe </p>
                             <input type="password" name="password"  className="mdpnouveau2" onChange={this.onChangeMdp.bind(this)}/>
-                            <p className="message"> {this.state.mdp.mdpstate} </p>
+                            <Link to="/recup"> Mot de passe oublié ?</Link>
                             <Button className="input_button" value="Valider" onClick={this.updateMdp.bind(this)}/>
                         </div>
                     </Modal>

@@ -3,27 +3,26 @@ import './Modal.css';
 import cancelIcon from "../../Images/cancel_icon.png";
 
 
-export default class Modal extends React.Component{
-    onClose = (e)=> {
-        this.props.onClose && this.props.onClose(e);
-    };
+function Modal(props){
 
-    render () {
-        if (!this.props.show){
+        if (!props.show){
             return null;
-        }
-        return (
-            <div className="Modal">
-                <div className="content">
-                    {this.props.children}
-                    <div className="header">
-                        <img className="annuler"
-                             src={cancelIcon}
-                             onClick={(e) => {this.onClose(e)}} alt="Annuler"
-                        />
+            // might have warning because name of function starts with a capital -- not an issue
+        } else {
+            return (
+                <div className="Modal">
+                    <div className="content">
+                        {props.children}
+                        <div className="header">
+                            <img className="annuler"
+                                 src={cancelIcon}
+                                 onClick={props.onClose} alt="Annuler"
+                            />
+                        </div>
                     </div>
                 </div>
-            </div>
-        );
-    }
+            );
+        }
 }
+
+export default Modal;

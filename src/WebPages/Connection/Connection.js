@@ -47,20 +47,17 @@ class Connection extends Component {
                 body: JSON.stringify(this.state.parameters)
             })
                 .then(res => {
-                    if (res.status === 500)
-                        this.setState({status: 'error'});
-                    else if (res.status === 400) {
-                        this.setState({status: 'invalid'});
-                    }
-                    else if (res.status === 401)
-                        this.setState({status: 'invalid'});
-                    else {
+                    if (res.status === 200) {
                         this.setState({status: 'pending'});
                         res.json()
-                            .then(result => {
-                                Auth.connect(result.token);
-                                this.setState({status: 'connect'})
-                            })
+                        .then(result => {
+                            Auth.connect(result.token);
+                            this.setState({status: 'connect'})
+                        })
+                    } else if (res.status === 500) {
+                        this.setState({status: 'error'});
+                    } else {
+                        this.setState({status: 'invalid'});
                     }
                 })
         }
