@@ -107,7 +107,6 @@
 
     margin: auto auto 0 auto;
     background-color: white;
-    z-index: 2;
 
     animation-duration: 2s;
     width: auto;
@@ -140,7 +139,6 @@
 }
 
 .ProfileForm .password {
-    visibility: hidden;
     background: #dddddd;
 }
 
@@ -159,4 +157,64 @@
 
 .ProfileForm .deleteCancelPicture:hover {
     cursor: pointer;
+}
+
+.ProfileForm .modal p {
+    display: grid;
+}
+
+.ProfileForm .modal a {
+    display: grid;
+    font-size: 3vmin;
+    margin: auto auto 0 auto;
+    height: 4.7vmin;
+    text-align: center;
+}
+
+.ProfileForm .modal .content {
+    display: grid;
+    grid-template-rows: 0fr 3fr repeat(7, 2fr) ;
+    vertical-align: top;
+}
+
+.ProfileForm .modal .message{
+    display: grid;
+    text-align: center;
+    font-size: 3vmin;
+    margin: auto auto 0 auto;
+    height: 4.7vmin;
+}
+
+.ProfileForm .modal .error{
+    color: red;
+}
+
+.ProfileForm .modal .success{
+    color: green;
+}
+
+.ProfileForm .modal .neutral{
+    color: black;
+}
+
+
+.ProfileForm .modal .input_button{
+    position: absolute;
+    background-color: #009e0f;
+    color:#fff;
+    bottom : 1vmin;
+    left : 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+.ProfileForm .modal input[type="password"] {
+    display: grid;
+    margin : 0 auto;
+    background-color: white;
+    justify-self: center;
+    border: 0.3vmin solid black;
+    font-size: 3vmin;
+    padding-left: 1vmin;
+    height: 5vmin;
 }

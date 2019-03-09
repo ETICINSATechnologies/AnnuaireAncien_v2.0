@@ -4,8 +4,11 @@ import Auth from "../Auth/Auth";
 import modifyIcon from "../../Images/edit.png";
 import cancelIcon from "../../Images/cancel_icon.png";
 import noPhotoIcon from "../../Images/no_photo.png";
+import {Mdp} from "../../Model/Mdp";
 import {Member} from "../../Model/Member";
 import {Department} from "../../Model/Department";
+import {Link} from "react-router-dom";
+import Modal from "../Modal/Modal";
 
 
 interface ProfileFormProps {
@@ -13,6 +16,8 @@ interface ProfileFormProps {
     modifyEnabled: boolean
     update: boolean
     updateSucceed: boolean
+
+    resetFields(): void
 
     modifyMember(member: Member): void
 
@@ -24,13 +29,23 @@ interface ProfileFormProps {
 interface ProfileFormState {
     departments: Department[]
     idMapping: object
+    show: boolean
+    mdp: Mdp
 }
 
 
 export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
     state = {
         departments: [],
-        idMapping: []
+        idMapping: [],
+        show: false,
+        mdp: {
+            mdpancien: '',
+            mdpnouveau: '',
+            mdpnouveau2: '',
+            mdpstate: 'Compléter les champs et appuyer sur valider',
+            mdpstatetype: 'neutral',
+        },
     };
 
     componentDidMount() {
@@ -67,6 +82,101 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
         }
 
         this.props.modifyMember(member);
+    };
+
+    onChangeMdp = (event: React.ChangeEvent) => {
+        event.persist();
+        this.setState(({
+            mdp: {
+                ...this.state.mdp,
+                [event.target.className]: (event.target as any).value
+            }
+        }));
+    };
+
+
+    updateMdp = () => {
+        // check if new pass is at least 8 char
+        if (this.state.mdp.mdpnouveau.length<8){
+            this.setState({
+                mdp: {
+                    ...this.state.mdp,
+                    mdpstate: 'Ce mot de passe est trop court',
+                    mdpstatetype: 'error'
+                }
+            });
+            return 0;
+        }
+
+
+        // check if two new passwords match
+        if (this.state.mdp.mdpnouveau!==this.state.mdp.mdpnouveau2) {
+            this.setState({
+                mdp: {
+                    ...this.state.mdp,
+                    mdpstate: 'Les mots de passe ne corrrespondent pas',
+                    mdpstatetype: 'error'
+                }
+            });
+            return 0;
+        }
+
+        // make username + mdp pair
+        let pair = {
+            username : this.props.member.username,
+            password : this.state.mdp.mdpancien
+        };
+
+        // check old pass
+        fetch('api/v1/auth/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(pair)
+        })
+            .then(res => {
+                if (res.status === 200) {
+                    let member = new Member(this.props.member);
+                    member.password=this.state.mdp.mdpnouveau;
+                    this.props.resetFields();
+                    this.props.modifyMember(member);
+                    this.props.updateMember();
+                    this.setState({
+                        mdp: {
+                            ...this.state.mdp,
+                            mdpstate: 'Le mot de passe a bien été modifié',
+                            mdpstatetype: 'success'
+                        }
+                    });
+                }
+                else {
+                    this.setState({
+                        mdp: {
+                            ...this.state.mdp,
+                            mdpstate: "L'ancien mot de passe n'est pas valide",
+                            mdpstatetype: 'error'
+                        }
+                    });
+                    return 0;
+                }
+            })
+
+
+
+    };
+
+
+    showModal = () => {
+        this.setState({
+            ...this.state,
+            show: !this.state.show,
+            mdp: {
+                ...this.state.mdp,
+                mdpstate:'Compléter les champs et appuyer sur valider',
+                mdpstatetype: 'neutral'
+            }
+        })
     };
 
     getDepartmentIndexById(id: number): number {
@@ -133,15 +243,32 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
                     {
                         !this.props.modifyEnabled ? null :
                             <React.Fragment>
-                                <input type="button" className="input_button password" value="Changer mot de passe"/>
+                                <input type="button" className="input_button password" value="Changer mot de passe"
+                                        onClick={() => this.showModal()}/>
                                 <input type="button" className="input_button update" value="Sauvegarder"
-                                       onClick={() => this.props.updateMember()}/>
+                                        onClick={() => this.props.updateMember()}/>
                             </React.Fragment>
                     }
+                </div>
+                <div className="modal" >
+                    <Modal show={this.state.show} onClose={this.showModal}>
+                        <div className="content" >
+                            <p className={"message " + this.state.mdp.mdpstatetype}> {this.state.mdp.mdpstate} </p>
+                            <p> Ancien mot de passe </p>
+                            <input type="password" name="password" className="mdpancien" onChange={this.onChangeMdp.bind(this)}/>
+                            <p> Nouveau mot de passe </p>
+                            <input type="password" name="password"  className="mdpnouveau" onChange={this.onChangeMdp.bind(this)}/>
+                            <p> Nouveau mot de passe </p>
+                            <input type="password" name="password"  className="mdpnouveau2" onChange={this.onChangeMdp.bind(this)}/>
+                            <Link to="/recovery"> Mot de passe oublié ?</Link>
+                            <input type="button" className="input_button" value="Valider" onClick={this.updateMdp.bind(this)}/>
+                        </div>
+                    </Modal>
                 </div>
             </form>
         );
     }
+
 }
 
 export default ProfileForm;

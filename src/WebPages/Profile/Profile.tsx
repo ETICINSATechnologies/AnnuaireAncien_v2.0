@@ -96,6 +96,14 @@ class Profile extends Component<{}, ProfileState> {
         })
     };
 
+    resetFields = () => {
+        let member = new Member(JSON.parse(JSON.stringify(this.state.previousMember)));
+        this.setState({
+            member : member,
+            modifyEnabled : false,
+        });
+    };
+
     updateMemberPositions = (mPositions: MemberPosition[]) => {
         this.setState({
             member: new Member({
@@ -127,7 +135,7 @@ class Profile extends Component<{}, ProfileState> {
                     <ProfileForm member={this.state.member} modifyEnabled={this.state.modifyEnabled}
                                  update={this.state.update} updateSucceed={this.state.updateSucceed}
                                  modifyMember={this.modifyMember} updateMember={this.updateMember}
-                                 enableModification={this.enableModification}/>
+                                 enableModification={this.enableModification} resetFields={this.resetFields}/>
                     <PositionForm memberPositions={this.state.member.positions} modifyEnabled={this.state.modifyEnabled}
                                   updateMemberPositions={this.updateMemberPositions}/>
                 </section>
