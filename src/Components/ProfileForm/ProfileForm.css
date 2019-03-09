@@ -81,6 +81,10 @@
     margin: auto;
 }
 
+.ProfileForm .error_info {
+    color: #eb2f06;
+}
+
 @media (orientation: portrait) {
     .ProfileForm {
         height: 68vw;
@@ -98,7 +102,7 @@
     height: 4.7vmin;
 }
 
-.ProfileForm .image {
+.ProfileForm .profilePicture {
     display: grid;
 
     margin: auto auto 0 auto;
@@ -145,10 +149,14 @@
     background-color: #009e0f;
 }
 
-.ProfileForm .modifier {
+.ProfileForm .deleteCancelPicture {
     width: 65%;
     margin: 1vmin auto auto;
     grid-column: 3;
     vertical-align: top;
     horiz-align: right;
+}
+
+.ProfileForm .deleteCancelPicture:hover {
+    cursor: pointer;
 }

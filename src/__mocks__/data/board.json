@@ -11,6 +11,23 @@
       "telephone": "0668774814",
       "email": "mailys.pascail@etic-insa.com",
       "photo": "1.jpg",
+      "username": "username",
+      "birthday": "1970-01-01",
+      "schoolYear": 4,
+      "department": {
+        "id": 1,
+        "label": "AA",
+        "name": "AAA"
+      },
+      "address": {
+        "id": 1,
+        "line1": "20 avenue Albert Einstein",
+        "postalCode": 69100,
+        "country": {
+          "id": 1,
+          "label": "France"
+        }
+      },
       "positions": [
         {
           "id": 12,
@@ -36,6 +53,23 @@
       "telephone": "0777396091",
       "email": "charlotte.diroux@etic-insa.com",
       "photo": "2.jpg",
+      "username": "username",
+      "birthday": "1970-01-01",
+      "schoolYear": 4,
+      "department": {
+        "id": 1,
+        "label": "AA",
+        "name": "AAA"
+      },
+      "address": {
+        "id": 1,
+        "line1": "20 avenue Albert Einstein",
+        "postalCode": 69100,
+        "country": {
+          "id": 1,
+          "label": "France"
+        }
+      },
       "positions": [
         {
           "id": 21,
@@ -61,6 +95,23 @@
       "telephone": "0780062157",
       "email": "justine.lhuillier@etic-insa.com",
       "photo": "3.jpg",
+      "username": "username",
+      "birthday": "1970-01-01",
+      "schoolYear": 4,
+      "department": {
+        "id": 1,
+        "label": "AA",
+        "name": "AAA"
+      },
+      "address": {
+        "id": 1,
+        "line1": "20 avenue Albert Einstein",
+        "postalCode": 69100,
+        "country": {
+          "id": 1,
+          "label": "France"
+        }
+      },
       "positions": [
         {
           "id": 19,
@@ -86,6 +137,23 @@
       "telephone": "0616604467",
       "email": "feriel.ben-marzouk@etic-insa.com",
       "photo": "4.jpg",
+      "username": "username",
+      "birthday": "1970-01-01",
+      "schoolYear": 4,
+      "department": {
+        "id": 1,
+        "label": "AA",
+        "name": "AAA"
+      },
+      "address": {
+        "id": 1,
+        "line1": "20 avenue Albert Einstein",
+        "postalCode": 69100,
+        "country": {
+          "id": 1,
+          "label": "France"
+        }
+      },
       "positions": [
         {
           "id": 20,
@@ -111,6 +179,23 @@
       "telephone": "0627170563",
       "email": "heloise.tourard@etic-insa.com",
       "photo": "5.jpg",
+      "username": "username",
+      "birthday": "1970-01-01",
+      "schoolYear": 4,
+      "department": {
+        "id": 1,
+        "label": "AA",
+        "name": "AAA"
+      },
+      "address": {
+        "id": 1,
+        "line1": "20 avenue Albert Einstein",
+        "postalCode": 69100,
+        "country": {
+          "id": 1,
+          "label": "France"
+        }
+      },
       "positions": [
         {
           "id": 22,
@@ -136,6 +221,23 @@
       "telephone": "0662845863",
       "email": "alexandre.lang@etic-insa.com",
       "photo": "6.jpg",
+      "username": "username",
+      "birthday": "1970-01-01",
+      "schoolYear": 4,
+      "department": {
+        "id": 1,
+        "label": "AA",
+        "name": "AAA"
+      },
+      "address": {
+        "id": 1,
+        "line1": "20 avenue Albert Einstein",
+        "postalCode": 69100,
+        "country": {
+          "id": 1,
+          "label": "France"
+        }
+      },
       "positions": [
         {
           "id": 15,
@@ -161,6 +263,23 @@
       "telephone": "",
       "email": "reda.souali@etic-insa.com",
       "photo": "7.jpg",
+      "username": "username",
+      "birthday": "1970-01-01",
+      "schoolYear": 4,
+      "department": {
+        "id": 1,
+        "label": "AA",
+        "name": "AAA"
+      },
+      "address": {
+        "id": 1,
+        "line1": "20 avenue Albert Einstein",
+        "postalCode": 69100,
+        "country": {
+          "id": 1,
+          "label": "France"
+        }
+      },
       "positions": [
         {
           "id": 15,
@@ -186,6 +305,23 @@
       "telephone": "0603522531",
       "email": "nour.mansour@etic-insa.com",
       "photo": "8.jpg",
+      "username": "username",
+      "birthday": "1970-01-01",
+      "schoolYear": 4,
+      "department": {
+        "id": 1,
+        "label": "AA",
+        "name": "AAA"
+      },
+      "address": {
+        "id": 1,
+        "line1": "20 avenue Albert Einstein",
+        "postalCode": 69100,
+        "country": {
+          "id": 1,
+          "label": "France"
+        }
+      },
       "positions": [
         {
           "id": 18,
@@ -209,6 +345,23 @@
       "telephone": "0646767368",
       "email": "tom.richard@etic-insa.com",
       "photo": "9.jpg",
+      "username": "username",
+      "birthday": "1970-01-01",
+      "schoolYear": 4,
+      "department": {
+        "id": 1,
+        "label": "AA",
+        "name": "AAA"
+      },
+      "address": {
+        "id": 1,
+        "line1": "20 avenue Albert Einstein",
+        "postalCode": 69100,
+        "country": {
+          "id": 1,
+          "label": "France"
+        }
+      },
       "positions": [
         {
           "id": 18,
@@ -232,6 +385,23 @@
       "telephone": "",
       "email": "elliot.trabac@etic-insa.com",
       "photo": "10.jpg",
+      "username": "username",
+      "birthday": "1970-01-01",
+      "schoolYear": 4,
+      "department": {
+        "id": 1,
+        "label": "AA",
+        "name": "AAA"
+      },
+      "address": {
+        "id": 1,
+        "line1": "20 avenue Albert Einstein",
+        "postalCode": 69100,
+        "country": {
+          "id": 1,
+          "label": "France"
+        }
+      },
       "positions": [
         {
           "id": 18,
@@ -255,6 +425,23 @@
       "telephone": "0605203214",
       "email": "louis.dupont@etic-insa.com",
       "photo": "11.jpg",
+      "username": "username",
+      "birthday": "1970-01-01",
+      "schoolYear": 4,
+      "department": {
+        "id": 1,
+        "label": "AA",
+        "name": "AAA"
+      },
+      "address": {
+        "id": 1,
+        "line1": "20 avenue Albert Einstein",
+        "postalCode": 69100,
+        "country": {
+          "id": 1,
+          "label": "France"
+        }
+      },
       "positions": [
         {
           "id": 14,
