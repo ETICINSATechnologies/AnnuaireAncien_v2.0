@@ -23,7 +23,6 @@ class Search extends Component {
         this.state = {
             status: 'noParameters', // 'PARAMETETERS' 'NO_PARAMETERS' 'pending'
             memberInfo: {},
-            redirecting : false
         };
         this.selectMember = this.selectMember.bind(this);
         this.makeSearch = this.makeSearch.bind(this)
@@ -31,8 +30,6 @@ class Search extends Component {
 
     selectMember(member) {
         this.setState({memberInfo: member});
-        if (!Auth.isConnected())
-            this.setState({redirecting:true});
     }
 
     makeSearch(event) {

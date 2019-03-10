@@ -15,27 +15,16 @@ describe( 'Recuperation component', () => {
         }
     );
 
-    // it('renders a message', () => {
-    //     expect(Enzyme.shallow(<Recuperation />).find('#Recuperation').length).toEqual(1)
-    // });
-
     it('Recuperation unit test', () => {
         expect(
             Enzyme.shallow(<Recuperation/>)
                 .find('div.Recuperation')
                 .length
         ).toBe(1)
-        // const wrapper = Enzyme.shallow(<Recuperation/>)
-        //     .find('div.Recuperation')
-        //     .length
-        //     )
-        // console.log(wrapper.debug());
     });
 
     it('Recuperation user connected button test', () => {
         Auth.isConnected = jest.fn(() => true);
-        const wrapper = Enzyme.shallow(<Recuperation />);
-        // expect(wrapper.find({ href: '/'})).toBe(1);
         const expected = ["home","disconnection"];
         expect( Auth.addCorrectButton(["home"]) ).toEqual(expected);
         }
@@ -43,7 +32,6 @@ describe( 'Recuperation component', () => {
 
     it('Recuperation user not connected button test', () => {
             Auth.isConnected = jest.fn(() => false);
-            const wrapper = Enzyme.shallow(<Recuperation />);
             const expected = ["home","connection"];
             expect( Auth.addCorrectButton(["home"]) ).toEqual(expected);
         }

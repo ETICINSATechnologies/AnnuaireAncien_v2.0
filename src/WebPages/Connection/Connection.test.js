@@ -23,14 +23,29 @@ describe( 'Connection component' , () => {
         ).toBe(1)
     });
 
-    it('Connection button clicked', () => {
-        // fetch.url = jest.fn( () => 'api/v1/auth/login' );
-        const wrapper = Enzyme.shallow(<Connection/>);
-        wrapper.find(".connect_input").simulate('click', { preventDefault() {} });
-        expect(wrapper.state("status")).toBeTruthy();
-        // expect(wrapper.state("status")).equals("connect");
+    it('Connection button clicked unit test', () => {
+        Connection.tryToConnect = jest.fn( () => true );
+        const tree = Enzyme.shallow(
+            <input type="submit" className="connect_input" value="Se connecter"
+                   onClick={Connection.tryToConnect}/>
+        );
+        tree.find('.connect_input').simulate('click', { preventDefault() {} });
+        expect(Connection.tryToConnect).toHaveBeenCalled();
     });
 
+    it('Connection not connected snapshot test', () => {
+        Auth.isConnected = jest.fn(() => false);
+        const component = renderer.create(<Connection/>);
+        let tree = component.toJSON();
+        expect(tree).toMatchSnapshot();
 
+    });
+
+    it('Connection connected snapshot test', () => {
+        Auth.isConnected = jest.fn(() => true);
+        const component = renderer.create(<Connection/>);
+        let tree = component.toJSON();
+        expect(tree).toMatchSnapshot();
+    })
 
 });
