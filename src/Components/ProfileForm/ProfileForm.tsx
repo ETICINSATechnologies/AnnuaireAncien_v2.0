@@ -23,6 +23,8 @@ interface ProfileFormProps {
 
     updateMember(): void
 
+    updateMemberPassword(pass : string): void
+
     enableModification(): void
 }
 
@@ -137,11 +139,7 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
         })
             .then(res => {
                 if (res.status === 200) {
-                    let member = new Member(this.props.member);
-                    member.password=this.state.mdp.mdpnouveau;
-                    this.props.resetFields();
-                    this.props.modifyMember(member);
-                    this.props.updateMember();
+                    this.props.updateMemberPassword(this.state.mdp.mdpnouveau);
                     this.setState({
                         mdp: {
                             ...this.state.mdp,

@@ -88,7 +88,7 @@ class PositionForm extends Component<PositionFormProps, PositionFormState> {
     }
 
     renderPositions() {
-        if (typeof(this.props.memberPositions)!== 'undefined' &&this.props.memberPositions.length !== 0) {
+        if (this.props.memberPositions.length !== 0) {
             return (
                 this.props.memberPositions.map((mPosition, index) => {
                     return (

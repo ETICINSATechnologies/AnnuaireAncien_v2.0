@@ -87,6 +87,37 @@ class Profile extends Component<{}, ProfileState> {
             });
     };
 
+    updateMemberPassword = (pass : string) => {
+
+        let member= this.state.previousMember;
+        member.password=pass;
+
+        fetch('api/v1/core/member/' + this.state.member.id, {
+            method: 'PUT',
+            headers: {
+                'Authorization': Auth.getToken(),
+                'Content-Type': 'application/json'
+            },
+
+            body: JSON.stringify(member.update())
+        })
+            .then(res => {
+                if (res.status === 200) {
+                    res.json()
+                        .then(() => {
+                            this.setState({
+                                update: true,
+                                updateSucceed: true,
+                            });
+                        })
+                } else {
+                    this.setState({
+                        update: true,
+                    });
+                }
+            });
+    };
+
     enableModification = () => {
         let member = new Member(JSON.parse(JSON.stringify(this.state.previousMember)));
         this.setState({
@@ -135,6 +166,7 @@ class Profile extends Component<{}, ProfileState> {
                     <ProfileForm member={this.state.member} modifyEnabled={this.state.modifyEnabled}
                                  update={this.state.update} updateSucceed={this.state.updateSucceed}
                                  modifyMember={this.modifyMember} updateMember={this.updateMember}
+                                 updateMemberPassword={this.updateMemberPassword}
                                  enableModification={this.enableModification} resetFields={this.resetFields}/>
                     <PositionForm memberPositions={this.state.member.positions} modifyEnabled={this.state.modifyEnabled}
                                   updateMemberPositions={this.updateMemberPositions}/>
