@@ -48,6 +48,7 @@ export interface MemberInterface extends MemberGeneric {
 export class Member implements MemberInterface {
     id: number;
     username: string;
+    password?: string;
     firstName: string;
     lastName: string;
     email: string;
@@ -115,25 +116,29 @@ export class Member implements MemberInterface {
             countryId: this.address.country.id
         };
 
-        return Object.assign({}, {
-                id: this.id,
-                username: this.username,
-                firstName: this.firstName,
-                lastName: this.lastName,
-                email: this.email,
-                genderId: this.gender.id,
-                birthday: this.birthday,
-                schoolYear: this.schoolYear,
-                // remove whitespace, if there are, in the telephone string
-                telephone: this.telephone.replace(/(\s)/g, ""),
-                address: address,
-            company: this.company,
-                positions: this.positions.map((position) => {
-                    // not necessary when year will be a integer in keros-back
-                    return {...position, year: parseInt(position.year)}
-                }),
-            }, this.department ? {departmentId: this.department.id} : {}
-        ) as MemberUpdate
+            return Object.assign({}, {
+                    id: this.id,
+                    username: this.username,
+                    firstName: this.firstName,
+                    lastName: this.lastName,
+                    email: this.email,
+                    password: this.password,
+                    genderId: this.gender.id,
+                    birthday: this.birthday,
+                    schoolYear: this.schoolYear,
+                    // remove whitespace, if there are, in the telephone string
+                    telephone: this.telephone.replace(/(\s)/g, ""),
+                    address: address,
+                    company: this.company,
+                    positions: this.positions.map((position) => {
+                        // not necessary when year will be a integer in keros-back
+                        return {...position, year: parseInt(position.year)}
+                    }),
+                },
+                this.department ? {departmentId: this.department.id} : {},
+                this.password ? {password: this.password} : {},
+            ) as MemberUpdate
+
     }
 }
 
