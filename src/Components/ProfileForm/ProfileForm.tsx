@@ -9,6 +9,7 @@ import {Member} from "../../Model/Member";
 import {Department} from "../../Model/Department";
 import {Link} from "react-router-dom";
 import Modal from "../Modal/Modal";
+import DropDown from "../DropDown/DropDown";
 
 
 interface ProfileFormProps {
@@ -72,7 +73,7 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
 
     onChange = (event: React.ChangeEvent) => {
         event.persist();
-        let property = event.target.className;
+        let property=event.target.className;
         let value = (event.target as any).value;
         let member = new Member(this.props.member);
 
@@ -181,24 +182,6 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
         return this.state.idMapping[id];
     }
 
-    renderDepartments() {
-        if (this.state.departments) {
-            let departmentDropDown = this.state.departments.map((department: any, index: any) => {
-                return <option key={index} value={department.id}>{department.label}</option>
-            });
-
-            return (
-                <select className="department" value=
-                    {!this.props.member.department ? 0 :
-                        this.props.member.department.id}
-                        onChange={this.onChange}
-                        disabled={!this.props.modifyEnabled}>
-                    <option value={0}> Choisir un departement</option>
-                    {departmentDropDown}
-                </select>
-            )
-        }
-    }
 
     render() {
         return (
@@ -227,7 +210,10 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
                            value={this.props.member.lastName} onChange={this.onChange}/>
                     <p> Département </p>
                     <p className="right p_info needed"> Prénom </p>
-                    {this.renderDepartments()}
+                        <DropDown className = 'department' options={this.state.departments}
+                                  modifyEnabled={this.props.modifyEnabled} onChange={this.onChange}
+                                  currentOption={this.props.member.department? this.props.member.department.id:0}
+                        />
                     <input disabled={!this.props.modifyEnabled} type="text" className="firstName"
                            value={this.props.member.firstName} onChange={this.onChange}/>
                     <p className="needed"> Adresse mail </p>
