@@ -291,7 +291,7 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
                 <div className="modalChangePhoto" >
                     <Modal show={this.state.changePhoto.show} onClose={this.showModalChangePhoto}>
                         <div className="content" >
-                            <input type="file" className="inputPhoto" accept="image/jpeg, image/png"> </input>
+                            <input value="null" type="file" className="inputPhoto" accept="image/jpeg, image/png"/>
                             <div className="button_container_changePhoto">
                                 <button className = "btn_Annuler">Annuler</button>
                                 <button className = "btn_Valider">Valider</button>
