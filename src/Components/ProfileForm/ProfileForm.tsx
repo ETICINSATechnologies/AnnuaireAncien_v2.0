@@ -9,6 +9,7 @@ import {Member} from "../../Model/Member";
 import {Department} from "../../Model/Department";
 import {Link} from "react-router-dom";
 import Modal from "../Modal/Modal";
+import {ChangePhoto} from "../../Model/ChangePhoto";
 
 
 interface ProfileFormProps {
@@ -31,7 +32,7 @@ interface ProfileFormProps {
 interface ProfileFormState {
     departments: Department[]
     idMapping: object
-    show: boolean
+    changePhoto : ChangePhoto
     mdp: Mdp
 }
 
@@ -40,8 +41,14 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
     state = {
         departments: [],
         idMapping: [],
-        show: false,
+        
+        changePhoto:{
+            changePhotoState:'',
+            show: false,
+        },
+
         mdp: {
+            show: false,
             mdpancien: '',
             mdpnouveau: '',
             mdpnouveau2: '',
@@ -165,12 +172,13 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
     };
 
 
-    showModal = () => {
+    showModalChangePassword = () => {
         this.setState({
             ...this.state,
-            show: !this.state.show,
+            // show: !this.state.show,
             mdp: {
                 ...this.state.mdp,
+                show: !this.state.mdp.show,
                 mdpstate:'Compléter les champs et appuyer sur valider',
                 mdpstatetype: 'neutral'
             }
@@ -200,6 +208,19 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
         }
     }
 
+    showModalChangePhoto = () => {
+        this.setState(
+            {
+                ...this.state,
+                changePhoto: {
+                    changePhotoState:'Pas de fichier sélectionné.',
+                    show:!this.state.changePhoto.show,
+
+                }
+            }
+        )
+    };
+
     render() {
         return (
             <form className="ProfileForm">
@@ -213,7 +234,10 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
                                 <h1>Appuyer sur la croix pour annuler</h1> :
                                 <h1>Appuyer sur le crayon pour modifier</h1>
                     }
-                    <img className="profilePicture" src={noPhotoIcon} alt="Profile"/>
+                    <img className="profilePicture"
+                         src={noPhotoIcon}
+                         alt="Profile"
+                         onClick={() => this.showModalChangePhoto()} />
                     <img className="deleteCancelPicture"
                          src={this.props.modifyEnabled ? cancelIcon : modifyIcon}
                          onClick={() => this.props.enableModification()} alt="Modifier/Annuler"/>
@@ -242,14 +266,14 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
                         !this.props.modifyEnabled ? null :
                             <React.Fragment>
                                 <input type="button" className="input_button password" value="Changer mot de passe"
-                                        onClick={() => this.showModal()}/>
+                                        onClick={() => this.showModalChangePassword()}/>
                                 <input type="button" className="input_button update" value="Sauvegarder"
                                         onClick={() => this.props.updateMember()}/>
                             </React.Fragment>
                     }
                 </div>
                 <div className="modal" >
-                    <Modal show={this.state.show} onClose={this.showModal}>
+                    <Modal show={this.state.mdp.show} onClose={this.showModalChangePassword}>
                         <div className="content" >
                             <p className={"message " + this.state.mdp.mdpstatetype}> {this.state.mdp.mdpstate} </p>
                             <p> Ancien mot de passe </p>
@@ -260,6 +284,18 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
                             <input type="password" name="password"  className="mdpnouveau2" onChange={this.onChangeMdp.bind(this)}/>
                             <Link to="/recovery"> Mot de passe oublié ?</Link>
                             <input type="button" className="input_button" value="Valider" onClick={this.updateMdp.bind(this)}/>
+                        </div>
+                    </Modal>
+                </div>
+
+                <div className="modalChangePhoto" >
+                    <Modal show={this.state.changePhoto.show} onClose={this.showModalChangePhoto}>
+                        <div className="content" >
+                            <input type="file" className="inputPhoto" accept="image/jpeg, image/png"> </input>
+                            <div className="button_container_changePhoto">
+                                <button className = "btn_Annuler">Annuler</button>
+                                <button className = "btn_Valider">Valider</button>
+                            </div>
                         </div>
                     </Modal>
                 </div>

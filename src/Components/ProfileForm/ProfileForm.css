@@ -218,3 +218,39 @@
     padding-left: 1vmin;
     height: 5vmin;
 }
+
+.ProfileForm .modal p {
+    display: grid;
+}
+
+.ProfileForm .modalChangePhoto .inputPhoto {
+    display: grid;
+    margin : 0 auto;
+    background-color: white;
+    justify-self: center;
+}
+.ProfileForm .modalChangePhoto .btn_Valider {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    width: 80px;
+    height: 35px;
+    margin:10px 10px 10px 10px;
+    vertical-align:top;
+}
+
+.ProfileForm .modalChangePhoto .btn_Annuler {
+    background-color: #af0700;
+    border: none;
+    color: white;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    width: 80px;
+    height: 35px;
+    margin:10px 10px 10px 10px;
+    vertical-align:top;
+}
