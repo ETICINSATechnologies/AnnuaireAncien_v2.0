@@ -57,9 +57,14 @@ class PositionForm extends Component<PositionFormProps, PositionFormState> {
             // Update the position of the member position mPositions[index]
             Object.assign(mPositions[index], newPosition);
         }
+
         if (mPositions[index].hasOwnProperty(property)) {
-            if (property === "year" && value.match(/^(\d?){4}$/))
-                mPositions[index][property] = value;
+            if (property === "year" ) {
+                value.match(/^(\d?){4}$/) ? mPositions[index][property] = value : null;
+            } else if (property==='isBoard'){
+                mPositions[index][property] = !mPositions[index][property];
+            }
+
         }
 
         this.props.updateMemberPositions(mPositions);
@@ -133,6 +138,7 @@ const MemberPositionRender = (props: PositionProps) => {
     return (
         <div className="position_container">
             <p>Poste</p>
+            <p className='labelCA'>CA</p>
             <p>Année</p>
             <img className={`delete_position ${props.modifyEnabled ? "visible" : "hidden"}`}
                  src={deleteIcon} alt="Supprimer" onClick={() => props.deletePosition(props.index)}/>
@@ -140,6 +146,8 @@ const MemberPositionRender = (props: PositionProps) => {
                       modifyEnabled={props.modifyEnabled}
                       onChange={(evt: React.ChangeEvent) =>props.onChange(evt,props.index)}
                       currentOption={props.mPosition.id}/>
+            <input className="isBoard" type="checkbox" checked={props.mPosition.isBoard}
+                   onChange={(evt: React.ChangeEvent)=> props.onChange(evt, props.index)} disabled={!props.modifyEnabled}/>
             <input className="year" type="text" disabled={!props.modifyEnabled} value={props.mPosition.year}
                    onChange={(evt) => props.onChange(evt, props.index)}/>
         </div>

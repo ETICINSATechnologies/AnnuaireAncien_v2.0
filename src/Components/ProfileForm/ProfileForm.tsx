@@ -3,7 +3,8 @@ import './ProfileForm.css';
 import Auth from "../Auth/Auth";
 import modifyIcon from "../../Images/edit.png";
 import cancelIcon from "../../Images/cancel_icon.png";
-import noPhotoIcon from "../../Images/no_photo.png";
+import manIcon from "../../Images/default_man.svg";
+import womanIcon from "../../Images/default_woman.svg";
 import {Mdp} from "../../Model/Mdp";
 import {Member} from "../../Model/Member";
 import {Department} from "../../Model/Department";
@@ -196,7 +197,7 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
                                 <h1>Appuyer sur la croix pour annuler</h1> :
                                 <h1>Appuyer sur le crayon pour modifier</h1>
                     }
-                    <img className="profilePicture" src={noPhotoIcon} alt="Profile"/>
+                    <img className="profilePicture" src={this.props.member.gender.id? manIcon:womanIcon} alt="Profile"/>
                     <img className="deleteCancelPicture"
                          src={this.props.modifyEnabled ? cancelIcon : modifyIcon}
                          onClick={() => this.props.enableModification()} alt="Modifier/Annuler"/>
