@@ -13,8 +13,8 @@ interface MemberArrayProps {
     parameters: SearchInterface
     ref: string
     selectMember(member: Member): void
-    nextPage(currentPage : number,event: React.MouseEvent):void
-    previousPage(currentPage : number,event: React.MouseEvent):void
+    nextPage(currentPage : number):void
+    previousPage(currentPage : number):void
 }
 
 interface PageStatus{
@@ -44,7 +44,7 @@ class MemberArray extends Component<MemberArrayProps, MemberArrayState> {
 
     getMembers = (searchArray: SearchInterface, page : number) => {
         //manage pages
-        let baseurl : string = 'api/v1/core/member?pageSize=10&pageNumber='+page;
+        let baseurl : string = 'api/v1/core/member?pageSize=12&pageNumber='+page;
 
         // create the url with eventually the parameters
         let url = Object.keys(searchArray).reduce((url, property, i) => {
@@ -133,15 +133,17 @@ class MemberArray extends Component<MemberArrayProps, MemberArrayState> {
         return (
             <section className={`MemberArray members`}>
                 {data}
-                {this.state.page.totalPages===0? null :
+                {this.state.page.totalPages===1? null :
                     <div className = 'pagination'>
-                        <input type='button' className='pagePrevious' value='Page précendente'
-                               onClick={(e: React.MouseEvent) => this.props.previousPage(this.state.page.currentPage,e)}/>
+                        <input disabled={this.state.page.currentPage === 0} type='button' className='pagePrevious'
+                               value='Page précendente' onClick={() => this.props.previousPage(this.state.page.currentPage)}/>
+
+                        <input disabled={(this.state.page.currentPage + 1) === this.state.page.totalPages}  type='button'
+                               className='pageNext' value='Page suivante'
+                               onClick={() => this.props.nextPage(this.state.page.currentPage)}/>
                         <p className='pageIndicator'>
-                            {'Page ' + (this.state.page.currentPage+1) + ' of ' + this.state.page.totalPages}
+                            {'Page ' + (this.state.page.currentPage+1) + ' de ' + this.state.page.totalPages}
                         </p>
-                        <input type='button' className='pageNext' value='Page suivante'
-                               onClick={(e: React.MouseEvent) => this.props.nextPage(this.state.page.currentPage,e)}/>
                     </div>}
             </section>
         )

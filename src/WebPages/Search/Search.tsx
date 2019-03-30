@@ -60,12 +60,12 @@ class Search extends Component<{}, SearchState> {
         });
     };
 
-    nextPage = (currentPage : number,event: React.MouseEvent) => {
-        this.makeSearch(currentPage+1,event);
+    nextPage = (currentPage : number) => {
+        this.makeSearch(currentPage+1);
     };
 
-    previousPage = (currentPage : number,event: React.MouseEvent) => {
-        this.makeSearch(currentPage-1,event);
+    previousPage = (currentPage : number) => {
+        this.makeSearch(currentPage-1);
     };
 
     makeSearch = (page :number,event?: React.MouseEvent) => {
@@ -80,7 +80,6 @@ class Search extends Component<{}, SearchState> {
                 delete searchArray[paramName];
         });
 
-        // find a better way
         (this.refs.members as MemberArray).getMembers(searchArray,page);
     };
 
