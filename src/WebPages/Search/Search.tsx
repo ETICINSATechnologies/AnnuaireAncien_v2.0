@@ -60,8 +60,16 @@ class Search extends Component<{}, SearchState> {
         });
     };
 
-    makeSearch = (event: React.MouseEvent) => {
-        event.preventDefault();
+    nextPage = (currentPage : number,event: React.MouseEvent) => {
+        this.makeSearch(currentPage+1,event);
+    };
+
+    previousPage = (currentPage : number,event: React.MouseEvent) => {
+        this.makeSearch(currentPage-1,event);
+    };
+
+    makeSearch = (page :number,event?: React.MouseEvent) => {
+        event? event.preventDefault():null;
 
         // copy the input into a new variable
         let searchArray = Object.assign({}, this.state.searchValues);
@@ -72,7 +80,8 @@ class Search extends Component<{}, SearchState> {
                 delete searchArray[paramName];
         });
 
-        (this.refs.members as MemberArray).getMembers(searchArray);
+        // find a better way
+        (this.refs.members as MemberArray).getMembers(searchArray,page);
     };
 
     updateParameters = (event: React.ChangeEvent) => {
@@ -133,10 +142,13 @@ class Search extends Component<{}, SearchState> {
                         <div className='infoTitle'> Rechercher</div>
                         <form className="searchForm">
                             {renderSearchFields}
-                            <input className="searchInput" type="submit" value="Rechercher" onClick={this.makeSearch}/>
+                            <input className="searchInput" type="submit"
+                                   value="Rechercher" onClick={(e: React.MouseEvent)=>this.makeSearch(0,e)}
+                            />
                         </form>
                     </div>
-                    <MemberArray parameters={this.state.searchValues} selectMember={this.selectMember} ref="members"/>
+                    <MemberArray parameters={this.state.searchValues} selectMember={this.selectMember} ref="members"
+                                 nextPage={this.nextPage} previousPage={this.previousPage}/>
                     <MemberInfo member={this.state.selectedMember}/>
                 </section>
             </React.Fragment>
