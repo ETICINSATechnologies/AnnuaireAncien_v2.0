@@ -57,17 +57,6 @@
     padding-left: 1vmin;
 }
 
-/*
-.position_form .position_container select {
-    border: 0.3vmin solid black;
-    font-size: 3vmin;
-    width: 90%;
-    height: 5vmin;
-    margin: auto auto auto 0;
-    background-color: white;
-    justify-self: center;
-}
-*/
 
 .position_form .position_container img {
     width: 6vmin;
