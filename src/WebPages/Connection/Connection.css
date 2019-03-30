@@ -61,6 +61,8 @@
     margin: auto;
     padding-left: 0.7vmin;
     font-size: 3vmin;
+    background-color: white;
+    justify-self: center;
 }
 
 .Connection .connect_input {

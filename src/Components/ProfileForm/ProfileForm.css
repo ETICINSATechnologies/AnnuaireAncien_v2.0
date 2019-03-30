@@ -28,11 +28,12 @@
     margin: auto;
 }
 
-.ProfileForm .field_container input, p {
-    width: 90%;
+.ProfileForm .field_container select {
+    position: relative;
+    left: 1vw;
 }
 
-.ProfileForm .field_container select {
+.ProfileForm .field_container input, p {
     width: 90%;
 }
 
@@ -53,14 +54,14 @@
     color: red;
 }
 
-.ProfileForm input[type="text"], .ProfileForm select {
+.ProfileForm input[type="text"] {
     border: 0.3vmin solid black;
     font-size: 3vmin;
     padding-left: 1vmin;
     height: 5vmin;
 }
 
-.ProfileForm p, input[type="text"], .ProfileForm select{
+.ProfileForm p, input[type="text"]{
     background-color: white;
     justify-self: center;
 }
