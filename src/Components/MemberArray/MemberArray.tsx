@@ -136,7 +136,7 @@ class MemberArray extends Component<MemberArrayProps, MemberArrayState> {
                 {this.state.page.totalPages===1? null :
                     <div className = 'pagination'>
                         <input disabled={this.state.page.currentPage === 0} type='button' className='pagePrevious'
-                               value='Page précendente' onClick={() => this.props.previousPage(this.state.page.currentPage)}/>
+                               value='Page précédente' onClick={() => this.props.previousPage(this.state.page.currentPage)}/>
 
                         <input disabled={(this.state.page.currentPage + 1) === this.state.page.totalPages}  type='button'
                                className='pageNext' value='Page suivante'
