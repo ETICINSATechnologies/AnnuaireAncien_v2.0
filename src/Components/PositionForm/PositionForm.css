@@ -33,7 +33,7 @@
 .position_form .position_container {
     height: 10vmin;
     display: grid;
-    grid-template-columns: 3fr 0.75fr 1fr 1fr;
+    grid-template-columns: 0.75fr 3fr 1fr 1fr;
     grid-template-rows: 4vmin 1fr;
     border: 0.3vmin solid black;
     padding: 0.5vmin 0.5vmin 0.5vmin 1.5vmin;
@@ -77,7 +77,7 @@
     border:0.4vmin solid #333;
 }
 .position_form .position_container input[type='checkbox']:checked {
-    background: #222;
+    background: #9BCA8B;
 }
 
 .position_form .input_button {

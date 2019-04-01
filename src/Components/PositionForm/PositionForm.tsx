@@ -137,17 +137,17 @@ const MemberPositionRender = (props: PositionProps) => {
 
     return (
         <div className="position_container">
-            <p>Poste</p>
             <p className='labelCA'>CA</p>
+            <p>Poste</p>
             <p>Année</p>
             <img className={`delete_position ${props.modifyEnabled ? "visible" : "hidden"}`}
                  src={deleteIcon} alt="Supprimer" onClick={() => props.deletePosition(props.index)}/>
+            <input className="isBoard" type="checkbox" checked={props.mPosition.isBoard}
+                   onChange={(evt: React.ChangeEvent)=> props.onChange(evt, props.index)} disabled={!props.modifyEnabled}/>
             <DropDown className='position' options={props.positionList}
                       modifyEnabled={props.modifyEnabled}
                       onChange={(evt: React.ChangeEvent) =>props.onChange(evt,props.index)}
                       currentOption={props.mPosition.id}/>
-            <input className="isBoard" type="checkbox" checked={props.mPosition.isBoard}
-                   onChange={(evt: React.ChangeEvent)=> props.onChange(evt, props.index)} disabled={!props.modifyEnabled}/>
             <input className="year" type="text" disabled={!props.modifyEnabled} value={props.mPosition.year}
                    onChange={(evt) => props.onChange(evt, props.index)}/>
         </div>
