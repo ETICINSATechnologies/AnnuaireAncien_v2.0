@@ -33,7 +33,7 @@
 .position_form .position_container {
     height: 10vmin;
     display: grid;
-    grid-template-columns: 4fr 1fr 1fr;
+    grid-template-columns: 0.75fr 3fr 1fr 1fr;
     grid-template-rows: 4vmin 1fr;
     border: 0.3vmin solid black;
     padding: 0.5vmin 0.5vmin 0.5vmin 1.5vmin;
@@ -62,8 +62,22 @@
     width: 6vmin;
     margin: auto;
     grid-row: 1 / 3;
-    grid-column: 3;
+    grid-column: 4;
     vertical-align: middle;
+}
+
+.position_form .position_container input[type='checkbox'] {
+    -webkit-appearance:none;
+    margin: auto;
+    vertical-align: middle;
+    width:3.5vmin;
+    height:3.5vmin;
+    background:white;
+    border-radius:0.3vmin;
+    border:0.4vmin solid #333;
+}
+.position_form .position_container input[type='checkbox']:checked {
+    background: #9BCA8B;
 }
 
 .position_form .input_button {
