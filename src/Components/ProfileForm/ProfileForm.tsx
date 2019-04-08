@@ -106,6 +106,7 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
 
     annulerPhoto = (event: React.MouseEvent) => {
         event.preventDefault();
+
         this.setState({
             changePhoto:{
                 ...this.state.changePhoto,
@@ -118,7 +119,6 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
 
     //Envoi du fichier image
     validerPhoto = (formData : FormData) => {
-        // console.log(formData + "?id=" + this.props.member.id);
         if (Auth.isConnected()){
             fetch('api/v1/core/member/' + this.props.member.id + '/photo', {
                 method: 'POST',
@@ -139,7 +139,8 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
                     }
                     let img : HTMLImageElement =  document.querySelector('.profilePicture') as HTMLImageElement;
                     img.src = this.props.member.id + '.jpg';
-                    console.log(img.src);
+                    this.props.member.updatePhoto(this.props.member.id + '.jpg');
+                    // console.log(img.src);
                 }else if (res.status === 401){
                     this.setState({
                         changePhoto:{
@@ -384,7 +385,7 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
                             <h2>Sélectionnez votre photo</h2>
                             <input type="file" className="inputPhoto"
                                    onChange={this.onChangePhoto}
-                                   accept="image/jpeg, image/png" />
+                                   accept="image/jpeg" />
                             <img src='' className='imgPreview' height="200" alt='Image preview'/>
 
                             <div className="button_container_changePhoto">
