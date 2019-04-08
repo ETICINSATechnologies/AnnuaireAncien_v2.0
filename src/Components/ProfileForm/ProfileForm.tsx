@@ -291,7 +291,7 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
                         this.props.member.department.id}
                         onChange={this.onChange}
                         disabled={!this.props.modifyEnabled}>
-                    <option value={0}> Choisir un departement</option>
+                    <option value={0} > Choisir un departement</option>
                     {departmentDropDown}
                 </select>
             )
@@ -382,12 +382,11 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
                 <div className="modalChangePhoto" >
                     <Modal show={this.state.changePhoto.show} onClose={this.showModalChangePhoto.bind(this)}>
                         <div className="content" >
-                            <h2>Sélectionnez votre photo</h2>
+                            <h1>Sélectionnez votre photo</h1>
                             <input type="file" className="inputPhoto"
                                    onChange={this.onChangePhoto}
                                    accept="image/jpeg" />
-                            <img src='' className='imgPreview' height="200" alt='Image preview'/>
-
+                            {/*<img src='' className='imgPreview' height="200" alt='Image preview'/>*/}
                             <div className="button_container_changePhoto">
                                 <button className = "btn_Annuler"
                                         onClick = {this.annulerPhoto}>

@@ -236,30 +236,31 @@
     display: grid;
 }
 
-.ProfileForm .modalChangePhoto .inputPhoto {
+.ProfileForm .modalChangePhoto .content {
     display: grid;
+    grid-template-rows: 2fr 5fr;
     margin : 0 auto;
-    background-color: white;
+    justify-self: center;
+}
+.ProfileForm .modalChangePhoto .inputPhoto {
+    background-color: transparent;
     justify-self: center;
 }
 
 .ProfileForm .modalChangePhoto .button_container_changePhoto{
-    position:absolute;
-    width : 80%;
-    text-align:center;
-    bottom : 5vmin;
+    display:grid;
+    grid-template-columns: 3fr 3fr;
+    width : 100%;
 }
 .ProfileForm .modalChangePhoto .btn_Valider {
     background-color: #4CAF50;
     border: none;
     color: white;
     text-align: center;
-    /*display: inline-block;*/
     font-size: 4vmin;
-    width: 30%;
-    height: 20%;
+    width: 70%;
+    height: 100%;
     margin: 0px 0px 0px 1em;
-
 }
 
 .ProfileForm .modalChangePhoto .btn_Annuler {
@@ -267,8 +268,8 @@
     border: none;
     color: white;
     text-align: center;
-    /*display: inline-block;*/
     font-size: 4vmin;
-    width: 30%;
-    height: 20%;
+    width: 70%;
+    height: 100%;
+
 }
