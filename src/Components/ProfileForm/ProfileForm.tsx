@@ -41,10 +41,11 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
     state = {
         departments: [],
         idMapping: [],
-        
+
         changePhoto:{
             changePhotoState:'',
             show: false,
+            imageData : new FormData(),
         },
 
         mdp: {
@@ -103,6 +104,97 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
         }));
     };
 
+    annulerPhoto = (event: React.MouseEvent) => {
+        event.preventDefault();
+        this.setState({
+            changePhoto:{
+                ...this.state.changePhoto,
+                changePhotoState:'Pas de fichier sélectionné.',
+                imageData : new FormData(),
+            },
+        });
+        console.log('Annuler clicked Photo');
+    }
+
+    //Envoi du fichier image
+    validerPhoto = (formData : FormData) => {
+        // console.log(formData + "?id=" + this.props.member.id);
+        if (Auth.isConnected()){
+            fetch('api/v1/core/member/' + this.props.member.id + '/photo', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                },
+                body: formData,
+            }).then( res => {
+                if (res.status === 200){
+                    this.props.member.updatePhoto(formData.toString()); // nom de la photo à voir
+                    if(this.state.changePhoto.imageData.get('photoProfil')){
+                        this.setState({
+                            changePhoto:{
+                                ...this.state.changePhoto,
+                                changePhotoState:'Photo modifiée',
+                            }
+                        });
+                    }
+                    let img : HTMLImageElement =  document.querySelector('.profilePicture') as HTMLImageElement;
+                    img.src = this.props.member.id + '.jpg';
+                    console.log(img.src);
+                }else if (res.status === 401){
+                    this.setState({
+                        changePhoto:{
+                            ...this.state.changePhoto,
+                            changePhotoState:'Photo invalide',
+                        }
+                    });
+                }else {
+                    this.setState({
+                        changePhoto:{
+                            ...this.state.changePhoto,
+                            changePhotoState:'Erreur',
+                        }
+                    });
+                }
+
+            })
+            console.log("Valider clicked Photo");
+        }
+    };
+
+    onChangePhoto = (event : any) => {
+        event.persist();
+        let img : HTMLImageElement =  document.querySelector('.imgPreview') as HTMLImageElement;
+        let inputImg : HTMLInputElement = document.querySelector('.inputPhoto') as HTMLInputElement;
+
+        if (inputImg.files != null){
+            var file = inputImg.files[0];
+            var reader = new FileReader();
+            reader.addEventListener("load", () => {
+                img.src = reader.result as string;
+                // console.log('reader ' + reader.result);
+                var formData = new FormData();
+                formData.set('photoProfil', reader.result as string);
+                // formData.forEach((value, key) => {
+                //     console.log('Entered');
+                //     console.log("key %s: value %s", key, value);
+                // });
+                this.setState(({
+                    changePhoto:{
+                        ...this.state.changePhoto,
+                        changePhotoState:'Fichier chargé',
+                        imageData : formData,
+                    },
+                }));
+                // console.log(this.state.changePhoto.imageData.get('photoProfil'));
+            } ,false);
+
+            // Affiche un aperçu dans var img
+            if (file){
+                reader.readAsDataURL(file);
+            }
+        }
+
+    };
 
     updateMdp = () => {
         // check if new pass is at least 8 char
@@ -166,9 +258,6 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
                     return 0;
                 }
             })
-
-
-
     };
 
 
@@ -212,13 +301,14 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
         this.setState(
             {
                 ...this.state,
-                changePhoto: {
+                changePhoto:{
+                    ...this.state.changePhoto,
                     changePhotoState:'Pas de fichier sélectionné.',
                     show:!this.state.changePhoto.show,
-
                 }
             }
-        )
+        );
+        return 0;
     };
 
     render() {
@@ -289,12 +379,24 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
                 </div>
 
                 <div className="modalChangePhoto" >
-                    <Modal show={this.state.changePhoto.show} onClose={this.showModalChangePhoto}>
+                    <Modal show={this.state.changePhoto.show} onClose={this.showModalChangePhoto.bind(this)}>
                         <div className="content" >
-                            <input type="file" className="inputPhoto" accept="image/jpeg, image/png"/>
+                            <h2>Sélectionnez votre photo</h2>
+                            <input type="file" className="inputPhoto"
+                                   onChange={this.onChangePhoto}
+                                   accept="image/jpeg, image/png" />
+                            <img src='' className='imgPreview' height="200" alt='Image preview'/>
+
                             <div className="button_container_changePhoto">
-                                <button className = "btn_Annuler">Annuler</button>
-                                <button className = "btn_Valider">Valider</button>
+                                <button className = "btn_Annuler"
+                                        onClick = {this.annulerPhoto}>
+                                    Annuler
+                                </button>
+                                <button className = "btn_Valider"
+                                        type='button'
+                                        onClick={() => this.validerPhoto(this.state.changePhoto.imageData)}>
+                                    Valider
+                                </button>
                             </div>
                         </div>
                     </Modal>

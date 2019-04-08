@@ -1,3 +1,39 @@
+@font-face {
+    font-family: 'HKGrotesk';
+    font-style: normal;
+    font-weight: bold;
+    src:
+            local('HKGrotesk-Bold'),
+            url(/fonts/HKGroteskFL/HKGrotesk-Bold.otf) format('opentype');
+}
+
+@font-face {
+    font-family: 'HKGrotesk';
+    font-style: italic;
+    font-weight: normal;
+    src:
+            local('HKGrotesk-MediumItalic'),
+            url(/fonts/HKGroteskFL/HKGrotesk-MediumItalic.otf) format('opentype');
+}
+
+@font-face {
+    font-family: 'HKGrotesk';
+    font-style: normal;
+    font-weight: 400;
+    src:
+            local('HKGrotesk-Regular'),
+            url(/fonts/HKGroteskFL/HKGrotesk-Regular.otf) format('opentype');
+}
+
+@font-face {
+    font-family: 'HKGrotesk';
+    font-style: italic;
+    font-weight: 600;
+    src:
+            local('HKGrotesk-SemiBoldItalic'),
+            url(/fonts/HKGroteskFL/HKGrotesk-SemiBoldItalic.otf) format('opentype');
+}
+
 html {
     width: 100%;
     height: 100%;

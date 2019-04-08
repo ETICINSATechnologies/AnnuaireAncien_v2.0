@@ -2,15 +2,15 @@
     display: grid;
     grid-template-rows: 2fr 2fr 1fr;
     background-color: white;
-
     justify-self: center;
     vertical-align: middle;
     border: 0.6vmin solid black;
     margin: 5vmin auto;
     padding: 1vw;
-
     width: 90%;
     height: calc(85vh - 6.5vw - 2.5vmax );
+    margin: auto 1vw;
+    font-family:HKGrotesk-Bold;
 }
 
 .ProfileForm .header_container {
@@ -60,6 +60,10 @@
     height: 5vmin;
 }
 
+.ProfileForm .telephone{
+    font-size : 1.5vw;
+}
+
 .ProfileForm p, input[type="text"], .ProfileForm select{
     background-color: white;
     justify-self: center;
@@ -78,6 +82,15 @@
 
     color: #009e11;
 
+    margin: auto;
+}
+
+.ProfileForm h2 {
+    text-align: center;
+    justify-self: center;
+    vertical-align: middle;
+    font-size: 1.5vw;
+    color: #000000;
     margin: auto;
 }
 
@@ -229,17 +242,24 @@
     background-color: white;
     justify-self: center;
 }
+
+.ProfileForm .modalChangePhoto .button_container_changePhoto{
+    position:absolute;
+    width : 80%;
+    text-align:center;
+    bottom : 5vmin;
+}
 .ProfileForm .modalChangePhoto .btn_Valider {
     background-color: #4CAF50;
     border: none;
     color: white;
     text-align: center;
-    display: inline-block;
-    font-size: 16px;
-    width: 80px;
-    height: 35px;
-    margin:10px 10px 10px 10px;
-    vertical-align:top;
+    /*display: inline-block;*/
+    font-size: 4vmin;
+    width: 30%;
+    height: 20%;
+    margin: 0px 0px 0px 1em;
+
 }
 
 .ProfileForm .modalChangePhoto .btn_Annuler {
@@ -247,10 +267,8 @@
     border: none;
     color: white;
     text-align: center;
-    display: inline-block;
-    font-size: 16px;
-    width: 80px;
-    height: 35px;
-    margin:10px 10px 10px 10px;
-    vertical-align:top;
+    /*display: inline-block;*/
+    font-size: 4vmin;
+    width: 30%;
+    height: 20%;
 }

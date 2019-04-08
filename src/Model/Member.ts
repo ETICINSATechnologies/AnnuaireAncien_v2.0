@@ -140,6 +140,10 @@ export class Member implements MemberInterface {
             ) as MemberUpdate
 
     }
+
+    updatePhoto(photo:string): void{
+        this.photo = photo;
+    }
 }
 
 export let defaultMember = new Member({
