@@ -123,6 +123,7 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
             fetch('api/v1/core/member/' + this.props.member.id + '/photo', {
                 method: 'POST',
                 headers: {
+                    Authorization: Auth.getToken(),
                     'Content-Type': 'multipart/form-data'
                 },
                 body: formData,
@@ -141,14 +142,29 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
                     img.src = this.props.member.id + '.jpg';
                     this.props.member.updatePhoto(this.props.member.id + '.jpg');
                     // console.log(img.src);
+                }else if (res.status === 400){
+                    this.setState({
+                        changePhoto:{
+                            ...this.state.changePhoto,
+                            changePhotoState:'Photo invalide (type non .jpg ou pas d\'image)',
+                        }
+                    });
+
                 }else if (res.status === 401){
                     this.setState({
                         changePhoto:{
                             ...this.state.changePhoto,
-                            changePhotoState:'Photo invalide',
+                            changePhotoState:'Non connecté',
                         }
                     });
-                }else {
+                } else if(res.status === 403){
+                    this.setState({
+                        changePhoto:{
+                            ...this.state.changePhoto,
+                            changePhotoState:'Permission non accordée',
+                        }
+                    });
+                } else {
                     this.setState({
                         changePhoto:{
                             ...this.state.changePhoto,
@@ -394,7 +410,7 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
                                 </button>
                                 <button className = "btn_Valider"
                                         type='button'
-                                        onClick={() => this.validerPhoto(this.state.changePhoto.imageData)}>
+                                        onClick={this.validerPhoto.bind(this, this.state.changePhoto.imageData)}>
                                     Valider
                                 </button>
                             </div>
