@@ -39,12 +39,14 @@ class MemberArray extends Component<MemberArrayProps, MemberArrayState> {
         page: {
             currentPage : 0,
             totalPages : 1,
+            pageSize : 12
         }
     };
 
     getMembers = (searchArray: SearchInterface, page : number) => {
         //manage pages
-        let baseurl : string = 'api/v1/core/member?pageSize=12&pageNumber='+page;
+
+        let baseurl : string = 'api/v1/core/member?pageSize='+this.state.page.pageSize+'&pageNumber='+page;
 
         // create the url with eventually the parameters
         let url = Object.keys(searchArray).reduce((url, property, i) => {
@@ -114,11 +116,13 @@ class MemberArray extends Component<MemberArrayProps, MemberArrayState> {
                                            selectMemberById={this.selectMemberById}/>;
             });
             data =
-                    <table>
-                        <caption>Liste des membres</caption>
-                        <thead><MemberArrayHeader/></thead>
-                        <tbody>{members}</tbody>
-                    </table>
+                    <div>
+                        <table>
+                            <caption>Liste des membres</caption>
+                            <thead><MemberArrayHeader/></thead>
+                            <tbody>{members}</tbody>
+                        </table>
+                    </div>
         }
         else {
             let message;
@@ -132,7 +136,9 @@ class MemberArray extends Component<MemberArrayProps, MemberArrayState> {
 
         return (
             <section className={`MemberArray members`}>
-                {data}
+                <div className='data'>
+                    {data}
+                </div>
                 {this.state.page.totalPages===1? null :
                     <div className = 'pagination'>
                         <input disabled={this.state.page.currentPage === 0} type='button' className='pagePrevious'
