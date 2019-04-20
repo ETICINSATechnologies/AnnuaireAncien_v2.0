@@ -35,30 +35,15 @@ class Board extends Component<BoardProps, BoardState> {
     }
 
     render() {
-        const rowsNb = Math.max(this.props.members.length, 5);
-        const rowSize = Math.min(this.state.divHeight / rowsNb, 250);
 
         let columnHeight;
-        let boardStyle;
 
-        if (window.innerHeight < window.innerWidth) {
-            columnHeight = `${1.2 * rowSize}px`;
-            boardStyle = {
-                gridTemplateRows: `repeat(${rowsNb}, ${rowSize}px)`
-            }
-        }
-        else {
-            columnHeight = '12vw';
-            boardStyle = {
-                gridTemplateRows: `repeat(${rowsNb}, 12vw`
-            }
-        }
+        window.innerHeight < window.innerWidth ? columnHeight = '16vh': columnHeight = '18vw';
 
         document.documentElement.style.setProperty(`--board-${this.props.position}-width`, columnHeight);
 
         return (
-            <div ref={(ref) => this.boardRef = ref} className={"Board " + this.props.position}
-                 style={boardStyle}>
+            <div ref={(ref) => this.boardRef = ref} className={"Board " + this.props.position}>
                 {
                     this.props.members.map((member) => {
                         let photo;

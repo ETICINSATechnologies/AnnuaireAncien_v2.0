@@ -50,11 +50,13 @@
 
 .Home .left {
     width: calc(1.1 * var(--board-left-width));
+    grid-auto-rows: minmax(min-content, max-content);
     background: rgba(0, 83, 96, 0.8);
 }
 
 .Home .right {
     width: calc(1.1 * var(--board-right-width));
+    grid-auto-rows: minmax(min-content, max-content);
     background: rgba(155, 202, 139, 1);
 }
 
