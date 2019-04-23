@@ -120,3 +120,8 @@
     grid-row: 4;
     grid-column: 2 / 4;
 }
+
+.MemberInfo .infoArea .link {
+    text-align: center;
+    margin: auto;
+}
