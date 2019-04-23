@@ -12,8 +12,9 @@ export function fetch(url: string, param?: any): Promise<any> {
         expectedResponse = member;
     else if (/member\/board\/latest$/.test(url))
         expectedResponse = board;
-    else if (/member$/.test(url))
+    else if (/member*/.test(url)) {
         expectedResponse = members;
+    } 
     else if (/position/.test(url))
         expectedResponse = positions;
 

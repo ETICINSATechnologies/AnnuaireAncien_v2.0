@@ -24,7 +24,6 @@ const searchFields = {
     firstName: 'Prénom',
     lastName: 'Nom',
     positionId: 'Poste',
-    company: 'Entreprise',
     year: 'Année',
 } as SearchInterface;
 
@@ -35,7 +34,6 @@ class Search extends Component<{}, SearchState> {
             firstName: '',
             lastName: '',
             positionId: '',
-            company: '',
             year: ''
         } as SearchInterface,
         positions: [],
@@ -43,7 +41,7 @@ class Search extends Component<{}, SearchState> {
     };
 
     componentDidMount() {
-        fetch('api/v1/core/position', {
+        fetch('position', {
             headers: {
                 Authorization: Auth.getToken()
             }

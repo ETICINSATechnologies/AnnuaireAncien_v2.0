@@ -15,10 +15,8 @@ const MAIN_PROPERTIES = ["firstName", "lastName", "telephone"];
 
 const OTHER_PROPERTIES = {
     email: 'Email',
-    company: 'Travaille chez',
     latestYear: 'Dernière année à ETIC',
     latestPosition: 'Dernier poste à ETIC',
-    department: 'Département',
 };
 
 const MemberInfo: React.SFC<MemberInfoProps> = (props: MemberInfoProps) => {

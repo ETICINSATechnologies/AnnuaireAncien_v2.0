@@ -33,7 +33,7 @@
 .position_form .position_container {
     height: 10vmin;
     display: grid;
-    grid-template-columns: 0.75fr 3fr 1fr 1fr;
+    grid-template-columns: 3fr 1fr 1fr;
     grid-template-rows: 4vmin 1fr;
     border: 0.3vmin solid black;
     padding: 0.5vmin 0.5vmin 0.5vmin 1.5vmin;
@@ -62,7 +62,7 @@
     width: 6vmin;
     margin: auto;
     grid-row: 1 / 3;
-    grid-column: 4;
+    grid-column: 3;
     vertical-align: middle;
 }
 
