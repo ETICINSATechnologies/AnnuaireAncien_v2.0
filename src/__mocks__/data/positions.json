@@ -1,211 +1,102 @@
 [
   {
     "id": 1,
-    "label": "Auditeur orga",
-    "pole": null
+    "label": "Auditeur orga"
   },
   {
     "id": 2,
-    "label": "Auditeur treso",
-    "pole": null
+    "label": "Auditeur treso"
   },
   {
     "id": 3,
-    "label": "Chargé d'affaires",
-    "pole": {
-      "id": 3,
-      "label": "DevCo",
-      "name": "Developpement Commercial"
-    }
+    "label": "Chargé d'affaires"
   },
   {
     "id": 4,
-    "label": "Chef de projets",
-    "pole": {
-      "id": 9,
-      "label": "UA",
-      "name": "Unité d'affaires"
-    }
+    "label": "Chef de projets"
   },
   {
     "id": 5,
-    "label": "Comptable",
-    "pole": {
-      "id": 8,
-      "label": "Treso",
-      "name": "Trésorerie"
-    }
+    "label": "Comptable"
   },
   {
     "id": 6,
-    "label": "Consultant",
-    "pole": {
-      "id": 2,
-      "label": "Cons",
-      "name": "Consultant"
-    }
+    "label": "Consultant"
   },
   {
     "id": 7,
-    "label": "Junior com",
-    "pole": {
-      "id": 1,
-      "label": "Com",
-      "name": "Communication"
-    }
+    "label": "Junior com"
   },
   {
     "id": 8,
-    "label": "Junior devCo",
-    "pole": {
-      "id": 3,
-      "label": "DevCo",
-      "name": "Developpement Commercial"
-    }
+    "label": "Junior devCo"
   },
   {
     "id": 9,
-    "label": "Junior qualité",
-    "pole": {
-      "id": 4,
-      "label": "Perf",
-      "name": "Performance"
-    }
+    "label": "Junior qualité"
   },
   {
     "id": 10,
-    "label": "Junior SI",
-    "pole": {
-      "id": 7,
-      "label": "SI",
-      "name": "Systèmes d'Information,"
-    }
+    "label": "Junior SI"
   },
   {
     "id": 11,
-    "label": "Junior UA",
-    "pole": {
-      "id": 9,
-      "label": "UA",
-      "name": "Unité d'affaires"
-    }
+    "label": "Junior UA"
   },
   {
     "id": 12,
-    "label": "Membre CNJE",
-    "pole": null
+    "label": "Membre CNJE"
   },
   {
     "id": 13,
-    "label": "Membre d'Honneur",
-    "pole": null
+    "label": "Membre d'Honneur"
   },
   {
     "id": 14,
-    "label": "Président",
-    "pole": {
-      "id": 5,
-      "label": "Prez",
-      "name": "Présidence"
-    }
+    "label": "Président"
   },
   {
     "id": 15,
-    "label": "Responsable BU",
-    "pole": {
-      "id": 9,
-      "label": "UA",
-      "name": "Unité d'affaires"
-    }
+    "label": "Responsable BU"
   },
   {
     "id": 16,
-    "label": "Responsable com",
-    "pole": {
-      "id": 1,
-      "label": "Com",
-      "name": "Communication"
-    }
+    "label": "Responsable com"
   },
   {
     "id": 17,
-    "label": "Responsable devCo",
-    "pole": {
-      "id": 3,
-      "label": "DevCo",
-      "name": "Developpement Commercial"
-    }
+    "label": "Responsable devCo"
   },
   {
     "id": 18,
-    "label": "Responsable qualité",
-    "pole": {
-      "id": 4,
-      "label": "Perf",
-      "name": "Performance"
-    }
+    "label": "Responsable qualité"
   },
   {
     "id": 19,
-    "label": "Responsable RH",
-    "pole": {
-      "id": 6,
-      "label": "RH",
-      "name": "Ressources Humaines"
-    }
+    "label": "Responsable RH"
   },
   {
     "id": 20,
-    "label": "Responsable SI",
-    "pole": {
-      "id": 7,
-      "label": "SI",
-      "name": "Systèmes d'Information,"
-    }
+    "label": "Responsable SI"
   },
   {
     "id": 21,
-    "label": "Responsable d'UA",
-    "pole": {
-      "id": 9,
-      "label": "UA",
-      "name": "Unité d'affaires"
-    }
+    "label": "Responsable d'UA"
   },
   {
     "id": 22,
-    "label": "Secrétaire général",
-    "pole": {
-      "id": 6,
-      "label": "RH",
-      "name": "Ressources Humaines"
-    }
+    "label": "Secrétaire général"
   },
   {
     "id": 23,
-    "label": "Trésorier",
-    "pole": {
-      "id": 8,
-      "label": "Treso",
-      "name": "Trésorerie"
-    }
+    "label": "Trésorier"
   },
   {
     "id": 24,
-    "label": "Vice-Président",
-    "pole": {
-      "id": 5,
-      "label": "Prez",
-      "name": "Présidence"
-    }
+    "label": "Vice-Président"
   },
   {
     "id": 25,
-    "label": "Vice-Trésorier",
-    "pole": {
-      "id": 8,
-      "label": "Treso",
-      "name": "Trésorerie"
-    }
+    "label": "Vice-Trésorier"
   }
 ]

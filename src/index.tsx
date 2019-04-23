@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import {Redirect, Switch} from "react-router";
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import * as serviceWorker from './serviceWorker';
+import {fetch} from './__mocks__/function/fetch';
 
 import './index.css';
 
