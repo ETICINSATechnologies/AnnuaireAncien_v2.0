@@ -6,9 +6,7 @@
     font-family: Arial, Helvetica, sans-serif;
     border: 0.3vmin solid black;
     border-collapse: collapse;
-
     margin: auto;
-
     height: 100%;
 }
 
@@ -17,7 +15,33 @@
     margin: auto;
     padding-top: 10vw;
     text-align: center;
-    height: 40%;
+}
+
+.MemberArray .searchResult{
+    height: 100%;
+    margin: 1vw 0 1vmin 0;
+}
+
+.MemberArray .data{
+    font-size: 2.2vw;
+    text-align: center;
+    height : auto;
+}
+
+.MemberArray .pageInput{
+    font-size: 1.1vmax;
+    text-align: center;
+    height: 1.2em;
+    width: 1.5em;
+}
+
+.MemberArray input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.MemberArray input[type="number"] {
+    -moz-appearance: textfield;
 }
 
 .MemberArray caption {
@@ -25,7 +49,7 @@
 }
 
 .MemberArray thead, tbody {
-    display: block;
+    //display: block;
     table-layout: fixed;
     width: 100%;
 }
@@ -77,40 +101,51 @@
 .MemberArray th {
     color: white;
     background-color: rgb(155, 202, 139);
-
     text-align: left;
 }
 
 .MemberArray .pagination {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    background-color: white;
+    grid-template-columns: 1fr 1fr 1fr;
     font-family: Arial, Helvetica, sans-serif;
-    justify-self: center;
-    vertical-align: middle;
     justify-items: center;
     align-items: center;
-
+    bottom: 3vh;
 }
 
-.MemberArray .pagination input{
+@media (orientation: landscape) {
+    .MemberArray .pagination {
+        width: 35vw;
+    }
+}
+
+@media (orientation: portrait){
+    .MemberArray .pagination {
+        width: 80%;
+    }
+}
+
+.MemberArray .pagination > input{
     grid-row: 1;
     text-align: center;
     vertical-align: middle;
-    width: 12vmax;
+    width: 10vmax;
     font-size: 1.1vmax;
     border: 0.2vmin solid black;
     height: 4.5vh;
-    margin : 2vh 0.5vw 0.2vh 0.5vw;
 }
 
 .MemberArray .pagination p{
-    grid-column-start: 1;
-    grid-column-end: 3;
+    grid-row:1;
     text-align: center;
-    vertical-align: middle;
     font-size: 1.1vmax;
-    display: grid;
-    margin : 0.2vh auto 1vh auto;
+    //margin: 0.2vh auto 1vh auto;
+    width: auto;
 }
+
+
