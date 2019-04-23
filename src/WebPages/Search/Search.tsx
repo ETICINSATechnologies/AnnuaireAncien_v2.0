@@ -60,14 +60,6 @@ class Search extends Component<{}, SearchState> {
         });
     };
 
-    nextPage = (currentPage : number) => {
-        this.makeSearch(currentPage+1);
-    };
-
-    previousPage = (currentPage : number) => {
-        this.makeSearch(currentPage-1);
-    };
-
     makeSearch = (page :number,event?: React.MouseEvent) => {
         event? event.preventDefault():null;
 
@@ -147,7 +139,7 @@ class Search extends Component<{}, SearchState> {
                         </form>
                     </div>
                     <MemberArray parameters={this.state.searchValues} selectMember={this.selectMember} ref="members"
-                                 nextPage={this.nextPage} previousPage={this.previousPage}/>
+                                 getPage={this.makeSearch}/>
                     <MemberInfo member={this.state.selectedMember}/>
                 </section>
             </React.Fragment>

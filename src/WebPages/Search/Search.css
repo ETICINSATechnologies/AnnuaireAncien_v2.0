@@ -91,6 +91,7 @@
     /*CSS for members array*/
     .Search .members {
         margin: 1vw auto auto;
+        max-height: calc(90vh - 6.5vw - 2.5vmax);
     }
 
     .Search .MemberInfo {
