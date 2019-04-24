@@ -123,7 +123,11 @@ class Search extends Component<{}, SearchState> {
         if (!Auth.isConnected())
             return <Redirect to='/'/>;
 
-        activeButton.push('profile');
+        if(Auth.isAdmin()) {
+            activeButton.push('admin');
+        }else{
+            activeButton.push('profile');
+        }
         activeButton = Auth.addCorrectButton(activeButton);
 
         // create the dropdown for the positions

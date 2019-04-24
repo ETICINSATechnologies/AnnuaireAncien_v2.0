@@ -14,6 +14,7 @@ import Help from "./WebPages/Help/Help";
 import Profile from "./WebPages/Profile/Profile";
 import ProfilePicture from "./Components/ProfilePicture/ProfilePicture";
 import Search from "./WebPages/Search/Search";
+import Admin from "./WebPages/Admin/Admin";
 
 
 // mock or not the api call by redefining the fetch function
@@ -30,6 +31,7 @@ ReactDOM.render(
             <Route exact path='/help' component={Help}/>
             <Route exact path='/search' component={Search}/>
             <Route exact path='/profile' component={Profile}/>
+            <Route exact path='/admin' component={Admin}/>
             <Route exact path='/image' component={ProfilePicture}/>
             <Redirect to='/'/>
         </Switch>
