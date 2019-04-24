@@ -44,17 +44,15 @@ const MemberInfo: React.SFC<MemberInfoProps> = (props: MemberInfoProps) => {
             <div key={property} className={property}>{member![property]}</div>
         );
         let linkProperties = LINKS.map((property, index) =>
-                <a className= 'link' 
+                <a key={index} className= 'link' 
                     href={member![property] ? linkMaker(member![property]) : undefined}>
-                    <img key={index} className='linkImg' 
+                    <img className='linkImg' 
                         src={property==='facebook'? facebook : linkedin} alt={property}/>
                 </a>
     );
 
-
         let otherProperties = Object.keys(OTHER_PROPERTIES).map((property) => {
             if (member[property]){
-                console.log(property);
                 return (
                     <React.Fragment key={property}>
                         <div className={`inputLabel ${property}`}>{(OTHER_PROPERTIES as any)[property]}</div>
