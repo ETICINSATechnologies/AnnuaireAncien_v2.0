@@ -70,6 +70,7 @@ class MemberArray extends Component<MemberArrayProps, MemberArrayState> {
             status: 'pending'
         });
 
+
         fetch(url, {
             headers: {
                 Authorization: Auth.getToken()

@@ -1,23 +1,21 @@
 import member from "../data/member.json";
 import members from "../data/members.json";
 import board from "../data/board.json";
-import departments from "../data/departments.json";
 import positions from "../data/positions.json";
 
 export function fetch(url: string, param?: any): Promise<any> {
     let expectedResponse: object;
 
-    if (/auth\/login$/.test(url))
+    if (/login$/.test(url))
         expectedResponse = {token: 'this is a test token'};
-    else if (/core\/member\/(\d*|me)$/.test(url))
+    else if (/member\/(\d*|me)$/.test(url))
         expectedResponse = member;
-    else if (/core\/member\/board\/latest$/.test(url))
+    else if (/member\/board\/latest$/.test(url))
         expectedResponse = board;
-    else if (/core\/member$/.test(url))
+    else if (/member*/.test(url)) {
         expectedResponse = members;
-    else if (/core\/department$/.test(url))
-        expectedResponse = departments;
-    else if (/core\/position/.test(url))
+    } 
+    else if (/position/.test(url))
         expectedResponse = positions;
 
     return Promise.resolve({

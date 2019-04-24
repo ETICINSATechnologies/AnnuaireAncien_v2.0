@@ -22,8 +22,7 @@ function DropDown (props: Props) : any   {
     return (
         <div className='DropDown'>
             <select className={props.className} value={props.currentOption} disabled={!props.modifyEnabled}
-                    onChange={(event: React.ChangeEvent) => {props.onChange(event)}}
-            >
+                    onChange={(event: React.ChangeEvent) => {props.onChange(event)}}>
                 <option value={0}> Choisir une option</option>
                 {optionList()}
             </select>

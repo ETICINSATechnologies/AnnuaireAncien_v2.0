@@ -120,3 +120,20 @@
     grid-row: 4;
     grid-column: 2 / 4;
 }
+
+.MemberInfo .infoArea .linkImg {
+    margin: auto;
+    width: 5vmin;
+}
+
+.MemberInfo .infoArea .link {
+    text-align: center;
+    margin: auto 1vmin auto 1vmin;
+}
+
+.MemberInfo .infoArea .linkContainer {
+    text-align: center;
+    margin: auto;
+    grid-row : 5;
+    grid-column: 2 / 4;
+}

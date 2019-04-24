@@ -33,5 +33,5 @@
     "not ie <= 11",
     "not op_mini all"
   ],
-  "proxy": "http://keros-api-dev.etic-insa.com"
+  "proxy": "http://annuaire.epsil0n.net:5000"
 }

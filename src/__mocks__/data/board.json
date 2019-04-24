@@ -4,31 +4,12 @@
         "id": 100,
         "firstName": "Alexandre",
         "lastName": "Lang",
-        "gender": {
-            "id": 1,
-            "label": "H"
-        },
+        "gender": "H",
         "email": "alexandre.lang.06@gmail.com",
         "photo": "alang.jpg",
         "birthday": "1996-11-11",
-        "department": {
-            "id": 10,
-            "label": "IF",
-            "name": "Informatique"
-        },
         "schoolYear": null,
         "telephone": "0662845863",
-        "address": {
-            "id": 885,
-            "line1": "1 Avenue Albert Einstein",
-            "line2": null,
-            "postalCode": 69100,
-            "city": "Villeurbanne",
-            "country": {
-                "id": 62,
-                "label": "France"
-            }
-        },
         "positions": [
             {
               "id": 12,
@@ -41,18 +22,13 @@
                 "name": "Présidence"
               }
             }
-        ],
-        "company": null,
-        "profilePicture": null
+        ]
     },
     {
       "id": 101,
       "firstName": "Elliot",
       "lastName": "Trabac",
-      "gender": {
-          "id": 1,
-          "label": "H"
-      },
+      "gender": "H",
       "email": "elliot.trabac@etic-insa.com",
       "photo": "etrabac.jpg",
       "birthday": "1996-11-06",
@@ -94,10 +70,7 @@
       "id": 102,
       "firstName": "Juliette",
       "lastName": "Martin-Servigne",
-      "gender": {
-        "id": 2,
-        "label": "F"
-      },
+      "gender": "F",
       "telephone": "0780062157",
       "email": "juliette.martin-servigne@etic-insa.com",
       "photo": "juliettems.jpg",
@@ -137,10 +110,7 @@
       "username": "gabriel.forien",
       "firstName": "Gabriel",
       "lastName": "Forien",
-      "gender": {
-          "id": 1,
-          "label": "H"
-      },
+      "gender": "H",
       "email": "gabriel.forien@insa-lyon.fr",
       "photo": "gabforien.jpg",
       "birthday": "2018-05-01",
@@ -182,10 +152,7 @@
       "id": 104,
       "firstName": "Yanis",
       "lastName": "Hamrouni",
-      "gender": {
-        "id": 1,
-        "label": "H"
-      },
+      "gender": "H",
       "telephone": "0627170563",
       "email": "yanis.hamrouni@etic-insa.com",
       "photo": "yanisham.jpg",
@@ -224,10 +191,7 @@
       "id": 105,
       "firstName": "Rahul",
       "lastName": "Ramsaha",
-      "gender": {
-        "id": 1,
-        "label": "H"
-      },
+      "gender": "H",
       "telephone": "0662845863",
       "email": "rahul.ramsaha@etic-insa.com",
       "photo": "rajito.jpg",
@@ -266,10 +230,7 @@
       "id": 106,
       "firstName": "Axel",
       "lastName": "Marini",
-      "gender": {
-        "id": 1,
-        "label": "H"
-      },
+      "gender": "H",
       "telephone": "",
       "email": "axel.marini@etic-insa.com",
       "photo": "amarini.jpg",
@@ -308,10 +269,7 @@
       "id": 107,
       "firstName": "Pierre-Adrien",
       "lastName": "Millot",
-      "gender": {
-        "id": 1,
-        "label": "H"
-      },
+      "gender": "H",
       "telephone": "",
       "email": "pierre-adrien.millot@etic-insa.com",
       "photo": "pamillot.jpg",
@@ -350,10 +308,7 @@
       "id": 108,
       "firstName": "Agathe",
       "lastName": "Bernet-Rollande",
-      "gender": {
-        "id": 2,
-        "label": "F"
-      },
+      "gender": "F",
       "telephone": "0603522531",
       "email": "agathe.bernet-rollande@etic-insa.com",
       "photo": "agathebr.jpg",
@@ -392,10 +347,7 @@
       "id": 109,
       "firstName": "Cassandre",
       "lastName": "Le Borgne",
-      "gender": {
-        "id": 2,
-        "label": "F"
-      },
+      "gender": "F",
       "telephone": "0646767368",
       "email": "cassandre.leborgne@etic-insa.com",
       "photo": "cassandrelb.jpg",
@@ -434,10 +386,7 @@
       "id": 110,
       "firstName": "Kenza",
       "lastName": "Benkirane",
-      "gender": {
-        "id": 2,
-        "label": "F"
-      },
+      "gender": "F",
       "telephone": "",
       "email": "kenza.benkirane@etic-insa.com",
       "photo": "kenzab.jpg",
@@ -476,10 +425,7 @@
       "id": 111,
       "firstName": "Julie",
       "lastName": "Lombart",
-      "gender": {
-        "id": 2,
-        "label": "F"
-      },
+      "gender": "F",
       "telephone": "0605203214",
       "email": "julie.lombart@etic-insa.com",
       "photo": "julielom.jpg",

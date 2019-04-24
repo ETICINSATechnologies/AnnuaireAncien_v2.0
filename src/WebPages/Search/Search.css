@@ -38,6 +38,8 @@
     font-size: 1.2vw;
     padding: 0.5vw;
     margin-left: 0;
+    background-color: white;
+    justify-self: center;
 }
 
 .Search .searchForm .searchInput {
