@@ -1,0 +1,61 @@
+.Admin{
+    display: grid;
+    grid-template-columns: 6fr 3fr;
+    grid-template-rows: 2fr 0.5fr 8fr 2fr;
+    grid-column-gap: 0;
+    width: 100%;
+    height: 100%;
+    justify-self: center;
+    vertical-align: middle;
+    margin: auto;
+    overflow-y: auto;
+}
+
+.Admin h1 {
+    margin: auto;
+    font-size: 2.5vw;
+    text-align: center;
+}
+
+.Admin h2{
+    margin: 0;
+    font-size: 1.5vw;
+    text-align: center;
+}
+
+.Admin h3 {
+    margin: auto;
+    font-size: 1.2vw;
+    text-align: center;
+    color: #009e11;
+}
+
+.Admin .HeaderContainer{
+    margin: 1vw auto 1vw auto;
+}
+
+
+.Admin .position_form{
+    grid-column: 2;
+    grid-row-start: 1;
+    grid-row-end: 3;
+}
+.Admin .registerbtn {
+    grid-row: 4;
+    width: 95%;
+    background-color: #4CAF50;
+    color: white;
+    margin: 8px auto 8px auto;
+    border: none;
+    cursor: pointer;
+    opacity: 0.9;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 1.7vw;
+    height: 6vmin;
+}
+
+.Admin .registerbtn:hover {
+    opacity:1;
+}
+

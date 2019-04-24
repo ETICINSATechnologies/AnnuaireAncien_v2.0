@@ -36,6 +36,10 @@ const navRedirect = {
         href: '/profile',
         value: 'mon profil'
     } as redirect,
+    admin: {
+        href: '/admin',
+        value: 'création membre'
+    } as redirect,
 };
 
 const Nav: React.SFC<NavProps> = ({buttons}: NavProps) => {

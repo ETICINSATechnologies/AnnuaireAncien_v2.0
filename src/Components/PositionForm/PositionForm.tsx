@@ -134,7 +134,6 @@ interface PositionProps {
 
 const MemberPositionRender = (props: PositionProps) => {
 
-
     return (
         <div className="position_container">
             <p className='labelCA'>CA</p>
