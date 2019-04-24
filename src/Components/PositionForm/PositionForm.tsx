@@ -27,7 +27,7 @@ class PositionForm extends Component<PositionFormProps, PositionFormState> {
     };
 
     componentDidMount() {
-        fetch('api/v1/core/position', {
+        fetch('position', {
             headers: {
                 Authorization: Auth.getToken()
             }
@@ -61,12 +61,8 @@ class PositionForm extends Component<PositionFormProps, PositionFormState> {
         if (mPositions[index].hasOwnProperty(property)) {
             if (property === "year" ) {
                 value.match(/^(\d?){4}$/) ? mPositions[index][property] = value : null;
-            } else if (property==='isBoard'){
-                mPositions[index][property] = !mPositions[index][property];
             }
-
         }
-
         this.props.updateMemberPositions(mPositions);
     };
 
@@ -82,14 +78,12 @@ class PositionForm extends Component<PositionFormProps, PositionFormState> {
     addPosition() {
         let mPositionNb = this.props.memberPositions.length;
         if (mPositionNb < 4) {
-            let lastPosition = {
+            let newPosition = {
                 id: 0,
-                isBoard: false,
-                year: new Date().getFullYear().toString(),
+                year: new Date().getFullYear(),
                 label: '',
-                pole: {}
             } as MemberPosition;
-            this.props.updateMemberPositions([...this.props.memberPositions, lastPosition]);
+            this.props.updateMemberPositions([...this.props.memberPositions, newPosition]);
         }
     }
 
@@ -137,13 +131,10 @@ const MemberPositionRender = (props: PositionProps) => {
 
     return (
         <div className="position_container">
-            <p className='labelCA'>CA</p>
             <p>Poste</p>
             <p>Année</p>
             <img className={`delete_position ${props.modifyEnabled ? "visible" : "hidden"}`}
                  src={deleteIcon} alt="Supprimer" onClick={() => props.deletePosition(props.index)}/>
-            <input className="isBoard" type="checkbox" checked={props.mPosition.isBoard}
-                   onChange={(evt: React.ChangeEvent)=> props.onChange(evt, props.index)} disabled={!props.modifyEnabled}/>
             <DropDown className='position' options={props.positionList}
                       modifyEnabled={props.modifyEnabled}
                       onChange={(evt: React.ChangeEvent) =>props.onChange(evt,props.index)}

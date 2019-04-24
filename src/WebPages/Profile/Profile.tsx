@@ -37,7 +37,7 @@ class Profile extends Component<{}, ProfileState> {
             this.setState({status: 'not_authenticate'});
         else {
             this.setState({status: "connected"});
-            fetch('api/v1/core/member/me', {
+            fetch('member/me', {
                 headers: {
                     Authorization: Auth.getToken()
                 }
@@ -55,7 +55,7 @@ class Profile extends Component<{}, ProfileState> {
     }
 
     updateMember = () => {
-        fetch('api/v1/core/member/' + this.state.member.id, {
+        fetch('member/' + this.state.member.id, {
             method: 'PUT',
             headers: {
                 'Authorization': Auth.getToken(),
@@ -92,7 +92,7 @@ class Profile extends Component<{}, ProfileState> {
         let member= this.state.previousMember;
         member.password=pass;
 
-        fetch('api/v1/core/member/' + this.state.member.id, {
+        fetch('member/' + this.state.member.id, {
             method: 'PUT',
             headers: {
                 'Authorization': Auth.getToken(),

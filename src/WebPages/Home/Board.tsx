@@ -50,7 +50,7 @@ class Board extends Component<BoardProps, BoardState> {
                         try {
                             photo = require(`../../__mocks__/profilePicture/${member.photo}`);
                         } catch (e) {
-                            photo = member.gender.label === 'F' ? defaultWoman : defaultMan;
+                            photo = member.gender === 'F' ? defaultWoman : defaultMan;
                         }
 
                         return (

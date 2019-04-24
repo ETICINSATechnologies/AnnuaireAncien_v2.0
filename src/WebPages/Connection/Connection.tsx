@@ -45,7 +45,7 @@ class Connection extends Component<{}, ConnectionState> {
             this.setState({status: 'missingValue'})
         }
         else {
-            fetch('api/v1/auth/login', {
+            fetch('/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

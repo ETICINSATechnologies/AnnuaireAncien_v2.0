@@ -1,21 +1,21 @@
 .ProfileForm {
     display: grid;
-    grid-template-rows: 2fr 2fr 1fr;
+    grid-template-rows: 0.75fr 2fr 0.3fr;
     background-color: white;
 
     justify-self: center;
     vertical-align: middle;
     border: 0.6vmin solid black;
-    margin: 5vmin auto;
+    margin: 2vmin 5vmin 2vmin 5vmin;
     padding: 1vw;
 
     width: 90%;
-    height: calc(85vh - 6.5vw - 2.5vmax );
+    /*height: calc(85vh - 6.5vw - 2.5vmax );*/
 }
 
 .ProfileForm .header_container {
     display: grid;
-    grid-template-columns: 5fr 4fr 1fr;
+    grid-template-columns: 4fr 4fr 1fr;
     grid-template-rows: 1fr;
     margin: auto;
 }
@@ -24,8 +24,30 @@
     display: grid;
     width: 100%;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(3, 1fr);
+    grid-template-rows: repeat(8, 1fr);
     margin: auto;
+}
+
+.ProfileForm .field_container .name_label_container {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 0.3fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    margin: auto auto 0 auto;
+    grid-row: 1;
+    grid-column-start:1;
+    grid-column-end: 3;
+}
+
+.ProfileForm .field_container .name_field_container {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 0.3fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    margin: auto auto 0 auto;
+    grid-row: 2;
+    grid-column-start:1;
+    grid-column-end: 3;
 }
 
 .ProfileForm .field_container select {
@@ -42,7 +64,7 @@
     width: 100%;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: 1fr;
-    margin: 0.5vmin auto;
+    margin: 2vmin auto 0 auto;
 }
 
 .ProfileForm .button_container input {
@@ -61,6 +83,15 @@
     height: 5vmin;
 }
 
+.ProfileForm input[type="date"] {
+    border: 0.3vmin solid black;
+    font-size: 3vmin;
+    padding-left: 1vmin;
+    height: 5vmin;
+    background-color: white;
+    justify-self: center;
+}
+
 .ProfileForm p, input[type="text"]{
     background-color: white;
     justify-self: center;
@@ -75,7 +106,7 @@
     justify-self: center;
     vertical-align: middle;
     width: 77%;
-    font-size: 2.5vw;
+    font-size: 2.3vw;
 
     color: #009e11;
 

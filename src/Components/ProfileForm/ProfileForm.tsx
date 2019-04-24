@@ -1,14 +1,13 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import './ProfileForm.css';
 import Auth from "../Auth/Auth";
 import modifyIcon from "../../Images/edit.png";
 import cancelIcon from "../../Images/cancel_icon.png";
 import manIcon from "../../Images/default_man.svg";
 import womanIcon from "../../Images/default_woman.svg";
-import {Mdp} from "../../Model/Mdp";
-import {Member} from "../../Model/Member";
-import {Department} from "../../Model/Department";
-import {Link} from "react-router-dom";
+import { Mdp } from "../../Model/Mdp";
+import { Member } from "../../Model/Member";
+import { Link } from "react-router-dom";
 import Modal from "../Modal/Modal";
 import DropDown from "../DropDown/DropDown";
 
@@ -25,22 +24,24 @@ interface ProfileFormProps {
 
     updateMember(): void
 
-    updateMemberPassword(pass : string): void
+    updateMemberPassword(pass: string): void
 
     enableModification(): void
 }
 
 interface ProfileFormState {
-    departments: Department[]
     idMapping: object
     show: boolean
     mdp: Mdp
 }
 
+const genders = [
+    { id: 1, label: 'Autre' }, { id: 2, label: 'M' }, { id: 3, label: 'F' }
+];
+
 
 export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
     state = {
-        departments: [],
         idMapping: [],
         show: false,
         mdp: {
@@ -53,36 +54,18 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
     };
 
     componentDidMount() {
-        fetch('api/v1/core/department', {
-            headers: {
-                Authorization: Auth.getToken()
-            }
-        })
-            .then(res => res.json())
-            .then((result) => {
-                this.setState({
-                    departments: result,
-                    idMapping: result.reduce((currentMapping: object, department: Department, index: number) => {
-                        return {
-                            ...currentMapping,
-                            [department.id]: index
-                        }
-                    }, {})
-                });
-            })
+
     }
 
     onChange = (event: React.ChangeEvent) => {
         event.persist();
-        let property=event.target.className;
+        let property = event.target.className;
         let value = (event.target as any).value;
         let member = new Member(this.props.member);
 
         if (member.hasOwnProperty(property)) {
-            if (property === "department")
-                value = this.state.departments[this.getDepartmentIndexById(value)];
-
-            member[property] = value;
+            property==='gender' ? 
+                member[property] = this.getGenderLabel(value): member[property] = value;
         }
 
         this.props.modifyMember(member);
@@ -101,7 +84,7 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
 
     updateMdp = () => {
         // check if new pass is at least 8 char
-        if (this.state.mdp.mdpnouveau.length<8){
+        if (this.state.mdp.mdpnouveau.length < 8) {
             this.setState({
                 mdp: {
                     ...this.state.mdp,
@@ -114,7 +97,7 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
 
 
         // check if two new passwords match
-        if (this.state.mdp.mdpnouveau!==this.state.mdp.mdpnouveau2) {
+        if (this.state.mdp.mdpnouveau !== this.state.mdp.mdpnouveau2) {
             this.setState({
                 mdp: {
                     ...this.state.mdp,
@@ -127,12 +110,12 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
 
         // make username + mdp pair
         let pair = {
-            username : this.props.member.username,
-            password : this.state.mdp.mdpancien
+            username: this.props.member.username,
+            password: this.state.mdp.mdpancien
         };
 
         // check old pass
-        fetch('api/v1/auth/login', {
+        fetch('login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -173,7 +156,7 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
             show: !this.state.show,
             mdp: {
                 ...this.state.mdp,
-                mdpstate:'Compléter les champs et appuyer sur valider',
+                mdpstate: 'Compléter les champs et appuyer sur valider',
                 mdpstatetype: 'neutral'
             }
         })
@@ -181,6 +164,22 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
 
     getDepartmentIndexById(id: number): number {
         return this.state.idMapping[id];
+    }
+
+    getGenderId(gender: string): number {
+        switch (gender) {
+            case 'M': return 2;
+            case 'F': return 3;
+            default: return 1;
+        }
+    }
+
+    getGenderLabel(id: string): string {
+        switch (id) {
+            case '2': return 'M';
+            case '3': return 'F';
+            default: return 'Autre';
+        }
     }
 
 
@@ -197,41 +196,52 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
                                 <h1>Appuyer sur la croix pour annuler</h1> :
                                 <h1>Appuyer sur le crayon pour modifier</h1>
                     }
-                    <img className="profilePicture" src={this.props.member.gender.id? manIcon:womanIcon} alt="Profile"/>
+                    <img className="profilePicture" src={this.props.member.gender === "F" ? womanIcon : manIcon} alt="Profile" />
                     <img className="deleteCancelPicture"
-                         src={this.props.modifyEnabled ? cancelIcon : modifyIcon}
-                         onClick={() => this.props.enableModification()} alt="Modifier/Annuler"/>
+                        src={this.props.modifyEnabled ? cancelIcon : modifyIcon}
+                        onClick={() => this.props.enableModification()} alt="Modifier/Annuler" />
                 </div>
                 <div className="field_container">
+                    <div className="name_label_container">
+                        <p className="needed"> Genre </p>
+                        <p className="needed"> Prénom </p>
+                        <p className="needed"> Nom </p>
+                    </div>
+                    <div className="name_field_container">
+                        <DropDown className='gender' onChange={this.onChange} modifyEnabled={this.props.modifyEnabled}
+                            options={genders} currentOption={this.getGenderId(this.props.member.gender)} />
+                        <input disabled={!this.props.modifyEnabled} type="text" className="firstName"
+                            value={this.props.member.firstName} onChange={this.onChange} />
+                        <input disabled={!this.props.modifyEnabled} type="text" className="lastName"
+                            value={this.props.member.lastName} onChange={this.onChange} />
+                    </div>
                     <p> Téléphone </p>
-                    <p className="right needed"> Nom </p>
-                    <input disabled={!this.props.modifyEnabled} type="text" className="telephone"
-                           value={this.props.member.telephone} onChange={this.onChange}/>
-                    <input disabled={!this.props.modifyEnabled} type="text" className="lastName"
-                           value={this.props.member.lastName} onChange={this.onChange}/>
-                    <p> Département </p>
-                    <p className="right p_info needed"> Prénom </p>
-                        <DropDown className = 'department' options={this.state.departments}
-                                  modifyEnabled={this.props.modifyEnabled} onChange={this.onChange}
-                                  currentOption={this.props.member.department? this.props.member.department.id:0}
-                        />
-                    <input disabled={!this.props.modifyEnabled} type="text" className="firstName"
-                           value={this.props.member.firstName} onChange={this.onChange}/>
                     <p className="needed"> Adresse mail </p>
-                    <p> Travaille chez </p>
+                    <input disabled={!this.props.modifyEnabled} type="text" className="telephone"
+                        value={this.props.member.telephone} onChange={this.onChange} />
                     <input disabled={!this.props.modifyEnabled} type="text" className="email"
-                           value={this.props.member.email} onChange={this.onChange}/>
-                    <input disabled={!this.props.modifyEnabled} type="text" className="company"
-                           value={this.props.member.company} onChange={this.onChange}/>
+                        value={this.props.member.email} onChange={this.onChange} />
+                    <p className="needed"> Année de sortie </p>
+                    <p className="needed"> Date de naissance </p>
+                    <input disabled={!this.props.modifyEnabled} type="text" className="gradeYear"
+                        value={this.props.member.gradeYear} onChange={this.onChange} />
+                    <input type="date" disabled={!this.props.modifyEnabled} className="birthday"
+                        value={this.props.member.birthday} onChange={this.onChange} />
+                    <p className="needed"> LinkedIn </p>
+                    <p className="needed"> Facebook </p>
+                    <input disabled={!this.props.modifyEnabled} type="text" className="linkedin"
+                        value={this.props.member.linkedin} onChange={this.onChange} />
+                    <input disabled={!this.props.modifyEnabled} type="text" className="facebook"
+                        value={this.props.member.facebook} onChange={this.onChange} />
                 </div>
                 <div className="button_container">
                     {
                         !this.props.modifyEnabled ? null :
                             <React.Fragment>
                                 <input type="button" className="input_button password" value="Changer mot de passe"
-                                        onClick={() => this.showModal()}/>
+                                    onClick={() => this.showModal()} />
                                 <input type="button" className="input_button update" value="Sauvegarder"
-                                        onClick={() => this.props.updateMember()}/>
+                                    onClick={() => this.props.updateMember()} />
                             </React.Fragment>
                     }
                 </div>
@@ -240,13 +250,13 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
                         <div className="content" >
                             <p className={"message " + this.state.mdp.mdpstatetype}> {this.state.mdp.mdpstate} </p>
                             <p> Ancien mot de passe </p>
-                            <input type="password" name="password" className="mdpancien" onChange={this.onChangeMdp.bind(this)}/>
+                            <input type="password" name="password" className="mdpancien" onChange={this.onChangeMdp.bind(this)} />
                             <p> Nouveau mot de passe </p>
-                            <input type="password" name="password"  className="mdpnouveau" onChange={this.onChangeMdp.bind(this)}/>
+                            <input type="password" name="password" className="mdpnouveau" onChange={this.onChangeMdp.bind(this)} />
                             <p> Nouveau mot de passe </p>
-                            <input type="password" name="password"  className="mdpnouveau2" onChange={this.onChangeMdp.bind(this)}/>
+                            <input type="password" name="password" className="mdpnouveau2" onChange={this.onChangeMdp.bind(this)} />
                             <Link to="/recovery"> Mot de passe oublié ?</Link>
-                            <input type="button" className="input_button" value="Valider" onClick={this.updateMdp.bind(this)}/>
+                            <input type="button" className="input_button" value="Valider" onClick={this.updateMdp.bind(this)} />
                         </div>
                     </Modal>
                 </div>
