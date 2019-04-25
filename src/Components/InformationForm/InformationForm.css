@@ -1,9 +1,9 @@
 @media (orientation: landscape){
-    .InformationForm {
+    .InformationForm .PersonalDetails{
         display: grid;
         grid-row-gap: 0;
         grid-template-columns: 1fr 2fr 1fr 2fr;
-        grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
         width: 90%;
         margin: 0 auto;
 
@@ -30,6 +30,11 @@
 }
 
 .InformationForm{
+    display: grid;
+    grid-template-rows: 10fr 1fr;
+}
+
+.InformationForm .PersonalDetails{
     justify-self: center;
     padding: 1vw;
     overflow-x : hidden;
@@ -52,7 +57,31 @@
     outline: none;
 }
 
-.InformationForm .genreSelection label, .InformationForm .genreSelection input[type=radio]{
-    margin: 0 0.5vw 0 0.5vw;
+.InformationForm .PersonalDetails .email{
+    width: 92%;
+    grid-column-start: 2;
+    grid-column-end: -1;
 }
 
+.InformationForm .genreSelection label, .InformationForm .genreSelection input[type=radio]{
+    margin: 0 0.25vw 0 0.25vw;
+}
+
+.InformationForm .registerbtn {
+    grid-row: 4;
+    width: 95%;
+    background-color: #4CAF50;
+    color: white;
+    margin: 0 auto 5.6vmin auto;
+    border: none;
+    cursor: pointer;
+    opacity: 0.9;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 1.7vw;
+    height: 6vmin;
+}
+
+.InformationForm .registerbtn:hover {
+    opacity:1;
+}
