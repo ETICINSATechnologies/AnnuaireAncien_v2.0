@@ -1,78 +1,79 @@
 .Connection {
-    display: grid;
+  display: grid;
 
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 .Connection .connect_section {
-    display: grid;
-    height: 100%;
+  display: grid;
+  height: 100%;
 }
 
 .Connection .connect_form {
-    display: grid;
-    grid-template-rows: 1fr repeat(5, 6.2vmin) 10fr;
+  display: grid;
+  grid-template-rows: 1fr repeat(5, 6.2vmin) 10fr;
 
-    background-color: rgba(155, 202, 139, 1);
+  background-color: var(--backgroundConnection);
 
-    justify-self: center;
-    vertical-align: middle;
-    margin: 10vh auto;
-    padding: 1%;
+  justify-self: center;
+  vertical-align: middle;
+  margin: 10vh auto;
+  padding: 1%;
 
-    border: 0.45vmin solid black;
+  border: 0.45vmin solid black;
 
-    width: 40vmin;
-    height: 50vmin;
+  width: 40vmin;
+  height: 50vmin;
 }
 
 .Connection .info_area {
-    color: red;
-    text-align: center;
-    margin: auto;
-    font-size: 2.4vmin;
-    width: 90%;
-    height: 90%;
+  color: red;
+  text-align: center;
+  margin: auto;
+  font-size: 2.4vmin;
+  width: 90%;
+  height: 90%;
 }
 
 .Connection .connect_form p {
-    margin: auto auto 0 auto;
-    font-size: 3.8vmin;
-    width: 95%;
-    height: 4vmin;
+  margin: auto auto 0 auto;
+  font-size: 3.8vmin;
+  width: 95%;
+  height: 4vmin;
 }
 
 .Connection .connect_form a {
-    margin: auto;
+  margin: auto;
 
-    text-decoration: none;
-    color: #009e19;
+  text-decoration: none;
+  color: var(--passwordLostConnection);
 
-    font-size: 3vmin;
+  font-size: 3vmin;
 }
 .Connection .connect_form a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
-.Connection .connect_form input[type="text"], input[type="password"] {
-    width: 95%;
-    height: 4vmin;
-    margin: auto;
-    padding-left: 0.7vmin;
-    font-size: 3vmin;
-    background-color: white;
-    justify-self: center;
+.Connection .connect_form input[type="text"],
+input[type="password"] {
+  width: 95%;
+  height: 4vmin;
+  margin: auto;
+  padding-left: 0.7vmin;
+  font-size: 3vmin;
+  background-color: white;
+  justify-self: center;
 }
 
 .Connection .connect_input {
-    cursor: pointer;
-    color: white;
-    background: #009e0f;
-    border: 0.3vmin solid black;
+  cursor: pointer;
+  color: white;
+  background: var(--backgroundButton);
+  border: 0.3vmin solid black;
 
-    margin: auto;
-    font-size: 3.5vmin;
-    width: 60%;
-    height: 6vmin;
+  margin: auto;
+  font-size: 3.5vmin;
+  width: 60%;
+  height: 6vmin;
 }

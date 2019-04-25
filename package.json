@@ -11,12 +11,13 @@
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.10.0",
     "react": "^16.8.3",
+    "react-custom-properties": "^1.2.0",
     "react-dom": "^16.8.3",
+    "react-router": "latest",
     "react-router-dom": "latest",
     "react-scripts": "2.1.5",
     "react-test-renderer": "^16.8.3",
-    "typescript": "3.3.3333",
-    "react-router": "latest"
+    "typescript": "3.3.3333"
   },
   "scripts": {
     "start": "react-scripts start",
