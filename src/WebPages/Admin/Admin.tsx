@@ -7,15 +7,22 @@ import Nav from "../../Components/Nav/Nav";
 import Auth from "../../Components/Auth/Auth";
 import InformationForm from "../../Components/InformationForm/InformationForm";
 import PositionForm from "../../Components/PositionForm/PositionForm";
-import {defaultMember, Member} from "../../Model/Member";
+import {defaultMember, Member, MemberInterface} from "../../Model/Member";
+import {MemberPosition} from "../../Model/MemberPosition";
 
 interface AdminState {
     status: string
+    initial: boolean
+    updateSucceed: boolean
+    member: Member
 }
 
 class Admin extends Component<{}, AdminState> {
     state = {
         status: 'pending', // 'connected' 'not_authenticate'
+        initial: true,
+        updateSucceed: false,
+        member: defaultMember
     };
 
     componentDidMount() {
@@ -25,6 +32,45 @@ class Admin extends Component<{}, AdminState> {
             this.setState({status: "connected"});
         }
     }
+
+    updateMemberPositions = (mPositions: MemberPosition[]) => {
+        this.setState({
+            member: new Member({
+                ...this.state.member,
+                positions: mPositions
+            } as MemberInterface)
+        });
+    };
+
+    createMember = (info: Member) => {
+        info.positions = this.state.member.positions;
+
+        fetch('member', {
+            method: 'POST',
+            headers: {
+                'Authorization': Auth.getToken(),
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(info)
+        })
+            .then(res => {
+                if (res.status === 200) {
+                    res.json()
+                        .then(() => {
+                            this.setState({
+                                initial : false,
+                                updateSucceed: true,
+                                member: defaultMember
+                            });
+                        })
+                } else {
+                    this.setState({
+                        initial: false,
+                        updateSucceed: false
+                    });
+                }
+            });
+    };
 
     render() {
         let activeButton = ["home"];
@@ -41,12 +87,17 @@ class Admin extends Component<{}, AdminState> {
                 <section className="Admin">
                     <div className="HeaderContainer">
                         <h1 className = 'title'>Création de Membre</h1>
-                        <h3 className = 'description'> Veuillez remplir les champs suivants </h3>
+                        {
+                        this.state.initial ?
+                            <h3 className = 'description'> Veuillez remplir les champs suivants </h3> :
+                            this.state.updateSucceed ?
+                                <h3 className= 'description'>Nouveau membre est bien créé.</h3> :
+                                <h3 className='error_info'>Erreur de saisie. Veuillez recommencer.</h3>
+                        }
                     </div>
-                    <PositionForm modifyEnabled={true} memberPositions={[]} updateMemberPositions={()=>{}}/>
                     <h2>Informations Personelles</h2>
-                    <InformationForm />
-                    <button type="submit" className="registerbtn">Valider</button>
+                    <InformationForm updateSuccess={this.state.updateSucceed} createMember={this.createMember}/>
+                    <PositionForm modifyEnabled={true} memberPositions={this.state.member.positions} updateMemberPositions={this.updateMemberPositions}/>
                 </section>
             </React.Fragment>
         );

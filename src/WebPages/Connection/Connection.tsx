@@ -57,7 +57,7 @@ class Connection extends Component<{}, ConnectionState> {
                         this.setState({status: 'pending'});
                         res.json()
                             .then(result => {
-                                if(this.state.parameters.username ==='username'){
+                                if(this.state.parameters.username ==='admin'){
                                     Auth.connect(result.token, true);
                                 }else {
                                     Auth.connect(result.token, false);

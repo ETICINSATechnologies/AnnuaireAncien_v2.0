@@ -56,7 +56,7 @@ class MemberArray extends Component<MemberArrayProps, MemberArrayState> {
 
     getMembers = (searchArray: SearchInterface, page : number) => {
         //manage pages
-        let baseurl : string = 'api/v1/core/member?pageSize='+this.getPageSize()+'&pageNumber='+page;
+        let baseurl : string = 'member?pageSize='+this.getPageSize()+'&pageNumber='+page;
 
         // create the url with eventually the parameters
         let url = Object.keys(searchArray).reduce((url, property, i) => {
