@@ -10,8 +10,8 @@ interface InformationFormState{
 }
 
 interface InformationFormProps{
-    updateSuccess: boolean
-    createMember(info: Member): void
+    updateSuccess: boolean,
+    createMember (info: Member): void
 }
 
 class InformationForm extends Component<InformationFormProps, InformationFormState> {
@@ -59,7 +59,8 @@ class InformationForm extends Component<InformationFormProps, InformationFormSta
         nB.gender = event.target.value;
         this.setState({
             memberInfo: nB
-        })
+        });
+        console.log(nB);
     };
 
     dateChangeHandler = (event:any) => {
@@ -70,19 +71,17 @@ class InformationForm extends Component<InformationFormProps, InformationFormSta
             memberInfo: nB,
             dateBuffer: date
         })
-    }
+    };
 
     formSubmitHandler = (event:any) => {
         event.preventDefault();
         this.props.createMember(this.state.memberInfo);
-        if(this.props.updateSuccess){
-            this.setState({
-                memberInfo: new Member(defaultMember),
-                numberBuffer: '',
-                dateBuffer: ''
+        this.setState({
+            memberInfo: new Member(defaultMember),
+            numberBuffer: '',
+            dateBuffer: ''
             })
-        }
-    }
+    };
 
     render(){
         return(
@@ -96,7 +95,7 @@ class InformationForm extends Component<InformationFormProps, InformationFormSta
 
                     <label>Genre</label>
                     <div className='genreSelection'>
-                        <input type="radio" name="gender" value="M" onChange={this.radioChangeHandler} checked/><label>Homme</label>
+                        <input type="radio" name="gender" value="M" onChange={this.radioChangeHandler}/><label>Homme</label>
                         <input type="radio" name="gender" value="F" onChange={this.radioChangeHandler}/><label>Femme</label>
                         <input type="radio" name="gender" value="Autre" onChange={this.radioChangeHandler}/><label>Autre</label>
                     </div>

@@ -27,7 +27,7 @@ const statusMessage = {
 class Connection extends Component<{}, ConnectionState> {
     state = {
         parameters: {
-            username: "username",
+            username: "admin",
             password: "password"
         },
         status: 'loading',
@@ -57,7 +57,7 @@ class Connection extends Component<{}, ConnectionState> {
                         this.setState({status: 'pending'});
                         res.json()
                             .then(result => {
-                                if(this.state.parameters.username ==='admin'){
+                                if(this.state.parameters.username === 'admin'){
                                     Auth.connect(result.token, true);
                                 }else {
                                     Auth.connect(result.token, false);

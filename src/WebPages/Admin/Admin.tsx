@@ -42,7 +42,7 @@ class Admin extends Component<{}, AdminState> {
         });
     };
 
-    createMember = (info: Member) => {
+    createMember = async (info: Member) => {
         info.positions = this.state.member.positions;
 
         fetch('member', {
@@ -70,6 +70,7 @@ class Admin extends Component<{}, AdminState> {
                     });
                 }
             });
+        return Promise.resolve(this.state.updateSucceed);
     };
 
     render() {
