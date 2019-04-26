@@ -51,7 +51,6 @@
 }
 
 .ProfileForm .field_container select {
-    position: relative;
     left: 1vw;
 }
 
@@ -145,6 +144,10 @@
     max-height:22vmin;
 }
 
+.ProfileForm .profilePicture:hover {
+    cursor: pointer;
+}
+
 .ProfileForm .div_button {
     display: grid;
     justify-self: center;
@@ -205,7 +208,7 @@
 
 .ProfileForm .modal .content {
     display: grid;
-    grid-template-rows: 0fr 3fr repeat(7, 2fr) ;
+    grid-template-rows: 0 3fr repeat(7, 2fr);
     vertical-align: top;
 }
 

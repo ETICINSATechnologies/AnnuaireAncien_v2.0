@@ -16,7 +16,8 @@
     "react-scripts": "2.1.5",
     "react-test-renderer": "^16.8.3",
     "typescript": "3.3.3333",
-    "react-router": "latest"
+    "react-router": "latest",
+    "react-easy-crop": "latest"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -88,7 +88,6 @@ class Profile extends Component<{}, ProfileState> {
     };
 
     updateMemberPassword = (pass : string) => {
-
         let member= this.state.previousMember;
         member.password=pass;
 
