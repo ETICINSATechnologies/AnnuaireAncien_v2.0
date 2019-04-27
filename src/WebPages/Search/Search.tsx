@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {Redirect} from "react-router-dom";
 
 import './Search.css';
+import defaultMan from '../../Images/default_man.svg';
+import defaultWoman from '../../Images/default_woman.svg';
 import Header from "../../Components/Header/Header";
 import Nav from "../../Components/Nav/Nav";
 import Auth from "../../Components/Auth/Auth";
@@ -17,6 +19,7 @@ interface SearchState {
     searchValues: SearchInterface
     positions: Position[]
     selectedMember?: Member
+    img: string
 }
 
 
@@ -37,7 +40,8 @@ class Search extends Component<{}, SearchState> {
             year: ''
         } as SearchInterface,
         positions: [],
-        selectedMember: undefined
+        selectedMember: undefined,
+        img: defaultMan
     };
 
     componentDidMount() {
@@ -56,18 +60,42 @@ class Search extends Component<{}, SearchState> {
         this.setState({
             selectedMember: member
         });
+        this.getMemberImage(member);
     };
 
-    nextPage = (currentPage : number) => {
-        this.makeSearch(currentPage+1);
+    getMemberImage = (member: Member) => {
+        fetch(`member/${member.id}/image`, {
+            headers: {
+                'Authorization': Auth.getToken(),
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(res => {
+                if (res.status === 200) {
+                    res.blob()
+                        .then(image => {
+                            this.setState({
+                                img: URL.createObjectURL(image),
+                            })
+                        })
+                } else {
+                    this.setState({
+                        img: (this.state.selectedMember as any).gender === 'F' ? defaultWoman : defaultMan
+                    });
+                }
+            })
     };
 
-    previousPage = (currentPage : number) => {
-        this.makeSearch(currentPage-1);
+    nextPage = (currentPage: number) => {
+        this.makeSearch(currentPage + 1);
     };
 
-    makeSearch = (page :number,event?: React.MouseEvent) => {
-        event? event.preventDefault():null;
+    previousPage = (currentPage: number) => {
+        this.makeSearch(currentPage - 1);
+    };
+
+    makeSearch = (page: number, event?: React.MouseEvent) => {
+        event ? event.preventDefault() : null;
 
         // copy the input into a new variable
         let searchArray = Object.assign({}, this.state.searchValues);
@@ -78,7 +106,7 @@ class Search extends Component<{}, SearchState> {
                 delete searchArray[paramName];
         });
 
-        (this.refs.members as MemberArray).getMembers(searchArray,page);
+        (this.refs.members as MemberArray).getMembers(searchArray, page);
     };
 
     updateParameters = (event: React.ChangeEvent) => {
@@ -140,17 +168,16 @@ class Search extends Component<{}, SearchState> {
                         <form className="searchForm">
                             {renderSearchFields}
                             <input className="searchInput" type="submit"
-                                   value="Rechercher" onClick={(e: React.MouseEvent)=>this.makeSearch(0,e)}
+                                   value="Rechercher" onClick={(e: React.MouseEvent) => this.makeSearch(0, e)}
                             />
                         </form>
                     </div>
                     <MemberArray parameters={this.state.searchValues} selectMember={this.selectMember} ref="members"
                                  nextPage={this.nextPage} previousPage={this.previousPage}/>
-                    <MemberInfo member={this.state.selectedMember}/>
+                    <MemberInfo member={this.state.selectedMember} image={this.state.img}/>
                 </section>
             </React.Fragment>
-        )
-            ;
+        );
     }
 }
 

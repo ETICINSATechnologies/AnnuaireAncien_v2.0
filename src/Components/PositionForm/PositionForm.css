@@ -116,7 +116,7 @@
 @media (orientation: portrait) {
     .position_form {
         box-sizing: border-box;
-        margin: 5vmin 5vmin auto 5vmin;
+        margin: 2vmin 5vmin auto 5vmin;
         height: auto;
         width: 90%;
     }

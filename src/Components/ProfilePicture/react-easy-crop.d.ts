@@ -1,1 +1,1 @@
-declare module 'react-easy-crop'
+declare module 'react-easy-crop';

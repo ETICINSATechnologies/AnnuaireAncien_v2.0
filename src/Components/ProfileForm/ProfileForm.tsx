@@ -35,8 +35,7 @@ interface ProfileFormState {
     show: boolean
     editImageShow: boolean
     mdp: Mdp
-    img: any
-    downloadedImg: boolean
+    downloadedImg: string
 }
 
 const genders = [
@@ -56,8 +55,7 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
             mdpstate: 'Compléter les champs et appuyer sur valider',
             mdpstatetype: 'neutral',
         },
-        downloadedImg: false,
-        img: womanIcon
+        downloadedImg: ''
     };
 
     getMemberImage = () => {
@@ -72,14 +70,12 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
                     res.blob()
                         .then(image => {
                             this.setState({
-                                img: URL.createObjectURL(image),
-                                downloadedImg: true
+                                downloadedImg: URL.createObjectURL(image)
                             })
                         })
                 } else {
-                    this.setState({downloadedImg: false});
+                    this.setState({downloadedImg: ''});
                 }
-                this.updateImage();
             })
     };
 
@@ -87,13 +83,17 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
         this.getMemberImage()
     }
 
-    updateImage = (member?: Member) => {
-        if (!member) member = this.props.member;
-        if (!this.state.downloadedImg && member) {
-            if (member['gender'] === 'F')
-                this.setState({img: womanIcon});
-            else
-                this.setState({img: manIcon});
+    displayImage = () => {
+        let member = this.props.member;
+        if (this.state.downloadedImg)
+            return this.state.downloadedImg;
+
+        if (member) {
+            console.log(member.gender);
+            if (member.gender === 'F')
+                return womanIcon;
+            else if (member.gender === 'M')
+                return manIcon;
         }
     };
 
@@ -107,7 +107,6 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
             property === 'gender' ?
                 member[property] = this.getGenderLabel(value) : member[property] = value;
         }
-        this.updateImage(member);
 
         this.props.modifyMember(member);
     };
@@ -240,7 +239,7 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
                                 <h2>Appuyer sur la croix pour annuler</h2> :
                                 <h2>Appuyer sur le crayon pour modifier</h2>
                     }
-                    <img className="profilePicture" src={this.state.img} alt="Profile"
+                    <img className="profilePicture" src={this.displayImage()} alt=""
                          onClick={() => this.displayEditImage(true)}/>
                     <ProfilePicture show={this.state.editImageShow} onClose={this.displayEditImage}/>
                     <img className="deleteCancelPicture"

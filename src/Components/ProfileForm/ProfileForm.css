@@ -8,8 +8,14 @@
     border: 0.6vmin solid black;
     margin: 2vmin 5vmin 1vmin 5vmin;
     padding: 1vw;
-
     box-sizing: border-box;
+}
+
+@media (orientation: portrait) {
+    .ProfileForm {
+        height: 85vw;
+        margin-bottom: 5vmin;
+    }
 }
 
 .ProfileForm .header_container {

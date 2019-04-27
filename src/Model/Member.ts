@@ -39,18 +39,18 @@ export class Member implements MemberInterface {
     gradeYear: number;
     birthday: string;
     telephone: string;
-    facebook: string
-    linkedin: string
+    facebook: string;
+    linkedin: string;
     positions: MemberPosition[];
     photo?: string;
     [property: string]: any;
 
     constructor(memberInterface: MemberInterface) {
         this.id = memberInterface.id;
-        this.firstName = memberInterface.firstName;
-        this.lastName = memberInterface.lastName;
+        this.firstName = memberInterface.firstName.charAt(0).toUpperCase() + memberInterface.firstName.slice(1);
+        this.lastName = memberInterface.lastName.charAt(0).toUpperCase() + memberInterface.lastName.slice(1);
         this.email = memberInterface.email;
-        this.gender = memberInterface.gender;
+        this.gender = memberInterface.gender.toUpperCase();
         this.birthday = memberInterface.birthday;
         this.gradeYear = memberInterface.gradeYear;
         this.telephone = memberInterface.telephone;
@@ -100,6 +100,8 @@ export class Member implements MemberInterface {
             gender: this.gender,
             birthday: this.birthday,
             gradeYear: this.gradeYear,
+                facebook: this.facebook.match('^https?://') ? this.facebook : `https://${this.facebook}`,
+                linkedin: this.linkedin.match('^https?://') ? this.linkedin : `https://${this.linkedin}`,
             // remove whitespace, if there are, in the telephone string
             telephone: this.telephone.replace(/(\s)/g, ""),
             positions: this.positions
