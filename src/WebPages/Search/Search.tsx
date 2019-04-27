@@ -2,8 +2,6 @@ import React, {Component} from 'react';
 import {Redirect} from "react-router-dom";
 
 import './Search.css';
-import defaultMan from '../../Images/default_man.svg';
-import defaultWoman from '../../Images/default_woman.svg';
 import Header from "../../Components/Header/Header";
 import Nav from "../../Components/Nav/Nav";
 import Auth from "../../Components/Auth/Auth";
@@ -13,6 +11,9 @@ import MemberInfo from "../../Components/MemberInfo/MemberInfo";
 import {Position} from "../../Model/Position";
 import {Member} from "../../Model/Member";
 import {SearchInterface} from "../../Model/Searchinterface";
+
+let defaultMan = require('../../Images/default_man.svg');
+let defaultWoman = require('../../Images/default_woman.svg');
 
 
 interface SearchState {

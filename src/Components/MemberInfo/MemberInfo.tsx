@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 
 import './MemberInfo.css';
-import facebook from '../../Images/facebook.png'
-import linkedin from '../../Images/linkedin.png'
+
+let facebook = require('../../Images/facebook.png');
+let linkedin = require('../../Images/linkedin.png');
 
 import {Member} from "../../Model/Member";
 

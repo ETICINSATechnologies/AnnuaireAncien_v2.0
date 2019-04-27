@@ -1,6 +1,7 @@
 import React from "react";
 import './Modal.css';
-import cancelIcon from "../../Images/cancel_icon.png";
+
+let cancelIcon = require("../../Images/cancel_icon.png");
 
 interface Props {
     children: any;

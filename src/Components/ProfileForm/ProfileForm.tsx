@@ -1,16 +1,17 @@
 import React, {Component} from 'react';
 import './ProfileForm.css';
 import Auth from "../Auth/Auth";
-import modifyIcon from "../../Images/edit.png";
-import cancelIcon from "../../Images/cancel_icon.png";
-import manIcon from "../../Images/default_man.svg";
-import womanIcon from "../../Images/default_woman.svg";
 import {Mdp} from "../../Model/Mdp";
 import {Member} from "../../Model/Member";
 import {Link} from "react-router-dom";
 import Modal from "../Modal/Modal";
 import DropDown from "../DropDown/DropDown";
 import ProfilePicture from "../ProfilePicture/ProfilePicture";
+
+let modifyIcon = require("../../Images/edit.png");
+let cancelIcon = require("../../Images/cancel_icon.png");
+let manIcon = require("../../Images/default_man.svg");
+let womanIcon = require("../../Images/default_woman.svg");
 
 
 interface ProfileFormProps {
@@ -89,7 +90,6 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
             return this.state.downloadedImg;
 
         if (member) {
-            console.log(member.gender);
             if (member.gender === 'F')
                 return womanIcon;
             else if (member.gender === 'M')

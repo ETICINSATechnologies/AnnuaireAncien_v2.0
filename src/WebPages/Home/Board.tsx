@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
-import defaultMan from '../../Images/default_man.svg'
-import defaultWoman from '../../Images/default_woman.svg'
 import {Member} from "../../Model/Member";
+
+let defaultMan = require('../../Images/default_man.svg');
+let defaultWoman = require('../../Images/default_woman.svg');
+
 
 interface BoardProps {
     members: Member[]
