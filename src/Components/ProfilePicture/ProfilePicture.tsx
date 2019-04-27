@@ -25,7 +25,7 @@ class ProfilePicture extends React.Component<ProfilePictureProps> {
         }
     };
 
-    drawCanvas = () => {
+    drawCanvas = (e?: any) => {
         if (this.state.image) {
             const canvas = document.createElement('canvas');
             canvas.width = this.state.croppedAreaPixel.width;
@@ -61,13 +61,7 @@ class ProfilePicture extends React.Component<ProfilePictureProps> {
                     })
                         .then(res => {
                             if (res.status === 204) {
-                                this.setState({
-                                    imageSelected: false,
-                                    image: undefined,
-                                    crop: {x: 0, y: 0},
-                                    zoom: 1
-                                });
-                                this.props.onClose(false)
+                                this.closeModal();
                             }
                         })
                 });
@@ -75,7 +69,7 @@ class ProfilePicture extends React.Component<ProfilePictureProps> {
         }
     };
 
-    deleteImage = () => {
+    deleteImage = (e?: any) => {
         fetch('member/me/image', {
             method: 'DELETE',
             headers: {
@@ -115,11 +109,23 @@ class ProfilePicture extends React.Component<ProfilePictureProps> {
         }
     };
 
+    closeModal = (e?: any) => {
+        this.setState({
+            imageSelected: false,
+            image: undefined,
+            crop: {x: 0, y: 0},
+            zoom: 1
+        });
+        this.props.onClose(false)
+    };
+
     render() {
         return (
             !this.props.show ? '' :
-                <div className="profile_picture" id="test">
-                    <div className="modal">
+                <div className="profile_picture" onClick={this.closeModal}>
+                    <div className="modal" onClick={(event: any) => {
+                        event.stopPropagation()
+                    }}>
                         <div className="info">Choisissez une photo</div>
                         <input type="file" onChange={this.onFileChange}/>
                         {
@@ -136,16 +142,16 @@ class ProfilePicture extends React.Component<ProfilePictureProps> {
                                             onZoomChange={this.onZoomChange}
                                         />
                                     </div>
-                                    <input type="button" className='classical_button'
-                                           onClick={() => this.props.onClose(false)} value="Annuler"/>
-                                    <input type="button" className='classical_button'
-                                           onClick={() => this.drawCanvas()} value="Envoyer"/>
+                                    <input type="button" className='classical_button red'
+                                           onClick={this.closeModal} value="Annuler"/>
+                                    <input type="button" className='classical_button green'
+                                           onClick={this.drawCanvas} value="Envoyer"/>
                                 </React.Fragment> :
                                 <React.Fragment>
-                                    <input type="button" className='classical_button'
+                                    <input type="button" className='classical_button red'
                                            onClick={() => this.props.onClose(false)} value="Annuler"/>
-                                    <input type="button" className="delete_div" value="Supprimer la photo"
-                                           onClick={() => this.deleteImage()}/>
+                                    <input type="button" className="delete_div red" value="Supprimer la photo"
+                                           onClick={this.deleteImage}/>
                                 </React.Fragment>
                         }
                     </div>

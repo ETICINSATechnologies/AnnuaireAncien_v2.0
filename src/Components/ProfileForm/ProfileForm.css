@@ -6,16 +6,15 @@
     justify-self: center;
     vertical-align: middle;
     border: 0.6vmin solid black;
-    margin: 2vmin 5vmin 2vmin 5vmin;
+    margin: 2vmin 5vmin 1vmin 5vmin;
     padding: 1vw;
 
-    width: 90%;
-    /*height: calc(85vh - 6.5vw - 2.5vmax );*/
+    box-sizing: border-box;
 }
 
 .ProfileForm .header_container {
     display: grid;
-    grid-template-columns: 4fr 4fr 1fr;
+    grid-template-columns: 2fr 2fr 1fr;
     grid-template-rows: 1fr;
     margin: auto;
 }
@@ -25,7 +24,7 @@
     width: 100%;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(8, 1fr);
-    margin: auto;
+    margin: 0 auto;
 }
 
 .ProfileForm .field_container .name_label_container {
@@ -61,9 +60,10 @@
 .ProfileForm .button_container {
     display: grid;
     width: 100%;
+    height: 5vmin;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: 1fr;
-    margin: 2vmin auto 0 auto;
+    margin: 1vmin auto 0 auto;
 }
 
 .ProfileForm .button_container input {
@@ -100,7 +100,8 @@
     grid-column: 2;
 }
 
-.ProfileForm h1 {
+.ProfileForm h2 {
+    grid-row: 1 / 4;
     text-align: center;
     justify-self: center;
     vertical-align: middle;
@@ -117,10 +118,6 @@
 }
 
 @media (orientation: portrait) {
-    .ProfileForm {
-        height: 68vw;
-    }
-
     .ProfileForm .info_area {
         font-size: 3.4vw;
     }
@@ -135,7 +132,7 @@
 
 .ProfileForm .profilePicture {
     display: grid;
-
+    grid-row: 1 / 4;
     margin: auto auto 0 auto;
     background-color: white;
 
@@ -146,6 +143,10 @@
 
 .ProfileForm .profilePicture:hover {
     cursor: pointer;
+}
+
+.ProfileForm .gender {
+    grid-column: 3;
 }
 
 .ProfileForm .div_button {
@@ -165,7 +166,7 @@
     font-size: 1.7vw;
     border: 0.3vmin solid black;
 
-    height: 7vmin;
+    height: 6vmin;
 }
 
 .ProfileForm .input_button:hover {
@@ -183,8 +184,8 @@
 }
 
 .ProfileForm .deleteCancelPicture {
-    width: 65%;
-    margin: 1vmin auto auto;
+    width: 30%;
+    margin: 1vmin 1vmin auto auto;
     grid-column: 3;
     vertical-align: top;
     horiz-align: right;

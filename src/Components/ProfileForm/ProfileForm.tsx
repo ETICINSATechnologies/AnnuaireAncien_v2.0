@@ -234,11 +234,11 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
                     {
                         this.props.update ?
                             this.props.updateSucceed ?
-                                <h1>Les modifications ont bien été enregistrées</h1> :
-                                <h1 className='error_info'>Une erreur est survenue lors de la sauvegarde</h1> :
+                                <h2>Les modifications ont bien été enregistrées</h2> :
+                                <h2 className='error_info'>Une erreur est survenue lors de la sauvegarde</h2> :
                             this.props.modifyEnabled ?
-                                <h1>Appuyer sur la croix pour annuler</h1> :
-                                <h1>Appuyer sur le crayon pour modifier</h1>
+                                <h2>Appuyer sur la croix pour annuler</h2> :
+                                <h2>Appuyer sur le crayon pour modifier</h2>
                     }
                     <img className="profilePicture" src={this.state.img} alt="Profile"
                          onClick={() => this.displayEditImage(true)}/>
@@ -246,35 +246,32 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
                     <img className="deleteCancelPicture"
                          src={this.props.modifyEnabled ? cancelIcon : modifyIcon}
                          onClick={() => this.props.enableModification()} alt="Modifier/Annuler"/>
+                    <p className="gender"> Genre </p>
+                    <DropDown className='gender' onChange={this.onChange} modifyEnabled={this.props.modifyEnabled}
+                              options={genders} currentOption={this.getGenderId(this.props.member.gender)}/>
                 </div>
                 <div className="field_container">
-                    <div className="name_label_container">
-                        <p className="needed"> Genre </p>
-                        <p className="needed"> Prénom </p>
-                        <p className="needed"> Nom </p>
-                    </div>
-                    <div className="name_field_container">
-                        <DropDown className='gender' onChange={this.onChange} modifyEnabled={this.props.modifyEnabled}
-                                  options={genders} currentOption={this.getGenderId(this.props.member.gender)}/>
-                        <input disabled={!this.props.modifyEnabled} type="text" className="firstName"
-                               value={this.props.member.firstName} onChange={this.onChange}/>
-                        <input disabled={!this.props.modifyEnabled} type="text" className="lastName"
-                               value={this.props.member.lastName} onChange={this.onChange}/>
-                    </div>
+                    <p className="needed"> Prénom </p>
+                    <p className="needed"> Nom </p>
+
+                    <input disabled={!this.props.modifyEnabled} type="text" className="firstName"
+                           value={this.props.member.firstName} onChange={this.onChange}/>
+                    <input disabled={!this.props.modifyEnabled} type="text" className="lastName"
+                           value={this.props.member.lastName} onChange={this.onChange}/>
                     <p> Téléphone </p>
                     <p className="needed"> Adresse mail </p>
                     <input disabled={!this.props.modifyEnabled} type="text" className="telephone"
                            value={this.props.member.telephone} onChange={this.onChange}/>
                     <input disabled={!this.props.modifyEnabled} type="text" className="email"
                            value={this.props.member.email} onChange={this.onChange}/>
-                    <p className="needed"> Année de sortie </p>
-                    <p className="needed"> Date de naissance </p>
+                    <p> Année de sortie </p>
+                    <p> Date de naissance </p>
                     <input disabled={!this.props.modifyEnabled} type="text" className="gradeYear"
                            value={this.props.member.gradeYear} onChange={this.onChange}/>
                     <input type="date" disabled={!this.props.modifyEnabled} className="birthday"
                            value={this.props.member.birthday} onChange={this.onChange}/>
-                    <p className="needed"> LinkedIn </p>
-                    <p className="needed"> Facebook </p>
+                    <p> LinkedIn </p>
+                    <p> Facebook </p>
                     <input disabled={!this.props.modifyEnabled} type="text" className="linkedin"
                            value={this.props.member.linkedin} onChange={this.onChange}/>
                     <input disabled={!this.props.modifyEnabled} type="text" className="facebook"
