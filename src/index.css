@@ -1,8 +1,27 @@
-:style {
-  color1: "";
-  color2: "";
-  --backgroundHeader: linear-gradient(to right, #005360, #9bca8b);
+@font-face {
+  font-family: "HKGrotesk";
+  font-style: normal;
+  font-weight: 400;
+  src: local("HKGrotesk-Regular"),
+    url(/fonts/HKGroteskFL/HKGrotesk-Regular.otf) format("opentype");
 }
+
+@font-face {
+  font-family: "HKGrotesk";
+  font-style: normal;
+  font-weight: bold;
+  src: local("HKGrotesk-Bold"),
+    url(/fonts/HKGroteskFL/HKGrotesk-Bold.otf) format("opentype");
+}
+
+@font-face {
+  font-family: "HKGrotesk";
+  font-style: italic;
+  font-weight: 600;
+  src: local("HKGrotesk-SemiBoldItalic"),
+    url(/fonts/HKGroteskFL/HKGrotesk-SemiBoldItalic.otf) format("opentype");
+}
+
 html {
   width: 100%;
   height: 100%;
@@ -14,7 +33,8 @@ body {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  font-family: Lato, "Helvetica Neue", Arial, Helvetica, sans-serif;
+  font-family: HKGrotesk-Regular, Lato, "Helvetica Neue", Arial, Helvetica,
+    sans-serif;
 }
 
 #root {

@@ -1,12 +1,10 @@
 {
-  "choisirMesCouleurs": "http://stylescss.free.fr/v2-tutoriels/tools-colors.php",
   "--backgroundHeader": "linear-gradient(to right, #005360, #9bca8b)",
   "--titleHeader": "white",
   "--leftBorderHome": "rgba(0, 83, 96, 0.8)",
   "--rightBorderHome": "rgba(155, 202, 139, 1)",
-  "--backgroundConnection": "rgba(155, 202, 139, 1)",
+  "--backgroundContainer": "rgb(155, 202, 139)",
   "--passwordLostConnection": "#009e19",
   "--backgroundButton": "#009e0f",
-  "--descriptionProfileForm": "#009e11",
-  "--backgroundSearch": "rgb(155, 202, 139)"
+  "--descriptionProfileForm": "#009e11"
 }

@@ -12,8 +12,7 @@ import Recovery from "./WebPages/Recovery/Recovery";
 import Help from "./WebPages/Help/Help";
 import Profile from "./WebPages/Profile/Profile";
 import Search from "./WebPages/Search/Search";
-import style from "./style.json";
-import theme from "./theme.json";
+import theme from "./cssVariables.json";
 // mock or not the api call by redefining the fetch function
 
 if (process.env.REACT_APP_FETCH_MOCK === "true") {
