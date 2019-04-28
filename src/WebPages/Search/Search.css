@@ -34,6 +34,7 @@
 }
 
 .Search .searchForm select {
+  background-color: var(--backgroundMainView);
   width: 92%;
   font-size: 1.2vw;
   padding: 0.5vw;

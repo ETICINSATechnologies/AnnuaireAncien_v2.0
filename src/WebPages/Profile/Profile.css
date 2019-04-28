@@ -1,20 +1,19 @@
 .Profile {
-    display: grid;
-
-    width: 95%;
-    height: 100%;
-    grid-row: 3;
-    grid-column: 1;
-    justify-self: center;
-    vertical-align: middle;
-    margin: auto;
-    grid-template-columns: 5fr 3fr;
-    overflow-y: auto;
+  display: grid;
+  background-color: var(--backgroundMainView);
+  width: 95%;
+  height: 100%;
+  grid-row: 3;
+  grid-column: 1;
+  justify-self: center;
+  vertical-align: middle;
+  margin: auto;
+  grid-template-columns: 5fr 3fr;
+  overflow-y: auto;
 }
 
-
 @media (orientation: portrait) {
-    .Profile {
-        grid-template-columns: 1fr;
-    }
+  .Profile {
+    grid-template-columns: 1fr;
+  }
 }

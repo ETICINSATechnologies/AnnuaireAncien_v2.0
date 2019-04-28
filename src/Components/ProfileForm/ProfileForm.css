@@ -1,7 +1,7 @@
 .ProfileForm {
   display: grid;
   grid-template-rows: 2fr 2fr 1fr;
-  background-color: rgb(255, 255, 255);
+  background-color: var(--backgroundMainView);
 
   justify-self: center;
   vertical-align: middle;
@@ -29,6 +29,7 @@
 }
 
 .ProfileForm .field_container select {
+  background-color: var(--backgroundMainView);
   position: relative;
   left: 1vw;
 }
@@ -62,9 +63,12 @@ p {
   height: 5vmin;
 }
 
+.ProfileForm .isBoard {
+  background: var(--backgroundMainView);
+}
 .ProfileForm p,
 input[type="text"] {
-  background-color: white;
+  background-color: var(--backgroundMainView);
   justify-self: center;
 }
 

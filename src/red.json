@@ -6,5 +6,6 @@
   "--backgroundContainer": "rgb(192, 87, 87)",
   "--passwordLostConnection": "rgb(197,15,15)",
   "--backgroundButton": "red",
-  "--descriptionProfileForm": "red"
+  "--descriptionProfileForm": "red",
+  "--backgroundMainView": "pink"
 }

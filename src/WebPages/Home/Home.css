@@ -25,12 +25,11 @@
 
 .Home .home_title {
   vertical-align: middle;
-
   margin: auto;
-
   font-size: 5vw;
   width: 80%;
   height: 100%;
+  background-color: var(--backgroundMainView);
 }
 
 .Home .welcome {
