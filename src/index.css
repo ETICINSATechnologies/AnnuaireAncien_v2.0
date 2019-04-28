@@ -1,3 +1,7 @@
+:root {
+  --fontName: "Cormorant Unicase";
+}
+
 @font-face {
   font-family: "HKGrotesk";
   font-style: normal;
@@ -27,13 +31,14 @@ html {
   height: 100%;
 }
 
+/* HKGrotesk-Regular */
 body {
   margin: 0;
   padding: 0;
   width: 100%;
   height: 100%;
   overflow: hidden;
-  font-family: HKGrotesk-Regular, Lato, "Helvetica Neue", Arial, Helvetica,
+  font-family: var(--fontName), Lato, "Helvetica Neue", Arial, Helvetica,
     sans-serif;
 }
 

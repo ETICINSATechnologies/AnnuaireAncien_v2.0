@@ -13,14 +13,17 @@ import Help from "./WebPages/Help/Help";
 import Profile from "./WebPages/Profile/Profile";
 import Search from "./WebPages/Search/Search";
 import theme from "./cssVariables.json";
-// mock or not the api call by redefining the fetch function
 
+//Exemple of RED theme
+import red from "./red.json";
+
+// mock or not the api call by redefining the fetch function
 if (process.env.REACT_APP_FETCH_MOCK === "true") {
   (global as any).fetch = fetch;
 }
 
 ReactDOM.render(
-  <CustomProperties global properties={theme}>
+  <CustomProperties global properties={red}>
     <Router>
       <Switch>
         <Route exact path="/" component={Home} />
