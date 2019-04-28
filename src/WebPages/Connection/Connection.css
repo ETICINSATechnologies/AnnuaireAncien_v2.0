@@ -62,7 +62,7 @@ input[type="password"] {
   margin: auto;
   padding-left: 0.7vmin;
   font-size: 3vmin;
-  background-color: white;
+  background-color: var(--backgroundMainView);
   justify-self: center;
 }
 
