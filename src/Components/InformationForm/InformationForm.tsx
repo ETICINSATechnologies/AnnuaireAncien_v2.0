@@ -11,7 +11,7 @@ interface InformationFormState{
 
 interface InformationFormProps{
     updateSuccess: boolean,
-    createMember (info: Member): void
+    createMember (info: Member): Promise<Response>
 }
 
 class InformationForm extends Component<InformationFormProps, InformationFormState> {
@@ -73,14 +73,16 @@ class InformationForm extends Component<InformationFormProps, InformationFormSta
         })
     };
 
-    formSubmitHandler = (event:any) => {
+    formSubmitHandler = async (event:any) => {
         event.preventDefault();
-        this.props.createMember(this.state.memberInfo);
-        this.setState({
-            memberInfo: new Member(defaultMember),
-            numberBuffer: '',
-            dateBuffer: ''
+        let res = await this.props.createMember(this.state.memberInfo);
+        if(res.status === 200){
+            this.setState({
+                memberInfo: new Member(defaultMember),
+                numberBuffer: '',
+                dateBuffer: ''
             })
+        }
     };
 
     render(){
@@ -88,26 +90,32 @@ class InformationForm extends Component<InformationFormProps, InformationFormSta
             <form className="InformationForm" onSubmit={this.formSubmitHandler}>
                 <div className="PersonalDetails">
                     <label>Nom</label>
-                    <input type="text" id="1" value={this.state.memberInfo.lastName} onChange={this.textChangeHandler} required/>
+                    <input type="text" id="1" value={this.state.memberInfo.lastName} onChange={this.textChangeHandler} />
 
                     <label>Prénom</label>
-                    <input type="text" id="2" value={this.state.memberInfo.firstName} onChange={this.textChangeHandler} required/>
+                    <input type="text" id="2" value={this.state.memberInfo.firstName} onChange={this.textChangeHandler} />
 
                     <label>Genre</label>
                     <div className='genreSelection'>
-                        <input type="radio" name="gender" value="M" onChange={this.radioChangeHandler}/><label>Homme</label>
-                        <input type="radio" name="gender" value="F" onChange={this.radioChangeHandler}/><label>Femme</label>
-                        <input type="radio" name="gender" value="Autre" onChange={this.radioChangeHandler}/><label>Autre</label>
+                        <p>
+                            <input type="radio" name="gender" value="M" onChange={this.radioChangeHandler}/><label>H</label>
+                        </p>
+                        <p>
+                            <input type="radio" name="gender" value="F" onChange={this.radioChangeHandler}/><label>F</label>
+                        </p>
+                        <p>
+                            <input type="radio" name="gender" value="Autre" onChange={this.radioChangeHandler}/><label>Autre</label>
+                        </p>
                     </div>
 
                     <label>Date de Naissance</label>
-                    <input type="date" name="bdaytime" value={this.state.dateBuffer} onChange={this.dateChangeHandler} required/>
+                    <input type="date" name="bdaytime" value={this.state.dateBuffer} onChange={this.dateChangeHandler} />
 
                     <label>Telephone</label>
-                    <input type="text" id="3" value={this.state.memberInfo.telephone} onChange={this.textChangeHandler} required/>
+                    <input type="text" id="3" value={this.state.memberInfo.telephone} onChange={this.textChangeHandler} />
 
                     <label>Année d'obtention de diplôme</label>
-                    <input type="text" id="4" value={this.state.numberBuffer} onChange={this.textChangeHandler} required/>
+                    <input type="text" id="4" value={this.state.numberBuffer} onChange={this.textChangeHandler} />
 
                     <label>Facebook</label>
                     <input type="text" id="5" value={this.state.memberInfo.facebook} onChange={this.textChangeHandler}/>
@@ -116,7 +124,7 @@ class InformationForm extends Component<InformationFormProps, InformationFormSta
                     <input type="text" id="6" value={this.state.memberInfo.linkedin} onChange={this.textChangeHandler}/>
 
                     <label>Email</label>
-                    <input type="text" id="7" className='email' value={this.state.memberInfo.email} onChange={this.textChangeHandler} required/>
+                    <input type="text" id="7" className='email' value={this.state.memberInfo.email} onChange={this.textChangeHandler} />
                 </div>
                 <input type="submit" className="registerbtn" value="Valider"/>
             </form>

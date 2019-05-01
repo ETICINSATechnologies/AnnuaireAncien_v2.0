@@ -67,6 +67,15 @@
     margin: 0 0.25vw 0 0.25vw;
 }
 
+.InformationForm .genreSelection{
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr;
+}
+
+.InformationForm .genreSelection p{
+    margin: 0 auto 0 auto;
+}
+
 .InformationForm .registerbtn {
     grid-row: 4;
     width: 95%;

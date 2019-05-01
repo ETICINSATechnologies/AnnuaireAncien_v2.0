@@ -45,32 +45,35 @@ class Admin extends Component<{}, AdminState> {
     createMember = async (info: Member) => {
         info.positions = this.state.member.positions;
 
-        fetch('member', {
+        let res = fetch('member', {
             method: 'POST',
             headers: {
                 'Authorization': Auth.getToken(),
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(info)
-        })
-            .then(res => {
-                if (res.status === 200) {
-                    res.json()
-                        .then(() => {
-                            this.setState({
-                                initial : false,
-                                updateSucceed: true,
-                                member: defaultMember
-                            });
+        });
+
+
+        res.then(res => {
+            if (res.status === 200) {
+                res.json()
+                    .then(() => {
+                        this.setState({
+                            initial : false,
+                            updateSucceed: true,
+                            member: defaultMember
                         })
-                } else {
-                    this.setState({
-                        initial: false,
-                        updateSucceed: false
                     });
-                }
-            });
-        return Promise.resolve(this.state.updateSucceed);
+            } else {
+                this.setState({
+                    initial: false,
+                    updateSucceed: false
+                });
+            }
+        });
+
+        return res;
     };
 
     render() {
