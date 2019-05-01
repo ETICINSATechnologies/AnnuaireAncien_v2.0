@@ -24,62 +24,51 @@ const OTHER_PROPERTIES = {
     birthday: 'Date de naissance',
 };
 
-class MemberInfo extends React.Component<MemberInfoProps> {
-    render() {
-        const linkMaker = (link: string): string => {
-            let ret: string = '';
-            link ?
-                ret = link.indexOf('http://') ? 'http://' + link : link :
-                ret = '';
+const MemberInfo: React.SFC<MemberInfoProps> = (props) => {
+    if (props.member) {
+        let member = props.member.read();
 
-            return ret;
-        };
-
-        if (this.props.member) {
-            let member = this.props.member.read();
-
-            let mainProperties = MAIN_PROPERTIES.map((property) =>
-                <div key={property} className={property} title={member![property]}>{member![property]}</div>
-            );
-            let linkProperties = LINKS.map((property, index) => {
-                    if (member[property])
-                        return (
-                            <a key={index} className='link' href={member![property]}>
-                                <img className='linkImg'
-                                     src={property === 'facebook' ? facebook : linkedin} alt={property}/>
-                            </a>
-                        )
-                }
-            );
-
-            let otherProperties = Object.keys(OTHER_PROPERTIES).map((property) => {
-                if (member[property]) {
+        let mainProperties = MAIN_PROPERTIES.map((property) =>
+            <div key={property} className={property} title={member![property]}>{member![property]}</div>
+        );
+        let linkProperties = LINKS.map((property, index) => {
+                if (member[property])
                     return (
-                        <React.Fragment key={property}>
-                            <div className={`inputLabel ${property}`}>{(OTHER_PROPERTIES as any)[property]}</div>
-                            <input type="text" className={property} value={member[property]} disabled={true}/>
-                        </React.Fragment>
+                        <a key={index} className='link' href={member![property]}>
+                            <img className='linkImg'
+                                 src={property === 'facebook' ? facebook : linkedin} alt={property}/>
+                        </a>
                     )
-                }
-            });
+            }
+        );
 
-            return (
-                <section className='MemberInfo'>
-                    <div className='infoTitle'>Info du membre</div>
-                    <div className='infoArea'>
-                        <img className='memberPhoto' alt="default" title="http://www.onlinewebfonts.com/icon"
-                             src={this.props.image}/>
-                        {mainProperties}
-                        <div className='linkContainer'>{linkProperties}</div>
-                        {otherProperties}
-                    </div>
-                </section>
-            )
-        }
+        let otherProperties = Object.keys(OTHER_PROPERTIES).map((property) => {
+            if (member[property]) {
+                return (
+                    <React.Fragment key={property}>
+                        <div className={`inputLabel ${property}`}>{(OTHER_PROPERTIES as any)[property]}</div>
+                        <input type="text" className={property} value={member[property]} disabled={true}/>
+                    </React.Fragment>
+                )
+            }
+        });
 
-        return <section className='MemberInfo'/>
+        return (
+            <section className='MemberInfo'>
+                <div className='infoTitle'>Info du membre</div>
+                <div className='infoArea'>
+                    <img className='memberPhoto' alt="default" title="http://www.onlinewebfonts.com/icon"
+                         src={props.image}/>
+                    {mainProperties}
+                    <div className='linkContainer'>{linkProperties}</div>
+                    {otherProperties}
+                </div>
+            </section>
+        )
     }
-}
+
+    return <section className='MemberInfo'/>
+};
 
 export default MemberInfo;
 

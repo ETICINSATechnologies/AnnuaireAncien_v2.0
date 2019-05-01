@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './PositionForm.css';
 import Auth from "../../Components/Auth/Auth";
+
 import {MemberPosition} from "../../Model/MemberPosition";
 import {Position} from "../../Model/Position";
 import DropDown from "../DropDown/DropDown";
@@ -127,8 +128,6 @@ interface PositionProps {
 }
 
 const MemberPositionRender = (props: PositionProps) => {
-
-
     return (
         <div className="position_container">
             <p>Poste</p>

@@ -1,4 +1,4 @@
-import { MemberPosition } from './MemberPosition';
+import {MemberPosition} from './MemberPosition';
 
 interface MemberGeneric {
     firstName: string
@@ -17,6 +17,7 @@ export interface MemberRead extends MemberGeneric {
     id: number
     latestPosition: string
     latestYear: number
+
     [property: string]: any
 }
 
@@ -93,22 +94,25 @@ export class Member implements MemberInterface {
      */
     update(): MemberUpdate {
         return Object.assign({}, {
-            firstName: this.firstName,
-            lastName: this.lastName,
-            email: this.email,
-            password: this.password,
-            gender: this.gender,
-            birthday: this.birthday,
-            gradeYear: this.gradeYear,
-                facebook: this.facebook.match('^https?://') ? this.facebook : `https://${this.facebook}`,
-                linkedin: this.linkedin.match('^https?://') ? this.linkedin : `https://${this.linkedin}`,
-            // remove whitespace, if there are, in the telephone string
-            telephone: this.telephone.replace(/(\s)/g, ""),
-            positions: this.positions
-        },
-            this.password ? { password: this.password } : {},
+                firstName: this.firstName,
+                lastName: this.lastName,
+                email: this.email,
+                password: this.password,
+                gender: this.gender,
+                birthday: this.birthday,
+                gradeYear: this.gradeYear,
+                // remove whitespace, if there are, in the telephone string
+                telephone: this.telephone.replace(/(\s)/g, ""),
+                positions: this.positions
+            },
+            this.password ? {password: this.password} : {},
+            this.facebook ? {
+                facebook: this.facebook.match('^https?://') ? this.facebook : `https://${this.facebook}`
+            } : {},
+            this.linkedin ? {
+                linkedin: this.linkedin.match('^https?://') ? this.linkedin : `https://${this.linkedin}`
+            } : {}
         ) as MemberUpdate
-
     }
 }
 
@@ -120,8 +124,8 @@ export let defaultMember = new Member({
     telephone: '',
     birthday: '',
     gradeYear: 0,
-    facebook:'',
-    linkedin:'',
+    facebook: '',
+    linkedin: '',
     gender: '',
     positions: []
 } as MemberInterface);
