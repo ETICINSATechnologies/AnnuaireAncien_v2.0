@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import './InformationForm.css';
 
-import {defaultMember, Member} from "../../Model/Member";
+import {defaultMember, Member, MemberInterface} from "../../Model/Member";
 
 interface InformationFormState{
-    memberInfo: Member,
+    memberInfo: MemberInterface,
     numberBuffer: string,
     dateBuffer: string
 }
@@ -21,42 +21,32 @@ class InformationForm extends Component<InformationFormProps, InformationFormSta
         dateBuffer: ''
     };
 
-    textChangeHandler = (event:any) => {
-        let nB = Object.assign({}, this.state.memberInfo);
-        switch(Number(event.target.id)){
-            case 1:
-                nB.lastName = event.target.value;
-                break;
-            case 2:
-                nB.firstName = event.target.value;
-                break;
-            case 3:
-                nB.telephone = event.target.value;
-                break;
-            case 4:
-                this.state.numberBuffer = event.target.value;
-                nB.gradeYear = Number(event.target.value);
-                break;
-            case 5:
-                nB.facebook = event.target.value;
-                break;
-            case 6:
-                nB.linkedin = event.target.value;
-                break;
-            case 7:
-                nB.email = event.target.value;
-                break;
-            default:
-                break;
+    textChangeHandler = (event: React.ChangeEvent) => {
+        event.persist();
+        if(event.target.className === 'numberBuffer'){
+            this.setState({
+                numberBuffer: (event.target as any).value,
+                memberInfo: {
+                    ...this.state.memberInfo,
+                    memberInfo:{
+                        ...this.state.memberInfo,
+                        gradeYear: Number((event.target as any).value)
+                    }
+                }
+            })
+        }else {
+            this.setState({
+                memberInfo: {
+                    ...this.state.memberInfo,
+                    [event.target.className]: (event.target as any).value
+                }
+            });
         }
-        this.setState({
-            memberInfo: nB,
-        });
     };
 
-    radioChangeHandler = (event:any) => {
+    radioChangeHandler = (event:React.ChangeEvent) => {
         let nB = Object.assign({}, this.state.memberInfo);
-        nB.gender = event.target.value;
+        nB.gender = (event.target as any).value;
         this.setState({
             memberInfo: nB
         });
@@ -90,10 +80,10 @@ class InformationForm extends Component<InformationFormProps, InformationFormSta
             <form className="InformationForm" onSubmit={this.formSubmitHandler}>
                 <div className="PersonalDetails">
                     <label>Nom</label>
-                    <input type="text" id="1" value={this.state.memberInfo.lastName} onChange={this.textChangeHandler} />
+                    <input type="text" className='lastName' value={this.state.memberInfo.lastName} onChange={this.textChangeHandler} />
 
                     <label>Prénom</label>
-                    <input type="text" id="2" value={this.state.memberInfo.firstName} onChange={this.textChangeHandler} />
+                    <input type="text" className='firstName' value={this.state.memberInfo.firstName} onChange={this.textChangeHandler} />
 
                     <label>Genre</label>
                     <div className='genreSelection'>
@@ -112,19 +102,19 @@ class InformationForm extends Component<InformationFormProps, InformationFormSta
                     <input type="date" name="bdaytime" value={this.state.dateBuffer} onChange={this.dateChangeHandler} />
 
                     <label>Telephone</label>
-                    <input type="text" id="3" value={this.state.memberInfo.telephone} onChange={this.textChangeHandler} />
+                    <input type="text" className='telephone' value={this.state.memberInfo.telephone} onChange={this.textChangeHandler} />
 
                     <label>Année d'obtention de diplôme</label>
-                    <input type="text" id="4" value={this.state.numberBuffer} onChange={this.textChangeHandler} />
+                    <input type="text" className='numberBuffer' value={this.state.numberBuffer} onChange={this.textChangeHandler} />
 
                     <label>Facebook</label>
-                    <input type="text" id="5" value={this.state.memberInfo.facebook} onChange={this.textChangeHandler}/>
+                    <input type="text" className='facebook' value={this.state.memberInfo.facebook} onChange={this.textChangeHandler}/>
 
                     <label>LinkedIn</label>
-                    <input type="text" id="6" value={this.state.memberInfo.linkedin} onChange={this.textChangeHandler}/>
+                    <input type="text" className='linkedin' value={this.state.memberInfo.linkedin} onChange={this.textChangeHandler}/>
 
                     <label>Email</label>
-                    <input type="text" id="7" className='email' value={this.state.memberInfo.email} onChange={this.textChangeHandler} />
+                    <input type="text" className='email' value={this.state.memberInfo.email} onChange={this.textChangeHandler} />
                 </div>
                 <input type="submit" className="registerbtn" value="Valider"/>
             </form>

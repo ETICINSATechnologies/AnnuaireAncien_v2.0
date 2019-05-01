@@ -18,31 +18,31 @@ type redirect = {
 const navRedirect = {
     connection: {
         href: '/connection',
-        value: 'se connecter'
+        value: 'Se Connecter'
     } as redirect,
     disconnection: {
         href: '/',
-        value: 'se déconnecter'
+        value: 'Se Déconnecter'
     } as redirect,
     home: {
         href: '/',
-        value: 'accueil'
+        value: 'Accueil'
     } as redirect,
     search: {
         href: '/search',
-        value: 'rechercher'
+        value: 'Rechercher'
     } as redirect,
     profile: {
         href: '/profile',
-        value: 'mon profil'
+        value: 'Mon Profil'
     } as redirect,
     member_creation: {
         href: '/member_creation',
-        value: 'création membre'
+        value: 'Ajout'
     } as redirect,
     data: {
         href: '/data',
-        value: 'données'
+        value: 'Publier'
     } as redirect,
 };
 
