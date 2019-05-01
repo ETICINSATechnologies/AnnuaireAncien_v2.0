@@ -32,10 +32,12 @@
   background-color: var(--backgroundMainView);
   position: relative;
   left: 1vw;
+  color: var(--textColor);
 }
 
 .ProfileForm .field_container input,
 p {
+  color: var(--textColor);
   width: 90%;
 }
 
@@ -49,6 +51,8 @@ p {
 
 .ProfileForm .button_container input {
   width: 80%;
+  background-color: var(--buttonColor);
+  color: var(--fontColorButton);
 }
 
 .ProfileForm .needed:after {
@@ -82,9 +86,7 @@ input[type="text"] {
   vertical-align: middle;
   width: 77%;
   font-size: 2.5vw;
-
   color: var(--descriptionProfileForm);
-
   margin: auto;
 }
 
@@ -105,7 +107,7 @@ input[type="text"] {
 .ProfileForm p {
   font-size: 3.7vmin;
   margin: auto auto 0 auto;
-
+  color: var(--textColor);
   height: 4.7vmin;
 }
 
@@ -113,7 +115,7 @@ input[type="text"] {
   display: grid;
 
   margin: auto auto 0 auto;
-  background-color: white;
+  background-color: transparent;
 
   animation-duration: 2s;
   width: auto;
@@ -131,12 +133,9 @@ input[type="text"] {
   cursor: pointer;
   text-align: center;
   vertical-align: middle;
-
   margin: auto;
-
   font-size: 1.7vw;
   border: 0.3vmin solid black;
-
   height: 7vmin;
 }
 
@@ -147,11 +146,6 @@ input[type="text"] {
 
 .ProfileForm .password {
   background: #dddddd;
-}
-
-.ProfileForm .update {
-  color: white;
-  background-color: #009e0f;
 }
 
 .ProfileForm .deleteCancelPicture {

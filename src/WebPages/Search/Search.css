@@ -23,6 +23,7 @@
 .Search .searchForm div {
   width: auto;
   font-size: 1.3vw;
+  color: var(--textColor);
   margin: auto 1vw auto 1.5vw;
 }
 
@@ -46,7 +47,7 @@
   font-size: 2vw;
   margin: 1vw 3vw auto auto;
   width: auto;
-  background: var(--backgroundButton);
+  background-color: var(--buttonColor);
   border: 0.15vw solid black;
 }
 

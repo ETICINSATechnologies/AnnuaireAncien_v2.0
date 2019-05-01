@@ -6,4 +6,5 @@
   margin: auto auto auto 0;
   background-color: var(--backgroundMainView);
   justify-self: center;
+  color: var(--textColor);
 }

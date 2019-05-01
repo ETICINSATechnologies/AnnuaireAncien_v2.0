@@ -1,122 +1,124 @@
-.position_form{
-    width: 80%;
-    height: calc(85vh - 6.5vw - 2.5vmax);
-    margin: 5vmin auto;
-    display: grid;
-    grid-template-rows: 8vmin 1fr 10vmin;
-    justify-self: center;
-    vertical-align: middle;
-    border: 0.6vmin solid black;
-    padding: 1vw;
+.position_form {
+  width: 80%;
+  height: calc(85vh - 6.5vw - 2.5vmax);
+  margin: 5vmin auto;
+  display: grid;
+  grid-template-rows: 8vmin 1fr 10vmin;
+  justify-self: center;
+  vertical-align: middle;
+  border: 0.6vmin solid black;
+  padding: 1vw;
 }
 
 .position_form h1 {
-    margin: auto;
-    font-size: 2.5vw;
-    text-align: center;
+  margin: auto;
+  font-size: 2.5vw;
+  text-align: center;
+  color: var(--textColor);
 }
 
 .position_form .info_area p {
-    text-align: center;
-    justify-self: stretch;
-    vertical-align: middle;
+  text-align: center;
+  justify-self: stretch;
+  vertical-align: middle;
 
-    color: #009e11;
+  color: #009e11;
 
-    margin: auto;
-    font-size: 4vmin;
-    grid-row: 1;
-    grid-column-start: 1;
-    grid-column-end: 5;
+  margin: auto;
+  font-size: 4vmin;
+  grid-row: 1;
+  grid-column-start: 1;
+  grid-column-end: 5;
 }
 
 .position_form .position_container {
-    height: 10vmin;
-    display: grid;
-    grid-template-columns: 0.75fr 3fr 1fr 1fr;
-    grid-template-rows: 4vmin 1fr;
-    border: 0.3vmin solid black;
-    padding: 0.5vmin 0.5vmin 0.5vmin 1.5vmin;
-    margin: 1vmin auto;
+  height: 10vmin;
+  display: grid;
+  grid-template-columns: 0.75fr 3fr 1fr 1fr;
+  grid-template-rows: 4vmin 1fr;
+  border: 0.3vmin solid black;
+  padding: 0.5vmin 0.5vmin 0.5vmin 1.5vmin;
+  margin: 1vmin auto;
 }
 
 .position_form .position_container * {
-    margin: auto 0.4vmin;
+  margin: auto 0.4vmin;
 }
 
 .position_form .position_container p {
-    font-size: 3.5vmin;
+  font-size: 3.5vmin;
+  color: var(--textColor);
 }
 
-.position_form .position_container input[type='text'] {
-    border: 0.3vmin solid black;
-    width: 85%;
-    height: 80%;
-    justify-self: left;
-    font-size: 3vmin;
-    padding-left: 1vmin;
+.position_form .position_container input[type="text"] {
+  border: 0.3vmin solid black;
+  width: 85%;
+  height: 80%;
+  justify-self: left;
+  font-size: 3vmin;
+  padding-left: 1vmin;
+  color: var(--textColor);
 }
-
 
 .position_form .position_container img {
-    width: 6vmin;
-    margin: auto;
-    grid-row: 1 / 3;
-    grid-column: 4;
-    vertical-align: middle;
+  width: 6vmin;
+  margin: auto;
+  grid-row: 1 / 3;
+  grid-column: 4;
+  vertical-align: middle;
 }
 
-.position_form .position_container input[type='checkbox'] {
-    -webkit-appearance:none;
-    margin: auto;
-    vertical-align: middle;
-    width:3.5vmin;
-    height:3.5vmin;
-    background:white;
-    border-radius:0.3vmin;
-    border:0.4vmin solid #333;
+.position_form .position_container input[type="checkbox"] {
+  -webkit-appearance: none;
+  margin: auto;
+  vertical-align: middle;
+  width: 3.5vmin;
+  height: 3.5vmin;
+  background: var(--backgroundMainView);
+  border-radius: 0.3vmin;
+  border: 0.4vmin solid #333;
 }
-.position_form .position_container input[type='checkbox']:checked {
-    background: #9BCA8B;
+.position_form .position_container input[type="checkbox"]:checked {
+  background: #9bca8b;
 }
 
 .position_form .input_button {
-    cursor: pointer;
-    text-align: center;
-    vertical-align: middle;
+  cursor: pointer;
+  text-align: center;
+  vertical-align: middle;
+  background-color: var(--buttonColor);
+  color: var(--fontColorButton);
+  margin: auto;
 
-    margin: auto;
+  font-size: 1.7vw;
+  border: 0.3vmin solid black;
 
-    font-size: 1.7vw;
-    border: 0.3vmin solid black;
-
-    height: 7vmin;
+  height: 7vmin;
 }
 
 .position_form .add_position {
-    width: 90%;
-    height: 60%;
-    font-size: 1.7vw;
-    margin: auto;
+  width: 90%;
+  height: 60%;
+  font-size: 1.7vw;
+  margin: auto;
 }
 
 .position_form .delete_position {
-    grid-row: 1 / 3;
-    grid-column: 3;
+  grid-row: 1 / 3;
+  grid-column: 3;
 }
 
 .position_form .delete_position:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .position_form .hidden {
-    visibility: hidden;
+  visibility: hidden;
 }
 
 @media (orientation: portrait) {
-    .position_form {
-        margin: auto auto 5vh;
-        height: auto;
-    }
+  .position_form {
+    margin: auto auto 5vh;
+    height: auto;
+  }
 }
-
