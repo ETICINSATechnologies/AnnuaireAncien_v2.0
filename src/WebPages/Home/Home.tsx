@@ -50,8 +50,9 @@ class Home extends Component<{}, HomeState> {
         let activeButton = [];
         if (Auth.isConnected()) {
             activeButton.push('search');
-            if(Auth.isAdmin()){
-                activeButton.push('admin');
+            if(Auth.isAdmin()) {
+                activeButton.push('member_creation');
+                activeButton.push('data');
             }else{
                 activeButton.push('profile');
             }

@@ -36,9 +36,13 @@ const navRedirect = {
         href: '/profile',
         value: 'mon profil'
     } as redirect,
-    admin: {
-        href: '/admin',
+    member_creation: {
+        href: '/member_creation',
         value: 'création membre'
+    } as redirect,
+    data: {
+        href: '/data',
+        value: 'données'
     } as redirect,
 };
 

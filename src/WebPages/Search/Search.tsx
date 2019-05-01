@@ -124,7 +124,8 @@ class Search extends Component<{}, SearchState> {
             return <Redirect to='/'/>;
 
         if(Auth.isAdmin()) {
-            activeButton.push('admin');
+            activeButton.push('member_creation');
+            activeButton.push('data');
         }else{
             activeButton.push('profile');
         }

@@ -1,0 +1,64 @@
+.Data{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.Data .import{
+    display: grid;
+    grid-template-rows: 1fr 1fr 4fr 1fr;
+}
+
+.Data .import h2{
+    text-align: center;
+    font-size: 2vw;
+}
+
+.Data .import h3{
+    text-align: center;
+    color: #eb2f06;
+    font-size: 1.2vw;
+}
+
+.Data #drop_zone{
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    justify-self: center;
+    border-radius: 5px;
+    border-style: dashed;
+    width:  80%;
+    height: 80%;
+}
+
+.Data #drop_zone p, .Data input{
+    font-size: 1vw;
+    margin: auto;
+    text-align: center;
+}
+
+.Data input[type=button]{
+    width: 80%;
+    background-color: #4CAF50;
+    color: white;
+    margin: 0 auto 5.6vmin auto;
+    border: none;
+    font-size: 1.7vw;
+    height: 6vmin;
+    cursor: pointer;
+    opacity: 0.9;
+}
+
+.Data input[type=button]:hover {
+    opacity: 1;
+}
+
+.Data .export{
+    text-align: center;
+}
+
+.Data #download{
+    width: 40%;
+    height: 10vh;
+    margin: 30%;
+    display: block;
+    justify-self: center;
+}
