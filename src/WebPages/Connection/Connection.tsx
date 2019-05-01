@@ -95,7 +95,7 @@ class Connection extends Component<{}, ConnectionState> {
                                    onClick={this.tryToConnect}/>
                         </form>
                     </section>
-                    {this.state.status === 'connect' && Auth.isAdmin() && <Redirect to='/admin'/>}
+                    {this.state.status === 'connect' && Auth.isAdmin() && <Redirect to='/member_creation'/>}
                     {this.state.status === 'connect' && !Auth.isAdmin() && <Redirect to='/profile'/>}
                 </div>
             </React.Fragment>

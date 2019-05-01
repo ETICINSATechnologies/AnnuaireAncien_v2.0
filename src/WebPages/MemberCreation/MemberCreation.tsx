@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Redirect} from 'react-router-dom';
 
-import './Admin.css';
+import './MemberCreation.css';
 import Header from "../../Components/Header/Header";
 import Nav from "../../Components/Nav/Nav";
 import Auth from "../../Components/Auth/Auth";
@@ -10,14 +10,14 @@ import PositionForm from "../../Components/PositionForm/PositionForm";
 import {defaultMember, Member, MemberInterface} from "../../Model/Member";
 import {MemberPosition} from "../../Model/MemberPosition";
 
-interface AdminState {
+interface MemberCreationState {
     status: string
     initial: boolean
     updateSucceed: boolean
     member: Member
 }
 
-class Admin extends Component<{}, AdminState> {
+class MemberCreation extends Component<{}, MemberCreationState> {
     state = {
         status: 'pending', // 'connected' 'not_authenticate'
         initial: true,
@@ -82,13 +82,14 @@ class Admin extends Component<{}, AdminState> {
             return <Redirect to='/'/>;
 
         activeButton.push('search');
+        activeButton.push('data');
         activeButton = Auth.addCorrectButton(activeButton);
 
         return (
             <React.Fragment>
                 <Header/>
                 <Nav buttons={activeButton}/>
-                <section className="Admin">
+                <section className="MemberCreation">
                     <div className="HeaderContainer">
                         <h1 className = 'title'>Création de Membre</h1>
                         {
@@ -108,4 +109,4 @@ class Admin extends Component<{}, AdminState> {
     }
 }
 
-export default Admin;
+export default MemberCreation;
