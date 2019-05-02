@@ -1,5 +1,17 @@
 :root {
   --fontName: "Cormorant Unicase";
+  --textColor: black;
+  --backgroundHeader: linear-gradient(to right, #005360, #9bca8b);
+  --titleHeader: white;
+  --leftBorderHome: rgba(0, 83, 96, 0.8);
+  --rightBorderHome: rgba(155, 202, 139, 1);
+  --backgroundContainer: rgb(155, 202, 139);
+  --passwordLostConnection: #009e19;
+  --backgroundButton: #009e0f;
+  --descriptionProfileForm: #009e11;
+  --backgroundMainView: white;
+  --buttonColor: grey;
+  --fontColorButton: white;
 }
 
 @font-face {
