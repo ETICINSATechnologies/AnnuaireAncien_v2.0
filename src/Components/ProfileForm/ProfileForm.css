@@ -215,7 +215,7 @@
 
 .ProfileForm .modal .content {
     display: grid;
-    grid-template-rows: 0 3fr repeat(7, 2fr);
+    grid-template-rows: 0 3fr repeat(8, 2fr);
     vertical-align: top;
 }
 
@@ -223,8 +223,9 @@
     display: grid;
     text-align: center;
     font-size: 3vmin;
-    margin: auto auto 0 auto;
-    height: 4.7vmin;
+    margin: auto;
+    grid-row-start: 1;
+    grid-row-end: 3;
 }
 
 .ProfileForm .modal .error{

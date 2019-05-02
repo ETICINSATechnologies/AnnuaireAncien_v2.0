@@ -198,23 +198,27 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
 
     getGenderId(gender: string): number {
         switch (gender) {
+            case 'Autre':
+                return 1;
             case 'M':
                 return 2;
             case 'F':
                 return 3;
-            default:
-                return 1;
+            default :
+                return 0;
         }
     }
 
     getGenderLabel(id: string): string {
         switch (id) {
+            case '1':
+                return 'Autre';
             case '2':
                 return 'M';
             case '3':
                 return 'F';
             default:
-                return 'Autre';
+                return 'Choisir une option';
         }
     }
 
@@ -272,9 +276,11 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
                     <p> LinkedIn </p>
                     <p> Facebook </p>
                     <input disabled={!this.props.modifyEnabled} type="text" className="linkedin"
-                           value={this.props.member.linkedin} onChange={this.onChange}/>
+                           value={this.props.member.linkedin? this.props.member.linkedin : ''} 
+                           onChange={this.onChange}/>
                     <input disabled={!this.props.modifyEnabled} type="text" className="facebook"
-                           value={this.props.member.facebook} onChange={this.onChange}/>
+                           value={this.props.member.facebook? this.props.member.facebook : ''} 
+                           onChange={this.onChange}/>
                 </div>
                 <div className="button_container">
                     {

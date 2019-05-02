@@ -51,7 +51,7 @@ export class Member implements MemberInterface {
         this.firstName = memberInterface.firstName.charAt(0).toUpperCase() + memberInterface.firstName.slice(1);
         this.lastName = memberInterface.lastName.charAt(0).toUpperCase() + memberInterface.lastName.slice(1);
         this.email = memberInterface.email;
-        this.gender = memberInterface.gender.toUpperCase();
+        this.gender = memberInterface.gender.charAt(0).toUpperCase()+memberInterface.gender.slice(1);
         this.birthday = memberInterface.birthday;
         this.gradeYear = memberInterface.gradeYear;
         this.telephone = memberInterface.telephone;
@@ -80,8 +80,12 @@ export class Member implements MemberInterface {
             birthday: this.birthday,
             // insert spaces after '+33' and every two digits from the end of the string
             telephone: this.telephone.replace(/(\+33)|\d(?=(\d{2})+$)/g, "$& "),
-            facebook: this.facebook,
-            linkedin: this.linkedin,
+            facebook: this.facebook ? 
+                this.facebook.match('^https?://') ? this.facebook : `https://${this.facebook}`  
+                : '',
+            linkedin: this.linkedin ?
+                this.linkedin.match('^https?://') ? this.linkedin : `https://${this.linkedin}`
+                : '',
             positions: this.positions,
             latestPosition: latestPosition.label,
             latestYear: latestPosition.year
@@ -98,7 +102,7 @@ export class Member implements MemberInterface {
                 lastName: this.lastName,
                 email: this.email,
                 password: this.password,
-                gender: this.gender,
+                gender: this.gender===('Choisir une option')? 'Autre':this.gender,
                 birthday: this.birthday,
                 gradeYear: this.gradeYear,
                 // remove whitespace, if there are, in the telephone string
