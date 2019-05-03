@@ -43,6 +43,7 @@ class MemberCreation extends Component<{}, MemberCreationState> {
     };
 
     createMember = async (info: Member) => {
+        Object.keys(info).forEach((key) => (info[key] === '') && (info[key] = undefined));
         info.positions = this.state.member.positions;
 
         let res = fetch('member', {

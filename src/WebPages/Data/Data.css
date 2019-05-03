@@ -1,6 +1,6 @@
+
 .Data{
     display: grid;
-    grid-template-columns: 1fr 1fr;
 }
 
 .Data .import{
@@ -13,26 +13,55 @@
     font-size: 2vw;
 }
 
-.Data .import h3{
+.Data .import .warning{
     text-align: center;
     color: #eb2f06;
     font-size: 1.2vw;
 }
 
+.Data .affirmation{
+    text-align: center;
+    color: #4CAF50;
+}
+
 .Data #drop_zone{
-    display: grid;
-    grid-template-rows: 1fr 1fr 1fr;
-    justify-self: center;
     border-radius: 5px;
     border-style: dashed;
+    justify-self: center;
     width:  80%;
     height: 80%;
 }
 
-.Data #drop_zone p, .Data input{
-    font-size: 1vw;
-    margin: auto;
+.Data .indication{
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    justify-self: center;
+    width:  100%;
+    height: 100%;
+}
+
+.Data #drop_zone h3,.Data .upload{
+    font-size: 1.2vw;
     text-align: center;
+}
+
+.Data .upload{
+    margin: auto;
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 2vmin;
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    opacity: 0.9;
+}
+
+.Data .upload:hover {
+    opacity: 1;
+}
+
+.Data input[type=file]{
+    display: none;
 }
 
 .Data input[type=button]{
@@ -58,7 +87,19 @@
 .Data #download{
     width: 40%;
     height: 10vh;
-    margin: 30%;
+    margin:  30% auto 0 auto;
     display: block;
     justify-self: center;
+}
+
+@media(orientation: landscape){
+    .Data{
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media(orientation: portrait){
+    .Data{
+        grid-template-rows: 1fr 1fr;
+    }
 }
