@@ -24,3 +24,9 @@ code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+@media(orientation: portrait){
+    body{
+        overflow-y: scroll;
+    }
+}

@@ -7,7 +7,8 @@ class Auth {
     }
 
     static disconnect(): void {
-        sessionStorage.removeItem('token')
+        sessionStorage.removeItem('token');
+        sessionStorage.removeItem('admin');
     }
 
     static isConnected(): boolean {
