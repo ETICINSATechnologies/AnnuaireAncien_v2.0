@@ -6,7 +6,7 @@ interface MemberGeneric {
     email: string
     gender: string
     telephone: string
-    gradeYear: number
+    gradeYear?: number
     birthday: string
     facebook: string
     linkedin: string
@@ -37,7 +37,7 @@ export class Member implements MemberInterface {
     lastName: string;
     email: string;
     gender: string;
-    gradeYear: number;
+    gradeYear?: number;
     birthday: string;
     telephone: string;
     facebook: string;
@@ -79,13 +79,11 @@ export class Member implements MemberInterface {
             gradeYear: this.gradeYear,
             birthday: this.birthday,
             // insert spaces after '+33' and every two digits from the end of the string
-            telephone: this.telephone.replace(/(\+33)|\d(?=(\d{2})+$)/g, "$& "),
-            facebook: this.facebook ? 
-                this.facebook.match('^https?://') ? this.facebook : `https://${this.facebook}`  
-                : '',
+            telephone: this.telephone,
+            facebook: this.facebook ?
+                this.facebook.match('^https?://') ? this.facebook : `https://${this.facebook}` : '',
             linkedin: this.linkedin ?
-                this.linkedin.match('^https?://') ? this.linkedin : `https://${this.linkedin}`
-                : '',
+                this.linkedin.match('^https?://') ? this.linkedin : `https://${this.linkedin}` : '',
             positions: this.positions,
             latestPosition: latestPosition.label,
             latestYear: latestPosition.year
@@ -106,7 +104,7 @@ export class Member implements MemberInterface {
                 birthday: this.birthday,
                 gradeYear: this.gradeYear,
                 // remove whitespace, if there are, in the telephone string
-                telephone: this.telephone.replace(/(\s)/g, ""),
+                telephone: this.telephone,
                 positions: this.positions
             },
             this.password ? {password: this.password} : {},
@@ -127,7 +125,6 @@ export let defaultMember = new Member({
     email: '',
     telephone: '',
     birthday: '',
-    gradeYear: 0,
     facebook: '',
     linkedin: '',
     gender: '',
