@@ -1,6 +1,7 @@
 
 .Data{
     display: grid;
+    overflow-y: scroll;
 }
 
 .Data .import{
