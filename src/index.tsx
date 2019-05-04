@@ -32,7 +32,6 @@ ReactDOM.render(
             <Route exact path='/help' component={Help}/>
             <Route exact path='/search' component={Search}/>
             <Route exact path='/profile' component={Profile}/>
-            <Route exact path='/admin' component={Admin}/>
             <Route exact path='/image' component={ProfilePicture}/>
             <Route exact path='/member_creation' component={MemberCreation}/>
             <Route exact path='/data' component={Data}/>

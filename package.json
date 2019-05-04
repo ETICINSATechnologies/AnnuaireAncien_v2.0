@@ -34,5 +34,5 @@
     "not ie <= 11",
     "not op_mini all"
   ],
-  "proxy": "http://annuaire.epsil0n.net:5000"
+  "proxy": "http://localhost:5000"
 }
