@@ -12,6 +12,7 @@ import Connection from "./WebPages/Connection/Connection";
 import Recovery from "./WebPages/Recovery/Recovery";
 import Help from "./WebPages/Help/Help";
 import Profile from "./WebPages/Profile/Profile";
+import ProfilePicture from "./Components/ProfilePicture/ProfilePicture";
 import Search from "./WebPages/Search/Search";
 
 
@@ -29,6 +30,7 @@ ReactDOM.render(
             <Route exact path='/help' component={Help}/>
             <Route exact path='/search' component={Search}/>
             <Route exact path='/profile' component={Profile}/>
+            <Route exact path='/image' component={ProfilePicture}/>
             <Redirect to='/'/>
         </Switch>
     </Router>

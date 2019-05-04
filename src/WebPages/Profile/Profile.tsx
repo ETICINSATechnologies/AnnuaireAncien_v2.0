@@ -87,10 +87,9 @@ class Profile extends Component<{}, ProfileState> {
             });
     };
 
-    updateMemberPassword = (pass : string) => {
-
-        let member= this.state.previousMember;
-        member.password=pass;
+    updateMemberPassword = (pass: string) => {
+        let member = this.state.previousMember;
+        member.password = pass;
 
         fetch('member/' + this.state.member.id, {
             method: 'PUT',
@@ -130,8 +129,8 @@ class Profile extends Component<{}, ProfileState> {
     resetFields = () => {
         let member = new Member(JSON.parse(JSON.stringify(this.state.previousMember)));
         this.setState({
-            member : member,
-            modifyEnabled : false,
+            member: member,
+            modifyEnabled: false,
         });
     };
 

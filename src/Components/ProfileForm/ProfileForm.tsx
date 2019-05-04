@@ -1,15 +1,17 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import './ProfileForm.css';
 import Auth from "../Auth/Auth";
-import modifyIcon from "../../Images/edit.png";
-import cancelIcon from "../../Images/cancel_icon.png";
-import manIcon from "../../Images/default_man.svg";
-import womanIcon from "../../Images/default_woman.svg";
-import { Mdp } from "../../Model/Mdp";
-import { Member } from "../../Model/Member";
-import { Link } from "react-router-dom";
+import {Mdp} from "../../Model/Mdp";
+import {Member} from "../../Model/Member";
+import {Link} from "react-router-dom";
 import Modal from "../Modal/Modal";
 import DropDown from "../DropDown/DropDown";
+import ProfilePicture from "../ProfilePicture/ProfilePicture";
+
+let modifyIcon = require("../../Images/edit.png");
+let cancelIcon = require("../../Images/cancel_icon.png");
+let manIcon = require("../../Images/default_man.svg");
+let womanIcon = require("../../Images/default_woman.svg");
 
 
 interface ProfileFormProps {
@@ -32,11 +34,13 @@ interface ProfileFormProps {
 interface ProfileFormState {
     idMapping: object
     show: boolean
+    editImageShow: boolean
     mdp: Mdp
+    downloadedImg: string
 }
 
 const genders = [
-    { id: 1, label: 'Autre' }, { id: 2, label: 'M' }, { id: 3, label: 'F' }
+    {id: 1, label: 'Autre'}, {id: 2, label: 'M'}, {id: 3, label: 'F'}
 ];
 
 
@@ -44,6 +48,7 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
     state = {
         idMapping: [],
         show: false,
+        editImageShow: false,
         mdp: {
             mdpancien: '',
             mdpnouveau: '',
@@ -51,11 +56,46 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
             mdpstate: 'Compléter les champs et appuyer sur valider',
             mdpstatetype: 'neutral',
         },
+        downloadedImg: ''
+    };
+
+    getMemberImage = () => {
+        fetch('member/me/image', {
+            headers: {
+                'Authorization': Auth.getToken(),
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(res => {
+                if (res.status === 200) {
+                    res.blob()
+                        .then(image => {
+                            this.setState({
+                                downloadedImg: URL.createObjectURL(image)
+                            })
+                        })
+                } else {
+                    this.setState({downloadedImg: ''});
+                }
+            })
     };
 
     componentDidMount() {
-
+        this.getMemberImage()
     }
+
+    displayImage = () => {
+        let member = this.props.member;
+        if (this.state.downloadedImg)
+            return this.state.downloadedImg;
+
+        if (member) {
+            if (member.gender === 'F')
+                return womanIcon;
+            else if (member.gender === 'M')
+                return manIcon;
+        }
+    };
 
     onChange = (event: React.ChangeEvent) => {
         event.persist();
@@ -64,8 +104,8 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
         let member = new Member(this.props.member);
 
         if (member.hasOwnProperty(property)) {
-            property==='gender' ? 
-                member[property] = this.getGenderLabel(value): member[property] = value;
+            property === 'gender' ?
+                member[property] = this.getGenderLabel(value) : member[property] = value;
         }
 
         this.props.modifyMember(member);
@@ -81,7 +121,6 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
         }));
     };
 
-
     updateMdp = () => {
         // check if new pass is at least 8 char
         if (this.state.mdp.mdpnouveau.length < 8) {
@@ -94,7 +133,6 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
             });
             return 0;
         }
-
 
         // check if two new passwords match
         if (this.state.mdp.mdpnouveau !== this.state.mdp.mdpnouveau2) {
@@ -144,11 +182,7 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
                     return 0;
                 }
             })
-
-
-
     };
-
 
     showModal = () => {
         this.setState({
@@ -162,26 +196,39 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
         })
     };
 
-    getDepartmentIndexById(id: number): number {
-        return this.state.idMapping[id];
-    }
-
     getGenderId(gender: string): number {
         switch (gender) {
-            case 'M': return 2;
-            case 'F': return 3;
-            default: return 1;
+            case 'Autre':
+                return 1;
+            case 'M':
+                return 2;
+            case 'F':
+                return 3;
+            default :
+                return 0;
         }
     }
 
     getGenderLabel(id: string): string {
         switch (id) {
-            case '2': return 'M';
-            case '3': return 'F';
-            default: return 'Autre';
+            case '1':
+                return 'Autre';
+            case '2':
+                return 'M';
+            case '3':
+                return 'F';
+            default:
+                return 'Choisir une option';
         }
     }
 
+    displayEditImage = (display: boolean) => {
+        if (!display)
+            this.getMemberImage();
+        this.setState({
+            editImageShow: display
+        })
+    };
 
     render() {
         return (
@@ -190,73 +237,78 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
                     {
                         this.props.update ?
                             this.props.updateSucceed ?
-                                <h1>Les modifications ont bien été enregistrées</h1> :
-                                <h1 className='error_info'>Une erreur est survenue lors de la sauvegarde</h1> :
+                                <h2>Les modifications ont bien été enregistrées</h2> :
+                                <h2 className='error_info'>Une erreur est survenue lors de la sauvegarde</h2> :
                             this.props.modifyEnabled ?
-                                <h1>Appuyer sur la croix pour annuler</h1> :
-                                <h1>Appuyer sur le crayon pour modifier</h1>
+                                <h2>Appuyer sur la croix pour annuler</h2> :
+                                <h2>Appuyer sur le crayon pour modifier</h2>
                     }
-                    <img className="profilePicture" src={this.props.member.gender === "F" ? womanIcon : manIcon} alt="Profile" />
+                    <img className="profilePicture" src={this.displayImage()} alt=""
+                         onClick={() => this.displayEditImage(true)}/>
+                    <ProfilePicture show={this.state.editImageShow} onClose={this.displayEditImage}/>
                     <img className="deleteCancelPicture"
-                        src={this.props.modifyEnabled ? cancelIcon : modifyIcon}
-                        onClick={() => this.props.enableModification()} alt="Modifier/Annuler" />
+                         src={this.props.modifyEnabled ? cancelIcon : modifyIcon}
+                         onClick={() => this.props.enableModification()} alt="Modifier/Annuler"/>
+                    <p className="gender"> Genre </p>
+                    <DropDown className='gender' onChange={this.onChange} modifyEnabled={this.props.modifyEnabled}
+                              options={genders} currentOption={this.getGenderId(this.props.member.gender)}/>
                 </div>
                 <div className="field_container">
-                    <div className="name_label_container">
-                        <p className="needed"> Genre </p>
-                        <p className="needed"> Prénom </p>
-                        <p className="needed"> Nom </p>
-                    </div>
-                    <div className="name_field_container">
-                        <DropDown className='gender' onChange={this.onChange} modifyEnabled={this.props.modifyEnabled}
-                            options={genders} currentOption={this.getGenderId(this.props.member.gender)} />
-                        <input disabled={!this.props.modifyEnabled} type="text" className="firstName"
-                            value={this.props.member.firstName} onChange={this.onChange} />
-                        <input disabled={!this.props.modifyEnabled} type="text" className="lastName"
-                            value={this.props.member.lastName} onChange={this.onChange} />
-                    </div>
+                    <p className="needed"> Prénom </p>
+                    <p className="needed"> Nom </p>
+
+                    <input disabled={!this.props.modifyEnabled} type="text" className="firstName"
+                           value={this.props.member.firstName} onChange={this.onChange}/>
+                    <input disabled={!this.props.modifyEnabled} type="text" className="lastName"
+                           value={this.props.member.lastName} onChange={this.onChange}/>
                     <p> Téléphone </p>
                     <p className="needed"> Adresse mail </p>
                     <input disabled={!this.props.modifyEnabled} type="text" className="telephone"
-                        value={this.props.member.telephone} onChange={this.onChange} />
+                           value={this.props.member.telephone} onChange={this.onChange}/>
                     <input disabled={!this.props.modifyEnabled} type="text" className="email"
-                        value={this.props.member.email} onChange={this.onChange} />
-                    <p className="needed"> Année de sortie </p>
-                    <p className="needed"> Date de naissance </p>
+                           value={this.props.member.email} onChange={this.onChange}/>
+                    <p> Année de sortie </p>
+                    <p> Date de naissance </p>
                     <input disabled={!this.props.modifyEnabled} type="text" className="gradeYear"
-                        value={this.props.member.gradeYear} onChange={this.onChange} />
+                           value={this.props.member.gradeYear} onChange={this.onChange}/>
                     <input type="date" disabled={!this.props.modifyEnabled} className="birthday"
-                        value={this.props.member.birthday} onChange={this.onChange} />
-                    <p className="needed"> LinkedIn </p>
-                    <p className="needed"> Facebook </p>
+                           value={this.props.member.birthday} onChange={this.onChange}/>
+                    <p> LinkedIn </p>
+                    <p> Facebook </p>
                     <input disabled={!this.props.modifyEnabled} type="text" className="linkedin"
-                        value={this.props.member.linkedin} onChange={this.onChange} />
+                           value={this.props.member.linkedin? this.props.member.linkedin : ''} 
+                           onChange={this.onChange}/>
                     <input disabled={!this.props.modifyEnabled} type="text" className="facebook"
-                        value={this.props.member.facebook} onChange={this.onChange} />
+                           value={this.props.member.facebook? this.props.member.facebook : ''} 
+                           onChange={this.onChange}/>
                 </div>
                 <div className="button_container">
                     {
                         !this.props.modifyEnabled ? null :
                             <React.Fragment>
                                 <input type="button" className="input_button password" value="Changer mot de passe"
-                                    onClick={() => this.showModal()} />
+                                       onClick={() => this.showModal()}/>
                                 <input type="button" className="input_button update" value="Sauvegarder"
-                                    onClick={() => this.props.updateMember()} />
+                                       onClick={() => this.props.updateMember()}/>
                             </React.Fragment>
                     }
                 </div>
-                <div className="modal" >
+                <div className="modal">
                     <Modal show={this.state.show} onClose={this.showModal}>
-                        <div className="content" >
+                        <div className="content">
                             <p className={"message " + this.state.mdp.mdpstatetype}> {this.state.mdp.mdpstate} </p>
                             <p> Ancien mot de passe </p>
-                            <input type="password" name="password" className="mdpancien" onChange={this.onChangeMdp.bind(this)} />
+                            <input type="password" name="password" className="mdpancien"
+                                   onChange={this.onChangeMdp.bind(this)}/>
                             <p> Nouveau mot de passe </p>
-                            <input type="password" name="password" className="mdpnouveau" onChange={this.onChangeMdp.bind(this)} />
+                            <input type="password" name="password" className="mdpnouveau"
+                                   onChange={this.onChangeMdp.bind(this)}/>
                             <p> Nouveau mot de passe </p>
-                            <input type="password" name="password" className="mdpnouveau2" onChange={this.onChangeMdp.bind(this)} />
+                            <input type="password" name="password" className="mdpnouveau2"
+                                   onChange={this.onChangeMdp.bind(this)}/>
                             <Link to="/recovery"> Mot de passe oublié ?</Link>
-                            <input type="button" className="input_button" value="Valider" onClick={this.updateMdp.bind(this)} />
+                            <input type="button" className="input_button" value="Valider"
+                                   onClick={this.updateMdp.bind(this)}/>
                         </div>
                     </Modal>
                 </div>

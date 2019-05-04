@@ -1,7 +1,7 @@
 .position_form{
     width: 80%;
     height: calc(85vh - 6.5vw - 2.5vmax);
-    margin: 5vmin auto;
+    margin: 2vmin auto;
     display: grid;
     grid-template-rows: 8vmin 1fr 10vmin;
     justify-self: center;
@@ -115,8 +115,10 @@
 
 @media (orientation: portrait) {
     .position_form {
-        margin: auto auto 5vh;
+        box-sizing: border-box;
+        margin: 2vmin 5vmin auto 5vmin;
         height: auto;
+        width: 90%;
     }
 }
 

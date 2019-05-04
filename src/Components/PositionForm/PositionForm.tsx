@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
 import './PositionForm.css';
 import Auth from "../../Components/Auth/Auth";
-import deleteIcon from "../../Images/delete_icon.png";
 
 import {MemberPosition} from "../../Model/MemberPosition";
 import {Position} from "../../Model/Position";
 import DropDown from "../DropDown/DropDown";
+
+let deleteIcon = require("../../Images/delete_icon.png");
 
 interface PositionFormProps {
     modifyEnabled: boolean
@@ -59,7 +60,7 @@ class PositionForm extends Component<PositionFormProps, PositionFormState> {
         }
 
         if (mPositions[index].hasOwnProperty(property)) {
-            if (property === "year" ) {
+            if (property === "year") {
                 value.match(/^(\d?){4}$/) ? mPositions[index][property] = value : null;
             }
         }
@@ -127,8 +128,6 @@ interface PositionProps {
 }
 
 const MemberPositionRender = (props: PositionProps) => {
-
-
     return (
         <div className="position_container">
             <p>Poste</p>
@@ -137,7 +136,7 @@ const MemberPositionRender = (props: PositionProps) => {
                  src={deleteIcon} alt="Supprimer" onClick={() => props.deletePosition(props.index)}/>
             <DropDown className='position' options={props.positionList}
                       modifyEnabled={props.modifyEnabled}
-                      onChange={(evt: React.ChangeEvent) =>props.onChange(evt,props.index)}
+                      onChange={(evt: React.ChangeEvent) => props.onChange(evt, props.index)}
                       currentOption={props.mPosition.id}/>
             <input className="year" type="text" disabled={!props.modifyEnabled} value={props.mPosition.year}
                    onChange={(evt) => props.onChange(evt, props.index)}/>

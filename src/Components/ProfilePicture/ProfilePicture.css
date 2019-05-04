@@ -1,0 +1,87 @@
+.profile_picture {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: auto;
+    background: rgba(0, 0, 0, 0.9)
+}
+
+.profile_picture {
+    cursor: pointer;
+}
+
+.profile_picture .modal {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto 1fr auto;
+    background-color: rgba(155, 202, 139, 1);
+    width: 70vmin;
+    top: 9vmin;
+    position: relative;
+    margin: auto;
+    padding: 2vmin;
+}
+
+.profile_picture .modal:hover {
+    cursor: default;
+}
+
+.profile_picture .info {
+    font-size: 3vmin;
+    margin: 2vmin auto;
+    text-align: center;
+    grid-column: 1 / 3;
+}
+
+.cropper_container {
+    box-sizing: border-box;
+    grid-column: 1 / 3;
+    height: 50vmin;
+    width: 100%;
+    margin: auto;
+    position: relative;
+    background: #ffffff;
+}
+
+.profile_picture input[type='file'] {
+    box-sizing: border-box;
+    margin: 2vmin;
+    font-size: 3vmin;
+    width: 94%;
+    grid-column: 1 / 3;
+}
+
+.profile_picture input[type='button'] {
+    color: white;
+    border: 0.35vmin solid black;
+}
+
+.profile_picture .green {
+    background: #009e0f;
+}
+
+.profile_picture .red {
+    background: red;
+}
+
+.profile_picture input[type='text'] {
+    grid-column: 1 / 3;
+}
+
+.profile_picture input:hover {
+    cursor: pointer;
+}
+
+.profile_picture .classical_button {
+    margin: 2vmin auto;
+    width: 15vmin;
+    height: 5vmin;
+    font-size: 3vmin;
+}
+
+.profile_picture .delete_div {
+    margin: 2vmin auto;
+    font-size: 3vmin;
+}
