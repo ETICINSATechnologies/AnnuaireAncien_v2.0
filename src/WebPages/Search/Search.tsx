@@ -28,6 +28,7 @@ const searchFields = {
     firstName: 'Prénom',
     lastName: 'Nom',
     positionId: 'Poste',
+    company: 'Entreprise',
     year: 'Année',
 } as SearchInterface;
 
@@ -38,6 +39,7 @@ class Search extends Component<{}, SearchState> {
             firstName: '',
             lastName: '',
             positionId: '',
+            company: '',
             year: ''
         } as SearchInterface,
         positions: [],
@@ -87,16 +89,8 @@ class Search extends Component<{}, SearchState> {
             })
     };
 
-    nextPage = (currentPage: number) => {
-        this.makeSearch(currentPage + 1);
-    };
-
-    previousPage = (currentPage: number) => {
-        this.makeSearch(currentPage - 1);
-    };
-
-    makeSearch = (page: number, event?: React.MouseEvent) => {
-        event ? event.preventDefault() : null;
+    makeSearch = (page :number,event?: React.MouseEvent) => {
+        event? event.preventDefault():null;
 
         // copy the input into a new variable
         let searchArray = Object.assign({}, this.state.searchValues);
@@ -129,7 +123,12 @@ class Search extends Component<{}, SearchState> {
         if (!Auth.isConnected())
             return <Redirect to='/'/>;
 
-        activeButton.push('profile');
+        if(Auth.isAdmin()) {
+            activeButton.push('member_creation');
+            activeButton.push('data');
+        }else{
+            activeButton.push('profile');
+        }
         activeButton = Auth.addCorrectButton(activeButton);
 
         // create the dropdown for the positions
@@ -174,7 +173,7 @@ class Search extends Component<{}, SearchState> {
                         </form>
                     </div>
                     <MemberArray parameters={this.state.searchValues} selectMember={this.selectMember} ref="members"
-                                 nextPage={this.nextPage} previousPage={this.previousPage}/>
+                                 getPage={this.makeSearch}/>
                     <MemberInfo member={this.state.selectedMember} image={this.state.img}/>
                 </section>
             </React.Fragment>

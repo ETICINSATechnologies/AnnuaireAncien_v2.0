@@ -27,7 +27,7 @@ const statusMessage = {
 class Connection extends Component<{}, ConnectionState> {
     state = {
         parameters: {
-            username: "username",
+            username: "admin",
             password: "password"
         },
         status: 'loading',
@@ -53,11 +53,15 @@ class Connection extends Component<{}, ConnectionState> {
                 body: JSON.stringify(this.state.parameters)
             })
                 .then(res => {
-                    if (res.status === 200) {
+                        if (res.status === 200) {
                         this.setState({status: 'pending'});
                         res.json()
                             .then(result => {
-                                Auth.connect(result.token);
+                                if(this.state.parameters.username === 'admin'){
+                                    Auth.connect(result.token, true);
+                                }else {
+                                    Auth.connect(result.token, false);
+                                }
                                 this.setState({status: 'connect'})
                             })
                     }
@@ -91,7 +95,8 @@ class Connection extends Component<{}, ConnectionState> {
                                    onClick={this.tryToConnect}/>
                         </form>
                     </section>
-                    {this.state.status === 'connect' && <Redirect to='/profile'/>}
+                    {this.state.status === 'connect' && Auth.isAdmin() && <Redirect to='/member_creation'/>}
+                    {this.state.status === 'connect' && !Auth.isAdmin() && <Redirect to='/profile'/>}
                 </div>
             </React.Fragment>
         );

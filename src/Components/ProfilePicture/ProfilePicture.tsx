@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import './ProfilePicture.css';
 import Auth from "../Auth/Auth";
-import Cropper from 'react-easy-crop';
+
+const Cropper = require('react-easy-crop');
 
 
 interface ProfilePictureProps {

@@ -13,8 +13,7 @@ interface MemberArrayProps {
     parameters: SearchInterface
     ref: string
     selectMember(member: Member): void
-    nextPage(currentPage : number):void
-    previousPage(currentPage : number):void
+    getPage(pageNum : number):void
 }
 
 interface PageStatus{
@@ -27,6 +26,7 @@ interface MemberArrayState {
     members: Member[]
     memberMapping: object
     page: PageStatus
+    bufferInput: string
 }
 
 type statusType = 'init' | 'noResult' | 'result' | 'pending' | 'error';
@@ -38,13 +38,24 @@ class MemberArray extends Component<MemberArrayProps, MemberArrayState> {
         memberMapping: {},
         page: {
             currentPage : 0,
-            totalPages : 1,
-        }
+            totalPages : 1
+        },
+        bufferInput: '1'
     };
+
+    getPageSize = () => {
+        if(window.matchMedia("(orientation:landscape)")){
+            return 12;
+        }else if(window.matchMedia("(orientation:portrait) and (max-width: 500px)")){
+            return 15;
+        }else{
+            return 8;
+        }
+    }
 
     getMembers = (searchArray: SearchInterface, page : number) => {
         //manage pages
-        let baseurl : string = 'member?pageSize=12&pageNumber='+page;
+        let baseurl : string = `member?pageSize=${this.getPageSize()}&pageNumber=${page}`;
 
         // create the url with eventually the parameters
         let url = Object.keys(searchArray).reduce((url, property, i) => {
@@ -57,7 +68,6 @@ class MemberArray extends Component<MemberArrayProps, MemberArrayState> {
         this.setState({
             status: 'pending'
         });
-
 
         fetch(url, {
             headers: {
@@ -86,6 +96,7 @@ class MemberArray extends Component<MemberArrayProps, MemberArrayState> {
                                     members: members,
                                     memberMapping: memberMapping,
                                     page: thisPage,
+                                    bufferInput: result.meta.page+1
                                 })
                             }
                             else {
@@ -106,6 +117,18 @@ class MemberArray extends Component<MemberArrayProps, MemberArrayState> {
         this.props.selectMember(this.state.members[(this.state.memberMapping as any)[id]]);
     };
 
+    selectPageByInput = (event: any) => {
+        if(event.key === 'Enter') {
+            this.props.getPage(event.target.value-1);
+        }
+    };
+
+    inputChangeHandler = (event: any) => {
+        this.setState({
+            bufferInput: event.target.value
+            }
+        );
+    };
 
     render() {
         let data;
@@ -115,11 +138,13 @@ class MemberArray extends Component<MemberArrayProps, MemberArrayState> {
                                            selectMemberById={this.selectMemberById}/>;
             });
             data =
-                    <table>
-                        <caption>Liste des membres</caption>
-                        <thead><MemberArrayHeader/></thead>
-                        <tbody>{members}</tbody>
-                    </table>
+                    <div>
+                        <table>
+                            <caption>Liste des membres</caption>
+                            <thead><MemberArrayHeader/></thead>
+                            <tbody>{members}</tbody>
+                        </table>
+                    </div>
         }
         else {
             let message;
@@ -133,19 +158,27 @@ class MemberArray extends Component<MemberArrayProps, MemberArrayState> {
 
         return (
             <section className={`MemberArray members`}>
-                {data}
-                {this.state.page.totalPages===1? null :
-                    <div className = 'pagination'>
-                        <input disabled={this.state.page.currentPage === 0} type='button' className='pagePrevious'
-                               value='Page précédente' onClick={() => this.props.previousPage(this.state.page.currentPage)}/>
+                <div className = 'searchResult'>
+                    <div className='data'>
+                        {data}
+                    </div>
+                    {this.state.page.totalPages===1? null :
+                        <div className = 'pagination'>
+                            <input disabled={this.state.page.currentPage === 0} type='button' className='pagePrevious'
+                                   value='Page précédente' onClick={() => this.props.getPage(this.state.page.currentPage-1)}/>
 
-                        <input disabled={(this.state.page.currentPage + 1) === this.state.page.totalPages}  type='button'
-                               className='pageNext' value='Page suivante'
-                               onClick={() => this.props.nextPage(this.state.page.currentPage)}/>
-                        <p className='pageIndicator'>
-                            {'Page ' + (this.state.page.currentPage+1) + ' de ' + this.state.page.totalPages}
-                        </p>
-                    </div>}
+                            <p className='pageIndicator'>
+                                <label>Page </label>
+                                <input type='number' className='pageInput' value={this.state.bufferInput} onKeyDown={this.selectPageByInput}
+                                       onChange={this.inputChangeHandler}/>
+                                <label> de {this.state.page.totalPages}</label>
+                            </p>
+
+                            <input disabled={(this.state.page.currentPage + 1) === this.state.page.totalPages}  type='button'
+                                   className='pageNext' value='Page suivante'
+                                   onClick={() => this.props.getPage(this.state.page.currentPage+1)}/>
+                        </div>}
+                </div>
             </section>
         )
     }
