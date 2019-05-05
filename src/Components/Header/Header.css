@@ -1,5 +1,5 @@
 .Header {
-    background-image: linear-gradient(to right, #005360, #9BCA8B);
+    background-image: linear-gradient(to right, var(--left-color), var(--right-color));
 
     vertical-align: middle;
 

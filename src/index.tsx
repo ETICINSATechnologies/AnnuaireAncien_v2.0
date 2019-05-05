@@ -12,7 +12,6 @@ import Connection from "./WebPages/Connection/Connection";
 import Recovery from "./WebPages/Recovery/Recovery";
 import Help from "./WebPages/Help/Help";
 import Profile from "./WebPages/Profile/Profile";
-import ProfilePicture from "./Components/ProfilePicture/ProfilePicture";
 import Search from "./WebPages/Search/Search";
 import MemberCreation from "./WebPages/MemberCreation/MemberCreation";
 import Data from "./WebPages/Data/Data";
@@ -32,9 +31,9 @@ ReactDOM.render(
             <Route exact path='/help' component={Help}/>
             <Route exact path='/search' component={Search}/>
             <Route exact path='/profile' component={Profile}/>
-            <Route exact path='/image' component={ProfilePicture}/>
             <Route exact path='/member_creation' component={MemberCreation}/>
             <Route exact path='/data' component={Data}/>
+            <Route exact path='/upload/download' component={Data}/>
             <Redirect to='/'/>
         </Switch>
     </Router>

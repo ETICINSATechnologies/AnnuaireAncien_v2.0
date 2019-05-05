@@ -37,10 +37,14 @@
     margin: 6vmin auto 10vmin auto;
 }
 
-.Home .welcome_etic {
+.Home .welcome_je {
     font-weight: bold;
 
     margin: auto;
+}
+
+.Home .welcome_je::after {
+    content: var(--je-name);
 }
 
 .Home .Board {
@@ -51,13 +55,13 @@
 .Home .left {
     width: calc(1.1 * var(--board-left-width));
     grid-auto-rows: minmax(min-content, max-content);
-    background: rgba(0, 83, 96, 0.8);
+    background: var(--left-color);
 }
 
 .Home .right {
     width: calc(1.1 * var(--board-right-width));
     grid-auto-rows: minmax(min-content, max-content);
-    background: rgba(155, 202, 139, 1);
+    background: var(--right-color);
 }
 
 .Home .Board div {

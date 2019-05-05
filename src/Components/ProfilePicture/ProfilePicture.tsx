@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 import './ProfilePicture.css';
 import Auth from "../Auth/Auth";
-
-const Cropper = require('react-easy-crop');
+import Cropper from 'react-easy-crop';
 
 
 interface ProfilePictureProps {
@@ -53,7 +52,7 @@ class ProfilePicture extends React.Component<ProfilePictureProps> {
                     const formData = new FormData();
                     formData.append('file', (file as Blob), 'image.png');
 
-                    fetch('/member/me/image', {
+                    fetch('api//member/me/image', {
                         method: 'POST',
                         headers: {
                             'Authorization': Auth.getToken(),
@@ -71,7 +70,7 @@ class ProfilePicture extends React.Component<ProfilePictureProps> {
     };
 
     deleteImage = (e?: any) => {
-        fetch('member/me/image', {
+        fetch('/api/member/me/image', {
             method: 'DELETE',
             headers: {
                 'Authorization': Auth.getToken(),
@@ -121,6 +120,7 @@ class ProfilePicture extends React.Component<ProfilePictureProps> {
     };
 
     render() {
+        console.log(this.state);
         return (
             !this.props.show ? '' :
                 <div className="profile_picture" onClick={this.closeModal}>

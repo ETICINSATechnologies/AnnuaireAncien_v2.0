@@ -46,7 +46,7 @@ class MemberCreation extends Component<{}, MemberCreationState> {
         Object.keys(info).forEach((key) => (info[key] === '') && (info[key] = undefined));
         info.positions = this.state.member.positions;
 
-        let res = fetch('member', {
+        let res = fetch('api/member', {
             method: 'POST',
             headers: {
                 'Authorization': Auth.getToken(),
@@ -78,12 +78,10 @@ class MemberCreation extends Component<{}, MemberCreationState> {
     };
 
     render() {
-        let activeButton = ["home"];
-        if (this.state.status === 'not_authenticate')
+        if (!Auth.isAdmin())
             return <Redirect to='/'/>;
 
-        activeButton.push('search');
-        activeButton.push('data');
+        let activeButton = ['home', 'search', 'data'];
         activeButton = Auth.addCorrectButton(activeButton);
 
         return (

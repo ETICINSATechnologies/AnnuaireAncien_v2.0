@@ -14,7 +14,7 @@
     display: grid;
     grid-template-rows: 1fr repeat(5, 6.2vmin) 10fr;
 
-    background-color: rgba(155, 202, 139, 1);
+    background-color: var(--component-bg-color);
 
     justify-self: center;
     vertical-align: middle;
@@ -68,7 +68,7 @@
 .Connection .connect_input {
     cursor: pointer;
     color: white;
-    background: #009e0f;
+    background: var(--button-color);
     border: 0.3vmin solid black;
 
     margin: auto;

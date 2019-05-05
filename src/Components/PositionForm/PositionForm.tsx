@@ -28,7 +28,7 @@ class PositionForm extends Component<PositionFormProps, PositionFormState> {
     };
 
     componentDidMount() {
-        fetch('position', {
+        fetch('api/position', {
             headers: {
                 Authorization: Auth.getToken()
             }
@@ -106,7 +106,7 @@ class PositionForm extends Component<PositionFormProps, PositionFormState> {
     render() {
         return (
             <div className="position_form">
-                <h1>Postes occupés à ETIC</h1>
+                <h1>Postes occupés dans la JE</h1>
                 <div className="positions"> {this.renderPositions()} </div>
                 <input type='button' value="Ajouter" onClick={() => this.addPosition()}
                        className={`input_button add_position ${this.props.modifyEnabled ? 'visible' : 'hidden'}`}/>

@@ -4,6 +4,7 @@ import './Data.css';
 import Header from "../../Components/Header/Header";
 import Nav from "../../Components/Nav/Nav";
 import Auth from "../../Components/Auth/Auth";
+import {Redirect} from "react-router";
 
 interface AdminState {
     fileSpecified: boolean,
@@ -61,8 +62,8 @@ class Data extends Component<{}, AdminState> {
         if (this.state.fileSpecified) {
             const formData = new FormData();
             formData.append('file', fileInput.files![0], this.state.fileName);
-            fetch(`/yearbook/upload`, {
-                method: `POST`,
+            fetch('api/yearbook/upload', {
+                method: 'POST',
                 headers: {
                     Authorization: Auth.getToken(),
                 },
@@ -86,23 +87,27 @@ class Data extends Component<{}, AdminState> {
     };
 
     downloadClickHandler = () => {
-        fetch(`/yearbook/download`, {
-            method: `GET`,
+        fetch('api/yearbook/download', {
+            method: 'GET',
             headers: {
                 Authorization: Auth.getToken()
             }
         }).then((res) => {
             if (res.status === 200) {
-                    this.setState({
-                        downloadRequested: true,
-                        downloadSucceed: true
-                    });
-                    let link = document.createElement('a');
-                alert(res.url);
-                    link.href = res.url;
-                    document.body.appendChild(link);
-                    link.click();
-                    document.body.removeChild(link);
+                this.setState({
+                    downloadRequested: true,
+                    downloadSucceed: true
+                });
+                res.blob()
+                    .then(file => {
+                        // Create a temporary link in order to download the Spreadsheet
+                        let link = document.createElement('a');
+                        link.href = window.URL.createObjectURL(file);
+                        link.download = "annuaire.xlsx";
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+                    })
             } else {
                     this.setState({
                         downloadRequested: true,
@@ -114,15 +119,10 @@ class Data extends Component<{}, AdminState> {
     };
 
     render() {
-        let activeButton = ['home'];
-        if (Auth.isConnected()) {
-            activeButton.push('search');
-            if (Auth.isAdmin()) {
-                activeButton.push('member_creation');
-            } else {
-                activeButton.push('profile');
-            }
-        }
+        if (!Auth.isAdmin())
+            return <Redirect to='/'/>;
+
+        let activeButton = ['home', 'search', 'member_creation'];
         activeButton = Auth.addCorrectButton(activeButton);
 
         return (<React.Fragment>

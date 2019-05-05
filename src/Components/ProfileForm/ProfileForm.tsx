@@ -60,7 +60,7 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
     };
 
     getMemberImage = () => {
-        fetch('member/me/image', {
+        fetch('api/member/me/image', {
             headers: {
                 'Authorization': Auth.getToken(),
                 'Content-Type': 'application/json'
@@ -153,7 +153,7 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
         };
 
         // check old pass
-        fetch('login', {
+        fetch('api/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
