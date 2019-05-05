@@ -93,15 +93,20 @@ class Data extends Component<{}, AdminState> {
             }
         }).then((res) => {
             if (res.status === 200) {
-                    this.setState({
-                        downloadRequested: true,
-                        downloadSucceed: true
-                    });
-                    let link = document.createElement('a');
-                    link.href = res.url;
-                    document.body.appendChild(link);
-                    link.click();
-                    document.body.removeChild(link);
+                this.setState({
+                    downloadRequested: true,
+                    downloadSucceed: true
+                });
+                res.blob()
+                    .then(file => {
+                        // Create a temporary link in order to download the Spreadsheet
+                        let link = document.createElement('a');
+                        link.href = window.URL.createObjectURL(file);
+                        link.download = "newfile.xls";
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+                    })
             } else {
                     this.setState({
                         downloadRequested: true,
