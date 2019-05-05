@@ -78,12 +78,10 @@ class MemberCreation extends Component<{}, MemberCreationState> {
     };
 
     render() {
-        let activeButton = ["home"];
-        if (this.state.status === 'not_authenticate')
+        if (!Auth.isAdmin())
             return <Redirect to='/'/>;
 
-        activeButton.push('search');
-        activeButton.push('data');
+        let activeButton = ['home', 'search', 'data'];
         activeButton = Auth.addCorrectButton(activeButton);
 
         return (

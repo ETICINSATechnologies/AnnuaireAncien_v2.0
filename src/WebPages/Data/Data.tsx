@@ -4,6 +4,7 @@ import './Data.css';
 import Header from "../../Components/Header/Header";
 import Nav from "../../Components/Nav/Nav";
 import Auth from "../../Components/Auth/Auth";
+import {Redirect} from "react-router";
 
 interface AdminState {
     fileSpecified: boolean,
@@ -102,7 +103,7 @@ class Data extends Component<{}, AdminState> {
                         // Create a temporary link in order to download the Spreadsheet
                         let link = document.createElement('a');
                         link.href = window.URL.createObjectURL(file);
-                        link.download = "newfile.xls";
+                        link.download = "annuaire.xlsx";
                         document.body.appendChild(link);
                         link.click();
                         document.body.removeChild(link);
@@ -118,15 +119,10 @@ class Data extends Component<{}, AdminState> {
     };
 
     render() {
-        let activeButton = ['home'];
-        if (Auth.isConnected()) {
-            activeButton.push('search');
-            if (Auth.isAdmin()) {
-                activeButton.push('member_creation');
-            } else {
-                activeButton.push('profile');
-            }
-        }
+        if (!Auth.isAdmin())
+            return <Redirect to='/'/>;
+
+        let activeButton = ['home', 'search', 'member_creation'];
         activeButton = Auth.addCorrectButton(activeButton);
 
         return (<React.Fragment>
