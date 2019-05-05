@@ -61,8 +61,8 @@ class Data extends Component<{}, AdminState> {
         if (this.state.fileSpecified) {
             const formData = new FormData();
             formData.append('file', fileInput.files![0], this.state.fileName);
-            fetch(`/yearbook/upload`, {
-                method: `POST`,
+            fetch('api/yearbook/upload', {
+                method: 'POST',
                 headers: {
                     Authorization: Auth.getToken(),
                 },
@@ -86,8 +86,8 @@ class Data extends Component<{}, AdminState> {
     };
 
     downloadClickHandler = () => {
-        fetch(`/yearbook/download`, {
-            method: `GET`,
+        fetch('api/yearbook/download', {
+            method: 'GET',
             headers: {
                 Authorization: Auth.getToken()
             }
@@ -98,7 +98,6 @@ class Data extends Component<{}, AdminState> {
                         downloadSucceed: true
                     });
                     let link = document.createElement('a');
-                alert(res.url);
                     link.href = res.url;
                     document.body.appendChild(link);
                     link.click();

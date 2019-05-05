@@ -48,7 +48,7 @@ class Search extends Component<{}, SearchState> {
     };
 
     componentDidMount() {
-        fetch('position', {
+        fetch('api/position', {
             headers: {
                 Authorization: Auth.getToken()
             }
@@ -67,7 +67,7 @@ class Search extends Component<{}, SearchState> {
     };
 
     getMemberImage = (member: Member) => {
-        fetch(`member/${member.id}/image`, {
+        fetch(`api/member/${member.id}/image`, {
             headers: {
                 'Authorization': Auth.getToken(),
                 'Content-Type': 'application/json'

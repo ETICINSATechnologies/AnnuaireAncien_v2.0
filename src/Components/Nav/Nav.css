@@ -30,7 +30,7 @@
 }
 
 .Nav .button:hover {
-    color: rgba(0, 158, 17, 1);
+    color: var(--button-color);
     cursor: pointer;
 }
 

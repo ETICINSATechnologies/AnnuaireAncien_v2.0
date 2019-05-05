@@ -3,12 +3,12 @@
   "name": "Annuaire des Anciens - ETIC INSA Technologies",
   "icons": [
     {
-      "src": "etic.png",
+      "src": "logo.png",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     },
     {
-      "src": "etic.png",
+      "src": "logo.png",
       "sizes": "512x512",
       "type": "image/png"
     }

@@ -23,7 +23,7 @@ class Home extends Component<{}, HomeState> {
     };
 
     componentDidMount() {
-        fetch('member/board/latest', {
+        fetch('api/member/board/latest', {
             headers: {
                 Authorization: Auth.getToken()
             }
@@ -68,7 +68,7 @@ class Home extends Component<{}, HomeState> {
                         <Board members={this.state.leftBoard} position="left"/>
                         <div className="home_title">
                             <p className="welcome"> Bienvenue sur l'annuaire des anciens </p>
-                            <p className="welcome_etic"> ETIC INSA TECHNOLOGIES </p>
+                            <p className="welcome_je"/>
                         </div>
                         <Board members={this.state.rightBoard} position="right"/>
                     </section>

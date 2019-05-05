@@ -1,0 +1,9 @@
+:root {
+    --je-name: "CNJE";
+    --font: 'Helvetica';
+    --left-color: rgba(158, 22, 38, 0.8);
+    --right-color: rgb(158, 9, 15);
+    --component-bg-color: rgb(206, 83, 16);
+    --background-color: rgb(105, 115, 127);
+    --button-color: purple;
+}

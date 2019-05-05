@@ -46,7 +46,7 @@ class MemberCreation extends Component<{}, MemberCreationState> {
         Object.keys(info).forEach((key) => (info[key] === '') && (info[key] = undefined));
         info.positions = this.state.member.positions;
 
-        let res = fetch('member', {
+        let res = fetch('api/member', {
             method: 'POST',
             headers: {
                 'Authorization': Auth.getToken(),

@@ -13,7 +13,7 @@
     margin: auto auto 2vw;
     padding-top: 1.5vw;
     padding-bottom: 1.5vw;
-    background-color: rgb(155, 202, 139);
+    background-color: var(--component-bg-color);
 }
 
 .Search .searchForm * {
@@ -47,7 +47,7 @@
     font-size: 2vw;
     margin: 1vw 3vw auto auto;
     width: auto;
-    background: #009e0f;
+    background: var(--button-color);
     border: 0.15vw solid black;
 }
 

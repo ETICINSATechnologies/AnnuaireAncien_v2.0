@@ -186,7 +186,7 @@
 
 .ProfileForm .update {
     color: white;
-    background-color: #009e0f;
+    background-color: var(--button-color)
 }
 
 .ProfileForm .deleteCancelPicture {
@@ -215,7 +215,7 @@
 
 .ProfileForm .modal .content {
     display: grid;
-    grid-template-rows: 0 3fr repeat(8, 2fr);
+    grid-template-rows: 0 3fr repeat(7, 2fr);
     vertical-align: top;
 }
 
@@ -243,7 +243,7 @@
 
 .ProfileForm .modal .input_button{
     position: absolute;
-    background-color: #009e0f;
+    background-color: var(--button-color);
     color:#fff;
     bottom : 1vmin;
     left : 50%;

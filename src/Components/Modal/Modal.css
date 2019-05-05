@@ -10,7 +10,7 @@
 
 
 .Modal .content {
-    background-color: #9BCA8B;
+    background-color: var(--component-bg-color);
     border-radius: 2vmin;
     width: 50vmin;
     height: 50vmin;
@@ -36,5 +36,5 @@
 }
 
 .Modal p {
-    background-color: #9BCA8B;
+    background-color: var(--component-bg-color);
 }
