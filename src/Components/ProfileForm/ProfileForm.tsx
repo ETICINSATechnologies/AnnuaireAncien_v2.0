@@ -92,7 +92,7 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
         if (member) {
             if (member.gender === 'F')
                 return womanIcon;
-            else if (member.gender === 'M')
+            else
                 return manIcon;
         }
     };
@@ -121,7 +121,8 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
         }));
     };
 
-    updateMdp = () => {
+    updateMdp = (event: React.MouseEvent) => {
+        event.preventDefault();
         // check if new pass is at least 8 char
         if (this.state.mdp.mdpnouveau.length < 8) {
             this.setState({
@@ -288,8 +289,11 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
                             <React.Fragment>
                                 <input type="button" className="input_button password" value="Changer mot de passe"
                                        onClick={() => this.showModal()}/>
-                                <input type="button" className="input_button update" value="Sauvegarder"
-                                       onClick={() => this.props.updateMember()}/>
+                                <input type="submit" className="input_button update" value="Sauvegarder"
+                                       onClick={(event: React.MouseEvent) => {
+                                           event.preventDefault();
+                                           this.props.updateMember()
+                                       }}/>
                             </React.Fragment>
                     }
                 </div>
@@ -299,16 +303,16 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
                             <p className={"message " + this.state.mdp.mdpstatetype}> {this.state.mdp.mdpstate} </p>
                             <p> Ancien mot de passe </p>
                             <input type="password" name="password" className="mdpancien"
-                                   onChange={this.onChangeMdp.bind(this)}/>
+                                   onChange={this.onChangeMdp}/>
                             <p> Nouveau mot de passe </p>
                             <input type="password" name="password" className="mdpnouveau"
-                                   onChange={this.onChangeMdp.bind(this)}/>
+                                   onChange={this.onChangeMdp}/>
                             <p> Nouveau mot de passe </p>
                             <input type="password" name="password" className="mdpnouveau2"
-                                   onChange={this.onChangeMdp.bind(this)}/>
+                                   onChange={this.onChangeMdp}/>
                             <Link to="/recovery"> Mot de passe oublié ?</Link>
-                            <input type="button" className="input_button" value="Valider"
-                                   onClick={this.updateMdp.bind(this)}/>
+                            <input type="submit" className="input_button" value="Valider"
+                                   onClick={this.updateMdp}/>
                         </div>
                     </Modal>
                 </div>

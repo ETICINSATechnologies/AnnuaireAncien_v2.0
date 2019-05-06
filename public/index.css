@@ -1,9 +1,9 @@
 :root {
-    --je-name: "CNJE";
-    --font: 'Helvetica';
-    --left-color: rgba(158, 22, 38, 0.8);
-    --right-color: rgb(158, 9, 15);
-    --component-bg-color: rgb(206, 83, 16);
+    --je-name: "ETIC INSA Technologies";
+    --font: "Arial, sans-serif";
+    --left-color: rgba(0, 83, 96, 0.8);
+    --right-color: rgba(155, 202, 139, 1);
+    --component-bg-color: rgba(155, 202, 139, 1);
     --background-color: rgb(105, 115, 127);
-    --button-color: purple;
+    --button-color: green;
 }

@@ -99,7 +99,7 @@
 
 .MemberArray th {
     color: white;
-    background-color: rgb(155, 202, 139);
+    background-color: var(--component-bg-color);
     text-align: left;
 }
 

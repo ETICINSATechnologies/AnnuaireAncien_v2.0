@@ -16,7 +16,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto auto 1fr auto;
-    background-color: rgba(155, 202, 139, 1);
+    background-color: var(--component-bg-color);
     width: 70vmin;
     top: 9vmin;
     position: relative;

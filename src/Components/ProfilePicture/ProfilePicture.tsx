@@ -120,7 +120,6 @@ class ProfilePicture extends React.Component<ProfilePictureProps> {
     };
 
     render() {
-        console.log(this.state);
         return (
             !this.props.show ? '' :
                 <div className="profile_picture" onClick={this.closeModal}>
