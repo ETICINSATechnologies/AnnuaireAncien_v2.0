@@ -1,9 +1,10 @@
+import './Nav.css';
 import React, {Component} from 'react';
 import {Link} from "react-router-dom";
 
-import './Nav.css';
-import helpIcon from '../../Images/help_icon.png';
 import Auth from "../Auth/Auth";
+
+let helpIcon = require('../../Images/help_icon.png');
 
 
 type NavProps = {

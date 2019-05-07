@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
 import './Header.css';
-
-import home_logo from '../../Images/home_logo.png'
+import React, {Component} from 'react';
 import {Link} from "react-router-dom";
+
+let home_logo = require('../../Images/home_logo.png');
 
 const Header = () => {
     return (
