@@ -21,7 +21,7 @@
     margin: 0 auto;
 }
 
-.Recovery .Recuperation_section .Form_container .Form{
+.Recovery .Recuperation_section .Form_container .Form {
     display: grid;
     vertical-align: middle;
     justify-self: center;
@@ -31,7 +31,7 @@
     max-width: 300px;
 }
 
-.Recovery .Recuperation_section .Form_container .Form .field{
+.Recovery .Recuperation_section .Form_container .Form .field {
     display: grid;
     grid-template-rows: repeat(2, 1fr);
     margin: auto;
@@ -40,10 +40,9 @@
 .Recovery input[type="text"] {
     border: 0.3vmin solid black;
     height: 5vmin;
-    width : 100%;
+    width: 100%;
     margin: auto auto 2vmin auto;
 }
-
 
 .Recovery button {
     border: 0.3vmin solid black;
@@ -54,6 +53,10 @@
     background-color: var(--button-color);
     justify-self: center;
     text-align: center;
+}
+
+.Recovery button:hover {
+    cursor: pointer;
 }
 
 .Recovery label {
