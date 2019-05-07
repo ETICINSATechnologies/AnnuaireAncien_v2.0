@@ -8,7 +8,7 @@
 
 .Recovery .Recuperation_section {
     display: grid;
-    grid-template-rows: 15vw 5vw 5vw;
+    grid-template-rows: 1fr 3fr;
 
     vertical-align: middle;
     justify-self: center;
@@ -24,29 +24,64 @@
     justify-self: center;
 
     margin: 0 auto;
-    font-size: 3.7vw;
 }
 
-.Recovery .contact.toCopy {
-    cursor: pointer;
-    color: #009e11;
-    margin-top: 2vmin;
-    background: white;
-    border: 0;
-    text-decoration: underline;
+.Recovery .Recuperation_section .Form_container .Form{
+    display: grid;
+
+    vertical-align: middle;
+    justify-self: center;
+
+    grid-template-rows: repeat(3, 1fr);
+
+    margin: auto;
+    width: 100vw;
+    max-width: 300px;
 }
 
-.Recovery .contact.copied {
-    display: inline-block;
-    animation-duration: 2s;
-    animation-name: display;
+.Recovery .Recuperation_section .Form_container .Form .field{
+    display: grid;
 
-    color: white;
+    grid-template-rows: repeat(2, 1fr);
+    margin: auto;
+}
 
-    font-size: 2vw;
-    padding: 0.3vmin;
-    margin: 1vw auto;
-    width: auto;
+.Recovery input[type="text"] {
+    border: 0.3vmin solid black;
+    padding-left: 1vmin;
+    height: 5vmin;
+    width : 100%;
+    margin: auto auto 2vmin auto;
+}
+
+.Recovery input[type="date"] {
+    border: 0.3vmin solid black;
+    padding-left: 1vmin;
+    height: 5vmin;
+    background-color: white;
+    width: 100%;
+    justify-self: center;
+    text-align: center;
+    margin: auto auto 2vmin auto;
+}
+
+.Recovery button {
+    border: 0.3vmin solid black;
+    font-size: 1.2rem;
+    height: 6vh;
+    width: 40vw;
+    max-width: 230px;
+    background-color: var(--button-color);
+    justify-self: center;
+    text-align: center;
+}
+
+.Recovery label {
+    padding-left: 1vmin;
+    height: 5vmin;
+    background-color: white;
+    width: 100%;
+    justify-self: center;
 }
 
 @keyframes display {
