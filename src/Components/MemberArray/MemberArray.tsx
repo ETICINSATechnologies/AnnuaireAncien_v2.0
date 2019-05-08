@@ -13,6 +13,7 @@ interface MemberArrayProps {
     ref: string
     selectMember(member: Member): void
     getPage(pageNum: number): void
+    deleteMember(id: number): void
 }
 
 interface PageStatus {
@@ -46,16 +47,6 @@ class MemberArray extends Component<MemberArrayProps, MemberArrayState> {
         memberIdToDelete: 0
     };
 
-    deleteMember = (id: number): void => {
-        fetch('api/member/' + id, {
-            method: 'DELETE',
-            headers: {
-                'Authorization': Auth.getToken(),
-                'Content-Type': 'application/json'
-            }
-        })
-        this.showDeleteMember();
-    }
 
     showDeleteMember = (): void => {
         this.setState({
@@ -209,7 +200,12 @@ class MemberArray extends Component<MemberArrayProps, MemberArrayState> {
                 <Modal show={this.state.showDeleteMember} onClose={this.showDeleteMember}>
                     <p> Voulez-vous vraiment supprimer ce membre ?</p>
                     <div className='buttons'>
-                        <button onClick={() => this.deleteMember(this.state.memberIdToDelete)}>Oui</button>
+                        <button onClick={() => 
+                                {
+                                    this.props.deleteMember(this.state.memberIdToDelete)
+                                    this.showDeleteMember()
+                                }
+                            }>Oui</button>
                         <button onClick={() => this.showDeleteMember()}>Non</button>
                     </div>
                 </Modal>

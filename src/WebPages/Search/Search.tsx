@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, SyntheticEvent} from 'react';
 import {Redirect} from "react-router-dom";
 
 import './Search.css';
@@ -118,6 +118,24 @@ class Search extends Component<{}, SearchState> {
             });
     };
 
+    deleteMember = (id: number): void => {
+        fetch('api/member/' + id, {
+            method: 'DELETE',
+            headers: {
+                'Authorization': Auth.getToken(),
+                'Content-Type': 'application/json'
+            }
+        })
+        .then (res => {
+            if (res.status===204) {
+                alert('Le membre a été supprimé')
+                this.makeSearch(0)
+            } else {
+                alert('Il y avait une erreur lors de la suppresion du membre')
+            }
+        })
+    }
+
     render() {
         let activeButton = ["home"];
         if (!Auth.isConnected())
@@ -173,7 +191,7 @@ class Search extends Component<{}, SearchState> {
                         </form>
                     </div>
                     <MemberArray parameters={this.state.searchValues} selectMember={this.selectMember} ref="members"
-                                 getPage={this.makeSearch}/>
+                                 getPage={this.makeSearch} deleteMember={this.deleteMember.bind(this)}/>
                     <MemberInfo member={this.state.selectedMember} image={this.state.img}/>
                 </section>
             </React.Fragment>
