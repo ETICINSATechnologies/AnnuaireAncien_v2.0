@@ -50,7 +50,6 @@ class InformationForm extends Component<InformationFormProps, InformationFormSta
         this.setState({
             memberInfo: nB
         });
-        console.log(nB);
     };
 
     dateChangeHandler = (event:any) => {
