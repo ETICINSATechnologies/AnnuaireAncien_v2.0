@@ -52,7 +52,7 @@ export class Member implements MemberInterface {
         this.lastName = memberInterface.lastName.charAt(0).toUpperCase() + memberInterface.lastName.slice(1);
         this.email = memberInterface.email;
         this.gender = memberInterface.gender.charAt(0).toUpperCase()+memberInterface.gender.slice(1);
-        this.birthday = memberInterface.birthday;
+        this.birthday = memberInterface.birthday.split(' ')[0];
         this.gradeYear = memberInterface.gradeYear;
         this.telephone = memberInterface.telephone;
         this.facebook = memberInterface.facebook;

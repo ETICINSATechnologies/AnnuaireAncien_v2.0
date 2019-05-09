@@ -271,9 +271,11 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
                     <p> Année de sortie </p>
                     <p> Date de naissance </p>
                     <input disabled={!this.props.modifyEnabled} type="text" className="gradeYear"
-                           value={this.props.member.gradeYear} onChange={this.onChange}/>
-                    <input type="date" disabled={!this.props.modifyEnabled} className="birthday"
-                           value={this.props.member.birthday} onChange={this.onChange}/>
+                           value={this.props.member.gradeYear? this.props.member.gradeYear : ''} 
+                           onChange={this.onChange}/>
+                    <input type="text" disabled={!this.props.modifyEnabled} className="birthday"
+                            pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))"
+                            value={this.props.member.birthday} onChange={this.onChange}/>
                     <p> LinkedIn </p>
                     <p> Facebook </p>
                     <input disabled={!this.props.modifyEnabled} type="text" className="linkedin"
