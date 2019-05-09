@@ -24,7 +24,7 @@ interface ProfileFormProps {
 
     modifyMember(member: Member): void
 
-    updateMember(): void
+    updateMember(e : React.FormEvent): void
 
     updateMemberPassword(pass: string): void
 
@@ -233,7 +233,7 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
 
     render() {
         return (
-            <form className="ProfileForm">
+            <form className="ProfileForm" onSubmit={this.props.updateMember}>
                 <div className="header_container">
                     {
                         this.props.update ?
@@ -291,11 +291,7 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
                             <React.Fragment>
                                 <input type="button" className="input_button password" value="Changer mot de passe"
                                        onClick={() => this.showModal()}/>
-                                <input type="submit" className="input_button update" value="Sauvegarder"
-                                       onClick={(event: React.MouseEvent) => {
-                                           event.preventDefault();
-                                           this.props.updateMember()
-                                       }}/>
+                                <input type="submit" className="input_button update" value="Sauvegarder"/>
                             </React.Fragment>
                     }
                 </div>

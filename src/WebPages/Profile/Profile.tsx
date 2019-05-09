@@ -54,7 +54,9 @@ class Profile extends Component<{}, ProfileState> {
         }
     }
 
-    updateMember = () => {
+    updateMember = (e : React.FormEvent) => {
+        e.preventDefault();
+
         fetch('api/member/' + this.state.member.id, {
             method: 'PUT',
             headers: {
