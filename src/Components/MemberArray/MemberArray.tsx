@@ -182,23 +182,25 @@ class MemberArray extends Component<MemberArrayProps, MemberArrayState> {
                     </div>
                     {this.state.page.totalPages === 1 ? null :
                         <div className='pagination'>
-                            <input disabled={this.state.page.currentPage === 0} type='button' className='pagePrevious'
-                                value='Page précédente' onClick={() => this.props.getPage(this.state.page.currentPage - 1)} />
+                            <input disabled={this.state.page.currentPage === 0} type='button' 
+                                className='pagePrevious' value='Page précédente' 
+                                onClick={() => this.props.getPage(this.state.page.currentPage - 1)} />
 
                             <p className='pageIndicator'>
                                 <label>Page </label>
-                                <input type='number' className='pageInput' value={this.state.bufferInput} onKeyDown={this.selectPageByInput}
+                                <input type='number' className='pageInput' 
+                                    value={this.state.bufferInput} onKeyDown={this.selectPageByInput}
                                     onChange={this.inputChangeHandler} />
                                 <label> de {this.state.page.totalPages}</label>
                             </p>
 
-                            <input disabled={(this.state.page.currentPage + 1) === this.state.page.totalPages} type='button'
-                                className='pageNext' value='Page suivante'
+                            <input disabled={(this.state.page.currentPage + 1) === this.state.page.totalPages} 
+                                type='button' className='pageNext' value='Page suivante'
                                 onClick={() => this.props.getPage(this.state.page.currentPage + 1)} />
                         </div>}
                 </div>
                 <Modal show={this.state.showDeleteMember} onClose={this.showDeleteMember}>
-                    <p> Voulez-vous vraiment supprimer ce membre ?</p>
+                    <p>Êtes-vous sûr de vouloir supprimer ce membre ?</p>
                     <div className='buttons'>
                         <button onClick={() => 
                                 {
