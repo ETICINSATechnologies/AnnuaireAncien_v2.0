@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {Redirect} from "react-router-dom";
+import React, { Component, SyntheticEvent } from 'react';
+import { Redirect } from "react-router-dom";
 
 import './Search.css';
 import Header from "../../Components/Header/Header";
@@ -8,9 +8,9 @@ import Auth from "../../Components/Auth/Auth";
 import MemberArray from "../../Components/MemberArray/MemberArray";
 import MemberInfo from "../../Components/MemberInfo/MemberInfo";
 
-import {Position} from "../../Model/Position";
-import {Member} from "../../Model/Member";
-import {SearchInterface} from "../../Model/Searchinterface";
+import { Position } from "../../Model/Position";
+import { Member } from "../../Model/Member";
+import { SearchInterface } from "../../Model/Searchinterface";
 
 let defaultMan = require('../../Images/default_man.svg');
 let defaultWoman = require('../../Images/default_woman.svg');
@@ -55,7 +55,7 @@ class Search extends Component<{}, SearchState> {
         })
             .then(res => res.json())
             .then((result) => {
-                this.setState({positions: result as Position[]});
+                this.setState({ positions: result as Position[] });
             })
     }
 
@@ -75,12 +75,19 @@ class Search extends Component<{}, SearchState> {
         })
             .then(res => {
                 if (res.status === 200) {
-                    res.blob()
-                        .then(image => {
-                            this.setState({
-                                img: URL.createObjectURL(image),
+                    try {
+                        res.blob()
+                            .then(image => {
+                                this.setState({
+                                    img: URL.createObjectURL(image),
+                                })
                             })
-                        })
+                    } catch (e) {
+                        console.log('Error in fetching photo :' +e)
+                        this.setState({
+                            img: (this.state.selectedMember as any).gender === 'F' ? defaultWoman : defaultMan
+                        });
+                    }
                 } else {
                     this.setState({
                         img: (this.state.selectedMember as any).gender === 'F' ? defaultWoman : defaultMan
@@ -89,8 +96,8 @@ class Search extends Component<{}, SearchState> {
             })
     };
 
-    makeSearch = (page :number,event?: React.MouseEvent) => {
-        event? event.preventDefault():null;
+    makeSearch = (page: number, event?: React.MouseEvent) => {
+        event ? event.preventDefault() : null;
 
         // copy the input into a new variable
         let searchArray = Object.assign({}, this.state.searchValues);
@@ -118,15 +125,33 @@ class Search extends Component<{}, SearchState> {
             });
     };
 
+    deleteMember = (id: number): void => {
+        fetch('api/member/' + id, {
+            method: 'DELETE',
+            headers: {
+                'Authorization': Auth.getToken(),
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(res => {
+                if (res.status === 204) {
+                    alert('Le membre a été supprimé')
+                    this.makeSearch(0)
+                } else {
+                    alert('Il y avait une erreur lors de la suppresion du membre')
+                }
+            })
+    }
+
     render() {
         let activeButton = ["home"];
         if (!Auth.isConnected())
-            return <Redirect to='/'/>;
+            return <Redirect to='/' />;
 
-        if(Auth.isAdmin()) {
+        if (Auth.isAdmin()) {
             activeButton.push('member_creation');
             activeButton.push('data');
-        }else{
+        } else {
             activeButton.push('profile');
         }
         activeButton = Auth.addCorrectButton(activeButton);
@@ -145,7 +170,7 @@ class Search extends Component<{}, SearchState> {
             if (fieldName === 'positionId') {
                 renderSearchFields.push(
                     <select key='positionId' className='positionId' onChange={this.updateParameters}>
-                        <option value=""/>
+                        <option value="" />
                         {positionDropDown}
                     </select>
                 )
@@ -153,14 +178,14 @@ class Search extends Component<{}, SearchState> {
             else {
                 renderSearchFields.push(
                     <input type="text" className={fieldName} key={`${fieldName}Input`}
-                           onChange={this.updateParameters} value={this.state.searchValues[fieldName]}/>
+                        onChange={this.updateParameters} value={this.state.searchValues[fieldName]} />
                 );
             }
         });
 
         return (
             <React.Fragment>
-                <Header/>
+                <Header />
                 <Nav buttons={activeButton}> </Nav>
                 <section className="Search">
                     <div className="searchArea">
@@ -168,13 +193,13 @@ class Search extends Component<{}, SearchState> {
                         <form className="searchForm">
                             {renderSearchFields}
                             <input className="searchInput" type="submit"
-                                   value="Rechercher" onClick={(e: React.MouseEvent) => this.makeSearch(0, e)}
+                                value="Rechercher" onClick={(e: React.MouseEvent) => this.makeSearch(0, e)}
                             />
                         </form>
                     </div>
                     <MemberArray parameters={this.state.searchValues} selectMember={this.selectMember} ref="members"
-                                 getPage={this.makeSearch}/>
-                    <MemberInfo member={this.state.selectedMember} image={this.state.img}/>
+                        getPage={this.makeSearch} deleteMember={this.deleteMember.bind(this)} />
+                    <MemberInfo member={this.state.selectedMember} image={this.state.img} />
                 </section>
             </React.Fragment>
         );

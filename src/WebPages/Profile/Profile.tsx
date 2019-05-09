@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {Redirect} from 'react-router-dom';
+import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 
 import './Profile.css';
 import Header from "../../Components/Header/Header";
@@ -8,8 +8,8 @@ import Auth from "../../Components/Auth/Auth";
 import ProfileForm from "../../Components/ProfileForm/ProfileForm";
 import PositionForm from "../../Components/PositionForm/PositionForm";
 
-import {Member, MemberInterface, defaultMember} from "../../Model/Member";
-import {MemberPosition} from "../../Model/MemberPosition";
+import { Member, MemberInterface, defaultMember } from "../../Model/Member";
+import { MemberPosition } from "../../Model/MemberPosition";
 
 
 interface ProfileState {
@@ -34,9 +34,9 @@ class Profile extends Component<{}, ProfileState> {
 
     componentDidMount() {
         if (!Auth.isConnected())
-            this.setState({status: 'not_authenticate'});
+            this.setState({ status: 'not_authenticate' });
         else {
-            this.setState({status: "connected"});
+            this.setState({ status: "connected" });
             fetch('api/member/me', {
                 headers: {
                     Authorization: Auth.getToken()
@@ -54,7 +54,9 @@ class Profile extends Component<{}, ProfileState> {
         }
     }
 
-    updateMember = () => {
+    updateMember = (e: React.FormEvent) => {
+        e.preventDefault();
+
         fetch('api/member/' + this.state.member.id, {
             method: 'PUT',
             headers: {
@@ -152,23 +154,23 @@ class Profile extends Component<{}, ProfileState> {
     render() {
         let activeButton = ["home"];
         if (this.state.status === 'not_authenticate')
-            return <Redirect to='/'/>;
+            return <Redirect to='/' />;
 
         activeButton.push('search');
         activeButton = Auth.addCorrectButton(activeButton);
 
         return (
             <React.Fragment>
-                <Header/>
-                <Nav buttons={activeButton}/>
+                <Header />
+                <Nav buttons={activeButton} />
                 <section className="Profile">
                     <ProfileForm member={this.state.member} modifyEnabled={this.state.modifyEnabled}
-                                 update={this.state.update} updateSucceed={this.state.updateSucceed}
-                                 modifyMember={this.modifyMember} updateMember={this.updateMember}
-                                 updateMemberPassword={this.updateMemberPassword}
-                                 enableModification={this.enableModification} resetFields={this.resetFields}/>
+                        update={this.state.update} updateSucceed={this.state.updateSucceed}
+                        modifyMember={this.modifyMember} updateMember={this.updateMember}
+                        updateMemberPassword={this.updateMemberPassword}
+                        enableModification={this.enableModification} resetFields={this.resetFields} />
                     <PositionForm memberPositions={this.state.member.positions} modifyEnabled={this.state.modifyEnabled}
-                                  updateMemberPositions={this.updateMemberPositions}/>
+                        updateMemberPositions={this.updateMemberPositions} />
                 </section>
             </React.Fragment>
         );

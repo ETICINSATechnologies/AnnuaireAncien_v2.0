@@ -1,24 +1,24 @@
-import React, {Component} from 'react';
-
+import React, { Component } from 'react';
 import './MemberArray.css';
 import Auth from "../../Components/Auth/Auth";
-
-import {Member, MemberInterface} from "../../Model/Member";
-import {SearchInterface} from "../../Model/Searchinterface";
+import { Member, MemberInterface } from "../../Model/Member";
+import { SearchInterface } from "../../Model/Searchinterface";
 import MemberArrayElement from "./MemberArrayElement";
 import MemberArrayHeader from "./MemberArrayHeader";
+import Modal from "../Modal/Modal";
 
 
 interface MemberArrayProps {
     parameters: SearchInterface
     ref: string
     selectMember(member: Member): void
-    getPage(pageNum : number):void
+    getPage(pageNum: number): void
+    deleteMember(id: number): void
 }
 
-interface PageStatus{
-    currentPage : number
-    totalPages : number
+interface PageStatus {
+    currentPage: number
+    totalPages: number
 }
 
 interface MemberArrayState {
@@ -27,6 +27,8 @@ interface MemberArrayState {
     memberMapping: object
     page: PageStatus
     bufferInput: string
+    showDeleteMember: boolean
+    memberIdToDelete: number
 }
 
 type statusType = 'init' | 'noResult' | 'result' | 'pending' | 'error';
@@ -37,23 +39,33 @@ class MemberArray extends Component<MemberArrayProps, MemberArrayState> {
         members: [] as Member[],
         memberMapping: {},
         page: {
-            currentPage : 0,
-            totalPages : 1
+            currentPage: 0,
+            totalPages: 1
         },
-        bufferInput: '1'
+        bufferInput: '1',
+        showDeleteMember: false,
+        memberIdToDelete: 0
     };
 
+
+    showDeleteMember = (): void => {
+        this.setState({
+            ...this.state,
+            showDeleteMember: !this.state.showDeleteMember
+        })
+    }
+
     getPageSize = () => {
-        if(window.matchMedia("(orientation:landscape)")){
+        if (window.matchMedia("(orientation:landscape)")) {
             return 12;
-        }else if(window.matchMedia("(orientation:portrait) and (max-width: 500px)")){
+        } else if (window.matchMedia("(orientation:portrait) and (max-width: 500px)")) {
             return 15;
-        }else{
+        } else {
             return 8;
         }
     };
 
-    getMembers = (searchArray: SearchInterface, page : number) => {
+    getMembers = (searchArray: SearchInterface, page: number) => {
         //manage pages
         let baseurl: string = `api/member?pageSize=${this.getPageSize()}&pageNumber=${page}`;
 
@@ -86,9 +98,9 @@ class MemberArray extends Component<MemberArrayProps, MemberArrayState> {
                                         return new Member(member)
                                     });
 
-                                let thisPage : PageStatus = {
-                                    currentPage : result.meta.page,
-                                    totalPages : result.meta.totalPages,
+                                let thisPage: PageStatus = {
+                                    currentPage: result.meta.page,
+                                    totalPages: result.meta.totalPages,
                                 };
 
                                 this.setState({
@@ -96,7 +108,7 @@ class MemberArray extends Component<MemberArrayProps, MemberArrayState> {
                                     members: members,
                                     memberMapping: memberMapping,
                                     page: thisPage,
-                                    bufferInput: result.meta.page+1
+                                    bufferInput: result.meta.page + 1
                                 })
                             }
                             else {
@@ -118,16 +130,15 @@ class MemberArray extends Component<MemberArrayProps, MemberArrayState> {
     };
 
     selectPageByInput = (event: any) => {
-        if(event.key === 'Enter') {
-            this.props.getPage(event.target.value-1);
+        if (event.key === 'Enter') {
+            this.props.getPage(event.target.value - 1);
         }
     };
 
     inputChangeHandler = (event: any) => {
         this.setState({
             bufferInput: event.target.value
-            }
-        );
+        });
     };
 
     render() {
@@ -135,16 +146,23 @@ class MemberArray extends Component<MemberArrayProps, MemberArrayState> {
         if (this.state.status === 'result') {
             const members = this.state.members.map((member) => {
                 return <MemberArrayElement key={member.id} memberInfo={member.read()}
-                                           selectMemberById={this.selectMemberById}/>;
+                    selectMemberById={this.selectMemberById}
+                    deleteMember={(id: number) => {
+                        this.setState({
+                            ...this.state,
+                            showDeleteMember: true,
+                            memberIdToDelete: id
+                        })
+                    }} />;
             });
             data =
-                    <div>
-                        <table>
-                            <caption>Liste des membres</caption>
-                            <thead><MemberArrayHeader/></thead>
-                            <tbody>{members}</tbody>
-                        </table>
-                    </div>
+                <div>
+                    <table>
+                        <caption>Liste des membres</caption>
+                        <thead><MemberArrayHeader /></thead>
+                        <tbody>{members}</tbody>
+                    </table>
+                </div>
         }
         else {
             let message;
@@ -158,27 +176,41 @@ class MemberArray extends Component<MemberArrayProps, MemberArrayState> {
 
         return (
             <section className={`MemberArray members`}>
-                <div className = 'searchResult'>
+                <div className='searchResult'>
                     <div className='data'>
                         {data}
                     </div>
-                    {this.state.page.totalPages===1? null :
-                        <div className = 'pagination'>
-                            <input disabled={this.state.page.currentPage === 0} type='button' className='pagePrevious'
-                                   value='Page précédente' onClick={() => this.props.getPage(this.state.page.currentPage-1)}/>
+                    {this.state.page.totalPages === 1 ? null :
+                        <div className='pagination'>
+                            <input disabled={this.state.page.currentPage === 0} type='button' 
+                                className='pagePrevious' value='Page précédente' 
+                                onClick={() => this.props.getPage(this.state.page.currentPage - 1)} />
 
                             <p className='pageIndicator'>
                                 <label>Page </label>
-                                <input type='number' className='pageInput' value={this.state.bufferInput} onKeyDown={this.selectPageByInput}
-                                       onChange={this.inputChangeHandler}/>
+                                <input type='number' className='pageInput' 
+                                    value={this.state.bufferInput} onKeyDown={this.selectPageByInput}
+                                    onChange={this.inputChangeHandler} />
                                 <label> de {this.state.page.totalPages}</label>
                             </p>
 
-                            <input disabled={(this.state.page.currentPage + 1) === this.state.page.totalPages}  type='button'
-                                   className='pageNext' value='Page suivante'
-                                   onClick={() => this.props.getPage(this.state.page.currentPage+1)}/>
+                            <input disabled={(this.state.page.currentPage + 1) === this.state.page.totalPages} 
+                                type='button' className='pageNext' value='Page suivante'
+                                onClick={() => this.props.getPage(this.state.page.currentPage + 1)} />
                         </div>}
                 </div>
+                <Modal show={this.state.showDeleteMember} onClose={this.showDeleteMember}>
+                    <p>Êtes-vous sûr de vouloir supprimer ce membre ?</p>
+                    <div className='buttons'>
+                        <button onClick={() => 
+                                {
+                                    this.props.deleteMember(this.state.memberIdToDelete)
+                                    this.showDeleteMember()
+                                }
+                            }>Oui</button>
+                        <button onClick={() => this.showDeleteMember()}>Non</button>
+                    </div>
+                </Modal>
             </section>
         )
     }
