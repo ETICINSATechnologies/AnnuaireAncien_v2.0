@@ -3,7 +3,7 @@
     height: calc(85vh - 6.5vw - 2.5vmax);
     margin: 2vmin auto;
     display: grid;
-    grid-template-rows: 8vmin 1fr 10vmin;
+    grid-template-rows: 1fr 4fr 1fr;
     justify-self: center;
     vertical-align: middle;
     border: 0.6vmin solid black;
@@ -11,6 +11,7 @@
 }
 
 .position_form h1 {
+    font-size: 2.3vw;
     margin: auto;
     text-align: center;
 }
