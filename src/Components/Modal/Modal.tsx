@@ -9,7 +9,6 @@ interface Props {
     show: boolean;
 }
 
-
 function Modal(props: Props){
     return (
         !props.show? null :

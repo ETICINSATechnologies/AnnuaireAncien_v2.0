@@ -91,5 +91,53 @@
     color: #eb2f06;
 }
 
+.MailConfig{
+    text-align: center;
+}
 
+.MailConfig h1{
+    font-size: 2vmax;
+}
 
+.MailConfig p, .MailConfig a{
+    width: 100%;
+    font-size: 1.2vmax;
+}
+
+.MailConfig a{
+    color: blue;
+    text-decoration: underline;
+}
+
+.MailConfig a:hover{
+    cursor: pointer;
+}
+
+.MailConfig input[type=button]{
+    position: absolute;
+    width: 40%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--button-color);
+    color: white;
+    margin: 0 auto 5.6vmin auto;
+    cursor: pointer;
+    opacity: 0.9;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 1.7vw;
+    height: 6vmin;
+    border-width: 1px;
+    border-color: black;
+}
+
+.MailConfig input[type=button]:hover{
+    opacity: 1;
+}
+
+.MailConfig input[type=text]{
+    font-size: 1.7vw;
+    margin: 2vmin auto 5.6vmin auto;
+    width: 100%;
+}
