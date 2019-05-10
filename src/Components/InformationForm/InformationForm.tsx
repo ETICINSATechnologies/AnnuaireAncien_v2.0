@@ -58,12 +58,15 @@ class InformationForm extends Component<InformationFormProps, InformationFormSta
                 memberInfo: new Member(defaultMember),
                 numberBuffer: ''
             })
+            let form : HTMLFormElement = document.getElementById("InformationForm") as any
+            form ? form.reset(): null;
         }
+        return false
     };
 
     render() {
         return (
-            <form className="InformationForm" onSubmit={this.formSubmitHandler}>
+            <form id="InformationForm" className="InformationForm" onSubmit={this.formSubmitHandler}>
                 <div className="PersonalDetails">
                     <label className="needed">Nom</label>
                     <input type="text" className='lastName' onChange={this.textChangeHandler} required />
