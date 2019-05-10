@@ -37,7 +37,6 @@ interface ProfileFormState {
     editImageShow: boolean
     mdp: Mdp
     downloadedImg: string
-    dateBuffer: string
 }
 
 const genders = [
@@ -57,8 +56,7 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
             mdpstate: 'Compléter les champs et appuyer sur valider',
             mdpstatetype: 'neutral',
         },
-        downloadedImg: '',
-        dateBuffer:''
+        downloadedImg: ''
     };
 
     getMemberImage = () => {
@@ -106,16 +104,8 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
         let member = new Member(this.props.member);
 
         if (member.hasOwnProperty(property)) {
-            if (property === 'birthday') {
-                let nB = Object.assign({}, member);
-                let date = value;
-                member.birthday=date.substring(8,10)+date.substring(4,8)+date.substring(0,4);
-                this.setState({
-                    ...this.state,
-                    dateBuffer : value
-                })
-            } else if (property ==='gender') {
-                member[property] = this.getGenderLabel(value);
+            if (property ==='gender') {
+                member.gender = this.getGenderLabel(value);
             } else {
                 member[property] = value;
             }
@@ -272,36 +262,37 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
                     <p className="needed"> Nom </p>
 
                     <input disabled={!this.props.modifyEnabled} type="text" className="firstName"
-                           value={this.props.member.firstName} onChange={this.onChange} required/>
+                           defaultValue={this.props.member.firstName} onChange={this.onChange} required/>
                     <input disabled={!this.props.modifyEnabled} type="text" className="lastName"
-                           value={this.props.member.lastName} onChange={this.onChange} required/>
+                           defaultValue={this.props.member.lastName} onChange={this.onChange} required/>
                     <p> Téléphone </p>
                     <p className="needed"> Adresse mail </p>
                     <input disabled={!this.props.modifyEnabled} type="text" className="telephone"
-                           value={this.props.member.telephone} onChange={this.onChange}
+                           defaultValue={this.props.member.telephone} onChange={this.onChange}
                            pattern='([0]{1}[0-9]{9})|([\+]+[0-9]{11})'/>
                     <input disabled={!this.props.modifyEnabled} type="text" className="email"
-                           value={this.props.member.email} onChange={this.onChange} 
+                           defaultValue={this.props.member.email} onChange={this.onChange} 
                            pattern='([\-\w\.]+@([\-\w]+\.)+[\-\w]{2,4})' required/>
                     <p> Année de sortie </p>
                     <p> Date de naissance </p>
                     <input disabled={!this.props.modifyEnabled} type="text" className="gradeYear"
-                           value={this.props.member.gradeYear? this.props.member.gradeYear : ''} 
+                           defaultValue={this.props.member.gradeYear ? 
+                            String(this.props.member.gradeYear) : ''} 
                            pattern='[0-9]{4}' onChange={this.onChange}/>
                     {this.props.modifyEnabled? 
                         <input type="date" className="birthday"
-                                value={this.state.dateBuffer} onChange={this.onChange}/> 
+                                onChange={this.onChange}/> 
                                 :
                         <input type="text" disabled className="birthday"
-                                value={this.props.member.birthday} onChange={this.onChange}/>
+                                defaultValue={this.props.member.birthday} onChange={this.onChange}/>
                     }
                     <p> LinkedIn </p>
                     <p> Facebook </p>
                     <input disabled={!this.props.modifyEnabled} type="text" className="linkedin"
-                           value={this.props.member.linkedin? this.props.member.linkedin : ''} 
+                           defaultValue={this.props.member.linkedin? this.props.member.linkedin : ''} 
                            onChange={this.onChange}/>
                     <input disabled={!this.props.modifyEnabled} type="text" className="facebook"
-                           value={this.props.member.facebook? this.props.member.facebook : ''} 
+                           defaultValue={this.props.member.facebook? this.props.member.facebook : ''} 
                            onChange={this.onChange}/>
                 </div>
                 <div className="button_container">

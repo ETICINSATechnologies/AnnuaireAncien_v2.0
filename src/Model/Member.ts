@@ -58,13 +58,13 @@ export class Member implements MemberInterface {
             : 
             'Choisir une option';
         this.birthday = memberInterface.birthday? memberInterface.birthday.split(' ')[0] : '';
-        this.gradeYear = memberInterface.gradeYear;
         this.telephone = memberInterface.telephone;
         this.facebook = memberInterface.facebook;
         this.linkedin = memberInterface.linkedin;
         this.positions = memberInterface.positions;
         this.username = memberInterface.username;
         if (memberInterface.photo) this.photo = memberInterface.photo;
+        if (memberInterface.gradeYear) this.gradeYear=memberInterface.gradeYear;
     }
 
     /**
@@ -84,7 +84,6 @@ export class Member implements MemberInterface {
             gender: this.gender,
             gradeYear: this.gradeYear,
             birthday: this.birthday,
-            // insert spaces after '+33' and every two digits from the end of the string
             telephone: this.telephone,
             facebook: this.facebook ?
                 this.facebook.match('^https?://') ? this.facebook : `https://${this.facebook}` : '',
@@ -109,7 +108,6 @@ export class Member implements MemberInterface {
                 gender: this.gender===('Choisir une option')? 'Autre':this.gender,
                 birthday: this.birthday,
                 gradeYear: this.gradeYear,
-                // remove whitespace, if there are, in the telephone string
                 telephone: this.telephone,
                 positions: this.positions,
                 username: this.username

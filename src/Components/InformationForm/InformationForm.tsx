@@ -5,8 +5,7 @@ import { defaultMember, Member, MemberInterface } from "../../Model/Member";
 
 interface InformationFormState {
     memberInfo: MemberInterface,
-    numberBuffer: string,
-    dateBuffer: string
+    numberBuffer: string
 }
 
 interface InformationFormProps {
@@ -17,8 +16,7 @@ interface InformationFormProps {
 class InformationForm extends Component<InformationFormProps, InformationFormState> {
     state = {
         memberInfo: new Member(defaultMember),
-        numberBuffer: '',
-        dateBuffer: ''
+        numberBuffer: ''
     };
 
     textChangeHandler = (event: React.ChangeEvent) => {
@@ -52,26 +50,13 @@ class InformationForm extends Component<InformationFormProps, InformationFormSta
         });
     };
 
-    dateChangeHandler = (event: any) => {
-        let nB = Object.assign({}, this.state.memberInfo);
-        let date = event.target.value;
-        nB.birthday = date.substring(8, 10) + date.substring(4, 8) + date.substring(0, 4);
-        this.setState({
-            memberInfo: nB,
-            dateBuffer: date
-        })
-    };
-
     formSubmitHandler = async (event: any) => {
         event.preventDefault();
-
-
         let res = await this.props.createMember(this.state.memberInfo);
         if (res.status === 200) {
             this.setState({
                 memberInfo: new Member(defaultMember),
-                numberBuffer: '',
-                dateBuffer: ''
+                numberBuffer: ''
             })
         }
     };
@@ -81,10 +66,10 @@ class InformationForm extends Component<InformationFormProps, InformationFormSta
             <form className="InformationForm" onSubmit={this.formSubmitHandler}>
                 <div className="PersonalDetails">
                     <label className="needed">Nom</label>
-                    <input type="text" className='lastName'onChange={this.textChangeHandler} required/>
+                    <input type="text" className='lastName' onChange={this.textChangeHandler} required />
 
                     <label className="needed">Prénom</label>
-                    <input type="text" className='firstName' onChange={this.textChangeHandler} required/>
+                    <input type="text" className='firstName' onChange={this.textChangeHandler} required />
 
                     <label>Genre</label>
                     <div className='genreSelection'>
@@ -103,14 +88,14 @@ class InformationForm extends Component<InformationFormProps, InformationFormSta
                     </div>
 
                     <label className="needed">Date de Naissance</label>
-                    <input type="date" name="bdaytime" onChange={this.dateChangeHandler} />
+                    <input type="date" className="birthday" onChange={this.textChangeHandler} />
 
                     <label>Telephone</label>
                     <input type="text" className='telephone' onChange={this.textChangeHandler}
                         pattern='([0]{1}[0-9]{9})|([\+]+[0-9]{11})' />
 
                     <label>Année d'obtention de diplôme</label>
-                    <input type="text" className='numberBuffer' pattern='[0-9]{4}' 
+                    <input type="text" className='numberBuffer' pattern='[0-9]{4}'
                         onChange={this.textChangeHandler} />
 
                     <label>Facebook</label>
