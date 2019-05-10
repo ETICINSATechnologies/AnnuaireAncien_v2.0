@@ -70,11 +70,17 @@ class Data extends Component<{}, AdminState> {
                 body: formData
             })
                 .then(res => {
-                    if (res.status === 204) {
+                    if (res.status === 204 || res.status===200) {
                         this.setState({
                             uploadRequested: true,
                             uploadSucceed: true
                         })
+                        res.json()
+                            .then(data => {
+                                alert('Le fichier a été téléchargé, ' + 
+                                (data.totalMembers-data.errorMembers) + 
+                                ' membres sur ' + data.totalMembers + ' ont été crées')
+                            })
                     } else {
                         this.setState({
                             uploadRequested: true,
