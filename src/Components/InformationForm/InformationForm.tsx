@@ -59,9 +59,8 @@ class InformationForm extends Component<InformationFormProps, InformationFormSta
                 numberBuffer: ''
             })
             let form : HTMLFormElement = document.getElementById("InformationForm") as any
-            form ? form.reset(): null;
+            form ? form.reset(): null
         }
-        return false
     };
 
     render() {
