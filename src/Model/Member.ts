@@ -3,6 +3,7 @@ import {MemberPosition} from './MemberPosition';
 interface MemberGeneric {
     firstName: string
     lastName: string
+    username: string
     email: string
     gender: string
     telephone: string
@@ -37,6 +38,7 @@ export class Member implements MemberInterface {
     lastName: string;
     email: string;
     gender: string;
+    username: string;
     gradeYear?: number;
     birthday: string;
     telephone: string;
@@ -51,13 +53,17 @@ export class Member implements MemberInterface {
         this.firstName = memberInterface.firstName.charAt(0).toUpperCase() + memberInterface.firstName.slice(1);
         this.lastName = memberInterface.lastName.charAt(0).toUpperCase() + memberInterface.lastName.slice(1);
         this.email = memberInterface.email;
-        this.gender = memberInterface.gender.charAt(0).toUpperCase()+memberInterface.gender.slice(1);
+        this.gender = memberInterface.gender? 
+            memberInterface.gender.charAt(0).toUpperCase()+memberInterface.gender.slice(1)  
+            : 
+            'Choisir une option';
         this.birthday = memberInterface.birthday? memberInterface.birthday.split(' ')[0] : '';
         this.gradeYear = memberInterface.gradeYear;
         this.telephone = memberInterface.telephone;
         this.facebook = memberInterface.facebook;
         this.linkedin = memberInterface.linkedin;
         this.positions = memberInterface.positions;
+        this.username = memberInterface.username;
         if (memberInterface.photo) this.photo = memberInterface.photo;
     }
 
@@ -105,7 +111,8 @@ export class Member implements MemberInterface {
                 gradeYear: this.gradeYear,
                 // remove whitespace, if there are, in the telephone string
                 telephone: this.telephone,
-                positions: this.positions
+                positions: this.positions,
+                username: this.username
             },
             this.password ? {password: this.password} : {},
             this.facebook ? {
@@ -113,7 +120,7 @@ export class Member implements MemberInterface {
             } : {},
             this.linkedin ? {
                 linkedin: this.linkedin.match('^https?://') ? this.linkedin : `https://${this.linkedin}`
-            } : {}
+            } : {},
         ) as MemberUpdate
     }
 }
@@ -122,6 +129,7 @@ export let defaultMember = new Member({
     id: 0,
     firstName: '',
     lastName: '',
+    username:'',
     email: '',
     telephone: '',
     birthday: '',

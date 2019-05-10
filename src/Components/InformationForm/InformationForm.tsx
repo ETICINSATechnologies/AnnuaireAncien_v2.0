@@ -64,13 +64,24 @@ class InformationForm extends Component<InformationFormProps, InformationFormSta
 
     formSubmitHandler = async (event:any) => {
         event.preventDefault();
-        let res = await this.props.createMember(this.state.memberInfo);
-        if(res.status === 200){
-            this.setState({
-                memberInfo: new Member(defaultMember),
-                numberBuffer: '',
-                dateBuffer: ''
-            })
+        let email = this.state.memberInfo.email;
+        let firstName  = this.state.memberInfo.firstName;
+        let lastName = this.state.memberInfo.lastName;
+        let checkEmail = email && email!=='';
+        let checkFirstName = firstName && firstName !== '';
+        let checkLastName = lastName && lastName !=='';
+
+        if (checkEmail && checkFirstName && checkLastName) {
+            let res = await this.props.createMember(this.state.memberInfo);
+            if(res.status === 200){
+                this.setState({
+                    memberInfo: new Member(defaultMember),
+                    numberBuffer: '',
+                    dateBuffer: ''
+                })
+            }
+        } else {
+            alert('Erreur, vérifiez que vous avez rempli les champs obligatoires')
         }
     };
 
@@ -78,42 +89,54 @@ class InformationForm extends Component<InformationFormProps, InformationFormSta
         return(
             <form className="InformationForm" onSubmit={this.formSubmitHandler}>
                 <div className="PersonalDetails">
-                    <label>Nom</label>
-                    <input type="text" className='lastName' value={this.state.memberInfo.lastName} onChange={this.textChangeHandler} />
+                    <label className="needed">Nom</label>
+                    <input type="text" className='lastName' value={this.state.memberInfo.lastName} 
+                        onChange={this.textChangeHandler} />
 
-                    <label>Prénom</label>
-                    <input type="text" className='firstName' value={this.state.memberInfo.firstName} onChange={this.textChangeHandler} />
+                    <label className="needed">Prénom</label>
+                    <input type="text" className='firstName' value={this.state.memberInfo.firstName} 
+                        onChange={this.textChangeHandler} />
 
                     <label>Genre</label>
                     <div className='genreSelection'>
                         <p>
-                            <input type="radio" name="gender" value="M" onChange={this.radioChangeHandler}/><label>H</label>
+                            <input type="radio" name="gender" value="M" 
+                                onChange={this.radioChangeHandler}/><label>H</label>
                         </p>
                         <p>
-                            <input type="radio" name="gender" value="F" onChange={this.radioChangeHandler}/><label>F</label>
+                            <input type="radio" name="gender" value="F" 
+                                onChange={this.radioChangeHandler}/><label>F</label>
                         </p>
                         <p>
-                            <input type="radio" name="gender" value="Autre" onChange={this.radioChangeHandler}/><label>Autre</label>
+                            <input type="radio" name="gender" value="Autre" 
+                                onChange={this.radioChangeHandler}/><label>Autre</label>
                         </p>
                     </div>
 
-                    <label>Date de Naissance</label>
-                    <input type="date" name="bdaytime" value={this.state.dateBuffer} onChange={this.dateChangeHandler} />
+                    <label className="needed">Date de Naissance</label>
+                    <input type="date" name="bdaytime" value={this.state.dateBuffer} 
+                        onChange={this.dateChangeHandler} />
 
                     <label>Telephone</label>
-                    <input type="text" className='telephone' value={this.state.memberInfo.telephone} onChange={this.textChangeHandler} />
+                    <input type="text" className='telephone' value={this.state.memberInfo.telephone} 
+                        onChange={this.textChangeHandler}
+                        pattern='([0]{1}[0-9]{9})|([\+]+[0-9]{11})' />
 
                     <label>Année d'obtention de diplôme</label>
-                    <input type="text" className='numberBuffer' value={this.state.numberBuffer} onChange={this.textChangeHandler} />
+                    <input type="text" className='numberBuffer' value={this.state.numberBuffer} 
+                        pattern='[0-9]{4}' onChange={this.textChangeHandler} />
 
                     <label>Facebook</label>
-                    <input type="text" className='facebook' value={this.state.memberInfo.facebook} onChange={this.textChangeHandler}/>
+                    <input type="text" className='facebook' value={this.state.memberInfo.facebook} 
+                        onChange={this.textChangeHandler}/>
 
                     <label>LinkedIn</label>
-                    <input type="text" className='linkedin' value={this.state.memberInfo.linkedin} onChange={this.textChangeHandler}/>
+                    <input type="text" className='linkedin' value={this.state.memberInfo.linkedin} 
+                        onChange={this.textChangeHandler}/>
 
                     <label>Email</label>
-                    <input type="text" className='email' value={this.state.memberInfo.email} onChange={this.textChangeHandler} />
+                    <input type="text" className='email' value={this.state.memberInfo.email} 
+                        onChange={this.textChangeHandler} pattern='([\-\w\.]+@([\-\w]+\.)+[\-\w]{2,4})' />
                 </div>
                 <input type="submit" className="registerbtn" value="Valider"/>
             </form>

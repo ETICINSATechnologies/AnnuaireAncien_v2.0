@@ -1,6 +1,6 @@
 .position_form{
     width: 80%;
-    height: calc(85vh - 6.5vw - 2.5vmax);
+    height: calc(93vh - 6.5vw - 2.5vmax);
     margin: 2vmin auto;
     display: grid;
     grid-template-rows: 1fr 4fr 1fr;
@@ -93,8 +93,8 @@
 
 .position_form .add_position {
     width: 90%;
-    height: 60%;
-    font-size: 1.7vw;
+    height: 50%;
+    font-size: 1.5vw;
     margin: auto;
 }
 
