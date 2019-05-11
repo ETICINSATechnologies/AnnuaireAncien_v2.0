@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {Redirect} from 'react-router-dom';
+import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 
 import './MemberCreation.css';
 import Header from "../../Components/Header/Header";
@@ -7,8 +7,8 @@ import Nav from "../../Components/Nav/Nav";
 import Auth from "../../Components/Auth/Auth";
 import InformationForm from "../../Components/InformationForm/InformationForm";
 import PositionForm from "../../Components/PositionForm/PositionForm";
-import {defaultMember, Member, MemberInterface} from "../../Model/Member";
-import {MemberPosition} from "../../Model/MemberPosition";
+import { defaultMember, Member, MemberInterface } from "../../Model/Member";
+import { MemberPosition } from "../../Model/MemberPosition";
 import Modal from "../../Components/Modal/Modal";
 
 interface MemberCreationState {
@@ -33,9 +33,9 @@ class MemberCreation extends Component<{}, MemberCreationState> {
     componentDidMount() {
         this.checkMailConfig();
         if (!Auth.isConnected())
-            this.setState({status: 'not_authenticate'});
+            this.setState({ status: 'not_authenticate' });
         else {
-            this.setState({status: "connected"});
+            this.setState({ status: "connected" });
         }
     }
 
@@ -45,15 +45,15 @@ class MemberCreation extends Component<{}, MemberCreationState> {
                 'Authorization': Auth.getToken(),
             }
         }).then((res) => {
-            if(res.status === 200){
+            if (res.status === 200) {
                 res.json()
                     .then((res) => {
-                        if(res.status === "no_access_token"){
+                        if (res.status === "no_access_token") {
                             this.setState({
                                 mailConfigured: false,
                                 mailConfigURL: res.url
                             });
-                        }else{
+                        } else {
                             this.setState({
                                 mailConfigured: true
                             })
@@ -65,19 +65,21 @@ class MemberCreation extends Component<{}, MemberCreationState> {
 
     configMailClickHandler = () => {
         let code = (document.getElementById('code') as HTMLInputElement).value;
+        let data = new FormData;
+        data.append('code', code);
 
         fetch('api/email/validation', {
             method: 'POST',
             headers: {
                 Authorization: Auth.getToken(),
             },
-            body: code
+            body: data
         }).then((res) => {
-            if(res.status === 200){
+            if (res.status === 204) {
                 this.setState({
                     mailConfigured: true
                 })
-            }else{
+            } else {
                 alert('Erreur : Code Inconnu');
             }
         })
@@ -111,7 +113,7 @@ class MemberCreation extends Component<{}, MemberCreationState> {
                 res.json()
                     .then(() => {
                         this.setState({
-                            initial : false,
+                            initial: false,
                             updateSucceed: true,
                             member: defaultMember
                         })
@@ -129,44 +131,43 @@ class MemberCreation extends Component<{}, MemberCreationState> {
 
     render() {
         if (!Auth.isAdmin())
-            return <Redirect to='/'/>;
+            return <Redirect to='/' />;
 
         let activeButton = ['home', 'search', 'data'];
         activeButton = Auth.addCorrectButton(activeButton);
 
         return (
             <React.Fragment>
-                <Header/>
-                <Nav buttons={activeButton}/>
+                <Header />
+                <Nav buttons={activeButton} />
                 <section className="MemberCreation">
                     <div className="HeaderContainer">
-                        <h1 className = 'title'>Création de Membre</h1>
+                        <h1 className='title'>Création de Membre</h1>
                         {
-                        this.state.initial ?
-                            <h3 className = 'description'> Veuillez remplir les champs suivants </h3> :
-                            this.state.updateSucceed ?
-                                <h3 className= 'description'>Nouveau membre est bien créé.</h3> :
-                                <h3 className='error_info'>Erreur de saisie. Veuillez recommencer.</h3>
+                            this.state.initial ?
+                                <h3 className='description'> Veuillez remplir les champs suivants </h3> :
+                                this.state.updateSucceed ?
+                                    <h3 className='description'>Nouveau membre est bien créé.</h3> :
+                                    <h3 className='error_info'>Erreur de saisie. Veuillez recommencer.</h3>
                         }
                     </div>
                     <h2>Informations Personelles</h2>
-                    <InformationForm updateSuccess={this.state.updateSucceed} createMember={this.createMember}/>
-                    <PositionForm modifyEnabled={true} memberPositions={this.state.member.positions} updateMemberPositions={this.updateMemberPositions}/>
+                    <InformationForm updateSuccess={this.state.updateSucceed} createMember={this.createMember} />
+                    <PositionForm modifyEnabled={true} memberPositions={this.state.member.positions} updateMemberPositions={this.updateMemberPositions} />
                 </section>
+                <section className='MailConfig'>
+                    <Modal onClose={() => { window.location.href = '/' }} show={!this.state.mailConfigured}>
+                            <h1>Configuration Adresse Mail</h1>
+                            <p>Pour pouvoir utiliser l'application, il vous faut configurer l'adresse mail qui sera utilisé pour envoyer les mails de confirmation
+                                <br /><br />
+                                Rendez-vous sur l'url suivant et copiez le code obtenu ici</p>
 
-                <Modal onClose={() => {window.location.href = '/'}} show={!this.state.mailConfigured}>
-                    <div className='MailConfig'>
-                        <h1>Configuration Adresse Mail</h1>
-                        <p>Pour pouvoir utiliser l'application, il vous faut configurer l'adresse mail qui sera utilisé pour envoyer les mails de confirmation
-                            <br/><br/>
-                            Rendez-vous sur l'url suivant et copiez le code obtenu ici</p>
-
-                        <a onClick={() => window.open(this.state.mailConfigURL, '_blank')}>Cliquez ici pour autoriser l'envoi de mail</a>
-                        <input type='text' id='code' placeholder='Copiez le code obtenu ici.'/>
-                        <br/>
-                        <input type='button' value='Valider' onClick={this.configMailClickHandler}/>
-                    </div>
-                </Modal>
+                            <a onClick={() => window.open(this.state.mailConfigURL, '_blank')}>Cliquez ici pour autoriser l'envoi de mail</a>
+                            <input type='text' id='code' placeholder='Copiez le code obtenu ici.' />
+                            <br />
+                            <input type='button' value='Valider' onClick={this.configMailClickHandler} />
+                    </Modal>
+                </section>
 
             </React.Fragment>
         );
