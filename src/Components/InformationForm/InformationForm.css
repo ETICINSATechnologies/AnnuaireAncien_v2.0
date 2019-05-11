@@ -56,6 +56,11 @@
     max-width: 200px;
 }
 
+.InformationForm .needed:after {
+    content: "*";
+    color: red;
+}
+
 .InformationForm .registerbtn:hover {
     opacity:1;
 }

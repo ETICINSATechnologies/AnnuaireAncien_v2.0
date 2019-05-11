@@ -104,8 +104,11 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
         let member = new Member(this.props.member);
 
         if (member.hasOwnProperty(property)) {
-            property === 'gender' ?
-                member[property] = this.getGenderLabel(value) : member[property] = value;
+            if (property ==='gender') {
+                member.gender = this.getGenderLabel(value);
+            } else {
+                member[property] = value;
+            }
         }
 
         this.props.modifyMember(member);
@@ -259,30 +262,37 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
                     <p className="needed"> Nom </p>
 
                     <input disabled={!this.props.modifyEnabled} type="text" className="firstName"
-                           value={this.props.member.firstName} onChange={this.onChange}/>
+                           defaultValue={this.props.member.firstName} onChange={this.onChange} required/>
                     <input disabled={!this.props.modifyEnabled} type="text" className="lastName"
-                           value={this.props.member.lastName} onChange={this.onChange}/>
+                           defaultValue={this.props.member.lastName} onChange={this.onChange} required/>
                     <p> Téléphone </p>
                     <p className="needed"> Adresse mail </p>
                     <input disabled={!this.props.modifyEnabled} type="text" className="telephone"
-                           value={this.props.member.telephone} onChange={this.onChange}/>
+                           defaultValue={this.props.member.telephone} onChange={this.onChange}
+                           pattern='([0]{1}[0-9]{9})|([\+]+[0-9]{11})'/>
                     <input disabled={!this.props.modifyEnabled} type="text" className="email"
-                           value={this.props.member.email} onChange={this.onChange}/>
+                           defaultValue={this.props.member.email} onChange={this.onChange} 
+                           pattern='([\-\w\.]+@([\-\w]+\.)+[\-\w]{2,4})' required/>
                     <p> Année de sortie </p>
                     <p> Date de naissance </p>
                     <input disabled={!this.props.modifyEnabled} type="text" className="gradeYear"
-                           value={this.props.member.gradeYear? this.props.member.gradeYear : ''} 
-                           onChange={this.onChange}/>
-                    <input type="text" disabled={!this.props.modifyEnabled} className="birthday"
-                            pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))"
-                            value={this.props.member.birthday} onChange={this.onChange}/>
+                           defaultValue={this.props.member.gradeYear ? 
+                            String(this.props.member.gradeYear) : ''} 
+                           pattern='[0-9]{4}' onChange={this.onChange}/>
+                    {this.props.modifyEnabled? 
+                        <input type="date" className="birthday"
+                                onChange={this.onChange}/> 
+                                :
+                        <input type="text" disabled className="birthday"
+                                defaultValue={this.props.member.birthday} onChange={this.onChange}/>
+                    }
                     <p> LinkedIn </p>
                     <p> Facebook </p>
                     <input disabled={!this.props.modifyEnabled} type="text" className="linkedin"
-                           value={this.props.member.linkedin? this.props.member.linkedin : ''} 
+                           defaultValue={this.props.member.linkedin? this.props.member.linkedin : ''} 
                            onChange={this.onChange}/>
                     <input disabled={!this.props.modifyEnabled} type="text" className="facebook"
-                           value={this.props.member.facebook? this.props.member.facebook : ''} 
+                           defaultValue={this.props.member.facebook? this.props.member.facebook : ''} 
                            onChange={this.onChange}/>
                 </div>
                 <div className="button_container">
