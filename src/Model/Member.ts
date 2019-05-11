@@ -58,7 +58,7 @@ export class Member implements MemberInterface {
             : 
             'Choisir une option';
         this.birthday = memberInterface.birthday? memberInterface.birthday.split(' ')[0] : '';
-        this.telephone = memberInterface.telephone;
+        this.telephone = memberInterface.telephone? memberInterface.telephone.split('.')[0]:'';
         this.facebook = memberInterface.facebook;
         this.linkedin = memberInterface.linkedin;
         this.positions = memberInterface.positions;

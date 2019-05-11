@@ -44,7 +44,6 @@
 @media (orientation: portrait){
     .MemberCreation{
         display: grid;
-        //grid-template-rows: 2fr 10fr 0.5fr 10fr;
         grid-column-gap: 0;
         width: 100%;
         height: 100%;
