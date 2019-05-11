@@ -120,18 +120,20 @@
     opacity: 0.9;
     font-size: 3vmin;
     height: 6vmin;
-    border-width: 1px;
-    border-color: black;
+    border: 1px black;
 }
 
 .MailConfig input[type=button]:hover{
     opacity: 1;
+    cursor: pointer;
 }
 
 .MailConfig input[type=text]{
     font-size: 3vmin;
     margin: 2vmin auto 2vmin auto;
     width: 100%;
+    padding: 1vmin;
+    box-sizing: border-box;
 }
 
 .MailConfig .Modal .content {

@@ -52,7 +52,7 @@ class ProfilePicture extends React.Component<ProfilePictureProps> {
                     const formData = new FormData();
                     formData.append('file', (file as Blob), 'image.png');
 
-                    fetch('api//member/me/image', {
+                    fetch('api/member/me/image', {
                         method: 'POST',
                         headers: {
                             'Authorization': Auth.getToken(),

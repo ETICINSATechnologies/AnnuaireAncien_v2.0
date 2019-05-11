@@ -24,7 +24,6 @@
 
 .MemberArray .data{
     font-size: 2.2vw;
-    text-align: center;
     height : auto;
 }
 
@@ -70,6 +69,11 @@
     padding: 1vmin;
     border-bottom: 0.2vmin solid black;
     border-left: 0.2vmin solid black;
+}
+
+.MemberArray td {
+    padding-top: 0.5vmin;
+    padding-bottom: 0.5vmin;
 }
 
 .MemberArray td:first-child, th:first-child{
@@ -145,9 +149,13 @@
     width: auto;
 }
 
+.MemberArray .deleteContainer {
+    text-align: center;
+}
+
 .MemberArray .deleteContainer .deletePicture {
     margin: auto;
-    width: 2.7vw;
+    width: 2vw;
     max-width: 45px;
 }
 
@@ -170,12 +178,11 @@
 
 .MemberArray .Modal .content .buttons button{
     margin: auto 3vmin;
-    padding: 0rem 2rem;
+    padding: 0 2rem;
     font-size: 2.5vmin;
     max-width: 400px;
     background-color: #fff;
-    border-width:1px;
-    border-color: black;
+    border: 1px black;
 }
 
 

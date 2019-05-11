@@ -8,9 +8,9 @@ const MemberArrayHeader = () => {
             <th className="lastName">Nom</th>
             <th className="positionLabel">Poste</th>
             <th className="positionYear">Année</th>
-            {Auth.isAdmin() ? <th className="supprimer">Supprimer</th> : null}
+            {Auth.isAdmin() ? <th className="supprimer"/> : null}
         </tr>
     )
-}
+};
 
 export default MemberArrayHeader;

@@ -47,13 +47,12 @@ class MemberArray extends Component<MemberArrayProps, MemberArrayState> {
         memberIdToDelete: 0
     };
 
-
     showDeleteMember = (): void => {
         this.setState({
             ...this.state,
             showDeleteMember: !this.state.showDeleteMember
         })
-    }
+    };
 
     getPageSize = () => {
         if (window.matchMedia("(orientation:landscape)")) {
@@ -204,7 +203,7 @@ class MemberArray extends Component<MemberArrayProps, MemberArrayState> {
                     <div className='buttons'>
                         <button onClick={() => 
                                 {
-                                    this.props.deleteMember(this.state.memberIdToDelete)
+                                    this.props.deleteMember(this.state.memberIdToDelete);
                                     this.showDeleteMember()
                                 }
                             }>Oui</button>

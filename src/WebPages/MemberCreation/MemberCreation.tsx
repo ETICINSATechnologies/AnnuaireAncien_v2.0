@@ -23,7 +23,7 @@ interface MemberCreationState {
 class MemberCreation extends Component<{}, MemberCreationState> {
     state = {
         status: 'pending', // 'connected' 'not_authenticate'
-        mailConfigured: false,
+        mailConfigured: true,
         mailConfigURL: '',
         initial: true,
         updateSucceed: false,

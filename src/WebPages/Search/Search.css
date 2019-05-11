@@ -70,10 +70,14 @@
     }
 
     .Search td, th {
-        width: 6.5vw;
-        max-width: 6.5vw;
-        font-size: 0.8vw;
+        width: 10vw;
+        max-width: 10vw;
+        font-size: 1.2vw;
         height: 1vw;
+    }
+
+    .Search .positionYear {
+        width: 4vw;
     }
 
     .Search td:last-child {
@@ -140,10 +144,14 @@
     }
 
     .Search .members td, .Search .members th {
-        width: 24vw;
+        width: 18vw;
         max-width: 24vw;
         font-size: 2vw;
         height: 2.4vw;
+    }
+
+    .Search .positionYear {
+        width: 10vw;
     }
 
     .Search .members td:last-child {

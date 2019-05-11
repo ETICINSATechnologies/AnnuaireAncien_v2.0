@@ -20,9 +20,3 @@ body {
     height: 100%;
 }
 
-
-@media(orientation: portrait){
-    body{
-        overflow-y: scroll;
-    }
-}
