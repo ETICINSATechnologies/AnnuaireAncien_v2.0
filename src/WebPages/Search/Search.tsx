@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Redirect} from "react-router-dom";
+import {Link, Redirect} from "react-router-dom";
 
 import './Search.css';
 import Header from "../../Components/Header/Header";
@@ -11,6 +11,7 @@ import MemberInfo from "../../Components/MemberInfo/MemberInfo";
 import {Position} from "../../Model/Position";
 import {Member} from "../../Model/Member";
 import {SearchInterface} from "../../Model/Searchinterface";
+import Modal from "../../Components/Modal/Modal";
 
 
 interface SearchState {
@@ -140,8 +141,11 @@ class Search extends Component<{}, SearchState> {
                     </div>
                     <MemberArray parameters={this.state.searchValues} selectMember={this.selectMember} ref="members"
                                  getPage={this.makeSearch}/>
-                    <MemberInfo member={this.state.selectedMember}/>
+                    <Modal show={this.state.selectedMember !== undefined} onClose={() => {this.setState({selectedMember: undefined})}}>
+                        <MemberInfo member={this.state.selectedMember}/>
+                    </Modal>
                 </section>
+
             </React.Fragment>
         )
             ;

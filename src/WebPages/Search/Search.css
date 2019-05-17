@@ -1,5 +1,4 @@
 .Search {
-    display: grid;
     height: 100%;
 }
 
@@ -53,9 +52,14 @@
     cursor: pointer;
 }
 
+.Search .Modal .content {
+    height: auto
+}
+
 @media (orientation: landscape) {
     .Search {
-        grid-template-columns: 1fr 1fr 1fr;
+        display: grid;
+        grid-template-columns: 2fr 3fr;
         overflow: auto;
     }
 
@@ -68,9 +72,9 @@
     }
 
     .Search td, th {
-        width: 6.5vw;
-        max-width: 6.5vw;
-        font-size: 0.8vw;
+        width: 9vw;
+        max-width: 9vw;
+        font-size: 1vw;
         height: 1vw;
     }
 
@@ -104,21 +108,19 @@
     }
 
     .Search .MemberInfo .infoArea {
-        width: 80%;
-        border: 0.2vw solid black;
-        border-radius: 1vw;
+        width: 100%;
         margin: auto auto 2vw;
     }
 }
 
 @media (orientation: portrait) {
     .Search {
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 2fr 10fr;
+        grid-template-rows: 4fr 6fr;
     }
 
     .Search .searchArea {
         width: 90%;
+        height: 50%;
         margin: 3vw auto auto;
     }
 
@@ -129,8 +131,20 @@
         margin: 3vmin auto auto;
     }
 
-    .Search caption {
+    .Search .searchForm{
+        grid-template-rows: repeat(5,2fr) 1fr;
+    }
+
+    .Search .searchForm .searchInput ,.Search .searchForm div, .Search .searchForm input[type=text], .Search .searchForm select{
         font-size: 3vw;
+    }
+
+    .Search caption{
+        font-size: 4vw;
+    }
+
+    .Search .searchForm select{
+        background-color: white;
     }
 
     .Search .members tbody {
@@ -140,7 +154,7 @@
     .Search .members td, .Search .members th {
         width: 24vw;
         max-width: 24vw;
-        font-size: 2vw;
+        font-size: 2.5vw;
         height: 2.4vw;
     }
 
@@ -190,18 +204,21 @@
     }
 
     .Search .infoTitle {
-        font-size: 3vw;
+        font-size: 4vw;
         margin: 0 0 1vmin 0;
         text-align: center;
     }
 
-    .Search .searchForm {}
+    .Search .MemberArray .info{
+        font-size: 4vw;
+        width: 80%;
+    }
 
     /*CSS for member info*/
     .Search .MemberInfo .infoArea {
         grid-template-rows: 2vw 4.5vw 4.5vw 4vw repeat(5, 2.5vw 5.1vw);
-        width: 80%;
-        border: 0.3vmin solid black;
+        width: 100%;
         margin: auto 13% auto auto;
     }
+
 }
