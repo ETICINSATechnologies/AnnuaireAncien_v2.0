@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Home unit tests Home connected snapshot test 1`] = `
+exports[`Help unit tests Help connected snapshot test 1`] = `
 Array [
   <header
     className="Header"
@@ -28,6 +28,13 @@ Array [
     <div
       className="Menu"
     >
+      <a
+        className="button"
+        href="/"
+        onClick={[Function]}
+      >
+        accueil
+      </a>
       <a
         className="button"
         href="/search"
@@ -63,37 +70,41 @@ Array [
     </a>
   </nav>,
   <div
-    className="Home"
+    className="Help"
   >
     <section
-      className="home"
+      className="help_section"
     >
       <div
-        className="Board left"
-      />
-      <div
-        className="home_title"
+        className="div1"
       >
-        <p
-          className="welcome"
-        >
-           Bienvenue sur l'annuaire des anciens 
-        </p>
-        <p
-          className="welcome_etic"
-        >
-           ETIC INSA TECHNOLOGIES 
-        </p>
+        Cette application a été développée par
       </div>
+      <a
+        className="div2"
+        href="http://etic-insa.com/"
+      >
+         ETIC INSA Technologies 
+      </a>
       <div
-        className="Board right"
-      />
+        className="div3"
+      >
+        Elle permet de rechercher les anciens membres de la Junior en fonction de divers critères comme leur nom, prénom, entreprise pour laquelle ils travaillent ou encore leur année de mandat. Si vous avez des remarques ou suggestions, merci d'en faire par à
+        <div
+          className="contact toCopy"
+          onClick={[Function]}
+          title="Cliquer pour copier "
+        >
+          contact@etic-insa.com
+        </div>
+        
+      </div>
     </section>
   </div>,
 ]
 `;
 
-exports[`Home unit tests Home not connected snapshot test 1`] = `
+exports[`Help unit tests Help not connected snapshot test 1`] = `
 Array [
   <header
     className="Header"
@@ -123,6 +134,13 @@ Array [
     >
       <a
         className="button"
+        href="/"
+        onClick={[Function]}
+      >
+        accueil
+      </a>
+      <a
+        className="button"
         href="/connection"
         onClick={[Function]}
       >
@@ -142,31 +160,35 @@ Array [
     </a>
   </nav>,
   <div
-    className="Home"
+    className="Help"
   >
     <section
-      className="home"
+      className="help_section"
     >
       <div
-        className="Board left"
-      />
-      <div
-        className="home_title"
+        className="div1"
       >
-        <p
-          className="welcome"
-        >
-           Bienvenue sur l'annuaire des anciens 
-        </p>
-        <p
-          className="welcome_etic"
-        >
-           ETIC INSA TECHNOLOGIES 
-        </p>
+        Cette application a été développée par
       </div>
+      <a
+        className="div2"
+        href="http://etic-insa.com/"
+      >
+         ETIC INSA Technologies 
+      </a>
       <div
-        className="Board right"
-      />
+        className="div3"
+      >
+        Elle permet de rechercher les anciens membres de la Junior en fonction de divers critères comme leur nom, prénom, entreprise pour laquelle ils travaillent ou encore leur année de mandat. Si vous avez des remarques ou suggestions, merci d'en faire par à
+        <div
+          className="contact toCopy"
+          onClick={[Function]}
+          title="Cliquer pour copier "
+        >
+          contact@etic-insa.com
+        </div>
+        
+      </div>
     </section>
   </div>,
 ]
