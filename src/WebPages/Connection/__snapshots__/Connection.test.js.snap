@@ -1,0 +1,101 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Connection component Connection accepted snapshot test 1`] = `
+Array [
+  <header
+    className="Header"
+  >
+    <a
+      className="header_a"
+      href="/"
+      onClick={[Function]}
+    >
+      <img
+        alt=""
+        className="home_logo"
+        src="home_logo.png"
+      />
+      <h1
+        className="title"
+      >
+         Annuaire des Anciens 
+      </h1>
+    </a>
+  </header>,
+  <nav
+    className="Nav"
+  >
+    <div
+      className="Menu"
+    >
+      <a
+        className="button"
+        href="/"
+        onClick={[Function]}
+      >
+        accueil
+      </a>
+    </div>
+    <a
+      className="help_link"
+      href="/help"
+      onClick={[Function]}
+    >
+      <img
+        alt=""
+        className="help_icon"
+        src="help_icon.png"
+      />
+    </a>
+  </nav>,
+  <div
+    className="Connection"
+  >
+    <section
+      className="connect_section"
+    >
+      <form
+        className="connect_form"
+      >
+        <div
+          className="info_area"
+        >
+           
+          
+           
+        </div>
+        <p>
+           Identifiant 
+        </p>
+        <input
+          className="username"
+          onChange={[Function]}
+          type="text"
+          value="username"
+        />
+        <p>
+           Mot de passe 
+        </p>
+        <input
+          className="password"
+          onChange={[Function]}
+          type="password"
+          value="password"
+        />
+        <a
+          href="/recovery"
+          onClick={[Function]}
+        >
+           Mot de passe oublié ?
+        </a>
+        <input
+          className="connect_input"
+          onClick={[Function]}
+          type="submit"
+          value="Se connecter"
+        />
+      </form>
+    </section>
+  </div>,
+]
+`;
