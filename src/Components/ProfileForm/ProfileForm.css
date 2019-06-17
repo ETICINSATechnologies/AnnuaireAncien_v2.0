@@ -1,221 +1,228 @@
 .ProfileForm {
-    display: grid;
-    grid-template-rows: 2fr 2fr 1fr;
-    background-color: white;
+  display: grid;
+  grid-template-rows: 2fr 2fr 1fr;
+  background-color: white;
 
-    justify-self: center;
-    vertical-align: middle;
-    border: 0.6vmin solid black;
-    margin: 5vmin auto;
-    padding: 1vw;
+  justify-self: center;
+  vertical-align: middle;
+  border: 0.6vmin solid black;
+  margin: 5vmin auto;
+  padding: 1vw;
 
-    width: 90%;
-    height: calc(85vh - 6.5vw - 2.5vmax );
+  width: 90%;
+  height: calc(85vh - 6.5vw - 2.5vmax);
 }
 
 .ProfileForm .header_container {
-    display: grid;
-    grid-template-columns: 5fr 4fr 1fr;
-    grid-template-rows: 1fr;
-    margin: auto;
+  display: grid;
+  grid-template-columns: 5fr 4fr 1fr;
+  grid-template-rows: 1fr;
+  margin: auto;
 }
 
 .ProfileForm .field_container {
-    display: grid;
-    width: 100%;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-    margin: auto;
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  margin: auto;
 }
 
 .ProfileForm .field_container select {
-    position: relative;
-    left: 1vw;
+  position: relative;
+  left: 1vw;
 }
 
-.ProfileForm .field_container input, p {
-    width: 90%;
+.ProfileForm .field_container input,
+p {
+  width: 90%;
 }
-
+.ProfileForm .field_container input[type="date"] {
+  background: #fff;
+  font-size: 3vmin;
+  height: 5vmin;
+  position: relative;
+  left: 1vw;
+  border: 0.3vmin solid black;
+}
 .ProfileForm .button_container {
-    display: grid;
-    width: 100%;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: 1fr;
-    margin: 0.5vmin auto;
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr;
+  margin: 0.5vmin auto;
 }
 
 .ProfileForm .button_container input {
-    width: 80%;
+  width: 80%;
 }
 
 .ProfileForm .needed:after {
-    content: "*";
-    color: red;
+  content: "*";
+  color: red;
 }
 
 .ProfileForm input[type="text"] {
-    border: 0.3vmin solid black;
-    font-size: 3vmin;
-    padding-left: 1vmin;
-    height: 5vmin;
+  border: 0.3vmin solid black;
+  font-size: 3vmin;
+  padding-left: 1vmin;
+  height: 5vmin;
 }
 
-.ProfileForm p, input[type="text"]{
-    background-color: white;
-    justify-self: center;
+.ProfileForm p,
+input[type="text"] {
+  background-color: white;
+  justify-self: center;
 }
 
 .ProfileForm .right {
-    grid-column: 2;
+  grid-column: 2;
 }
 
 .ProfileForm h1 {
-    text-align: center;
-    justify-self: center;
-    vertical-align: middle;
-    width: 77%;
-    font-size: 2.5vw;
+  text-align: center;
+  justify-self: center;
+  vertical-align: middle;
+  width: 77%;
+  font-size: 2.5vw;
 
-    color: #009e11;
+  color: #009e11;
 
-    margin: auto;
+  margin: auto;
 }
 
 .ProfileForm .error_info {
-    color: #eb2f06;
+  color: #eb2f06;
 }
 
 @media (orientation: portrait) {
-    .ProfileForm {
-        height: 68vw;
-    }
+  .ProfileForm {
+    height: 68vw;
+  }
 
-    .ProfileForm .info_area {
-        font-size: 3.4vw;
-    }
+  .ProfileForm .info_area {
+    font-size: 3.4vw;
+  }
 }
 
 .ProfileForm p {
-    font-size: 3.7vmin;
-    margin: auto auto 0 auto;
+  font-size: 3.7vmin;
+  margin: auto auto 0 auto;
 
-    height: 4.7vmin;
+  height: 4.7vmin;
 }
 
 .ProfileForm .profilePicture {
-    display: grid;
+  display: grid;
 
-    margin: auto auto 0 auto;
-    background-color: white;
+  margin: auto auto 0 auto;
+  background-color: white;
 
-    animation-duration: 2s;
-    width: auto;
-    max-height:22vmin;
+  animation-duration: 2s;
+  width: auto;
+  max-height: 22vmin;
 }
 
 .ProfileForm .div_button {
-    display: grid;
-    justify-self: center;
-    margin: auto auto 0.5vmin auto;
-    height: 80%;
+  display: grid;
+  justify-self: center;
+  margin: auto auto 0.5vmin auto;
+  height: 80%;
 }
 
 .ProfileForm .input_button {
-    cursor: pointer;
-    text-align: center;
-    vertical-align: middle;
+  cursor: pointer;
+  text-align: center;
+  vertical-align: middle;
 
-    margin: auto;
+  margin: auto;
 
-    font-size: 1.7vw;
-    border: 0.3vmin solid black;
+  font-size: 1.7vw;
+  border: 0.3vmin solid black;
 
-    height: 7vmin;
+  height: 7vmin;
 }
 
 .ProfileForm .input_button:hover {
-    cursor: pointer;
-    opacity: 0.8;
+  cursor: pointer;
+  opacity: 0.8;
 }
 
 .ProfileForm .password {
-    background: #dddddd;
+  background: #dddddd;
 }
 
 .ProfileForm .update {
-    color: white;
-    background-color: #009e0f;
+  color: white;
+  background-color: #009e0f;
 }
 
 .ProfileForm .deleteCancelPicture {
-    width: 65%;
-    margin: 1vmin auto auto;
-    grid-column: 3;
-    vertical-align: top;
-    horiz-align: right;
+  width: 65%;
+  margin: 1vmin auto auto;
+  grid-column: 3;
+  vertical-align: top;
+  horiz-align: right;
 }
 
 .ProfileForm .deleteCancelPicture:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .ProfileForm .modal p {
-    display: grid;
+  display: grid;
 }
 
 .ProfileForm .modal a {
-    display: grid;
-    font-size: 3vmin;
-    margin: auto auto 0 auto;
-    height: 4.7vmin;
-    text-align: center;
+  display: grid;
+  font-size: 3vmin;
+  margin: auto auto 0 auto;
+  height: 4.7vmin;
+  text-align: center;
 }
 
 .ProfileForm .modal .content {
-    display: grid;
-    grid-template-rows: 0fr 3fr repeat(7, 2fr) ;
-    vertical-align: top;
+  display: grid;
+  grid-template-rows: 0fr 3fr repeat(7, 2fr);
+  vertical-align: top;
 }
 
-.ProfileForm .modal .message{
-    display: grid;
-    text-align: center;
-    font-size: 3vmin;
-    margin: auto auto 0 auto;
-    height: 4.7vmin;
+.ProfileForm .modal .message {
+  display: grid;
+  text-align: center;
+  font-size: 3vmin;
+  margin: auto auto 0 auto;
+  height: 4.7vmin;
 }
 
-.ProfileForm .modal .error{
-    color: red;
+.ProfileForm .modal .error {
+  color: red;
 }
 
-.ProfileForm .modal .success{
-    color: green;
+.ProfileForm .modal .success {
+  color: green;
 }
 
-.ProfileForm .modal .neutral{
-    color: black;
+.ProfileForm .modal .neutral {
+  color: black;
 }
 
-
-.ProfileForm .modal .input_button{
-    position: absolute;
-    background-color: #009e0f;
-    color:#fff;
-    bottom : 1vmin;
-    left : 50%;
-    transform: translate(-50%, -50%);
+.ProfileForm .modal .input_button {
+  position: absolute;
+  background-color: #009e0f;
+  color: #fff;
+  bottom: 1vmin;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
-
 
 .ProfileForm .modal input[type="password"] {
-    display: grid;
-    margin : 0 auto;
-    background-color: white;
-    justify-self: center;
-    border: 0.3vmin solid black;
-    font-size: 3vmin;
-    padding-left: 1vmin;
-    height: 5vmin;
+  display: grid;
+  margin: 0 auto;
+  background-color: white;
+  justify-self: center;
+  border: 0.3vmin solid black;
+  font-size: 3vmin;
+  padding-left: 1vmin;
+  height: 5vmin;
 }
