@@ -252,8 +252,16 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
           />
         </div>
         <div className="field_container">
+          <p className="needed"> Nom </p>
           <p> Téléphone </p>
-          <p className="right needed"> Nom </p>
+          <input
+            disabled={!this.props.modifyEnabled}
+            type="text"
+            required
+            className="lastName"
+            value={this.props.member.lastName || ""}
+            onChange={this.onChange}
+          />
           <input
             disabled={!this.props.modifyEnabled}
             type="text"
@@ -261,17 +269,20 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
             value={this.props.member.telephone}
             onChange={this.onChange}
           />
+
+          <p className="needed"> Prénom </p>
+          <p> Département </p>
           <input
             disabled={!this.props.modifyEnabled}
             type="text"
-            className="lastName"
-            value={this.props.member.lastName}
+            required
+            className="firstName"
+            value={this.props.member.firstName}
             onChange={this.onChange}
           />
-          <p> Département </p>
-          <p className="right p_info needed"> Prénom </p>
           <DropDown
             className="department"
+            isRequired={false}
             options={this.state.departments}
             modifyEnabled={this.props.modifyEnabled}
             onChange={this.onChange}
@@ -279,20 +290,15 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
               this.props.member.department ? this.props.member.department.id : 0
             }
           />
-          <input
-            disabled={!this.props.modifyEnabled}
-            type="text"
-            className="firstName"
-            value={this.props.member.firstName}
-            onChange={this.onChange}
-          />
+
           <p className="needed"> Adresse mail </p>
           <p> Travaille chez </p>
           <input
             disabled={!this.props.modifyEnabled}
             type="text"
             className="email"
-            value={this.props.member.email}
+            required
+            value={this.props.member.email || ""}
             onChange={this.onChange}
           />
           <input
@@ -302,18 +308,20 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
             value={this.props.member.company}
             onChange={this.onChange}
           />
-          <p>Date de naissance</p>
+          <p className="needed">Date de naissance</p>
           <p>Genre</p>
           <input
             type="date"
             className="birthday"
-            value={this.props.member.birthday}
+            required
+            value={this.props.member.birthday || ""}
             onChange={this.onChange}
             disabled={!this.props.modifyEnabled}
           />
 
           <DropDown
             className="gender"
+            isRequired={false}
             options={this.state.genders}
             modifyEnabled={this.props.modifyEnabled}
             onChange={this.onChange}

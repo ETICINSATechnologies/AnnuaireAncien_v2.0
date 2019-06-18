@@ -1,10 +1,17 @@
-.DropDown select{
-    border: 0.3vmin solid black;
-    font-size: 3vmin;
-    width: 93%;
-    height: 5.5vmin;
-    margin: auto auto auto 0;
-    background-color: white;
-    justify-self: center;
-
+.DropDown select {
+  border: 0.3vmin solid black;
+  font-size: 3vmin;
+  width: 93%;
+  height: 5.5vmin;
+  margin: auto auto auto 0;
+  background-color: white;
+  justify-self: center;
 }
+
+/* select:required {
+  border: 0.3vmin solid #009e0f;
+}
+
+select:invalid {
+  border: 0.3vmin solid red;
+} */

@@ -43,7 +43,6 @@ p {
   height: 5vmin;
   position: relative;
   left: 1vw;
-  border: 0.3vmin solid black;
 }
 .ProfileForm .button_container {
   display: grid;
@@ -225,4 +224,12 @@ input[type="text"] {
   font-size: 3vmin;
   padding-left: 1vmin;
   height: 5vmin;
+}
+
+.ProfileForm input:required {
+  border: 0.3vmin solid #009e0f;
+}
+
+.ProfileForm input:invalid {
+  border: 0.3vmin solid red;
 }
