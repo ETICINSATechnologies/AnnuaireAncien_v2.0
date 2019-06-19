@@ -116,11 +116,12 @@
 @media (orientation: portrait) {
     .Search {
         grid-template-rows: 4fr 6fr;
+        overflow-y: scroll;
     }
 
     .Search .searchArea {
         width: 90%;
-        height: 50%;
+        height: auto;
         margin: 3vw auto auto;
     }
 
@@ -211,6 +212,7 @@
 
     .Search .MemberArray .info{
         font-size: 4vw;
+        width: 80%;
         width: 80%;
     }
 

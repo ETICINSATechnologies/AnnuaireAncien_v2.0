@@ -45,12 +45,10 @@ class MemberArray extends Component<MemberArrayProps, MemberArrayState> {
     };
 
     getPageSize = () => {
-        if(window.matchMedia("(orientation:landscape)")){
-            return 12;
-        }else if(window.matchMedia("(orientation:portrait) and (max-width: 500px)")){
-            return 15;
+        if(window.innerHeight < window.innerWidth){
+            return 13;
         }else{
-            return 8;
+            return 10;
         }
     }
 
