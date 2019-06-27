@@ -227,7 +227,8 @@ input[type="text"] {
 }
 
 .ProfileForm input:required {
-  border: 0.3vmin solid #009e0f;
+  /* border: 0.3vmin solid #009e0f; */
+  border: 0.3vmin solid black;
 }
 
 .ProfileForm input:invalid {

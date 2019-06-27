@@ -119,7 +119,8 @@
 }
 
 .position_form *:required {
-  border: 0.3vmin solid #009e0f;
+  /* border: 0.3vmin solid #009e0f; */
+  border: 0.3vmin solid black;
 }
 
 .position_form *:invalid {

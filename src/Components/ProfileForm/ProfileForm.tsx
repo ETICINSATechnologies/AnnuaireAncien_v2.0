@@ -21,6 +21,7 @@ interface ProfileFormProps {
   modifyEnabled: boolean;
   update: boolean;
   updateSucceed: boolean;
+  requiredCompleted: boolean;
 
   resetFields(): void;
 
@@ -31,6 +32,8 @@ interface ProfileFormProps {
   updateMemberPassword(pass: string): void;
 
   enableModification(): void;
+
+  checkRequiredInput(): boolean;
 }
 
 interface ProfileFormState {
@@ -55,7 +58,8 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
       mdpnouveau2: "",
       mdpstate: "Compléter les champs et appuyer sur valider",
       mdpstatetype: "neutral"
-    }
+    },
+    requiredCompleted: false
   };
 
   componentDidMount() {
@@ -108,7 +112,6 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
     let property = event.target.className;
     let value = (event.target as any).value;
     let member = new Member(this.props.member);
-    console.log(value);
 
     if (member.hasOwnProperty(property)) {
       if (property === "department") {
@@ -119,16 +122,6 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
     }
 
     this.props.modifyMember(member);
-
-    const node = ReactDOM.findDOMNode(this);
-
-    // Get child nodes
-    if (node instanceof HTMLElement) {
-      if (node.querySelector(".birthday") instanceof HTMLInputElement) {
-        const child = node.querySelector(".birthday") as HTMLInputElement;
-        console.log(child.value);
-      }
-    }
   };
 
   onChangeMdp = (event: React.ChangeEvent) => {
@@ -139,6 +132,17 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
         [event.target.className]: (event.target as any).value
       }
     });
+  };
+
+  updateMember = () => {
+    if (this.props.checkRequiredInput()) {
+      this.props.updateMember();
+    } else {
+      (document.querySelector(
+        ".header_container h1"
+      ) as HTMLInputElement).innerHTML =
+        "Un champ requis n'est pas correctement rempli";
+    }
   };
 
   updateMdp = () => {
@@ -231,7 +235,7 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
               <h1>Les modifications ont bien été enregistrées</h1>
             ) : (
               <h1 className="error_info">
-                Une erreur est survenue lors de la sauvegarde
+                Les champs requis doivent être correctement remplis
               </h1>
             )
           ) : this.props.modifyEnabled ? (
@@ -343,7 +347,7 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
                 type="button"
                 className="input_button update"
                 value="Sauvegarder"
-                onClick={() => this.props.updateMember()}
+                onClick={() => this.updateMember()}
               />
             </React.Fragment>
           )}
