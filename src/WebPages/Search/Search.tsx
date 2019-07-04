@@ -139,11 +139,14 @@ class Search extends Component<{}, SearchState> {
                             />
                         </form>
                     </div>
+                    <div className="dataArea">
                     <MemberArray parameters={this.state.searchValues} selectMember={this.selectMember} ref="members"
                                  getPage={this.makeSearch}/>
+                    </div>
                     <Modal show={this.state.selectedMember !== undefined} onClose={() => {this.setState({selectedMember: undefined})}}>
                         <MemberInfo member={this.state.selectedMember}/>
                     </Modal>
+
                 </section>
 
             </React.Fragment>

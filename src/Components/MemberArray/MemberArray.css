@@ -18,15 +18,12 @@
 }
 
 .MemberArray .searchResult{
-    display: grid;
-    grid-template-rows: 7fr 0.5fr;
     height: 100%;
 }
 
 .MemberArray .data{
     font-size: 2.2vw;
     text-align: center;
-    height : auto;
 }
 
 .MemberArray .pageInput{
@@ -117,12 +114,21 @@
 @media (orientation: landscape) {
     .MemberArray .pagination {
         width: 35vw;
+        position: absolute;
+        bottom: 10px;
+        left: 0;
+        right: 0;
+        transform: translateX(71.5%);
     }
 }
 
 @media (orientation: portrait){
     .MemberArray .pagination {
         width: 80%;
+    }
+
+    .MemberArray .data{
+        height: 48vh;
     }
 }
 
