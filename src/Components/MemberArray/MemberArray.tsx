@@ -46,7 +46,7 @@ class MemberArray extends Component<MemberArrayProps, MemberArrayState> {
 
     getPageSize = () => {
         if(window.innerHeight < window.innerWidth){
-            return 13;
+            return 12;
         }else{
             return 10;
         }
