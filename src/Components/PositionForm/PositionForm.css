@@ -1,6 +1,6 @@
 .position_form {
   width: 80%;
-  height: calc(85vh - 6.5vw - 2.5vmax);
+  height: 70vh;
   margin: 5vmin auto;
   display: grid;
   grid-template-rows: 8vmin 1fr 10vmin;
