@@ -1,12 +1,12 @@
 .ProfileForm {
   display: grid;
-  grid-template-rows: 1fr 2fr 0.5fr;
+  grid-template-rows: 1fr 2fr 0.4fr;
   background-color: white;
   justify-self: center;
   vertical-align: middle;
   border: 0.6vmin solid black;
-  margin: 5vmin auto;
-  padding: 1vw;
+  margin: 2vmin auto;
+  padding: 0.5vw 1vw;
   width: 90%;
 }
 
