@@ -16,6 +16,7 @@ interface ProfileState {
   modifyEnabled: boolean;
   update: boolean;
   updateSucceed: boolean;
+  requiredCompleted: boolean;
   previousMember: Member;
   member: Member;
 }
@@ -26,12 +27,13 @@ class Profile extends Component<{}, ProfileState> {
     modifyEnabled: false,
     update: false,
     updateSucceed: false,
+    requiredCompleted: false,
     previousMember: defaultMember,
     member: defaultMember
   };
 
   componentDidMount() {
-    if (!Auth.isConnected) this.setState({ status: "not_authenticate" });
+    if (!Auth.isConnected()) this.setState({ status: "not_authenticate" });
     else {
       this.setState({ status: "connected" });
       fetch("api/v1/core/member/me", {
@@ -146,6 +148,18 @@ class Profile extends Component<{}, ProfileState> {
     });
   };
 
+  checkRequiredInput() {
+    let nodes = document.querySelectorAll("input[required]");
+
+    for (var i = 0; i < nodes.length; i++) {
+      if ((nodes[i] as HTMLInputElement).value === "") {
+        return false;
+      }
+    }
+
+    return true;
+  }
+
   render() {
     let activeButton = ["home"];
     if (this.state.status === "not_authenticate") return <Redirect to="/" />;
@@ -168,6 +182,8 @@ class Profile extends Component<{}, ProfileState> {
             updateMemberPassword={this.updateMemberPassword}
             enableModification={this.enableModification}
             resetFields={this.resetFields}
+            checkRequiredInput={this.checkRequiredInput}
+            requiredCompleted={this.state.requiredCompleted}
           />
           <PositionForm
             memberPositions={this.state.member.positions}
