@@ -1,6 +1,5 @@
 .position_form {
   width: 80%;
-  height: 70vh;
   margin: 5vmin auto;
   display: grid;
   grid-template-rows: 8vmin 1fr 10vmin;

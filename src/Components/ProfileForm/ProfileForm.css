@@ -1,6 +1,6 @@
 .ProfileForm {
   display: grid;
-  grid-template-rows: 2fr 2fr 1fr;
+  grid-template-rows: 1fr 2fr 0.5fr;
   background-color: white;
   justify-self: center;
   vertical-align: middle;
@@ -8,7 +8,6 @@
   margin: 5vmin auto;
   padding: 1vw;
   width: 90%;
-  height: 70vh;
 }
 
 .ProfileForm .header_container {
@@ -49,6 +48,8 @@ p {
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: 1fr;
   margin: 0.5vmin auto;
+  justify-content: center;
+  align-items: center;
 }
 
 .ProfileForm .needed:after {
@@ -90,10 +91,6 @@ input[type="text"] {
 }
 
 @media (orientation: portrait) {
-  .ProfileForm {
-    height: 68vw;
-  }
-
   .ProfileForm .info_area {
     font-size: 3.4vw;
   }
@@ -144,19 +141,15 @@ input[type="text"] {
 
 .ProfileForm .password {
   background: #dddddd;
-  position: absolute;
-  left: 2vmin;
-  width: 40vmin;
   height: 6vmin;
+  width: 90%;
 }
 
 .ProfileForm .update {
   color: white;
-  position: absolute;
-  right: 2vmin;
-  width: 30vmin;
   height: 6vmin;
   background-color: #009e0f;
+  width: 90%;
 }
 
 .ProfileForm .deleteCancelPicture {
@@ -164,7 +157,6 @@ input[type="text"] {
   margin: 1vmin auto auto;
   grid-column: 3;
   vertical-align: top;
-  horiz-align: right;
 }
 
 .ProfileForm .deleteCancelPicture:hover {
