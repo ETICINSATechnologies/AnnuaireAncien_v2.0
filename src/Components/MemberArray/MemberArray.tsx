@@ -1,8 +1,6 @@
 import React, { Component } from "react";
-
 import "./MemberArray.css";
 import Auth from "../../Components/Auth/Auth";
-
 import { Member, MemberInterface } from "../../Model/Member";
 import { SearchInterface } from "../../Model/Searchinterface";
 import MemberArrayElement from "./MemberArrayElement";
@@ -57,7 +55,7 @@ class MemberArray extends Component<MemberArrayProps, MemberArrayState> {
   getMembers = (searchArray: SearchInterface, page: number) => {
     //manage pages
     let baseurl: string =
-      "api/v1/core/member?pageSize=" +
+      "api/v1/core/member?isAlumni=true&pageSize=" +
       this.getPageSize() +
       "&pageNumber=" +
       page;
