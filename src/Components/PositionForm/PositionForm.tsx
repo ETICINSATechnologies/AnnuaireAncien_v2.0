@@ -62,9 +62,7 @@ class PositionForm extends Component<PositionFormProps, PositionFormState> {
 
     if (mPositions[index].hasOwnProperty(property)) {
       if (property === "year") {
-        value.match(/^(\d?){4}$/)
-          ? (mPositions[index][property] = value)
-          : null;
+        if (value.match(/^(\d?){4}$/)) (mPositions[index][property] = value);
       } else if (property === "isBoard") {
         mPositions[index][property] = !mPositions[index][property];
       }

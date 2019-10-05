@@ -58,7 +58,7 @@ class Search extends Component<{}, SearchState> {
   };
 
   makeSearch = (page: number, event?: React.MouseEvent) => {
-    event ? event.preventDefault() : null;
+    if (event) event.preventDefault();
 
     // copy the input into a new variable
     let searchArray = Object.assign({}, this.state.searchValues);

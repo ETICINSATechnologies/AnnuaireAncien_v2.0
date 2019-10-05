@@ -12,9 +12,6 @@ import { Gender } from "../../Model/Gender";
 import { Link } from "react-router-dom";
 import Modal from "../Modal/Modal";
 import DropDown from "../DropDown/DropDown";
-import { log } from "util";
-
-import ReactDOM from "react-dom";
 
 interface ProfileFormProps {
   member: Member;

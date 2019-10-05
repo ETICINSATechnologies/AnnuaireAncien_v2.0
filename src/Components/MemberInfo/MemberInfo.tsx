@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 
 import './MemberInfo.css';
 import defaultMan from '../../Images/default_man.svg'
@@ -37,6 +37,7 @@ const MemberInfo: React.SFC<MemberInfoProps> = (props: MemberInfoProps) => {
                         <input type="text" className={property} value={member[property]} disabled={true}/>
                     </React.Fragment>
                 )
+            return null;
         });
 
         return (

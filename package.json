@@ -7,15 +7,15 @@
     "@types/node": "11.9.6",
     "@types/react": "16.8.6",
     "@types/react-dom": "16.8.2",
-    "@types/react-router-dom": "^4.3.1",
+    "@types/react-router-dom": "^4.3.5",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.13.2",
-    "react": "^16.8.3",
-    "react-dom": "^16.8.3",
+    "react": "^16.10.2",
+    "react-dom": "^16.10.2",
     "react-router": "latest",
     "react-router-dom": "latest",
-    "react-scripts": "2.1.5",
-    "react-test-renderer": "^16.8.3",
+    "react-scripts": "^3.2.0",
+    "react-test-renderer": "^16.10.2",
     "typescript": "3.3.3333"
   },
   "scripts": {
@@ -35,6 +35,6 @@
   ],
   "proxy": "https://pre-keros-api.etic-insa.com",
   "devDependencies": {
-    "jest-enzyme": "^7.0.2"
+    "jest-enzyme": "^7.1.1"
   }
 }

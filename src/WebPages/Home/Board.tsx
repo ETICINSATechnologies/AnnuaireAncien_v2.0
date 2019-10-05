@@ -18,9 +18,9 @@ class Board extends Component<BoardProps, BoardState> {
     };
     boardRef: any;
 
-    constructor(props: BoardProps) {
-        super(props);
-    }
+    // constructor(props: BoardProps) {
+    //     super(props);
+    // }
 
     setDivHeight = () => {
         if (this.boardRef) {

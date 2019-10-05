@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import './Help.css';
 import Header from "../../Components/Header/Header";
 import Nav from "../../Components/Nav/Nav";

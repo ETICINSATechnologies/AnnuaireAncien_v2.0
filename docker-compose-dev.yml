@@ -1,7 +1,5 @@
 version: '3.5'
-
 services:
-
   annuaire-dev:
     container_name: annuaire-dev
     build:
