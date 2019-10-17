@@ -7,7 +7,7 @@ WORKDIR /usr/src/app
 
 # install and cache app dependencies
 COPY . ./
-RUN yarn install
+RUN npm install
 
 # start app
 CMD ["npm", "start"]
