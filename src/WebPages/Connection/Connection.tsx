@@ -27,8 +27,8 @@ const statusMessage = {
 class Connection extends Component<{}, ConnectionState> {
     state = {
         parameters: {
-            username: "username",
-            password: "password"
+            username: "",
+            password: ""
         },
         status: 'loading',
     };
