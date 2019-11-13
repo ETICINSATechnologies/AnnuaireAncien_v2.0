@@ -1,19 +1,21 @@
 import React, {Component} from 'react';
 import {Link, Redirect} from 'react-router-dom'
 import './Connection.css';
+import Modal from "../../Components/Modal/Modal";
 import Header from "../../Components/Header/Header";
 import Nav from "../../Components/Nav/Nav";
 import Auth from "../../Components/Auth/Auth";
-
+import CopyContent from "../../Components/CopyContent/CopyContent";
 
 type ConnectionState = {
-    parameters: Param
-    status: string
+    parameters  : Param
+    status      : string
+    show        : boolean
 }
 
 interface Param {
-    username: string
-    password: string
+    username    :   string
+    password    :   string
 }
 
 const statusMessage = {
@@ -27,9 +29,10 @@ const statusMessage = {
 class Connection extends Component<{}, ConnectionState> {
     state = {
         parameters: {
-            username: "",
-            password: ""
+            username    : ""    ,
+            password    : ""    ,
         },
+        show        : false ,
         status: 'loading',
     };
 
@@ -69,6 +72,13 @@ class Connection extends Component<{}, ConnectionState> {
         }
     };
 
+    showModal = () => {
+        this.setState({
+            ...this.state,
+            show: !this.state.show
+        });
+    }
+
     render() {
         let activeButton = ["home"];
 
@@ -86,12 +96,23 @@ class Connection extends Component<{}, ConnectionState> {
                             <p> Mot de passe </p>
                             <input type="password" className="password" value={this.state.parameters.password}
                                    onChange={this.onChange}/>
-                            <Link to="/recovery"> Mot de passe oublié ?</Link>
+                            <input type="button" className = "forgot_password" value = "Mot de passe oublié ?"
+                                   onClick ={() => this.showModal()}/>
                             <input type="submit" className="connect_input" value="Se connecter"
                                    onClick={this.tryToConnect}/>
                         </form>
                     </section>
                     {this.state.status === 'connect' && <Redirect to='/profile'/>}
+                </div>
+                <div className="modal">
+                    <Modal show={this.state.show} onClose={this.showModal}>
+                        <p className = "text-content">
+                            Afin de récupérer vos identifiants, veuillez contacter par mail l'administrateur de ce site
+                            en
+                            utilisant
+                            l'adresse mail suivante :
+                        </p>
+                    </Modal>
                 </div>
             </React.Fragment>
         );

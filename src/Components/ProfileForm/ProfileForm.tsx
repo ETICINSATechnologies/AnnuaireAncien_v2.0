@@ -356,21 +356,21 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
                 {" "}
                 {this.state.mdp.mdpstate}{" "}
               </p>
-              <p> Ancien mot de passe </p>
+              <p className = "passwordWording"> Ancien mot de passe </p>
               <input
                 type="password"
                 name="password"
                 className="mdpancien"
                 onChange={this.onChangeMdp.bind(this)}
               />
-              <p> Nouveau mot de passe </p>
+              <p className = "passwordWording"> Nouveau mot de passe </p>
               <input
                 type="password"
                 name="password"
                 className="mdpnouveau"
                 onChange={this.onChangeMdp.bind(this)}
               />
-              <p> Nouveau mot de passe </p>
+              <p className = "passwordWording"> Nouveau mot de passe </p>
               <input
                 type="password"
                 name="password"

@@ -76,3 +76,27 @@
     width: 60%;
     height: 6vmin;
 }
+
+/* Forgot password button css */
+.Connection .forgot_password
+{
+    cursor      : pointer               ;
+    color       : ghostwhite            ;
+    background  : #009e0f               ;
+    border      : 0.3vmin solid black   ;
+
+    margin      : auto                  ;
+    height      : 3vmin                 ;
+    width       : 90%                   ;
+    font-size   : 2.1vmin               ;
+    font-style  : italic                ;
+}
+
+/* Modal text style */
+.Connection .modal .text-content
+{
+    background-color       : #9BCA8B    ;
+    font-weight            : bold       ;
+
+}
+

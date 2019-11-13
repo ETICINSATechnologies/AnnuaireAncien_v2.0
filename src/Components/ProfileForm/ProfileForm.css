@@ -184,9 +184,14 @@ input[type="text"] {
 .ProfileForm .modal .message {
   display: grid;
   text-align: center;
+  background-color: #9BCA8B;
   font-size: 3vmin;
   margin: auto auto 0 auto;
   height: 4.7vmin;
+}
+
+.ProfileForm .modal .passwordWording {
+  background-color: #9BCA8B;
 }
 
 .ProfileForm .modal .error {
