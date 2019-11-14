@@ -112,6 +112,8 @@ class Connection extends Component<{}, ConnectionState> {
                             utilisant
                             l'adresse mail suivante :
                         </p>
+
+                        <CopyContent className="contact" textToCopy="contact@etic-insa.com"/>
                     </Modal>
                 </div>
             </React.Fragment>
