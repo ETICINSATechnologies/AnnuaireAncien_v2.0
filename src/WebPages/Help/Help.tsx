@@ -23,12 +23,30 @@ const Help: React.SFC<{}> = () => {
                     <div className="div1">
                         Cette application a été développée par
                     </div>
-                    <a className="div2" href="http://etic-insa.com/"> ETIC INSA Technologies </a>
+                    <a className="div2" href="http://etic-insa.com/">  ETIC INSA Technologies </a>
+                    <div className="actu" >
+                        Suivez nos actualités !
+                    </div>
+                    <div className="social">
+                        <a href="https://twitter.com/etic_insa" > <img src="src\Images\Twitter_Logo_Blue.png" id="logotwitter" />
+                        TWITTER
+                        </a>
+                        <a href="https://www.instagram.com/etic.insa/" >
+                        INSTOUGRAM
+                        </a>
+                        <a href="https://www.facebook.com/etic.insa/?ref=br_rs"> 
+                        FACEBOOK
+                        </a>
+                        <a href="https://www.linkedin.com/company/etic-insa-technologies/?originalSubdomain=fr">
+                        LINKEDIN
+                        </a>
+
+                    </div>
                     <div className="div3">
                         Elle permet de rechercher les anciens membres de la Junior en fonction de divers critères
                         comme leur nom, prénom, entreprise pour laquelle ils travaillent ou encore leur année de
                         mandat.
-                        Si vous avez des remarques ou suggestions, merci d'en faire par à
+                        Si vous avez des remarques ou suggestions, merci d'en faire par à 
                         <CopyContent className="contact" textToCopy="contact@etic-insa.com"/>
                     </div>
                 </section>

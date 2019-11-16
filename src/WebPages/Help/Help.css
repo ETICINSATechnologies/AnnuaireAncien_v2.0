@@ -29,7 +29,11 @@
     color: #009e11;
     text-decoration: underline;
 }
-
+.Help .div3 {
+    color: #0c7466;
+    font-size: 2vw;
+    text-align: left;
+}
 .Help p {
     margin: auto;
     height: 100%;
@@ -42,6 +46,7 @@
     background: white;
     border: 0;
     text-decoration: underline;
+    font-size: 2vw;
 }
 
 .Help .contact.copied {
