@@ -4,6 +4,10 @@ import Header from "../../Components/Header/Header";
 import Nav from "../../Components/Nav/Nav";
 import Auth from "../../Components/Auth/Auth";
 import CopyContent from "../../Components/CopyContent/CopyContent";
+import TWITTER from "../../Images/logoTWITTER.png";
+import FB from "../../Images/logoFB.png";
+import LINKEDIN from "../../Images/logoIN.png";
+import INSTA from "../../Images/logoINSTA.png";
 
 
 const Help: React.SFC<{}> = () => {
@@ -28,17 +32,18 @@ const Help: React.SFC<{}> = () => {
                         Suivez nos actualités !
                     </div>
                     <div className="social">
-                        <a href="https://twitter.com/etic_insa" > <img src="src\Images\Twitter_Logo_Blue.png" id="logotwitter" />
-                        TWITTER
+                        <a href="https://twitter.com/etic_insa" >
+                            <img className="logoTWITTER" src={TWITTER} />
                         </a>
-                        <a href="https://www.instagram.com/etic.insa/" >
-                        INSTOUGRAM
+                        <a href="https://www.instagram.com/etic.insa/">
+                            <img className="logoINSTA" src={INSTA} />
                         </a>
-                        <a href="https://www.facebook.com/etic.insa/?ref=br_rs"> 
-                        FACEBOOK
+                        
+                        <a href="https://www.facebook.com/etic.insa/?ref=br_rs">
+                            <img className="logofb" src={FB} />
                         </a>
                         <a href="https://www.linkedin.com/company/etic-insa-technologies/?originalSubdomain=fr">
-                        LINKEDIN
+                            <img className="logolinkedin" src={LINKEDIN} />
                         </a>
 
                     </div>

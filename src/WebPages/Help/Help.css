@@ -24,22 +24,55 @@
     font-size: 3vw;
 }
 
+.Help .div1 {
+    color: #000000;
+    font-size: 1vw;
+    text-align: center;
+}
 .Help .div2 {
     cursor: pointer;
     color: #009e11;
     text-decoration: underline;
+    font-size: 1vw;
+}
+.Help .actu {
+    font-size: 1vw;
 }
 .Help .div3 {
     color: #0c7466;
     font-size: 2vw;
     text-align: left;
 }
-.Help p {
-    margin: auto;
-    height: 100%;
+
+
+.Help .social {
+    text-decoration: none;
+    text-align: center ;
 }
 
-.Help .contact.toCopy {
+.Help .logoTWITTER {
+    width: 60px;
+    max-height: 22vmin;
+  }
+
+  .Help .logoINSTA {
+    width: 60px;
+
+  }
+
+  .Help .logoFB {
+      height: 60px;
+      width: 60px;
+
+    
+    
+  }
+
+  .Help .logoLINKEDIN {
+    width: 60px;
+
+  }
+  .Help .contact.toCopy {
     cursor: pointer;
     color: #009e11;
     margin-top: 2vmin;
