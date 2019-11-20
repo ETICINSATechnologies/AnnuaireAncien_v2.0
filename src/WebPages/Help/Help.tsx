@@ -8,6 +8,7 @@ import TWITTER from "../../Images/logoTWITTER.png";
 import FB from "../../Images/logoFB.png";
 import LINKEDIN from "../../Images/logoIN.png";
 import INSTA from "../../Images/logoINSTA.png";
+import ETIC from"../../Images/logo.jpg";
 
 
 const Help: React.SFC<{}> = () => {
@@ -27,23 +28,23 @@ const Help: React.SFC<{}> = () => {
                     <div className="div1">
                         Cette application a été développée par
                     </div>
-                    <a className="div2" href="http://etic-insa.com/">  ETIC INSA Technologies </a>
+                    <a className="div2" href="http://etic-insa.com/"> <img className="logoETIC" src={ETIC}   />
+                     </a>
                     <div className="actu" >
                         Suivez nos actualités !
                     </div>
                     <div className="social">
+                    <   a href="https://www.facebook.com/etic.insa/?ref=br_rs">
+                            <img className="logoFB" src={FB} />
+                        </a> 
                         <a href="https://twitter.com/etic_insa" >
                             <img className="logoTWITTER" src={TWITTER} />
                         </a>
                         <a href="https://www.instagram.com/etic.insa/">
                             <img className="logoINSTA" src={INSTA} />
                         </a>
-                        
-                        <a href="https://www.facebook.com/etic.insa/?ref=br_rs">
-                            <img className="logofb" src={FB} />
-                        </a>
                         <a href="https://www.linkedin.com/company/etic-insa-technologies/?originalSubdomain=fr">
-                            <img className="logolinkedin" src={LINKEDIN} />
+                            <img className="logoLINKEDIN" src={LINKEDIN} />
                         </a>
 
                     </div>

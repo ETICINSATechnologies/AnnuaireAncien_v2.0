@@ -8,11 +8,10 @@
 }
 
 .Help .help_section {
-    display: grid;
-    grid-template-rows: 4vw 6.7vw 30vmin 1fr;
-
+    display: flex;
+    flex-direction: column;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
     margin: 3vmin auto;
-
     width: 95%;
 }
 
@@ -21,27 +20,26 @@
     justify-self: center;
 
     margin: 0 auto;
-    font-size: 3vw;
+    font-size: 3rem;
 }
 
 .Help .div1 {
     color: #000000;
-    font-size: 1vw;
+    font-size: 2rem;
     text-align: center;
 }
 .Help .div2 {
     cursor: pointer;
     color: #009e11;
-    text-decoration: underline;
+    text-decoration: none;
     font-size: 1vw;
+}
+.Help .logoETIC {
+    width: 150px;
+    
 }
 .Help .actu {
-    font-size: 1vw;
-}
-.Help .div3 {
-    color: #0c7466;
-    font-size: 2vw;
-    text-align: left;
+    font-size: 2em;
 }
 
 
@@ -50,28 +48,29 @@
     text-align: center ;
 }
 
+.Help .logoFB {
+    width: 50px;
+    margin-right: 25px;
+  } 
+
 .Help .logoTWITTER {
-    width: 60px;
-    max-height: 22vmin;
+    width: 50px;
+    margin-right: 25px;
   }
 
   .Help .logoINSTA {
-    width: 60px;
-
-  }
-
-  .Help .logoFB {
-      height: 60px;
-      width: 60px;
-
-    
-    
+    width: 50px;
+    margin-right: 25px;
   }
 
   .Help .logoLINKEDIN {
-    width: 60px;
-
+    width: 50px;
   }
+  .Help .div3 {
+    color: #0c7466;
+    font-size: 1rem;
+    text-align: left;
+}
   .Help .contact.toCopy {
     cursor: pointer;
     color: #009e11;
