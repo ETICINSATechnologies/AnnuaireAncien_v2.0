@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Link, Redirect} from 'react-router-dom'
+import {Redirect} from 'react-router-dom'
 import './Connection.css';
 import Modal from "../../Components/Modal/Modal";
 import Header from "../../Components/Header/Header";

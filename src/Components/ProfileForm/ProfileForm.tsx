@@ -223,6 +223,20 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
     return this.state.idToIndexGenders[id];
   }
 
+  async fetchProfilePicture() {
+    const res = await fetch(`api/v1/core/member/${this.props.member.id}/photo`, {
+      headers: {
+        Authorization: Auth.getToken()
+      }
+    })
+    let url = undefined;
+    if (res.ok) {
+      const blob = await res.blob();
+      url = URL.createObjectURL(blob);
+    }
+    return url;
+  }
+
   render() {
     return (
       <form className="ProfileForm">
@@ -231,18 +245,18 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
             this.props.updateSucceed ? (
               <h1>Les modifications ont bien été enregistrées</h1>
             ) : (
-              <h1 className="error_info">
-                Les champs requis doivent être correctement remplis
+                <h1 className="error_info">
+                  Les champs requis doivent être correctement remplis
               </h1>
-            )
+              )
           ) : this.props.modifyEnabled ? (
             <h1>Appuyer sur la croix pour annuler</h1>
           ) : (
-            <h1>Appuyer sur le crayon pour modifier</h1>
-          )}
+                <h1>Appuyer sur le crayon pour modifier</h1>
+              )}
           <img
             className="profilePicture"
-            src={this.props.member.gender.id ? manIcon : womanIcon}
+            src={this.props.member.gender.id !== 2 ? manIcon : womanIcon}
             alt="Profile"
           />
           <img
@@ -356,21 +370,21 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
                 {" "}
                 {this.state.mdp.mdpstate}{" "}
               </p>
-              <p className = "passwordWording"> Ancien mot de passe </p>
+              <p className="passwordWording"> Ancien mot de passe </p>
               <input
                 type="password"
                 name="password"
                 className="mdpancien"
                 onChange={this.onChangeMdp.bind(this)}
               />
-              <p className = "passwordWording"> Nouveau mot de passe </p>
+              <p className="passwordWording"> Nouveau mot de passe </p>
               <input
                 type="password"
                 name="password"
                 className="mdpnouveau"
                 onChange={this.onChangeMdp.bind(this)}
               />
-              <p className = "passwordWording"> Nouveau mot de passe </p>
+              <p className="passwordWording"> Nouveau mot de passe </p>
               <input
                 type="password"
                 name="password"
