@@ -80,30 +80,34 @@
 /* Forgot password button css */
 .Connection .forgot_password
 {
-    cursor      : pointer               ;
-    color       : ghostwhite            ;
-    background  : #009e0f               ;
-    border      : 0.3vmin solid black   ;
+    cursor      : pointer                     ;
+    color       : ghostwhite                ;
+    background  : none                        ;
+    border      : none                        ;
 
-    margin      : auto                  ;
-    height      : 3vmin                 ;
-    width       : 90%                   ;
-    font-size   : 2.1vmin               ;
-    font-style  : italic                ;
+    margin      : auto                        ;
+    height      : 3vmin                       ;
+    font-size   : 2.1vmin                     ;
+    font-style  : italic                      ;
+}
+
+.modal
+{
+    text-align: center;
 }
 
 /* Modal text style */
 .modal .text-content
 {
-    background-color       : #9BCA8B    ;
-    font-weight            : bold       ;
-    font-size              : 3.1vmin    ;
+    background-color       : #9BCA8B       ;
+    font-weight            : bold            ;
+    font-size              : 3.1vmin         ;
 }
 
 /* Link to admin */
 .contact.toCopy {
     cursor              : pointer       ;
-    color               : #009e11       ;
+    color               : #009e11     ;
     margin-top          : 6vmin         ;
     border              : 0             ;
     text-decoration     : underline     ;
