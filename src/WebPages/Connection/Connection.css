@@ -76,3 +76,69 @@
     width: 60%;
     height: 6vmin;
 }
+
+/* Forgot password button css */
+.Connection .forgot_password
+{
+    cursor      : pointer                     ;
+    color       : ghostwhite                ;
+    background  : none                        ;
+    border      : none                        ;
+
+    margin      : auto                        ;
+    height      : 3vmin                       ;
+    font-size   : 2.1vmin                     ;
+    font-style  : italic                      ;
+}
+
+.modal
+{
+    text-align: center;
+}
+
+/* Modal text style */
+.modal .text-content
+{
+    background-color       : #9BCA8B       ;
+    font-weight            : bold            ;
+    font-size              : 3.1vmin         ;
+}
+
+/* Link to admin */
+.contact.toCopy {
+    cursor              : pointer       ;
+    color               : #009e11     ;
+    margin-top          : 6vmin         ;
+    border              : 0             ;
+    text-decoration     : underline     ;
+    font-size           : 3vmin         ;
+}
+
+/* "Copié" message design */
+.contact.copied {
+    display                 : inline-block      ;
+    animation-duration      : 2s                ;
+    animation-name          : displayColors     ;
+    font-size               : 1.5vw             ;
+
+    /* Padding margin and width */
+    padding                 : 0.3vmin           ;
+    margin                  : 1vw auto          ;
+    width                   : auto              ;
+}
+
+/* Colors for animation */
+@keyframes displayColors {
+
+    /* When at 0% of the display ... */
+    0% {
+        color               : #009e11   ;
+        background-color    : #9BCA8B   ;
+    }
+
+    /* When at 100% of the display ... */
+    100% {
+        color               : #009e11   ;
+        background-color    : #9BCA8B   ;
+    }
+}
