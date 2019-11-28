@@ -25,10 +25,10 @@ const Help: React.SFC<{}> = () => {
             <Nav buttons={activeButton}> </Nav>
             <div className="Help">
                 <section className="help_section">
-                    <div className="div1">
+                    <div className="byetic">
                         Cette application a été développée par
                     </div>
-                    <a className="div2" href="http://etic-insa.com/"> <img className="logoETIC" src={ETIC}   />
+                    <a className="etic" href="http://etic-insa.com/"> <img className="logoETIC" src={ETIC} />
                      </a>
                     <div className="actu" >
                         Suivez nos actualités !
@@ -48,7 +48,7 @@ const Help: React.SFC<{}> = () => {
                         </a>
 
                     </div>
-                    <div className="div3">
+                    <div className="explications">
                         Elle permet de rechercher les anciens membres de la Junior en fonction de divers critères
                         comme leur nom, prénom, entreprise pour laquelle ils travaillent ou encore leur année de
                         mandat.

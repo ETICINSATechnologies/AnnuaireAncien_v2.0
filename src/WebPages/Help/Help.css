@@ -23,50 +23,33 @@
     font-size: 3rem;
 }
 
-.Help .div1 {
+.Help .byetic {
     color: #000000;
     font-size: 2rem;
     text-align: center;
 }
-.Help .div2 {
-    cursor: pointer;
-    color: #009e11;
-    text-decoration: none;
-    font-size: 1vw;
-}
+
 .Help .logoETIC {
     width: 220px;
+    margin-bottom: 0px;
     
 }
+
 .Help .actu {
-    font-size: 2em;
+    font-size: 1.5rem;
+    margin-top: 0px;
 }
 
-
-.Help .social {
+.Help .social * {
     text-decoration: none;
     text-align: center ;
+    width: 50px;
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-top: 15px;
 }
 
-.Help .logoFB {
-    width: 50px;
-    margin-right: 25px;
-  } 
-
-.Help .logoTWITTER {
-    width: 50px;
-    margin-right: 25px;
-  }
-
-  .Help .logoINSTA {
-    width: 50px;
-    margin-right: 25px;
-  }
-
-  .Help .logoLINKEDIN {
-    width: 50px;
-  }
-  .Help .div3 {
+  .Help .explications {
     color: #0c7466;
     font-size: 1rem;
     text-align: left;
@@ -74,20 +57,18 @@
   .Help .contact.toCopy {
     cursor: pointer;
     color: #009e11;
-    margin-top: 2vmin;
+    
     background: white;
     border: 0;
     text-decoration: underline;
-    font-size: 2vw;
+    font-size: 1rem;
 }
 
 .Help .contact.copied {
     display: inline-block;
     animation-duration: 2s;
     animation-name: display;
-
     color: white;
-
     font-size: 2vw;
     padding: 0.3vmin;
     margin: 1vw auto ;
