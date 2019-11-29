@@ -28,23 +28,23 @@ const Help: React.SFC<{}> = () => {
                     <div className="byetic">
                         Cette application a été développée par
                     </div>
-                    <a className="etic" href="http://etic-insa.com/"> <img className="logoETIC" src={ETIC} />
+                    <a className="etic" href="http://etic-insa.com/"> <img className="logoETIC" src={ETIC} alt={'ETIC'} />
                      </a>
                     <div className="actu" >
                         Suivez nos actualités !
                     </div>
                     <div className="social">
                     <   a href="https://www.facebook.com/etic.insa/?ref=br_rs">
-                            <img className="logoFB" src={FB} />
+                            <img className="logoFB" src={FB} alt={'Facebook'}/>
                         </a> 
                         <a href="https://twitter.com/etic_insa" >
-                            <img className="logoTWITTER" src={TWITTER} />
+                            <img className="logoTWITTER" src={TWITTER} alt={'Twitter'}/>
                         </a>
                         <a href="https://www.instagram.com/etic.insa/">
-                            <img className="logoINSTA" src={INSTA} />
+                            <img className="logoINSTA" src={INSTA} alt={'Instragram'}/>
                         </a>
                         <a href="https://www.linkedin.com/company/etic-insa-technologies/?originalSubdomain=fr">
-                            <img className="logoLINKEDIN" src={LINKEDIN} />
+                            <img className="logoLINKEDIN" src={LINKEDIN} alt={'LinkedIn'}/>
                         </a>
 
                     </div>
