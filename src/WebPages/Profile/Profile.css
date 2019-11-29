@@ -1,6 +1,5 @@
 .Profile {
     display: grid;
-
     width: 95%;
     height: 100%;
     grid-row: 3;
@@ -9,9 +8,7 @@
     vertical-align: middle;
     margin: auto;
     grid-template-columns: 5fr 3fr;
-    overflow-y: auto;
 }
-
 
 @media (orientation: portrait) {
     .Profile {

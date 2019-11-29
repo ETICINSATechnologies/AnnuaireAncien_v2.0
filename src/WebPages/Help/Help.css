@@ -1,59 +1,73 @@
 .Help {
     display: grid;
-    overflow: hidden;
-
     width: 100%;
     height: 100%;
     text-align: center;
 }
 
 .Help .help_section {
-    display: grid;
-    grid-template-rows: 4vw 6.7vw 30vmin 1fr;
-
+    display: flex;
+    flex-direction: column;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
     margin: 3vmin auto;
-
     width: 95%;
 }
 
 .Help .help_section * {
     text-align: center;
     justify-self: center;
-
     margin: 0 auto;
-    font-size: 3vw;
+    font-size: 3rem;
 }
 
-.Help .div2 {
-    cursor: pointer;
-    color: #009e11;
-    text-decoration: underline;
+.Help .byetic {
+    color: #000000;
+    font-size: 2rem;
+    text-align: center;
 }
 
-.Help p {
-    margin: auto;
-    height: 100%;
+.Help .logoETIC {
+    width: 220px;
+    margin-bottom: 0px;
+}
+
+.Help .actu {
+    font-size: 1.5rem;
+    margin-top: 0px;
+}
+
+.Help .social * {
+    text-decoration: none;
+    text-align: center;
+    width: 50px;
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-top: 15px;
+}
+
+.Help .explications {
+    color: #0c7466;
+    font-size: 1rem;
+    text-align: center;
 }
 
 .Help .contact.toCopy {
     cursor: pointer;
     color: #009e11;
-    margin-top: 2vmin;
     background: white;
     border: 0;
     text-decoration: underline;
+    font-size: 1rem;
 }
 
 .Help .contact.copied {
     display: inline-block;
     animation-duration: 2s;
     animation-name: display;
-
     color: white;
-
     font-size: 2vw;
     padding: 0.3vmin;
-    margin: 1vw auto ;
+    margin: 1vw auto;
     width: auto;
 }
 
