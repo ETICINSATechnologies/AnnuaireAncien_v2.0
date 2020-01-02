@@ -40,6 +40,8 @@ interface ProfileFormState {
   idToIndexGenders: object;
   show: boolean;
   mdp: Mdp;
+  profileurl: string;
+  profilePicture: File;
 }
 
 export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
@@ -56,7 +58,9 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
       mdpstate: "Compléter les champs et appuyer sur valider",
       mdpstatetype: "neutral"
     },
-    requiredCompleted: false
+    requiredCompleted: false,
+    profileurl: "",
+    profilePicture: new File([],'profilePicture'),
   };
 
   componentDidMount() {
@@ -100,7 +104,21 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
             {}
           )
         });
-      });
+      }); 
+  }
+
+  componentDidUpdate(previousProps : ProfileFormProps) {
+    if(previousProps !== this.props) {
+      this.fetchProfilePicture ()
+      .then((photourl)=> {
+        if(photourl!== undefined) {
+          this.setState({
+            ...this.state,
+            profileurl: photourl 
+          })
+        }    
+      })
+    }
   }
 
   onChange = (event: React.ChangeEvent) => {
@@ -133,6 +151,7 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
 
   updateMember = () => {
     if (this.props.checkRequiredInput()) {
+      
       this.props.updateMember();
     } else {
       (document.querySelector(
@@ -237,6 +256,31 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
     return url;
   }
 
+  async uploadProfilPicture(file: File) {
+    let formData = new FormData()
+    formData.append('file', file, file.name)
+    fetch(`api/v1/core/member/${this.props.member.id}/photo`, {
+      method: 'POST',
+      headers: {
+        Authorization: Auth.getToken()
+      },
+      body: formData
+    })
+    
+  }
+
+  handleClickUpload() {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.onchange = (event : Event) => {
+      const files = input.files;
+      if (files !== null && files.length>0) {
+        this.uploadProfilPicture(files[0])
+      }
+    }
+    input.click();
+  }
+
   render() {
     return (
       <form className="ProfileForm">
@@ -256,8 +300,9 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
               )}
           <img
             className="profilePicture"
-            src={this.props.member.gender.id !== 2 ? manIcon : womanIcon}
+            src={this.state.profileurl===""? manIcon : this.state.profileurl}
             alt="Profile"
+            onClick={() => this.props.modifyEnabled ?  this.handleClickUpload() : null}
           />
           <img
             className="deleteCancelPicture"
