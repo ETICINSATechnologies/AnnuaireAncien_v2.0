@@ -151,7 +151,7 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
 
   updateMember = () => {
     if (this.props.checkRequiredInput()) {
-      
+
       this.props.updateMember();
     } else {
       (document.querySelector(
@@ -272,6 +272,7 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
   handleClickUpload() {
     const input = document.createElement('input');
     input.type = 'file';
+    input.accept = 'image/*' ;
     input.onchange = (event : Event) => {
       const files = input.files;
       if (files !== null && files.length>0) {
