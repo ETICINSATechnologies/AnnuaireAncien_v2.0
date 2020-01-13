@@ -82,7 +82,7 @@ class PositionForm extends Component<PositionFormProps, PositionFormState> {
 
   addPosition() {
     let mPositionNb = this.props.memberPositions.length;
-    if (mPositionNb < 4) {
+    if (mPositionNb < 10) {
       let lastPosition = {
         id: 0,
         isBoard: false,
