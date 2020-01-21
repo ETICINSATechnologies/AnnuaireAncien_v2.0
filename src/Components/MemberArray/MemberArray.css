@@ -49,7 +49,6 @@
 }
 
 .MemberArray thead, tbody {
-    //display: block;
     table-layout: fixed;
     width: 100%;
 }
@@ -144,7 +143,6 @@
     grid-row:1;
     text-align: center;
     font-size: 1.1vmax;
-    //margin: 0.2vh auto 1vh auto;
     width: auto;
 }
 

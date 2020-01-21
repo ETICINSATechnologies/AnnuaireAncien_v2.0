@@ -10,7 +10,7 @@ import CopyContent from "../../Components/CopyContent/CopyContent";
 type ConnectionState = {
     parameters  : Param
     status      : string
-    show        : boolean
+    showModal   : boolean
 }
 
 interface Param {
@@ -32,7 +32,7 @@ class Connection extends Component<{}, ConnectionState> {
             username    : ""    ,
             password    : ""    ,
         },
-        show        : false ,
+        showModal     : false ,
         status: 'loading',
     };
 
@@ -75,7 +75,7 @@ class Connection extends Component<{}, ConnectionState> {
     showModal = () => {
         this.setState({
             ...this.state,
-            show: !this.state.show
+            showModal: !this.state.showModal
         });
     }
 
@@ -105,7 +105,7 @@ class Connection extends Component<{}, ConnectionState> {
                     {this.state.status === 'connect' && <Redirect to='/profile'/>}
                 </div>
                 <div className="modal">
-                    <Modal show={this.state.show} onClose={this.showModal}>
+                    <Modal show={this.state.showModal} onClose={this.showModal}>
                         <p className = "text-content">
                             Afin de récupérer vos identifiants, veuillez contacter par mail l'administrateur de ce site
                             en
