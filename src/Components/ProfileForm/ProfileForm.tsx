@@ -41,7 +41,7 @@ interface ProfileFormState {
   show: boolean;
   mdp: Mdp;
   profileurl: string;
-  profilePicture: File;
+  newProfilePicture: File | null;
 }
 
 export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
@@ -60,7 +60,7 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
     },
     requiredCompleted: false,
     profileurl: "",
-    profilePicture: new File([],'profilePicture'),
+    newProfilePicture: null,
   };
 
   componentDidMount() {
@@ -104,20 +104,20 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
             {}
           )
         });
-      }); 
+      });
   }
 
-  componentDidUpdate(previousProps : ProfileFormProps) {
-    if(previousProps !== this.props) {
-      this.fetchProfilePicture ()
-      .then((photourl)=> {
-        if(photourl!== undefined) {
-          this.setState({
-            ...this.state,
-            profileurl: photourl 
-          })
-        }    
-      })
+  componentDidUpdate(previousProps: ProfileFormProps) {
+    if (previousProps !== this.props) {
+      this.fetchProfilePicture()
+        .then((photourl) => {
+          if (photourl !== undefined) {
+            this.setState({
+              ...this.state,
+              profileurl: photourl
+            })
+          }
+        })
     }
   }
 
@@ -151,8 +151,11 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
 
   updateMember = () => {
     if (this.props.checkRequiredInput()) {
-
       this.props.updateMember();
+      const newProfilePicture = this.state.newProfilePicture;
+      if (newProfilePicture){
+        this.uploadProfilPicture(newProfilePicture)
+      }
     } else {
       (document.querySelector(
         ".header_container h1"
@@ -266,20 +269,56 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
       },
       body: formData
     })
-    
+
   }
 
-  handleClickUpload() {
+  getCurrentProfilePicture() {
+    let picture = manIcon;
+    if (this.state.newProfilePicture) {
+      const url = URL.createObjectURL(this.state.newProfilePicture);
+      picture = url
+    } else {
+      if (this.state.profileurl === "") {
+        if (this.props.member.gender.id === 2) {
+          picture = womanIcon
+        } else {
+          picture = manIcon
+        }
+      } else {
+        picture = this.state.profileurl
+      }
+    }
+    return picture
+  }
+
+  handleCickProfilePicture() {
     const input = document.createElement('input');
     input.type = 'file';
-    input.accept = 'image/*' ;
-    input.onchange = (event : Event) => {
+    input.accept = 'image/*';
+    input.onchange = (event: Event) => {
       const files = input.files;
-      if (files !== null && files.length>0) {
-        this.uploadProfilPicture(files[0])
+      if (files !== null && files.length > 0) {
+        this.setState((oldState) => {
+          return ({
+            ...oldState,
+            newProfilePicture: files[0],
+          })
+        })
       }
     }
     input.click();
+  }
+
+  toggleModifyCancel() {
+    if (this.props.modifyEnabled) {
+      this.setState(oldState => {
+        return ({
+          ...oldState,
+          newProfilePicture : null
+        })
+      })
+    }
+    this.props.enableModification()
   }
 
   render() {
@@ -301,14 +340,15 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
               )}
           <img
             className="profilePicture"
-            src={this.state.profileurl===""? manIcon : this.state.profileurl}
+            // src={this.state.profileurl === "" ? this.props.member.gender.id === 2 ? womanIcon : manIcon : this.state.profileurl}
+            src={this.getCurrentProfilePicture()}
             alt="Profile"
-            onClick={() => this.props.modifyEnabled ?  this.handleClickUpload() : null}
+            onClick={() => this.props.modifyEnabled ? this.handleCickProfilePicture() : null}
           />
           <img
             className="deleteCancelPicture"
             src={this.props.modifyEnabled ? cancelIcon : modifyIcon}
-            onClick={() => this.props.enableModification()}
+            onClick={()=> this.toggleModifyCancel()}
             alt="Modifier/Annuler"
           />
         </div>
