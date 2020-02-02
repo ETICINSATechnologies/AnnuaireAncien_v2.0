@@ -153,8 +153,8 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
     if (this.props.checkRequiredInput()) {
       this.props.updateMember();
       const newProfilePicture = this.state.newProfilePicture;
-      if (newProfilePicture){
-        this.uploadProfilPicture(newProfilePicture)
+      if (newProfilePicture) {
+        this.uploadProfilePicture(newProfilePicture)
       }
     } else {
       (document.querySelector(
@@ -259,7 +259,7 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
     return url;
   }
 
-  async uploadProfilPicture(file: File) {
+  async uploadProfilePicture(file: File) {
     let formData = new FormData()
     formData.append('file', file, file.name)
     fetch(`api/v1/core/member/${this.props.member.id}/photo`, {
@@ -269,7 +269,15 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
       },
       body: formData
     })
+  }
 
+  async deleteProfilePicture() {
+    fetch(`api/v1/core/member/${this.props.member.id}/photo`, {
+      method: 'DELETE',
+      headers: {
+        Authorization: Auth.getToken()
+      },
+    })
   }
 
   getCurrentProfilePicture() {
@@ -314,11 +322,46 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
       this.setState(oldState => {
         return ({
           ...oldState,
-          newProfilePicture : null
+          newProfilePicture: null
         })
       })
     }
     this.props.enableModification()
+  }
+
+  renderProfilePicture() {
+    const profilePicture = (
+      <img
+        className={"profilePicture" + (this.props.modifyEnabled ? " bordered" : "")}
+        src={this.getCurrentProfilePicture()}
+        alt="Profile"
+        onClick={() => this.props.modifyEnabled ? this.handleCickProfilePicture() : null}
+      />
+    )
+
+    const removeProfilePicture = () => {
+      this.deleteProfilePicture()
+      this.setState((oldState) => {
+        return {
+          ...oldState,
+          profileurl : "",
+          newProfilePicture: null,
+        }
+      },(this.props.enableModification))
+    }
+    
+    const modifiableProfilePicture = (
+      <div className="modifiable_profile_picture">
+        {profilePicture}
+        <input
+          type="button"
+          value="Supprimer Photo"
+          onClick={removeProfilePicture}
+        />
+      </div>
+    )
+
+    return this.props.modifyEnabled? modifiableProfilePicture : profilePicture;
   }
 
   render() {
@@ -338,17 +381,11 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
           ) : (
                 <h1>Appuyer sur le crayon pour modifier</h1>
               )}
-          <img
-            className={"profilePicture" + (this.props.modifyEnabled? " bordered" : "")}
-            // src={this.state.profileurl === "" ? this.props.member.gender.id === 2 ? womanIcon : manIcon : this.state.profileurl}
-            src={this.getCurrentProfilePicture()}
-            alt="Profile"
-            onClick={() => this.props.modifyEnabled ? this.handleCickProfilePicture() : null}
-          />
+          {this.renderProfilePicture()}
           <img
             className="deleteCancelPicture"
             src={this.props.modifyEnabled ? cancelIcon : modifyIcon}
-            onClick={()=> this.toggleModifyCancel()}
+            onClick={() => this.toggleModifyCancel()}
             alt="Modifier/Annuler"
           />
         </div>
