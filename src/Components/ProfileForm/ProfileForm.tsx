@@ -108,7 +108,7 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
   }
 
   componentDidUpdate(previousProps: ProfileFormProps) {
-    if (previousProps !== this.props) {
+    if (!this.props.modifyEnabled && (previousProps !== this.props)) {
       this.fetchProfilePicture()
         .then((photourl) => {
           if (photourl !== undefined) {
