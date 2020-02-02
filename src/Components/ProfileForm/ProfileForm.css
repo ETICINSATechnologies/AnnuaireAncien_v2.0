@@ -16,6 +16,9 @@
   grid-template-rows: 1fr;
   margin: auto;
 }
+.ProfileForm .header_container .bordered {
+  border: 3px solid #9bca8b;
+}
 
 .ProfileForm .field_container {
   display: grid;

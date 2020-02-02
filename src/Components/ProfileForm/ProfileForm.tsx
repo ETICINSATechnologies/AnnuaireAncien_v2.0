@@ -339,7 +339,7 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
                 <h1>Appuyer sur le crayon pour modifier</h1>
               )}
           <img
-            className="profilePicture"
+            className={"profilePicture" + (this.props.modifyEnabled? " bordered" : "")}
             // src={this.state.profileurl === "" ? this.props.member.gender.id === 2 ? womanIcon : manIcon : this.state.profileurl}
             src={this.getCurrentProfilePicture()}
             alt="Profile"
