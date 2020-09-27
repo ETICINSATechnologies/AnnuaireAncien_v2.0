@@ -54,11 +54,7 @@ class MemberArray extends Component<MemberArrayProps, MemberArrayState> {
 
   getMembers = (searchArray: SearchInterface, page: number) => {
     //manage pages
-    let baseurl: string =
-      "api/v1/core/member?isAlumni=true&pageSize=" +
-      this.getPageSize() +
-      "&pageNumber=" +
-      page;
+    let baseurl: string = `${process.env.REACT_APP_BACKEND_URL}/api/v1/core/member?isAlumni=true&pageSize=${this.getPageSize()}&pageNumber=${page}`;
 
     // create the url with eventually the parameters
     let url = Object.keys(searchArray).reduce((url, property, i) => {

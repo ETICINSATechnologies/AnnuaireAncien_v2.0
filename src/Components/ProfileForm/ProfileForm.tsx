@@ -64,7 +64,7 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
   };
 
   componentDidMount() {
-    fetch("api/v1/core/department", {
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/api/v1/core/department`, {
       headers: {
         Authorization: Auth.getToken()
       }
@@ -85,7 +85,7 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
         });
       });
 
-    fetch("api/v1/core/gender", {
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/api/v1/core/gender`, {
       headers: {
         Authorization: Auth.getToken()
       }
@@ -196,7 +196,7 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
     };
 
     // check old pass
-    fetch("api/v1/auth/login", {
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/api/v1/auth/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -246,7 +246,7 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
   }
 
   async fetchProfilePicture() {
-    const res = await fetch(`api/v1/core/member/${this.props.member.id}/photo`, {
+    const res = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/v1/core/member/${this.props.member.id}/photo`, {
       headers: {
         Authorization: Auth.getToken()
       }
@@ -262,7 +262,7 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
   async uploadProfilePicture(file: File) {
     let formData = new FormData()
     formData.append('file', file, file.name)
-    fetch(`api/v1/core/member/${this.props.member.id}/photo`, {
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/api/v1/core/member/${this.props.member.id}/photo`, {
       method: 'POST',
       headers: {
         Authorization: Auth.getToken()
@@ -272,7 +272,7 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
   }
 
   async deleteProfilePicture() {
-    fetch(`api/v1/core/member/${this.props.member.id}/photo`, {
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/api/v1/core/member/${this.props.member.id}/photo`, {
       method: 'DELETE',
       headers: {
         Authorization: Auth.getToken()
