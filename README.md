@@ -1,44 +1,61 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Annuaire des Anciens
+> A directory for the Alumni of ETIC INSA Technologies.
 
-## Available Scripts
+This webapp allows active members and alumni of ETIC INSA Technologies to connect and look up contact info of other alumni.
 
-In the project directory, you can run:
+![](screenshots/welcome_screen_1.png)
 
-### `npm start`
+## Development
 
-Runs the app in the development mode.<br>
+1. Clone this repository locally
+
+```sh
+git clone https://github.com/ETICINSATechnologies/AnnuaireAncien_v2.0.git
+```
+2. Install the dependencies
+
+```sh
+npm install
+```
+3. Start development server
+
+```sh
+npm start
+```
+
+This runs the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.<br>
 You will also see any lint errors in the console.
 
-### `npm test`
+## Deployment
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Test the build process (optional)
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
+```sh
+npm run build
+```
+This builds the app for production to the `build` folder.<br>
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
 The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+The app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2. Deploy
 
-### `npm run eject`
+This repo has been setup with a [Github Action](https://github.com/ETICINSATechnologies/AnnuaireAncien_v2.0/actions) that works as a CD (continous deployment).<br>
+To launch the auto build process, push your changes into the `production` branch.<br>
+The Github Action will build and deploy the app to a [Github Page](https://github.com/ETICINSATechnologies/AnnuaireAncien_v2.0/deployments/activity_log?environment=github-pages).
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+You can monitor the build process on the [Github Action page](https://github.com/ETICINSATechnologies/AnnuaireAncien_v2.0/actions).
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Note : The Github Page is initialised to the `gh-pages` branch. DO NOT push to this branch directly ! This might cause undesirable effects.
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Meta
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Contributers :
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Laurent Tainturier – [Github](https://github.com/laurenttainturier)
+Sadsitha Lokuge – [Github](https://github.com/slokuge/)
+Thomas Zhou – [Github](https://github.com/thozh)
