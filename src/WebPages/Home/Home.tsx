@@ -23,7 +23,7 @@ class Home extends Component<{}, HomeState> {
     };
 
     componentDidMount() {
-        fetch('api/v1/core/member/board/latest', {
+        fetch(`${process.env.REACT_APP_BACKEND_URL}/api/v1/core/member/board/latest`, {
             headers: {
                 Authorization: Auth.getToken()
             }

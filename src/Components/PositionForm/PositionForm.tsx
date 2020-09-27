@@ -26,7 +26,7 @@ class PositionForm extends Component<PositionFormProps, PositionFormState> {
   };
 
   componentDidMount() {
-    fetch("api/v1/core/position", {
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/api/v1/core/position`, {
       headers: {
         Authorization: Auth.getToken()
       }
