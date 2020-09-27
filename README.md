@@ -1,7 +1,8 @@
 # Annuaire des Anciens
 > A directory for the Alumni of ETIC INSA Technologies.
 
-This webapp allows active members and alumni of ETIC INSA Technologies to connect and look up contact info of other alumni.
+This webapp allows active members and alumni of ETIC INSA Technologies to connect and look up contact info of other alumni.<br>
+[annuaire-anciens.etic-insa.com](https://annuaire-anciens.etic-insa.com/)
 
 ![](screenshots/welcome_screen_1.png)
 
