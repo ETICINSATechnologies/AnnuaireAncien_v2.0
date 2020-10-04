@@ -6,9 +6,10 @@ import Nav from "../../Components/Nav/Nav";
 import Auth from "../../Components/Auth/Auth";
 import Board from "./Board";
 
-import {Member, MemberInterface} from "../../Model/Member";
+//import {Member, MemberInterface} from "../../Model/Member";
+import {Member} from "../../Model/Member";
 
-import {fetch} from "../../__mocks__/function/fetch";
+//import {fetch} from "../../__mocks__/function/fetch";
 
 
 type HomeState = {
