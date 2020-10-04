@@ -12,6 +12,8 @@ import { Position } from "../../Model/Position";
 import { Member } from "../../Model/Member";
 import { SearchInterface } from "../../Model/Searchinterface";
 
+import * as functions from "./functions";
+
 interface SearchState {
   searchValues: SearchInterface;
   positions: Position[];
@@ -150,6 +152,12 @@ class Search extends Component<{}, SearchState> {
                 type="submit"
                 value="Rechercher"
                 onClick={(e: React.MouseEvent) => this.makeSearch(0, e)}
+              />
+              <input
+                className="exportInput"
+                type="button"
+                value="Exporter"
+                onClick={(_e: React.MouseEvent) => { functions.exportAllAlumni()}}
               />
             </form>
           </div>
