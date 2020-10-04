@@ -49,6 +49,14 @@
     border: 0.15vw solid black;
 }
 
+.Search .searchForm .exportInput {
+    grid-column: 2;
+    font-size: 2vw;
+    margin: 1vw 3vw auto auto;
+    width: auto;
+    border: 0.15vw solid black;
+}
+
 .Search .searchForm .searchInput:hover {
     cursor: pointer;
 }
