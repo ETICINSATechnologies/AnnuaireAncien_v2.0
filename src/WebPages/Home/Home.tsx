@@ -21,7 +21,9 @@ class Home extends Component<{}, HomeState> {
         leftBoard: [],
         rightBoard: []
     };
-
+    
+    // Uncomment the code below to display board photos
+    /**
     componentDidMount() {
         fetch(`${process.env.REACT_APP_BACKEND_URL}/api/v1/core/member/board/latest`, {
             headers: {
@@ -45,6 +47,7 @@ class Home extends Component<{}, HomeState> {
                 });
             });
     }
+    **/
 
     render() {
         let activeButton = [];
