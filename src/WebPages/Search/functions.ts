@@ -2,37 +2,54 @@ import Auth from "../../Components/Auth/Auth";
 import { parse } from "json2csv";
 
 // To-do : Needs more complex page handling. Right now, will only download first page
-export const exportAllAlumni = () => {
-    const pageSize = 25;
-    const pageNumber = 0;
-    let url: string = `${process.env.REACT_APP_BACKEND_URL}/api/v1/core/member?isAlumni=true&pageSize=${pageSize}&pageNumber=${pageNumber}`;
+export const exportAllAlumni = async () => {
+    let pageSize = 25;
+    let totalPages = 1;
 
-    fetch(url, {
+    let alumniList: any[] = [];
+
+    for (let pageNumber = 0; pageNumber < totalPages; ++pageNumber) {
+        try {
+            const results = await fetchResults(pageSize, pageNumber);
+            if (results && results.meta && results.content) {
+                totalPages = results.meta.totalPages;
+                alumniList = [...alumniList, ...results.content];
+            }
+        } catch (error) {
+            alert(error);
+            return;
+        }
+    }
+
+    const flattenedAlumniList = alumniList.map((item: any) => flattenObject(item));
+    try {
+        const csv = 'data:text/csv;charset=utf-8,' + parse(flattenedAlumniList);
+        const encodedUri = encodeURI(csv);
+        const link = document.createElement("a");
+        link.setAttribute("href", encodedUri);
+        link.setAttribute("download", "alumni_etic.csv");
+        document.body.appendChild(link); // Required for FF
+        link.click();
+    } catch (error) {
+        alert(error);
+        return;
+    }
+}
+
+const fetchResults = async (pageSize: number, pageNumber: Number) => {
+    const url: string = `${process.env.REACT_APP_BACKEND_URL}/api/v1/core/member?isAlumni=true&pageSize=${pageSize}&pageNumber=${pageNumber}`;
+    const response = await fetch(url, {
         headers: {
             Authorization: Auth.getToken()
         }
-    }).then(res => {
-        if (res.status === 200)
-            res.json().then(result => {
-                if (result && result.content.length > 0) {
-                    const flattenedResults = result.content.map((item: any) => flattenObject(item));
-                    try {
-                        const csv = 'data:text/csv;charset=utf-8,' + parse(flattenedResults);
-                        const encodedUri = encodeURI(csv);
-                        const link = document.createElement("a");
-                        link.setAttribute("href", encodedUri);
-                        link.setAttribute("download", "alumni_etic.csv");
-                        document.body.appendChild(link); // Required for FF
-                        link.click();
-                    } catch (err) {
-                        console.error(err);
-                    }
-                }
-            });
-        else {
-            window.alert("Il y a eu une erreur lors de la requête");
-        }
     });
+    if (response.ok) {
+        const results = await response.json();
+        return results;
+    } else {
+        throw new Error("Error fetch members : " + response.statusText);
+    }
+
 }
 
 const flattenObject = (obj: any, parent?: any, res = {} as any): Object => {
