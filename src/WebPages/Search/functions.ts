@@ -1,7 +1,6 @@
 import Auth from "../../Components/Auth/Auth";
 import { parse } from "json2csv";
 
-// To-do : Needs more complex page handling. Right now, will only download first page
 export const exportAllAlumni = async () => {
     let pageSize = 25;
     let totalPages = 1;
@@ -16,7 +15,7 @@ export const exportAllAlumni = async () => {
                 alumniList = [...alumniList, ...results.content];
             }
         } catch (error) {
-            alert(error);
+            window.alert(error);
             return;
         }
     }
@@ -31,7 +30,7 @@ export const exportAllAlumni = async () => {
         document.body.appendChild(link); // Required for FF
         link.click();
     } catch (error) {
-        alert(error);
+        window.alert(error);
         return;
     }
 }
